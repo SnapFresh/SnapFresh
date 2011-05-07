@@ -1,3 +1,4 @@
+name, lat, lon, street, city, state, zip, zip_plus_four
 Walgreens 13668,-122.419535698,37.7752385152,1496 Market St,San Francisco,CA,94102,6004
 Walgreens 13669,-122.406558481,37.785436827,776 Market St,San Francisco,CA,94102,2514
 TENDERLOIN GROCERY,-122.410182749,37.7835752304,62 Turk St,San Francisco,CA,94102,2808
