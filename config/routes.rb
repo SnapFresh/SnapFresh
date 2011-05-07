@@ -1,6 +1,10 @@
 Allincomefoods::Application.routes.draw do
-  resources :retailers
+  resources :requests
 
+  get "lookup/new"
+
+  resources :retailers
+ # root :to => 'retailers'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
