@@ -12,7 +12,6 @@ class RequestsController < ApplicationController
 
   def retailers
     @request_address = params[:address]
-    puts "blah"
   end
 
   # GET /requests/1

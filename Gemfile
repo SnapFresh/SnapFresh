@@ -10,6 +10,7 @@ gem 'sqlite3-ruby'
 gem 'haml'
 gem 'sass'
 gem 'tropo-webapi-ruby'
+gem 'crack'
 
 # Use unicorn as the web server
 # gem 'unicorn'
