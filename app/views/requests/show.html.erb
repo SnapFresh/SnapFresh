@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Startaddress:</b>
+  <%= @request.startaddress %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @request.phone %>
+</p>
+
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>
