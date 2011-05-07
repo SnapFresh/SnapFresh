@@ -1,3 +1,9 @@
+To load in seed data:
+
+$ rake db:create:all
+$ rake db:schema:load
+$ rake db:seed
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
