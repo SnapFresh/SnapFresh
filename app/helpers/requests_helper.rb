@@ -19,10 +19,14 @@ module RequestsHelper
             :lat => result["geometry"]["location"]["lat"],
             :long => result["geometry"]["location"]["lng"],
             :matched_address => result["formatted_address"],
-            :bounds => result["geometry"]["bounds"]
+            :bounds => result["geometry"]["bounds"],
+            :zip => result["geometry"]["bounds"]  
           }
         end
-        return array
+        zip = address[-5,4]
+        #SELECT city, street, name, AVG(3956 * 2 * ASIN(SQRT(POWER(SIN((37.4404 - abs(`lat`)) * pi()/180 / 2),2) + COS(37.4404 * pi()/180 ) * COS(abs(`lat`) * pi()/180) * POWER(SIN((-121.8705 - `long`) * pi()/180 / 2), 2) ))) AS distance
+        @retailer = Retailer.find_by_sql("SELECT name, street, city, state, zip FROM retailers WHERE zip like '{# zip}'")      
+        return parse
       end
     end
 

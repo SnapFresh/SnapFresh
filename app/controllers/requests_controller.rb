@@ -12,6 +12,8 @@ class RequestsController < ApplicationController
 
   def retailers
     @request_address = params[:address]
+    t = Tropo::Generator.new
+    t.say "Don't forget your meeting at 2 p.m. on Wednesday!"
   end
 
   # GET /requests/1
