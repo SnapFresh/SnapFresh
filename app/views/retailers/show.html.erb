@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @retailer.name %>
+</p>
+
+<p>
+  <b>Lat:</b>
+  <%= @retailer.lat %>
+</p>
+
+<p>
+  <b>Lon:</b>
+  <%= @retailer.lon %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%= @retailer.street %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @retailer.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @retailer.state %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @retailer.zip %>
+</p>
+
+<p>
+  <b>Zip plus four:</b>
+  <%= @retailer.zip_plus_four %>
+</p>
+
+
+<%= link_to 'Edit', edit_retailer_path(@retailer) %> |
+<%= link_to 'Back', retailers_path %>
