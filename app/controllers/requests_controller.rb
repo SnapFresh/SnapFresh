@@ -10,6 +10,11 @@ class RequestsController < ApplicationController
     end
   end
 
+  def retailers
+    @request_address = params[:address]
+    puts "blah"
+  end
+
   # GET /requests/1
   # GET /requests/1.xml
   def show

@@ -34,7 +34,9 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     haml (3.1.1)
+    hashie (1.0.0)
     i18n (0.5.0)
+    json_pure (1.5.1)
     mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -77,6 +79,9 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
+    tropo-webapi-ruby (0.1.10)
+      hashie (>= 0.2.0)
+      json_pure (>= 1.2.0)
     tzinfo (0.3.27)
     webrat (0.7.3)
       nokogiri (>= 1.2.0)
@@ -93,4 +98,5 @@ DEPENDENCIES
   sass
   sqlite3
   sqlite3-ruby
+  tropo-webapi-ruby
   webrat

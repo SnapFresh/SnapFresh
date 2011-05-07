@@ -1,6 +1,6 @@
 Allincomefoods::Application.routes.draw do
-  resources :requests
-
+  #resources :requests
+  match 'requests/:address' => 'requests#retailers'
   get "lookup/new"
 
   resources :retailers
