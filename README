@@ -1,4 +1,8 @@
-To load in seed data:
+Prototyping of extraction of backend data and some geocoding associated thereof for this project can be found on this scraperwiki:
+http://scraperwiki.com/scrapers/allincomefoods/
+
+----------
+Otherwise, to load in seed data from USDA SNAP State CSV files:
 
 $ rake db:create:all
 $ rake db:schema:load
