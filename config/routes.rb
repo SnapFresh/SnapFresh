@@ -4,7 +4,9 @@ Allincomefoods::Application.routes.draw do
   get "lookup/new"
 
   resources :retailers
- # root :to => 'retailers'
+  match 'retailers/near/*query' => 'retailers#near'
+
+  # root :to => 'retailers'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
