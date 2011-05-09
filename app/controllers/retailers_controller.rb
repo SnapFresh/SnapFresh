@@ -10,11 +10,11 @@ class RetailersController < ApplicationController
     end
   end
 
-  # GET /retailers/near/*query
+  # GET /retailers/near/:lat/:lon
   def near
-    @origin = [params[:query][0],params[:query][1]]
+    origin = [params[:lat],params[:lon]]
     @retailers = Retailer.find :all,
-                              :origin => @origin,
+                              :origin => origin,
                               #:within => 5,
                               :order => 'distance',
                               :limit => 5
