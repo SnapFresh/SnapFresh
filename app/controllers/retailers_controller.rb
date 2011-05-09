@@ -10,6 +10,20 @@ class RetailersController < ApplicationController
     end
   end
 
+  # GET /retailers/near/*query
+  def near
+    @origin = [params[:query][0],params[:query][1]]
+    @retailers = Retailer.find :all,
+                              :origin => @origin,
+                              #:within => 5,
+                              :order => 'distance',
+                              :limit => 5
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @retailer }
+    end
+  end
+
   # GET /retailers/1
   # GET /retailers/1.xml
   def show
