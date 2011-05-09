@@ -11,6 +11,9 @@ gem 'haml'
 gem 'sass'
 gem 'tropo-webapi-ruby'
 gem 'crack'
+gem 'geokit'
+gem 'geokit-rails'
+gem 'pg'
 
 # Use unicorn as the web server
 # gem 'unicorn'
