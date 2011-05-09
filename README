@@ -4,9 +4,10 @@ http://scraperwiki.com/scrapers/allincomefoods/
 ----------
 Installing and fixing geokit
 
-Geokit hasn't been upgraded for rails3 yet, but that's ok since there's an easy workaround. Once you have geokit and geokit-rails installed, find your
-geokit-rails installation directory and apply a patch. My install dir on
-fedora is here:
+Geokit hasn't been upgraded for rails3 yet, but that's ok since there's
+an easy workaround. Once you have the geokit and geokit-rails gems
+installed, find your geokit-rails installation directory and apply a
+patch. My install dir on Fedora is here:
 
 /usr/lib64/ruby/gems/1.8/gems/geokit-rails-1.1.4/lib/geokit-rails
 
