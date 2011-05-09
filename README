@@ -2,6 +2,21 @@ Prototyping of extraction of backend data and some geocoding associated thereof 
 http://scraperwiki.com/scrapers/allincomefoods/
 
 ----------
+We are now switched to PostgreSQL, so install postgres locally, start up
+the server, and create the right users:
+
+$ sudo yum install postgresql-server postgresql-client postgresql-docs postgresql-devel
+$ sudo gem install pg
+$ bundle install
+$ sudo service postgresql start
+
+$ sudo -u postgres createuser -P aif
+  # password is aif123
+(not superuser, yes can create DBs, no can't create roles)
+
+Then run the commands below to create everything and import the seed data.
+
+----------
 Otherwise, to load in seed data from USDA SNAP State CSV files:
 
 $ rake db:create:all
