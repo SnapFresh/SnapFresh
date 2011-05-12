@@ -26,6 +26,9 @@ $ sudo gem install pg
 $ bundle install
 $ sudo service postgresql start
 
+Note that postgresql-devel is required (on whatever platform you're on)
+since the headers and pg_config are required to build the dependent GEMs.
+
 $ sudo -u postgres createuser -P aif
   # password is aif123
 (not superuser, yes can create DBs, no can't create roles)
