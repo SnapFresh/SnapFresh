@@ -2,7 +2,7 @@ class RetailersController < ApplicationController
   # GET /retailers
   # GET /retailers.xml
   def index
-    @retailers = Retailer.all
+    @retailers = Retailer.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
