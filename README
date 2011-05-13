@@ -26,6 +26,11 @@ $ sudo gem install pg
 $ bundle install
 $ sudo service postgresql start
 
+If you're running Mac OSX, you'll need to put pg_config in your path, or you'll get an error upon trying to install the pg
+gem. Do this by running this command at the prompt (instead of the above "sudo gem install pg" command, and assuming you've installed postgresql 9.0)
+
+$ PATH=$PATH:/Library/PostgreSQL/9.0/bin sudo gem install pg
+
 Note that postgresql-devel is required (on whatever platform you're on)
 since the headers and pg_config are required to build the dependent GEMs.
 
@@ -41,6 +46,17 @@ Otherwise, to load in seed data from USDA SNAP State CSV files:
 $ rake db:create:all
 $ rake db:schema:load
 $ rake db:seed
+
+--- ALTERNATE way to load the full data:
+
+1) Run "ruby db/cronjob.rb" to fetch all data files, unzip and then produce
+a single CSV file called "all.csv".
+
+2) Bulk-load into postgres, using this command:
+grep -v '"NULL"' all.csv | psql allincomefoods_dev -c "copy retailers (name, lat, lon, street, city, state, zip, zip_plus_four) from stdin null as 'NULL' csv;"
+
+3) (Optional) Remove all the .zip and .csv files that were created as part
+of the download process.
 
 == Welcome to Rails
 
