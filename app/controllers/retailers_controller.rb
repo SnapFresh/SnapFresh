@@ -23,6 +23,54 @@ class RetailersController < ApplicationController
       format.xml  { render :xml => @retailer }
     end
   end
+  
+  # GET /retailers/nearaddy/:street/:city/:state
+  def nearaddy
+    # geocode the address using USC database
+    usergeo = get_geo_and_zip_from_address(URI.escape(params[:street], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")),URI.escape(params[:city], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")), URI.escape(params[:state], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")));
+    origin = [usergeo["lat"], usergeo["long"]]
+    @retailers = Retailer.find :all,
+                              :origin => origin,
+                              #:within => 5,
+                              :order => 'distance',
+                              :limit => 5
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @retailer }
+    end
+  end
+
+  def get_geo_and_zip_from_address(staddress,stcity, st)
+    #using a free USC geocoder (limit 2500 hits before you need to register)
+    geocoder = "http://webgis.usc.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V02_95.aspx?apiKey=a8dbf3d653e345b8b67792e55b263d15&&format=XML&census=false&notStore=false&version=2.95&verbose=true&"
+    staddress= "streetAddress=" + staddress;
+    stcity = "&city=" + stcity;
+    st = "&state="+ st;   
+    request = geocoder + staddress + stcity + st
+    url = URI.parse(request)
+    resp = Net::HTTP.get_response(url)
+    array = []
+    #parse result if result received properly
+    if resp.is_a?(Net::HTTPSuccess)
+      #puts("Got here \n")
+       #parse the XML
+      parse = Nokogiri::XML(resp.body)
+      status = parse.xpath("//QueryStatusCodeValue").text;
+      # puts(status)
+       #check if request went well
+       if status == "200"
+        # return zip and lat long if request successful
+          lat = parse.xpath("//OutputGeocode//Latitude").text;
+          long = parse.xpath("//OutputGeocode/Longitude").text;
+          zip = parse.xpath("//ReferenceFeature/Zip").text;
+       # puts("lat: " + lat + " long: " + long + " zip: " + zip + "\n")
+           infohash = { 'lat' => lat, 'long' => long, 'zip' => zip  }
+         end
+         # puts("infohash: " + infohash["zip"]);    
+         return infohash
+       end
+   end
+
 
   # GET /retailers/1
   # GET /retailers/1.xml
