@@ -31,9 +31,30 @@ class RetailersController < ApplicationController
     origin = [usergeo["lat"], usergeo["long"]]
     @retailers = Retailer.find :all,
                               :origin => origin,
-                              #:within => 5,
                               :order => 'distance',
                               :limit => 5
+    # Use Yelp API to figure out what kind of establishment each returned retailer is
+    yelpurl = "http://api.yelp.com/business_review_search?term="
+    re1='((?:[a-z][a-z]+))'	# Word 1
+    re2='(\\s+)'	# White Space 1
+    re3='(\\d+)'	# Integer Number 1
+    re=(re1+re2+re3)
+    m=Regexp.new(re,Regexp::IGNORECASE);
+    @retailers.each do |aretailer|
+      if m.match(aretailer.name)
+        escfir=m.match(aretailer.name)[1];
+        #puts "("<<word1<<")"<< "\n"
+      end
+      escname =  URI.escape(escfir, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
+      esclocation = "&location=" + URI.escape(aretailer.street, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) + "%2C" +
+        URI.escape(aretailer.city, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) + "%2C" + URI.escape(aretailer.state, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
+      request = yelpurl + escname + esclocation + "&ywsid=VR0eNW8-767FtIrg21dKAA"
+      puts request
+      #http://api.yelp.com/business_review_search?term=cream%20puffs&location=650%20Mission%20St%2ASan%20Francisco%2A%20CA&ywsid=XXXXXXXXXXXXXXXX
+      url = URI.parse(request)
+      @yelpdata = Net::HTTP.get_response(url)
+      # RESP is a json file
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @retailer }
