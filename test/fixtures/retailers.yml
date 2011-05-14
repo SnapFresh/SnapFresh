@@ -5,7 +5,7 @@ one:
   lat: 9.99
   lon: 9.99
   street: MyString
-  city: MyString
+  city: 
   state: MyString
   zip: MyString
   zip_plus_four: MyString
@@ -15,7 +15,7 @@ two:
   lat: 9.99
   lon: 9.99
   street: MyString
-  city: MyString
+  city: 
   state: MyString
   zip: MyString
   zip_plus_four: MyString
