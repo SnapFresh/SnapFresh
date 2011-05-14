@@ -1,15 +1,15 @@
 <h1>Listing retailers</h1>
 <%= will_paginate %>
-<table>
+<table class="pretty">
   <tr>
-    <th>Name</th>
-    <th>Lat</th>
-    <th>Lon</th>
-    <th>Street</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zip</th>
-    <th>Zip plus four</th>
+    <th><%= sortable "name" %></th>
+    <th><%= sortable "lat" %></th>
+    <th><%= sortable "lon" %></th>
+    <th><%= sortable "street" %></th>
+    <th><%= sortable "city" %></th>
+    <th><%= sortable "state" %></th>
+    <th><%= sortable "zip" %></th>
+    <th><%= sortable "zip_plus_four" %></th>
     <th></th>
     <th></th>
     <th></th>

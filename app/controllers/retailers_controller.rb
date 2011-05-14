@@ -1,8 +1,10 @@
 class RetailersController < ApplicationController
   # GET /retailers
   # GET /retailers.xml
+  helper_method :sort_column, :sort_direction
+
   def index
-    @retailers = Retailer.paginate(:page => params[:page])
+    @retailers = Retailer.order( sort_column + " " + sort_direction).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -163,4 +165,13 @@ class RetailersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private
+    def sort_column
+      Retailer.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
 end
