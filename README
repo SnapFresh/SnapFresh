@@ -53,7 +53,7 @@ $ rake db:seed
 a single CSV file called "all.csv".
 
 2) Bulk-load into postgres, using this command:
-grep -v '"NULL"' all.csv | psql allincomefoods_dev -c "copy retailers (name, lat, lon, street, city, state, zip, zip_plus_four) from stdin null as 'NULL' csv;"
+grep -v '"NULL"' all.csv | psql allincomefoods_dev -c "copy retailers (name, lon, lat, street, city, state, zip, zip_plus_four) from stdin null as 'NULL' csv;"
 
 3) (Optional) Remove all the .zip and .csv files that were created as part
 of the download process.
