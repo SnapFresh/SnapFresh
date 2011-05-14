@@ -6,10 +6,10 @@ class RetailersController < ApplicationController
   def index
     @retailers = Retailer.search(params[:search]).order( sort_column + " " + sort_direction).paginate(:page => params[:page])
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @retailers }
-    end
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.xml  { render :xml => @retailers }
+    #end
   end
 
   # GET /retailers/near/:lat/:lon
@@ -175,3 +175,4 @@ class RetailersController < ApplicationController
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
+
