@@ -4,7 +4,7 @@ class RetailersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @retailers = Retailer.order( sort_column + " " + sort_direction).paginate(:page => params[:page])
+    @retailers = Retailer.search(params[:search]).order( sort_column + " " + sort_direction).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
