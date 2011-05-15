@@ -5,7 +5,7 @@ $ rake db:schema:load
 $ rake db:seed
 
 == Welcome to Rails
-
+s
 Rails is a web-application framework that includes everything needed to create
 database-backed web applications according to the Model-View-Control pattern.
 
