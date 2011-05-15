@@ -1,0 +1,30 @@
+# This script is designed for use on the Tropo SMS system (Tropo.com).
+# It takes all incoming SMS messages (ignoring VOICE calls) and passes
+# all the metadata about that incoming message to our AllIncomeFoods
+# app server. It does not respond to the SMS user. It should support
+# SMS and all forms of IM.
+
+require "net/http"
+require "uri"
+
+uri = URI.parse("http://www.allincomefoods.org/tropo/new")
+
+# Separate this out, in case there are hidden params we don't want to
+# pass across the wire (only the public fields should be passed).
+params = {
+    :calledID => $currentCall.calledID,
+    :callerID => $currentCall.callerID,
+    :channel => $currentCall.channel,
+    :network => $currentCall.network,
+    :initialText => $currentCall.initialText,
+    :id => $currentCall.id,
+    :sessionId => $currentCall.sessionId,
+}
+
+# Only bother if it's a text-based message (not VOICE)
+if ($currentCall.channel == "TEXT") {
+    response = Net::HTTP.post_form(uri, params);
+}
+
+# FIXME: how do we deal with VOICE calls?
+
