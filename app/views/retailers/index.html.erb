@@ -1,15 +1,21 @@
-<h1>Listing retailers</h1>
+<!-- This content will be displayed all the time -->
+<div class="general">
+        <h1>All<span id="income">income</span>foods</h1>
+        <h2></h2>
+        <p>enter your address, zip code or cross street</p>
+        <form action="list.html" method="post">
+        
+          <input class="entryform-field" name="address" value="" id="addressfield"/>
+          <div class="c"><input id="submitbutton" type="submit" value="submit"/></div>
+        
+        </form>
 
-<%= form_tag retailers_path, :method => 'get', :id => "retailers_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-  <div id="retailers">
-    <%= render :partial => 'retailers_table' %>
-  </div>
-<% end %>
-<br />
+        <%= form_tag( retailers_path + '/near/37.712751/-122.397909') %>
+        <%= text_field_tag 'addressfield', 'enter your address, zip code or cross street', 
+          :class => "entryform-field" %>
+        <%= submit_tag %>
+</div>
 
-<%= link_to 'New Retailer', new_retailer_path %>
 
+<!-- Use LayzyLoading for version specific Html elements -->
+<!-- keywords are Tablet Desktop Bigscreen Hdtv --
