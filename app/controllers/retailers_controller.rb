@@ -17,7 +17,15 @@ class RetailersController < ApplicationController
   end
   
   def list
-    @latlon = get_geo_from_google("424 ellis street san francisco")
+    @latlon = get_geo_from_google(params[:address])
+    @lat = @latlon[:lat]
+    @lon = @latlon[:lon]
+    
+    redirect_to :controller => 'retailers', :action => 'near', :params => 
+                                                                params[ :lat => @lat, :lon => @lon ]
+    #@lat = @latlon.first[:lat]
+    #@lon = @latlon.first[:lon]
+    #@latlon = "Blah"
   end
 
   # GET /retailers/near/:lat/:lon
@@ -90,14 +98,14 @@ class RetailersController < ApplicationController
         parse["results"].each do |result|
           array <<{
             :lat => result["geometry"]["location"]["lat"],
-            :long => result["geometry"]["location"]["lng"],
-            :matched_address => result["formatted_address"],
-            :bounds => result["geometry"]["bounds"],
-            :zip => result["geometry"]["bounds"]  
+            :lon => result["geometry"]["location"]["lng"]
+            #:matched_address => result["formatted_address"],
+            #:bounds => result["geometry"]["bounds"],
+            #:zip => result["geometry"]["bounds"]  
           }
-          return array.to_s
+          return array.first
         end
-        zip = address[-5,4]+"%"
+        #zip = address[-5,4]+"%"
         #SELECT city, street, name, AVG(3956 * 2 * ASIN(SQRT(POWER(SIN((37.4404 - abs(`lat`)) * pi()/180 / 2),2) + COS(37.4404 * pi()/180 ) * COS(abs(`lat`) * pi()/180) * POWER(SIN((-121.8705 - `long`) * pi()/180 / 2), 2) ))) AS distance
         #@retailer = Retailer.find_by_sql("SELECT name, street, city, state, zip FROM retailers WHERE zip like '9410%'")      
         #@retailer = Retailer.find_by_sql("SELECT name, street, city, state, zip FROM retailers WHERE zip like \"#{zip}\"")      
@@ -221,6 +229,14 @@ class RetailersController < ApplicationController
 
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
+    def lat
+      params[:lat] ? params[:lat] : "lat"
+    end
+
+    def lon
+      params[:lon] ? params[:lon] : "lon"
     end
 
 end

@@ -1,6 +1,6 @@
 Allincomefoods::Application.routes.draw do
   root :to => 'retailers#index'
-  match 'retailers/list' => 'retailers#list'
+  match 'retailers/list/:address' => 'retailers#list'
   match 'browse' => 'retailers#browse'
   resources :retailers
   #resources :requests
