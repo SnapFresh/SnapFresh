@@ -48,6 +48,6 @@ class Retailer < ActiveRecord::Base
     end
 
     def to_text
-      self.address
+      [self.name, self.retailer_types.join(", "), self.address].join(" ")
     end
 end
