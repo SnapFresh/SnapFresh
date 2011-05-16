@@ -6,25 +6,28 @@
 
 require "net/http"
 require "uri"
+require "cgi"
 
-uri = URI.parse("http://www.allincomefoods.org/tropo/new")
+MAX_LENGTH = 160 * 4 # 4 SMS messages max
 
-# Separate this out, in case there are hidden params we don't want to
-# pass across the wire (only the public fields should be passed).
-params = {
-    :calledID => $currentCall.calledID,
-    :callerID => $currentCall.callerID,
-    :channel => $currentCall.channel,
-    :network => $currentCall.network,
-    :initialText => $currentCall.initialText,
-    :id => $currentCall.id,
-    :sessionId => $currentCall.sessionId,
-}
+url = URI.parse("http://snapfresh.org/retailers/nearaddy.text/"
+                + CGI::escape($currentCall.initialText))
 
 # Only bother if it's a text-based message (not VOICE)
-if ($currentCall.channel == "TEXT") {
-    response = Net::HTTP.post_form(uri, params);
-}
-
 # FIXME: how do we deal with VOICE calls?
+if ($currentCall.channel == "TEXT")
+    req = Net::HTTP::Get.new(url.path)
+    res = Net::HTTP.start(url.host, url.port) {|http|
+      http.request(req)
+    }
+
+    # FIXME: catch response errors
+
+    # put a reasonable limit on the amount of text we sent back
+    resp_body = res.body
+    if (resp_body.length > MAX_LENGTH)
+        resp_body = resp_body[0, MAX_LENGTH]
+    end
+    puts resp_body
+end
 
