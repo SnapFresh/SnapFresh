@@ -1,4 +1,5 @@
 class Retailer < ActiveRecord::Base
+    require 'cgi'
     acts_as_mappable :lng_column_name => :lon
     
     def retailer_types
@@ -36,7 +37,7 @@ class Retailer < ActiveRecord::Base
     end
     
     def google_safe_address
-      address.tr(" ", "+")
+      CGI::escape(address)
     end
 
     def self.search(search)

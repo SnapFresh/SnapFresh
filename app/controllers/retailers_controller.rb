@@ -26,7 +26,7 @@ class RetailersController < ApplicationController
   end
 
   # GET /retailers/near/:lat/:lon
-  def near
+  def near_geo
     origin = [params[:lat],params[:lon]]
     @retailers = Retailer.find :all,
                               :origin => origin,
