@@ -36,6 +36,10 @@ class Retailer < ActiveRecord::Base
       [self.street, self.city, self.state, self.zip].join(" ")
     end
     
+    def text_address
+      [self.street, self.city, self.state].join(" ")
+    end
+
     def google_safe_address
       CGI::escape(address)
     end
@@ -50,11 +54,12 @@ class Retailer < ActiveRecord::Base
 
     def to_text
       str = self.name
-      retailer_types = self.retailer_types.join(", ")
-      if (retailer_types != "")
-        str += " (" + retailer_types + ")"
-      end
-      str += "\n" + self.address
+      #removed retailer_types for text messages
+      #retailer_types = self.retailer_types.join(", ")
+      #if (retailer_types != "")
+      #  str += " (" + retailer_types + ")"
+      #end
+      str += "\n" + self.text_address
       return str
     end
 end
