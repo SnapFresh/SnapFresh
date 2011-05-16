@@ -23,9 +23,6 @@ class RetailersController < ApplicationController
     
     redirect_to :controller => 'retailers', :action => 'near', :params => 
                                                                 params[ :lat => @lat, :lon => @lon ]
-    #@lat = @latlon.first[:lat]
-    #@lon = @latlon.first[:lon]
-    #@latlon = "Blah"
   end
 
   # GET /retailers/near/:lat/:lon
@@ -43,7 +40,7 @@ class RetailersController < ApplicationController
     end
   end
   
-  # GET /retailers/nearaddy/:street/:city/:state
+  # GET /retailers/nearaddy/:address
   def nearaddy
     # geocode the address using USC database
     #usergeo = get_geo_and_zip_from_address(URI.escape(params[:street], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")),URI.escape(params[:city], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")), URI.escape(params[:state], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")));
@@ -196,14 +193,6 @@ class RetailersController < ApplicationController
 
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
-
-    def lat
-      params[:lat] ? params[:lat] : "lat"
-    end
-
-    def lon
-      params[:lon] ? params[:lon] : "lon"
     end
 
 end
