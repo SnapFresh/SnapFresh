@@ -6,12 +6,11 @@
 
 require "net/http"
 require "uri"
-require "cgi"
 
 MAX_LENGTH = 160 * 4 # 4 SMS messages max
 
-url = URI.parse("http://snapfresh.org/retailers/nearaddy.text/"
-                + CGI::escape($currentCall.initialText))
+#url = URI.parse("http://snapfresh.org/retailers/nearaddy.text/" + URI.escape($currentCall.initialText, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")))
+url = URI.parse("http://snapfresh.org/retailers/nearaddy.text/?address=" + URI.escape($currentCall.initialText, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")))
 
 # Only bother if it's a text-based message (not VOICE)
 # FIXME: how do we deal with VOICE calls?
@@ -28,6 +27,6 @@ if ($currentCall.channel == "TEXT")
     if (resp_body.length > MAX_LENGTH)
         resp_body = resp_body[0, MAX_LENGTH]
     end
-    puts resp_body
+    say(resp_body)
 end
 
