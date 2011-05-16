@@ -10,7 +10,7 @@ Allincomefoods::Application.routes.draw do
                         :constraints => { :lat => /[-]?[0-9]+\.?[0-9]*/,
                                           :lon => /[-]?[0-9]+\.?[0-9]*/ }
 
-  match 'retailers/nearaddy/:street/:city/:state' => 'retailers#nearaddy',
+  match 'retailers/nearaddy/:address' => 'retailers#nearaddy',
                         :constraints => { }
   # root :to => 'retailers'
   # The priority is based upon order of creation:

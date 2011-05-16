@@ -46,8 +46,9 @@ class RetailersController < ApplicationController
   # GET /retailers/nearaddy/:street/:city/:state
   def nearaddy
     # geocode the address using USC database
-    usergeo = get_geo_and_zip_from_address(URI.escape(params[:street], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")),URI.escape(params[:city], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")), URI.escape(params[:state], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")));
-    origin = [usergeo["lat"], usergeo["long"]]
+    #usergeo = get_geo_and_zip_from_address(URI.escape(params[:street], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")),URI.escape(params[:city], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")), URI.escape(params[:state], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")));
+    usergeo = get_geo_from_google(params[:address])
+    origin = [usergeo[:lat], usergeo[:long]]
     @retailers = Retailer.find :all,
                               :origin => origin,
                               :order => 'distance',
@@ -72,38 +73,26 @@ class RetailersController < ApplicationController
       #check if google went well
       if parse["status"] == "OK"
        # return parse if raw == true
-        array = []
         parse["results"].each do |result|
-          array <<{
-            :lat => result["geometry"]["location"]["lat"],
-            :lon => result["geometry"]["location"]["lng"]
-            #:matched_address => result["formatted_address"],
-            #:bounds => result["geometry"]["bounds"],
-            #:zip => result["geometry"]["bounds"]  
+          geo_hash = {  :lat => result["geometry"]["location"]["lat"],
+                        :long => result["geometry"]["location"]["lng"]
           }
-          return array.first
+          return geo_hash
         end
-        #zip = address[-5,4]+"%"
-        #SELECT city, street, name, AVG(3956 * 2 * ASIN(SQRT(POWER(SIN((37.4404 - abs(`lat`)) * pi()/180 / 2),2) + COS(37.4404 * pi()/180 ) * COS(abs(`lat`) * pi()/180) * POWER(SIN((-121.8705 - `long`) * pi()/180 / 2), 2) ))) AS distance
-        #@retailer = Retailer.find_by_sql("SELECT name, street, city, state, zip FROM retailers WHERE zip like '9410%'")      
-        #@retailer = Retailer.find_by_sql("SELECT name, street, city, state, zip FROM retailers WHERE zip like \"#{zip}\"")      
-        #return parse
-        #return :lat + :lng
-        #return @retailer.to_s
-        #return zip
-      end
+     end
     end
 
     return parse 
   end
   
-  def get_geo_and_zip_from_address(staddress,stcity, st)
+  def get_geo_and_zip_from_address(address)
     #using a free USC geocoder (limit 2500 hits before you need to register)
     geocoder = "http://webgis.usc.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V02_95.aspx?apiKey=a8dbf3d653e345b8b67792e55b263d15&&format=XML&census=false&notStore=false&version=2.95&verbose=true&"
-    staddress= "streetAddress=" + staddress;
-    stcity = "&city=" + stcity;
-    st = "&state="+ st;   
-    request = geocoder + staddress + stcity + st
+    #staddress= "streetAddress=" + staddress;
+    #stcity = "&city=" + stcity;
+    #st = "&state="+ st;   
+    address_string = "address=" + address.tr(' ', '+')
+    request = geocoder + address_string
     url = URI.parse(request)
     resp = Net::HTTP.get_response(url)
     array = []
