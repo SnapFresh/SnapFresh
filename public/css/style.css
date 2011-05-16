@@ -1,0 +1,365 @@
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,figure,footer,header,hgroup,menu,nav,section,menu,time,mark,audio,video
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+article,aside,figure,footer,header,hgroup,nav,section
+{
+	display: block;
+}
+
+nav ul
+{
+	list-style: none;
+}
+
+blockquote,q
+{
+	quotes: none;
+}
+
+blockquote: before,blockquote: after,q: before,q: after
+{
+	content: '';
+	content: none;
+}
+
+a
+{
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+ins
+{
+	background-color: #ff9;
+	color: #000;
+	text-decoration: none;
+}
+
+mark
+{
+	background-color: #ff9;
+	color: #000;
+	font-style: italic;
+	font-weight: bold;
+}
+
+del
+{
+	text-decoration: line-through;
+}
+
+abbr[title],dfn[title]
+{
+	border-bottom: 1px dotted #000;
+	cursor: help;
+}
+
+table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+hr
+{
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+input,select
+{
+	vertical-align: middle;
+}
+
+body
+{
+	font-family: arial, serif;
+	padding: 0 auto;
+	margin: 0 auto;
+	width: 288px;
+	background: #659A34;
+	color:#283613;
+	text-align:center;
+
+}
+body .general,body #credits
+{
+	width: 248px;
+	margin-right: 10px;
+	margin-left: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+body .tablet,body .desktop,body .hello,body .hdtv
+{
+	display: none;
+}
+
+h1 {
+	font-family: 'Oswald', arial, serif;
+	padding:20px 0px 20px 0px;
+	margin:0 auto;
+	display;block;
+	font-weight: bold;
+    text-transform: uppercase;
+    color:#ACBF8F;
+    font-size:14px;
+    text-align:center;
+    font-size:200%;
+    
+}
+
+.c {
+margin: auto;
+width: 50%;
+border:1px red;
+padding:4px;
+
+}
+
+#income
+{
+	color:#283613;
+}
+
+form 
+{
+	margin:auto;
+	width:100%
+
+}
+
+form input, form select 
+{
+	
+  font: 14px Arial, sans-serif;
+    background-color: #ACBF8F;
+    border: none;
+    color: #394C1B;
+    outline: none;
+    resize: none;
+	height: 35px;
+
+    margin:  15px 0px 30px 0px;
+    width:  100%;
+    
+
+}
+
+#submitbutton{
+    background-color:#659A34;
+    display: block;
+    padding: 0 0 0 0;
+    background: #ACBF8F;
+    border:0px;
+	margin: 0 auto;
+	
+    color:#394C1B;
+    width: 70%;
+    height:35px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    -moz-box-shadow: 2px 2px 2px #394C1B;
+	-webkit-box-shadow: 2px 2px 2px #394C1B;
+	 box-shadow: 2px 2px 2px #394C1B;
+    
+}
+
+.shop-list {
+	list-style: none;
+	border-bottom: 1px solid #394C1B;
+	margin: 0 0 20px 0;
+	text-align:left;
+	display: inline-block;
+
+
+}
+
+.shop-list-name{
+	display:block;
+}
+.shop-list li
+{
+	list-style: none;
+	margin: 0;
+	padding: 0.25em;
+	border-top: 1px solid #394C1B;
+
+}
+
+.shop-list li a { 
+
+	text-decoration: none; 
+	color:#E9F0F2;
+
+}
+.tableter {
+
+
+float:right;
+
+
+}
+.container{
+	width:800px;
+	margin:auto;
+}
+
+
+
+
+@media only screen and (min-width:  667px)
+{
+	body
+{
+	padding: 0 auto;
+	margin: 0 auto;
+	width: 576px;
+}
+body .general
+{
+	width: 344px;
+	margin-right: 10px;
+	margin-left: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin: 0 auto;
+	display: block;
+}
+ body .tablet
+{
+	display: block;
+	width: 536px;
+	margin-right: 10px auto;
+	margin-left: 10px auto;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin: 0 auto;
+}
+ body #credits
+{
+	width: 536px;
+	margin:auto;
+	color:#394C1B;
+	display:block;
+	clear:both;
+	text-align:center;
+	padding-top: 30px;
+	
+	
+}
+#credits ul
+{
+list-style-type: none;
+padding: 0px;
+margin: 0 auto;
+}
+
+a:link {text-decoration: none; color:#283613;}
+a:visited {text-decoration: none; color:#283613;}
+a:active {text-decoration: none; color:#fff;}
+a:hover {text-decoration: underline; color:#fff;}
+
+
+
+@media only screen and (min-width:  985px)
+{
+	body
+{
+	padding: 0 auto;
+	margin: 0 auto;
+	width: 864px;
+}
+body .general
+{
+	width: 440px;
+	margin-right: 10px;
+	margin-left: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin: 0 auto;
+}
+ body .tablet
+{
+	width: 344px;
+	margin-right: 10px;
+	margin-left: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+	float: left;
+}
+ body .desktop
+{
+	display: block;
+	float: left;
+	width: 440px;
+	margin-right: 10px;
+	margin-left: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+ body #credits
+{
+	clear: both;
+}
+
+}
+@media only screen and (min-width:  1304px)
+{
+	body
+{
+	padding: 0 auto;
+	margin: 0 auto;
+	width: 1172px;
+}
+body .tablet,body .desktop,body .hello
+{
+	display: block;
+	width: 344px;
+	margin-right: 10px;
+	margin-left: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+	float: left;
+}
+
+}
+@media only screen and (min-width:  1938px)
+{
+	body
+{
+	padding: 0 auto;
+	margin: 0 auto;
+	width: 1748px;
+}
+body .hdtv
+{
+	display: block;
+	width: 536px;
+	margin-right: 10px;
+	margin-left: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+	float: left;
+}
+
+}
+
