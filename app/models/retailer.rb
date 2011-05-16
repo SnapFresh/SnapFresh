@@ -4,16 +4,9 @@ class Retailer < ActiveRecord::Base
     def retailer_types
       # Use Yelp API to figure out what kind of establishment each returned retailer is
       yelpurl = "http://api.yelp.com/business_review_search?term="
-      re1='((?:[a-z][a-z]+))'	# Word 1
-      re2='(\\s+)'	# White Space 1
-      re3='(\\d+)'	# Integer Number 1
-      re=(re1+re2+re3)
-      m=Regexp.new(re,Regexp::IGNORECASE);
-      escfir = self.name
-      if m.match(self.name)
-        escfir=m.match(self.name)[1];
-        #puts "("<<word1<<")"<< "\n"
-      end
+      # The below regexp will take off the last word in a store name if it is a number
+      # Yelp requires this to do an accurate search
+      escfir = self.name.sub(/\s(#?)\d+\s*$/,'')
       escname =  URI.escape(escfir, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
       esclocation = "&location=" + URI.escape(self.street, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) + "%2C" +
         URI.escape(self.city, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) + "%2C" + URI.escape(self.state, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
@@ -32,7 +25,10 @@ class Retailer < ActiveRecord::Base
        if result.has_key? 'Error'
         raise "web service error"
        end
-      return result["businesses"][0]["categories"].map {|c| c["category_filter"]}
+      if result["businesses"][0].nil?
+        return []
+      else return result["businesses"][0]["categories"].map {|c| c["category_filter"]}
+      end
     end
 
     def self.search(search)
