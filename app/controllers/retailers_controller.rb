@@ -51,7 +51,7 @@ class RetailersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @retailers}
-      format.text  { render :text => @retailers.map { |r| r.to_text}.join("\n")} 
+      format.text  { render :text => @retailers.map { |r| r.to_text}.join("\n\n")} 
     end
   end
 
