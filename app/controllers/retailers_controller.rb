@@ -42,8 +42,6 @@ class RetailersController < ApplicationController
   
   # GET /retailers/nearaddy/:address
   def nearaddy
-    # geocode the address using USC database
-    #usergeo = get_geo_and_zip_from_address(URI.escape(params[:street], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")),URI.escape(params[:city], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")), URI.escape(params[:state], Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")));
     usergeo = get_geo_from_google(params[:address])
     origin = [usergeo[:lat], usergeo[:long]]
     @retailers = Retailer.find :all,
@@ -52,7 +50,8 @@ class RetailersController < ApplicationController
                               :limit => 5
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @retailer }
+      format.xml  { render :xml => @retailers}
+      format.text  { render :text => @retailers.map { |r| r.to_text}} 
     end
   end
 
@@ -82,38 +81,6 @@ class RetailersController < ApplicationController
     return parse 
   end
   
-  def get_geo_and_zip_from_address(address)
-    #using a free USC geocoder (limit 2500 hits before you need to register)
-    geocoder = "http://webgis.usc.edu/Services/Geocode/WebService/GeocoderWebServiceHttpNonParsed_V02_95.aspx?apiKey=a8dbf3d653e345b8b67792e55b263d15&&format=XML&census=false&notStore=false&version=2.95&verbose=true&"
-    #staddress= "streetAddress=" + staddress;
-    #stcity = "&city=" + stcity;
-    #st = "&state="+ st;   
-    address_string = "address=" + address.tr(' ', '+')
-    request = geocoder + address_string
-    url = URI.parse(request)
-    resp = Net::HTTP.get_response(url)
-    array = []
-    #parse result if result received properly
-    if resp.is_a?(Net::HTTPSuccess)
-      #puts("Got here \n")
-       #parse the XML
-      parse = Nokogiri::XML(resp.body)
-      status = parse.xpath("//QueryStatusCodeValue").text;
-      # puts(status)
-       #check if request went well
-       if status == "200"
-        # return zip and lat long if request successful
-          lat = parse.xpath("//OutputGeocode//Latitude").text;
-          long = parse.xpath("//OutputGeocode/Longitude").text;
-          zip = parse.xpath("//ReferenceFeature/Zip").text;
-       # puts("lat: " + lat + " long: " + long + " zip: " + zip + "\n")
-           infohash = { 'lat' => lat, 'long' => long, 'zip' => zip  }
-         end
-         # puts("infohash: " + infohash["zip"]);    
-         return infohash
-       end
-   end
-
 
   # GET /retailers/1
   # GET /retailers/1.xml
@@ -137,54 +104,6 @@ class RetailersController < ApplicationController
     end
   end
 
-  # GET /retailers/1/edit
-  def edit
-    @retailer = Retailer.find(params[:id])
-  end
-
-  # POST /retailers
-  # POST /retailers.xml
-  def create
-    @retailer = Retailer.new(params[:retailer])
-
-    respond_to do |format|
-      if @retailer.save
-        format.html { redirect_to(@retailer, :notice => 'Retailer was successfully created.') }
-        format.xml  { render :xml => @retailer, :status => :created, :location => @retailer }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @retailer.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /retailers/1
-  # PUT /retailers/1.xml
-  def update
-    @retailer = Retailer.find(params[:id])
-
-    respond_to do |format|
-      if @retailer.update_attributes(params[:retailer])
-        format.html { redirect_to(@retailer, :notice => 'Retailer was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @retailer.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /retailers/1
-  # DELETE /retailers/1.xml
-  def destroy
-    @retailer = Retailer.find(params[:id])
-    @retailer.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(retailers_url) }
-      format.xml  { head :ok }
-    end
-  end
 
   private
     def sort_column

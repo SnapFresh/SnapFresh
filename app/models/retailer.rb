@@ -46,4 +46,8 @@ class Retailer < ActiveRecord::Base
         scoped
       end
     end
+
+    def to_text
+      self.address
+    end
 end
