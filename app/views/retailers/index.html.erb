@@ -3,19 +3,10 @@
         <h1>All<span id="income">income</span>foods</h1>
         <h2></h2>
         <p>enter your address, zip code or cross street</p>
-        <form action="list.html" method="post">
+        <form action="<%= retailers_path + '/nearaddy/' %>" method="get">
         
           <input class="entryform-field" name="address" value="" id="addressfield"/>
           <div class="c"><input id="submitbutton" type="submit" value="submit"/></div>
         
         </form>
-
-        <%= form_tag( retailers_path + '/near/37.712751/-122.397909') %>
-        <%= text_field_tag 'addressfield', 'enter your address, zip code or cross street', 
-          :class => "entryform-field" %>
-        <%= submit_tag %>
 </div>
-
-
-<!-- Use LayzyLoading for version specific Html elements -->
-<!-- keywords are Tablet Desktop Bigscreen Hdtv --
