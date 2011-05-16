@@ -48,10 +48,11 @@ class RetailersController < ApplicationController
                               :origin => origin,
                               :order => 'distance',
                               :limit => 5
+    @count = 1
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @retailers}
-      format.text  { render :text => @retailers.map { |r| r.to_text}.join("\n\n")} 
+      format.text { render :text => @retailers.to_enum(:each_with_index).map{|r, i| r.name = "#{i+1}: #{r.name}\n#{r.text_address}"}.join("\n\n")}
     end
   end
 

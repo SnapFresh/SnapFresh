@@ -51,15 +51,4 @@ class Retailer < ActiveRecord::Base
         scoped
       end
     end
-
-    def to_text
-      str = self.name
-      #removed retailer_types for text messages
-      #retailer_types = self.retailer_types.join(", ")
-      #if (retailer_types != "")
-      #  str += " (" + retailer_types + ")"
-      #end
-      str += "\n" + self.text_address
-      return str
-    end
 end
