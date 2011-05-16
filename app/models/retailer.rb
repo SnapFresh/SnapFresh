@@ -41,13 +41,19 @@ class Retailer < ActiveRecord::Base
 
     def self.search(search)
       if search
-        where('name LIKE ?', "%#{search}%")
+        where('name ILIKE ?', "%#{search}%")
       else
         scoped
       end
     end
 
     def to_text
-      [self.name, self.retailer_types.join(", "), self.address].join(" ")
+      str = self.name
+      retailer_types = self.retailer_types.join(", ")
+      if (retailer_types != "")
+        str += " (" + retailer_types + ")"
+      end
+      str += "\n" + self.address
+      return str
     end
 end
