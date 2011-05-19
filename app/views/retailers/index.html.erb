@@ -1,12 +1,18 @@
-<h2></h2>
-<p>enter your address, zip code or cross street</p>
+<h2>To find stores nearby which accept SNAP/EBT cards enter your address, zip code or cross streets</h2>
+
+
 <form action="<%= retailers_path + '/nearaddy/' %>" method="get">
 
   <input class="entryform-field" name="address" value="" id="addressfield"/>
-  <div class="c"><input id="submitbutton" type="submit" value="submit"/></div>
-
+    <p class="eg">e.g. 48104, 85 2nd St, or Mission and Fulsom</p>
+  <div class="buttondiv">
+    <input class="button" id="submitbutton" type="submit" value="submit"/>
+   
+  </div>
+ <a href="#" id="locateme">use my current location </a> 
 </form>
 
-<p>Search above, or text message your address to: 1 (510) 470-7920 to find the five closest retailers to your address.</p><br />
-<p>SnapFresh.org helps you find the closest places that accept SNAP, (Food Stamps).</p><br />
-<p>Results are cross-referenced with <a href="http://www.yelp.com">Yelp</a> to help you find healthy places to shop.<br /><br />          
+<div class="sms">
+<p>or, text message your address to:</p>
+<h1>1 (510) 470-7920</h1>
+</div>

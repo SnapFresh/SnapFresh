@@ -39,6 +39,11 @@ a
 	background: transparent;
 }
 
+a:hover{
+    background: transparent;
+
+}
+
 ins
 {
 	background-color: #ff9;
@@ -88,7 +93,7 @@ input,select
 
 body
 {
-	font-family: arial, serif;
+	font-family: Helvetica, arial, sans-serif;
 	padding: 0 auto;
 	margin: 0 auto;
 	width: 288px;
@@ -109,28 +114,47 @@ body .general,body #credits
 body .tablet,body .desktop,body .hello,body .hdtv
 {
 	display: none;
+	font-family: Helvetica, arial, sans-serif;
 }
 
 h1 {
-	font-family: 'Oswald', arial, serif;
-	padding:20px 0px 20px 0px;
+	font-family: 'Pacifico', script, arial, serif;
+	padding:30px 0px 45px 0px;
 	margin:0 auto;
 	display;block;
 	font-weight: bold;
-    text-transform: uppercase;
-    color:#ACBF8F;
-    font-size:14px;
+ /*   text-transform: uppercase;*/
+    color:#283613;/*#ACBF8F;*/
     text-align:center;
-    font-size:200%;
+    font-size:4em;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+/*    text-shadow: 0 0 4px #fff;  horizontal-offset vertical-offset 'blur' colour 
+  -moz-text-shadow: 0 0 4px #fff;
+  -webkit-text-shadow: 0 0 4px #fff;*/
     
 }
 
-.c {
-margin: auto;
-width: 50%;
-border:1px red;
-padding:4px;
+h2{
+    margin-top: 20px;
+    width:100%;
+    font-size:1em;
+    text-align:justify;
+    font-weight:normal;
 
+}
+.eg{
+    vertical-align:top;
+    clear:both;
+    display:block;
+    margin-top: 0px;
+    font-size: .85em;
+    width:100%;
+}
+.buttondiv {
+    margin: auto;
+    width: 80%;
+    margin-bottom: 0px;
+    padding:0px;
 }
 
 #income
@@ -148,30 +172,46 @@ form
 form input, form select 
 {
 	
-  font: 14px Arial, sans-serif;
+    font: 14px Helvetica, Arial, sans-serif;
     background-color: #ACBF8F;
     border: none;
     color: #394C1B;
     outline: none;
     resize: none;
-	height: 35px;
-
-    margin:  15px 0px 30px 0px;
+    height: 35px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -moz-box-shadow: 1px 1px 1px #191919 inset, 0 0 1px #181818 inset;
+    -webkit-box-shadow: 1px 1px 1px #191919 inset, 0 0 1px #181818 inset;
+    box-shadow: 1px 1px 1px #191919 inset, 0 0 1px #181818 inset;
+        
+    -webkit-transition: -webkit-transform .2s ease-in-out;
+    -moz-transition: -moz-transform .2s ease-in-out;
+    -o-transition: -o-transform .2s ease-in-out;
+    transition: transform .2s ease-in-out;
+    margin:  15px 0px 3px 0px;
     width:  100%;
     
+    /* background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3194c6), to(#5bacd6));
+    background: -moz-linear-gradient(#3194c6, #5bacd6);*/
 
 }
 
-#submitbutton{
+.button{
     background-color:#659A34;
     display: block;
     padding: 0 0 0 0;
     background: #ACBF8F;
     border:0px;
 	margin: 0 auto;
-	
+	margin-top: 20px;
+	margin-bottom: 20px;
     color:#394C1B;
-    width: 70%;
+    width: 50%;
     height:35px;
     text-align: center;
     font-weight: bold;
@@ -183,7 +223,14 @@ form input, form select
     
 }
 
+#listhead{
+    margin: 15px 0px 20px 0px;
+    text-align:justify;
+
+}
+
 .shop-list {
+    border-top:1px solid #394C1B;
 	list-style: none;
 	border-bottom: 1px solid #394C1B;
 	margin: 0 0 20px 0;
@@ -196,20 +243,27 @@ form input, form select
 
 .shop-list-name{
 	display:block;
+	font-variant:small-caps;
+	font-weight:bold;
+	padding: 2px;
+	text-transform:capitalize;
 }
 .shop-list li
 {
+
 	list-style: none;
 	margin: 0;
-	padding: 0.25em;
+	padding: 10px 0px 15px 0px;
 	border-top: 1px solid #394C1B;
-
+	width: 100%;
+	font-variant:small-caps;
+    text-transform:capitalize;
 }
 
 .shop-list li a { 
 
 	text-decoration: none; 
-	color:#E9F0F2;
+	color:#ACBF8F; /*E9F0F2*/
 
 }
 .tableter {
@@ -218,6 +272,19 @@ form input, form select
 float:right;
 
 
+}
+
+.sms{
+margin-top:45px;
+
+
+}
+
+.sms h1{
+
+font-family: Helvetica, Arial, sans-serif;
+ font-size:2em;
+ text-shadow: none;
 }
 .container{
 	width:800px;
@@ -255,15 +322,17 @@ body .general
 	padding-left: 10px;
 	margin: 0 auto;
 }
- body #credits
+body #credits
 {
 	width: 536px;
 	margin:auto;
-	color:#394C1B;
+	color:#283613;
 	display:block;
 	clear:both;
-	text-align:center;
+	width:80%;
+	text-align:justify;
 	padding-top: 30px;
+	line-height:150%
 	
 	
 }
@@ -274,8 +343,17 @@ padding: 0px;
 margin: 0 auto;
 }
 
-a:link {text-decoration: none; color:#283613;}
-a:visited {text-decoration: none; color:#283613;}
+#credits p{
+
+font-size:1em;
+width:100%;
+margin: auto;
+text-align:center;
+padding:20px 0px 10px 0px;
+}
+
+a:link {text-decoration: none; color:#ACBF8F;}
+a:visited {text-decoration: none; color:#ACBF8F;}
 a:active {text-decoration: none; color:#fff;}
 a:hover {text-decoration: underline; color:#fff;}
 

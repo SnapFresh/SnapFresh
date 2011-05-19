@@ -1,11 +1,11 @@
-<h1>Listing nearby retailers by Given Address from User</h1>
+<h2 id="listhead">Listing nearby retailers by Given Address from User</h2>
 
 <div class="general">
   <ul class="shop-list">
     <% @retailers.each do |retailer| %>
       <li class="shop-list">
-        <div class="shop-list-name"><%= retailer.name %></div>
-        <div class="shop-list-retailer-type"><%= retailer.retailer_types.join ", " %></div>
+        <div class="shop-list-name"><%= retailer.name.capitalize %></div>
+        <div class="shop-list-retailer-type"><%#= retailer.retailer_types.join ", " %></div>
         <div class="shop-list-addy"><a href= "<%= "http://maps.google.com/maps?q=" + retailer.google_safe_address %>"><%= retailer.address %></a></div>
       </li>
     <% end %>
