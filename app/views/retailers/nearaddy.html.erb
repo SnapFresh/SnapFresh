@@ -5,7 +5,7 @@
     <% @retailers.each do |retailer| %>
       <li class="shop-list">
         <div class="shop-list-name"><%= retailer.name.capitalize %></div>
-        <div class="shop-list-retailer-type"><%#= retailer.retailer_types.join ", " %></div>
+        <div class="shop-list-retailer-type"><%= retailer.retailer_types.join ", " %></div>
         <div class="shop-list-addy"><a href= "<%= "http://maps.google.com/maps?q=" + retailer.google_safe_address %>"><%= retailer.address %></a></div>
       </li>
     <% end %>
