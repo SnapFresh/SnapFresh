@@ -71,6 +71,12 @@
 - (IBAction)centerAction:(id)sender
 {
 	[mapView setCenterCoordinate:locationManager.location.coordinate animated:YES];
+	
+	NSString *coord = [NSString stringWithFormat:@"%f,%f",
+					   locationManager.location.coordinate.latitude,
+					   locationManager.location.coordinate.longitude];
+	
+	[self getNearbyAddresses:coord];
 }
 
 // Display the FlipsideViewController
@@ -96,10 +102,6 @@
 {
 	[searchBar resignFirstResponder];
 	[searchBar setShowsCancelButton:NO animated:YES];
-	
-	NSArray *annotations = [self getNearbyAddresses:searchBar.text];
-	
-	[mapView addAnnotations:annotations];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
@@ -197,6 +199,8 @@
 		NSString *returnString = [NSString stringWithContentsOfURL:url usedEncoding:&encoding error:&error];
 		
 		addresses = [ResponseParser parseResponse:returnString];
+
+		[mapView addAnnotations:addresses];
 
 		// Hide network activity indicator
 		app.networkActivityIndicatorVisible = NO;
