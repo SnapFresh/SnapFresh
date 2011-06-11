@@ -40,16 +40,6 @@
 		[mkReverseGeocoder cancel];
 		[mkReverseGeocoder release];
 	}
-	else
-	{
-		// Set and center the region on the location.
-		MKCoordinateRegion newRegion;
-		newRegion.center = location.coordinate;
-		newRegion.span.latitudeDelta = 0.112872;
-		newRegion.span.longitudeDelta = 0.109863;
-		
-		[mapView setRegion:newRegion animated:YES];
-	}
 	
 	mkReverseGeocoder = [[MKReverseGeocoder alloc] initWithCoordinate:location.coordinate];
 	mkReverseGeocoder.delegate = self;
