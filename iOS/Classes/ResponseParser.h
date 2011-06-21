@@ -7,6 +7,6 @@
 }
 
 // Parses the Snapfresh response string into an array of MKPointAnnotations
-+ (NSArray *)parseResponse:(NSString *)returnString;
++ (NSArray *)parse:(NSString *)response;
 
 @end

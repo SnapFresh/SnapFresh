@@ -2,6 +2,7 @@
 //  MainViewController
 //
 
+#include <math.h>
 #import "MainViewController.h"
 #import "ForwardGeocoder.h"
 #import "ResponseParser.h"
@@ -9,7 +10,8 @@
 
 @interface MainViewController ()
 
-- (NSArray *)getNearbyAddresses:(NSString *)address;
+- (void)setAnnotationsForCoordinate:(CLLocationCoordinate2D)coordinate;
+- (void)centerMapAroundAnnotations;
 
 @end
 
@@ -70,13 +72,8 @@
 
 - (IBAction)centerAction:(id)sender
 {
-	[mapView setCenterCoordinate:locationManager.location.coordinate animated:YES];
-	
-	NSString *coord = [NSString stringWithFormat:@"%f,%f",
-					   locationManager.location.coordinate.latitude,
-					   locationManager.location.coordinate.longitude];
-	
-	[self getNearbyAddresses:coord];
+	[self setAnnotationsForCoordinate:locationManager.location.coordinate];
+	[self centerMapAroundAnnotations];
 }
 
 // Display the FlipsideViewController
@@ -102,6 +99,12 @@
 {
 	[searchBar resignFirstResponder];
 	[searchBar setShowsCancelButton:NO animated:YES];
+	
+	centerCoordinate = [ForwardGeocoder fetchGeocodeForAddress:searchBar.text];
+	
+	[self setAnnotationsForCoordinate:centerCoordinate];
+	
+	[self centerMapAroundAnnotations];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
@@ -117,19 +120,21 @@
 {	
 	static NSString *defaultPinID = @"org.snapfresh.pin";
 	
-	MKAnnotationView *annotationView = nil;
+	MKPinAnnotationView *annotationView = nil;
 	
 	// If it's the user location, just return nil.
     if (![annotation isKindOfClass:[MKUserLocation class]])
 	{
 		// Try to dequeue an existing annotation view first
-		annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+		annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
 		
 		if (!annotationView)
 		{
 			// If an existing annotation view was not available, create one
-			annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID] autorelease];
+			annotationView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID] autorelease];
 			annotationView.canShowCallout = YES;
+			annotationView.animatesDrop = YES;
+			annotationView.selected = YES;
 		}
 		else
 		{
@@ -140,7 +145,7 @@
     return annotationView;
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+- (void)mapView:(MKMapView *)theMapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
 }
 
@@ -148,9 +153,20 @@
 #pragma mark CLLocationManagerDelegate methods - Available in iOS 2.0 and later.
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)userLocation fromLocation:(CLLocation *)oldLocation
 {
+	static BOOL didSetRegion = NO;
+	
 	if ((userLocation.coordinate.latitude != kCLLocationCoordinate2DInvalid.latitude) && (userLocation.coordinate.longitude != kCLLocationCoordinate2DInvalid.longitude)) {
 		
 		[centerButton setEnabled:YES];
+		centerCoordinate = userLocation.coordinate;
+		
+		if (!didSetRegion)
+		{
+			[self setAnnotationsForCoordinate:userLocation.coordinate];
+			[self centerMapAroundAnnotations];
+			
+			didSetRegion = YES;
+		}
 		
 		[reverseGeocoder updateGeoCoderWithLocation:userLocation];
 	}
@@ -175,18 +191,17 @@
 #pragma mark -
 #pragma mark Get nearby addresses
 
-// Returns an array of MKPointAnnotation objects for now
-- (NSArray *)getNearbyAddresses:(NSString *)address
+- (void)setAnnotationsForCoordinate:(CLLocationCoordinate2D)coordinate
 {	
-	NSArray *addresses = nil;
-	
 	Reachability *internetReach = [Reachability reachabilityForInternetConnection];
 	
 	if ([internetReach currentReachabilityStatus] != NotReachable)
 	{
+		NSString *stringCoordinate = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
+		
 		// Create the URL
 		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://snapfresh.org/retailers/nearaddy.text/?address=%@", 
-										   [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+										   [stringCoordinate stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 		
 		// Show network activity indicator
 		UIApplication *app = [UIApplication sharedApplication];
@@ -195,18 +210,90 @@
 		NSStringEncoding encoding;
 		NSError *error;
 		
-		// Read data from the URL.
+		// Get the return string containing nearby addresses
 		NSString *returnString = [NSString stringWithContentsOfURL:url usedEncoding:&encoding error:&error];
-		
-		addresses = [ResponseParser parseResponse:returnString];
-
-		[mapView addAnnotations:addresses];
 
 		// Hide network activity indicator
 		app.networkActivityIndicatorVisible = NO;
+		
+		// Filter for old annotations
+		NSArray *oldAnnotations = [mapView.annotations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"!(self isKindOfClass: %@)", [MKUserLocation class]]];
+
+		// Remove old annotations from the map
+		[mapView removeAnnotations:oldAnnotations];
+
+		// Parse annotations from the return string
+		NSArray *annotations = [ResponseParser parse:returnString];
+		
+		// Add annotations to the map
+		[mapView addAnnotations:annotations];
 	}
+}
+
+- (void)centerMapAroundAnnotations
+{
+    // if we have no annotations we can skip all of this
+    if ( [[mapView annotations] count] == 0 )
+        return;
 	
-	return addresses;
+    // then run through each annotation in the list to find the
+    // minimum and maximum latitude and longitude values
+    CLLocationCoordinate2D min;
+    CLLocationCoordinate2D max; 
+    BOOL minMaxInitialized = NO;
+    NSUInteger numberOfValidAnnotations = 0;
+	
+    for (id <MKAnnotation> annotation in mapView.annotations)
+    {
+        // only use annotations that are of our own custom type
+        // in the event that the user is browsing from a location far away
+        // you can omit this if you want the user's location to be included in the region 
+        if ( [annotation isKindOfClass: [MKPointAnnotation class]] )
+        {
+			// if we haven't grabbed the first good value, do so now
+			if ( !minMaxInitialized )
+			{
+				min = annotation.coordinate;
+				max = annotation.coordinate;
+				minMaxInitialized = YES;
+			}
+			else // otherwise compare with the current value
+			{
+				min.latitude = MIN( min.latitude, annotation.coordinate.latitude );
+				min.longitude = MIN( min.longitude, annotation.coordinate.longitude );
+				
+				max.latitude = MAX( max.latitude, annotation.coordinate.latitude );
+				max.longitude = MAX( max.longitude, annotation.coordinate.longitude );
+			}
+			++numberOfValidAnnotations;
+        }
+    }
+	
+    // If we don't have any valid annotations we can leave now,
+    // this will happen in the event that there is only the user location
+    if ( numberOfValidAnnotations == 0 )
+        return;
+	
+    // Now that we have a min and max lat/lon create locations for the
+    // three points in a right triangle
+    CLLocation* locSouthWest = [[CLLocation alloc] initWithLatitude:min.latitude longitude:min.longitude];
+    CLLocation* locSouthEast = [[CLLocation alloc] initWithLatitude:min.latitude longitude:max.longitude];
+    CLLocation* locNorthEast = [[CLLocation alloc] initWithLatitude:max.latitude longitude:max.longitude];
+	
+    // Use the locations that we just created to calculate the distance
+    // between each of the points in meters.
+	CLLocationDistance latMeters = [locSouthEast getDistanceFrom:locNorthEast];
+    CLLocationDistance lonMeters = [locSouthWest getDistanceFrom:locNorthEast];
+	
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(centerCoordinate, latMeters, lonMeters);
+	
+    MKCoordinateRegion fitRegion = [mapView regionThatFits:region];
+    [mapView setRegion:fitRegion animated:YES];
+	
+    // Clean up
+    [locSouthWest release];
+    [locSouthEast release];
+    [locNorthEast release];
 }
 
 @end

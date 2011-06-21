@@ -15,16 +15,19 @@
 
 @implementation ResponseParser
 
-+ (NSArray *)parseResponse:(NSString *)returnString
+#pragma mark -
+#pragma mark Parses the Snapfresh response string
+
++ (NSArray *)parse:(NSString *)response
 {
-	NSMutableArray *addressesArray = nil;
+	NSMutableArray *annotations = nil;
 	
-	if (returnString)
+	if (response)
 	{
-		addressesArray = [[[NSMutableArray alloc] init] autorelease];
+		annotations = [[[NSMutableArray alloc] init] autorelease];
 		
 		// The store names and addresses are contained in the return string
-		NSArray *returnArray = [returnString componentsSeparatedByString:@"\n\n"];
+		NSArray *returnArray = [response componentsSeparatedByString:@"\n\n"];
 		
 		for (NSString *subString in returnArray)
 		{
@@ -33,14 +36,17 @@
 			
 			MKPointAnnotation *annotation = [self getAnnotationFromArray:subArray];
 			
-			[addressesArray addObject:annotation];
+			[annotations addObject:annotation];
 		}
 	}
 	
-	return addressesArray;
+	return annotations;
 }
 
-+ (MKPointAnnotation *)getAnnotationFromArray:(NSArray *)array
+#pragma mark -
+#pragma mark Create annotation from store data
+
++ (id <MKAnnotation>)getAnnotationFromArray:(NSArray *)array
 {
 	MKPointAnnotation *annotation = [[[MKPointAnnotation alloc] init] autorelease];
 	annotation.title = [array objectAtIndex:0]; // Store name

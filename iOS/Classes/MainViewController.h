@@ -13,6 +13,7 @@
 												  FlipsideViewControllerDelegate>
 {
 	CLLocationManager *locationManager;
+	CLLocationCoordinate2D centerCoordinate;
 	ReverseGeocoder *reverseGeocoder;
 }
 
