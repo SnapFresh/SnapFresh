@@ -102,6 +102,8 @@
 	
 	centerCoordinate = [ForwardGeocoder fetchGeocodeForAddress:searchBar.text];
 	
+	[reverseGeocoder updateGeoCoderWithCoordinate:centerCoordinate];
+	
 	[self setAnnotationsForCoordinate:centerCoordinate];
 	
 	[self centerMapAroundAnnotations];
@@ -168,7 +170,7 @@
 			didSetRegion = YES;
 		}
 		
-		[reverseGeocoder updateGeoCoderWithLocation:userLocation];
+		[reverseGeocoder updateGeoCoderWithCoordinate:userLocation.coordinate];
 	}
 	else
 	{

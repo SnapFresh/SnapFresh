@@ -32,7 +32,7 @@
 #pragma mark -
 #pragma mark Start the reverse geocoder
 
-- (void)updateGeoCoderWithLocation:(CLLocation *)location
+- (void)updateGeoCoderWithCoordinate:(CLLocationCoordinate2D)coordinate
 {	
 	// Do reverse-geo lookup
 	if (mkReverseGeocoder)
@@ -41,7 +41,7 @@
 		[mkReverseGeocoder release];
 	}
 	
-	mkReverseGeocoder = [[MKReverseGeocoder alloc] initWithCoordinate:location.coordinate];
+	mkReverseGeocoder = [[MKReverseGeocoder alloc] initWithCoordinate:coordinate];
 	mkReverseGeocoder.delegate = self;
 	[mkReverseGeocoder start];
 }

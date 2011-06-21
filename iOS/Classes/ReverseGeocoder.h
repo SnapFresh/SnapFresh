@@ -12,6 +12,6 @@
 }
 
 - (id)initWithMapView:(MKMapView *)mapView;
-- (void)updateGeoCoderWithLocation:(CLLocation *)location;
+- (void)updateGeoCoderWithCoordinate:(CLLocationCoordinate2D)coordinate;
 
 @end
