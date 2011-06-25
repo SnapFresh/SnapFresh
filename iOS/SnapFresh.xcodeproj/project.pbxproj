@@ -46,16 +46,16 @@
 		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SnapFresh_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapFresh_Prefix.pch; sourceTree = "<group>"; };
-		841EA80D13A419910079CAD9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Examples/iPhone/AllIncomeFoods/iOS/Classes/Reachability.h; sourceTree = DEVELOPER_DIR; };
-		841EA80E13A419910079CAD9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Examples/iPhone/AllIncomeFoods/iOS/Classes/Reachability.m; sourceTree = DEVELOPER_DIR; };
-		841EA81013A419B00079CAD9 /* ForwardGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForwardGeocoder.h; path = Examples/iPhone/AllIncomeFoods/iOS/Classes/ForwardGeocoder.h; sourceTree = DEVELOPER_DIR; };
-		841EA81113A419B00079CAD9 /* ForwardGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForwardGeocoder.m; path = Examples/iPhone/AllIncomeFoods/iOS/Classes/ForwardGeocoder.m; sourceTree = DEVELOPER_DIR; };
-		841EA81213A419B00079CAD9 /* ResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResponseParser.h; path = Examples/iPhone/AllIncomeFoods/iOS/Classes/ResponseParser.h; sourceTree = DEVELOPER_DIR; };
-		841EA81313A419B00079CAD9 /* ResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseParser.m; path = Examples/iPhone/AllIncomeFoods/iOS/Classes/ResponseParser.m; sourceTree = DEVELOPER_DIR; };
-		841EA81413A419B00079CAD9 /* ReverseGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReverseGeocoder.h; path = Examples/iPhone/AllIncomeFoods/iOS/Classes/ReverseGeocoder.h; sourceTree = DEVELOPER_DIR; };
-		841EA81513A419B00079CAD9 /* ReverseGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReverseGeocoder.m; path = Examples/iPhone/AllIncomeFoods/iOS/Classes/ReverseGeocoder.m; sourceTree = DEVELOPER_DIR; };
-		841EA81913A419C20079CAD9 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location.png; path = Examples/iPhone/AllIncomeFoods/iOS/Images/location.png; sourceTree = DEVELOPER_DIR; };
-		841EA81A13A419C20079CAD9 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location@2x.png"; path = "Examples/iPhone/AllIncomeFoods/iOS/Images/location@2x.png"; sourceTree = DEVELOPER_DIR; };
+		841EA80D13A419910079CAD9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; name = Reachability.h; path = Classes/Reachability.h; sourceTree = "<group>"; };
+		841EA80E13A419910079CAD9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Classes/Reachability.m; sourceTree = "<group>"; };
+		841EA81013A419B00079CAD9 /* ForwardGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForwardGeocoder.h; path = Classes/ForwardGeocoder.h; sourceTree = "<group>"; };
+		841EA81113A419B00079CAD9 /* ForwardGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForwardGeocoder.m; path = Classes/ForwardGeocoder.m; sourceTree = "<group>"; };
+		841EA81213A419B00079CAD9 /* ResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; name = ResponseParser.h; path = Classes/ResponseParser.h; sourceTree = "<group>"; };
+		841EA81313A419B00079CAD9 /* ResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseParser.m; path = Classes/ResponseParser.m; sourceTree = "<group>"; };
+		841EA81413A419B00079CAD9 /* ReverseGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; name = ReverseGeocoder.h; path = Classes/ReverseGeocoder.h; sourceTree = "<group>"; };
+		841EA81513A419B00079CAD9 /* ReverseGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReverseGeocoder.m; path = Classes/ReverseGeocoder.m; sourceTree = "<group>"; };
+		841EA81913A419C20079CAD9 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		841EA81A13A419C20079CAD9 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
 		84B8500913A08BFF00F5BBE3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		84B8501D13A08E1000F5BBE3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		84B850E913A0A91D00F5BBE3 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -176,7 +176,7 @@
 				841EA81913A419C20079CAD9 /* location.png */,
 				841EA81A13A419C20079CAD9 /* location@2x.png */,
 			);
-			name = Images;
+			path = Images;
 			sourceTree = "<group>";
 		};
 		84B8528113A11F8D00F5BBE3 /* Helpers */ = {
