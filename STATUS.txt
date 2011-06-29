@@ -12,8 +12,52 @@ Release Showstoppers
 
 Version 1.0: Pilot
 
+* Localize the website
+    - Create a simple way for our website to be localized for
+      any future language.
+
+* Add translations for Cantonese
+
+* Add translations for Spanish
+
+* Design a leaflet / flyer "wallet-sized"
+    - multi-lingual (English, Cantonese, Spanish to start)
+    - target audience is people applying for or receiving
+      SNAP benefits.
+
+* Create a press kit
+    - icon in EPS
+    - mission statement blurb or other approved blurbs
+    - leaflet / flyer in EPS form (perhaps in 10-up layout)
+
+* Create an About Us page
+    - who we are
+    - why we're doing this
+    - our story
+    - (Make it easy for new contributors to add themselves to this list,
+      as an incentive for new contributions)
+
+* Add link to our discuss@snapfresh.org mailing list to snapfresh.org
+
+* Improve the color scheme of the website
+
+* Improve the instructions for inputting an address.
+    - suggest that adding a zip code may improve results
+    - make sure our examples work properly
+
+* Add a privacy statement
+
+* Add a disclaimer (this may be part of the privacy statement, IANAL)
+
 
 Version 1.1:
+
+* Add geolocation support to the web app.
+    - HTML5/JS has support for browser-based geolocation
+    - this will work great on mobile phones, but also works on
+      regular browsers.
+    - it could be automatic or could be triggered on user action
+
 
 
 Known Bugs
@@ -22,8 +66,31 @@ Known Bugs
 Unconfirmed Bugs
 ----------------
 
+Ideas
+-----
+
+* Incorporate EBT Cash benefits data into our application.
+    - There are some interesting business logic details here. For example,
+      some ATMs are part of a network where unlimited withdrawls are allowed.
+      Others only allow a limited number of withdrawls per month. All should
+      be geolocated (coords, address). Angela has some sample data for us.
+
+
+* Benefits Re-application reminder
+    - benefits must be renewed every 3 months. If the renewal date passes,
+      the process to re-apply is much more cumbersome for both the applicant
+      and for the government agency. We might consider adding a feature where
+      people can sign up for reminder SMS/push notification/email/etc...
+
+
 Wish List / Optimizations
 -------------------------
+
+* Search for SNAP Retailers by date/time
+    - this will be particularly beneficial for people who wish to use their
+      benefits on the day when they are received in bulk each month. This is
+      because SNAP and EBT Cash benefits are distributed all at once each
+      month.
 
 
 --------------------------------------------------------------------------------------------------
