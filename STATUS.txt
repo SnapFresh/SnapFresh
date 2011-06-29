@@ -1,0 +1,36 @@
+
+                     SnapFresh, a food stamp benefits locator
+
+Releases
+--------
+
+  1.0.0      - In Development
+
+
+Release Showstoppers
+--------------------
+
+Version 1.0: Pilot
+
+
+Version 1.1:
+
+
+Known Bugs
+----------
+
+Unconfirmed Bugs
+----------------
+
+Wish List / Optimizations
+-------------------------
+
+
+--------------------------------------------------------------------------------------------------
+
+Done
+----
+
+Release 1.0.0:
+
+
