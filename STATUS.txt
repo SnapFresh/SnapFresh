@@ -100,4 +100,10 @@ Done
 
 Release 1.0.0:
 
+* Acquire a 415 number for the pilot. [jeremy]
+
+TBD, please add in other items as you complete them, if they are user visible.
+This will be used to keep track of high-level changes for whenever we want to
+produce a release announcement.
+
 
