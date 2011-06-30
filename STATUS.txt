@@ -58,6 +58,8 @@ Version 1.1:
       regular browsers.
     - it could be automatic or could be triggered on user action
 
+* Set up a wiki (mediawiki). [aaron]
+
 
 
 Known Bugs
