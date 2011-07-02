@@ -1,13 +1,19 @@
 <h2 id="listhead">Listing nearby retailers by Given Address from User</h2>
 
 <div class="general">
-  <ul class="shop-list">
+  <ul data-role="listview ui-listview">
     <% @retailers.each do |retailer| %>
-      <li class="shop-list">
-        <div class="shop-list-name"><%= retailer.name.capitalize %></div>
-        <div class="shop-list-retailer-type"><%= retailer.retailer_types.join ", " %></div>
-        <div class="shop-list-addy"><a href= "<%= "http://maps.google.com/maps?q=" + retailer.google_safe_address %>"><%= retailer.address %></a></div>
-      </li>
+      <li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c">
+		<div class="ui-btn-inner ui-li">
+			<div class="ui-btn-text">
+			<a href= "<%= "http://maps.google.com/maps?q=" + retailer.google_safe_address %>"  class="ui-link-inherit">
+				<h3 class="ui-li-heading"><%= retailer.name.capitalize %></h3>
+				<p class="ui-li-desc"><%= retailer.address %><%= retailer.retailer_types.join ", " %></p>
+			</a>
+			</div>
+			<span class="ui-icon ui-icon-arrow-r"></span>
+			</div>
+			</li>
     <% end %>
   </ul>
 </div>

@@ -1,12 +1,14 @@
-<h2>Enter your address, zip code or cross streets to find stores nearby which accept SNAP cards</h2>
+<h1 class="logo">snap<span id="income">fresh</span></h1>
+
+<h2>Enter your address and zip code or cross streets and city to find stores nearby which accept SNAP cards</h2>
 
 
 <form action="<%= retailers_path + '/nearaddy/' %>" method="get">
 
   <input class="entryform-field" name="address" value="" id="addressfield"/>
-    <p class="eg">e.g. 48104, 85 2nd St, or Mission and 16th</p>
+    <p class="eg">e.g. 48104, 85 2nd St, San Francisco or Mission and 16th, 94106 </p>
   <div class="buttondiv">
-    <input class="button" id="submitbutton" type="submit" value="submit"/>
+    <input class="button" id="submitbutton" type="submit" value="submit" data-inline="true"/>
    
   </div>
 <!-- <a href="#" id="locateme">use my current location </a>  -->

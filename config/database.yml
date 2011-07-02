@@ -6,8 +6,12 @@ common: &common
   password: aif123
 
 development:
-  <<: *common
+#  <<: *common
+  adapter: postgresql
+  username: aif
+  password: aif123
   database: allincomefoods_dev
+  host: 127.0.0.1
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
