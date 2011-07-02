@@ -6,7 +6,9 @@ common: &common
   password: aif123
 
 development:
+
 #  <<: *common
+
   adapter: postgresql
   username: aif
   password: aif123
