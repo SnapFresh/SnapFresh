@@ -1,8 +1,14 @@
+Introduction:
+
+In order to get up and running with SnapFresh, you need to install postgreSQL and then seed the database. The instructions on how to do this are listed below.
+
+---------------
+
 Prototyping of extraction of backend data and some geocoding associated thereof for this project can be found on this scraperwiki:
 http://scraperwiki.com/scrapers/allincomefoods/
 
 ----------
-Installing and fixing geokit
+Installing and fixing geokit (DEPRECATED - SKIP TO NEXT SECTION)
 
 Geokit hasn't been upgraded for rails3 yet, but that's ok since there's
 an easy workaround. Once you have the geokit and geokit-rails gems
@@ -18,18 +24,38 @@ sudo patch -p0 geokit-rails3.patch /usr/lib64/ruby/gems/1.8/gems/geokit-rails-1.
 (Sorry for the ugly commands ;)
 
 ----------
-We are now switched to PostgreSQL, so install postgres locally, start up
+INSTALLING AND CONFIGURING POSTGRESQL:
+
+
+FOR MAC PEOPLE WHO AREN'T COMMAND LINE WIZARDS:
+There's many ways you can install postgres locally, but if you're on a Mac, one way that's pretty easy is to download the installer here: http://www.enterprisedb.com/products-services-training/pgdownload#osx (current version as of July 1, 2011 is Version 9.0.4-1, and this is a compatible version with our app).
+
+Once its installed, you need to create the user and install the gem.
+If you're running Mac OSX, you'll need to put pg_config in your path, or you'll get an error upon trying to install the pg
+gem. Do this by running this command at the prompt (instead of the above "sudo gem install pg" command, and assuming you've installed postgresql 9.0):
+
+$ PATH=$PATH:/Library/PostgreSQL/9.0/bin sudo gem install pg
+
+$ sudo -u postgres createuser -P aif
+  # password is aif123
+(not superuser, yes can create DBs, no can't create roles)
+
+Now you're ready to install the gem bundle, at the command line enter:
+bundle install
+
+Now you're ready to start the server:
+You can use the pgAdmin tool to start up the server, located under /Library/PostgreSQL/9.0/. Remember the password you create for the postgres user.
+
+********************
+
+FOR LINUX OR MAC PEOPLE WHO ARE COMMAND LINE WIZARDS:
+Install postgres locally how ever you like, start up
 the server, and create the right users:
 
 $ sudo yum install postgresql-server postgresql-client postgresql-docs postgresql-devel
 $ sudo gem install pg
 $ bundle install
 $ sudo service postgresql start
-
-If you're running Mac OSX, you'll need to put pg_config in your path, or you'll get an error upon trying to install the pg
-gem. Do this by running this command at the prompt (instead of the above "sudo gem install pg" command, and assuming you've installed postgresql 9.0)
-
-$ PATH=$PATH:/Library/PostgreSQL/9.0/bin sudo gem install pg
 
 Note that postgresql-devel is required (on whatever platform you're on)
 since the headers and pg_config are required to build the dependent GEMs.
@@ -38,16 +64,18 @@ $ sudo -u postgres createuser -P aif
   # password is aif123
 (not superuser, yes can create DBs, no can't create roles)
 
-Then run the commands below to create everything and import the seed data.
-
-----------
-Otherwise, to load in seed data from USDA SNAP State CSV files:
+_____________________________________________________________________________
+TO CREATE DATABASE AND SEED DATA:
 
 $ rake db:create:all
 $ rake db:schema:load
+
+Now the database is created, and next you will seed the data, so be sure that you are in the db directory before
+you run this:
+
 $ rake db:seed
 
---- ALTERNATE way to load the full data:
+--- ALTERNATE way to load the full data (if above steps dont work for some reason):
 
 1) Run "ruby db/cronjob.rb" to fetch all data files, unzip and then produce
 a single CSV file called "all.csv".
@@ -57,6 +85,11 @@ grep -v '"NULL"' all.csv | psql allincomefoods_dev -c "copy retailers (name, lon
 
 3) (Optional) Remove all the .zip and .csv files that were created as part
 of the download process.
+
+
+\/\/00T! You should be all installed and stuff now. The below is just the boilerplate from Rails. You can read if you like.
+-----------------------------------
+
 
 == Welcome to Rails
 
