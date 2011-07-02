@@ -46,6 +46,11 @@ h2{
     font-size: .85em;
     width:100%;
 }
+.phone{
+	
+	color: #56A00E;
+	
+}
 
 
 
@@ -72,3 +77,13 @@ h2{
     color:                  #fff;
     font-weight: bold;
 }
+.ui-link {
+	color: #56A00E;
+	
+} 
+.ui-link a:active {
+	color: #56A00E;
+	
+}
+
+a:
