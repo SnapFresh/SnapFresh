@@ -1,4 +1,3 @@
-
                      SnapFresh, a food stamp benefits locator
 
 Releases
@@ -12,13 +11,13 @@ Release Showstoppers
 
 Version 1.0: Pilot
 
-* Localize the website
+* Localize the website - Michelle can handle
     - Create a simple way for our website to be localized for
       any future language.
 
-* Add translations for Cantonese
+* Add translations for Cantonese - Michelle can handle
 
-* Add translations for Spanish
+* Add translations for Spanish - Michelle
 
 * Design a leaflet / flyer "wallet-sized"
     - multi-lingual (English, Cantonese, Spanish to start)
