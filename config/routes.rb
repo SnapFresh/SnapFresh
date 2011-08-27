@@ -1,4 +1,7 @@
 Allincomefoods::Application.routes.draw do
+  scope "(:locale)", :locale => /en|es/ do
+    resources :retailers
+  end
   root :to => 'retailers#index'
   match 'retailers/list/:address' => 'retailers#list'
   match 'browse' => 'retailers#browse'
