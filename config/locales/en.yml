@@ -3,3 +3,13 @@
 
 en:
   hello: "Hello world"
+  credits1: "SnapFresh helps you find the closest places that accept"
+  credits2: "EBT cards (Food Stamps/SNAP)"
+  credits3: "We use"
+  credits4: "to try and show the healthier places first"
+  credits5: "Made with love by:"
+  credits6: "and"
+  indexenter1: "Enter your address and zip code or cross streets and city to find stores nearby which accept SNAP cards"
+  indexenter2: "e.g."
+  submit1: "or, text message your address to:"
+  subbutton1: "Submit"

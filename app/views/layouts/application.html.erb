@@ -49,7 +49,9 @@
     <%= yield %>
 
   <!-- The following content will be displayed to everyone -->
-  <div id="credits">SnapFresh helps you find the closest places that accept <a href="http://en.wikipedia.org/wiki/Supplemental_Nutrition_Assistance_Program">SNAP cards</a> (Food Stamps). We use <a href="http://www.yelp.com"><img src="http://media4.px.yelpcdn.com/static/20101216159295510/i/map/miniMapLogo.png"></a>to try and show the healthier places first. It is an entry in the <a href="http://applicationsforgood.org">Apps for Good Contest</a> <p>made with love by: <a href="http://www.aardvarkium.com">Ysiad,</a> <a href="http://codeforamerica.org/author/michelle/">Michelle,</a> <a href="http://www.codemass.com">Aaron,</a> and <a href="http://codeforamerica.org/author/jeremy/">Jeremy</a></p>
+  <div id="credits"><%=t :credits1 %> <a href="http://en.wikipedia.org/wiki/Supplemental_Nutrition_Assistance_Program"><%=t :credits2%></a>. <%=t :credits3%> <a href="http://www.yelp.com">
+  <img src="http://media4.px.yelpcdn.com/static/20101216159295510/i/map/miniMapLogo.png"></a>
+  <%=t :credits4%>.<p><%=t :credits5%> <a href="http://www.aardvarkium.com">Ysiad,</a> <a href="http://codeforamerica.org/author/michelle/">Michelle,</a> <a href="http://www.codemass.com">Aaron,</a> <%=t :credits6%> <a href="http://codeforamerica.org/author/jeremy/">Jeremy</a>.</p>
   </div>
 	</div><!-- end content -->          
   </div> <!-- end page -->          

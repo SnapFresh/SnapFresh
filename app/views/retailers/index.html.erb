@@ -8,21 +8,21 @@
 
 <h1 class="logo"><img src="images/snapfreshlogo.svg" width="40%" title="snapfresh.org" alt="snapfresh.org" /></span></h1>
 
-<h2>Enter your address and zip code or cross streets and city to find stores nearby which accept SNAP cards</h2>
+<h2><%=t :indexenter1 %></h2>
 
 
 <form action="<%= retailers_path + '/nearaddy/' %>" method="get">
 
   <input class="entryform-field" name="address" value="" id="addressfield"/>
-    <p class="eg">e.g. 48104, 85 2nd St, San Francisco or Mission and 16th, 94106 </p>
+    <p class="eg"><%=t :indexenter2 %> 48104, 85 2nd St, San Francisco or Mission and 16th, 94106 </p>
   <div class="buttondiv">
-    <input class="button" id="submitbutton" type="submit" value="submit" data-inline="true"/>
+    <input class="button" id="submitbutton" type="submit" value="<%=t :subbutton1 %>" data-inline="true"/>
    
   </div>
 <!-- <a href="#" id="locateme">use my current location </a>  -->
 </form>
 
 <div class="sms">
-<p>or, text message your address to:</p>
+<p><%=t :submit1 %></p>
 <h1 class="phone">(415) 349-3019</h1>
 </div>
