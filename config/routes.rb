@@ -1,19 +1,24 @@
 Allincomefoods::Application.routes.draw do
-  scope "(:locale)", :locale => /en|es/ do
-    resources :retailers
-  end
+  #scope "(:locale)", :locale => /en|es/ do
+  #  resources :retailers
+  #end
   root :to => 'retailers#index'
-  match 'retailers/list/:address' => 'retailers#list'
+  
   match 'browse' => 'retailers#browse'
   #resources :requests
   match 'requests/:address' => 'requests#retailers'
   get "lookup/new"
-  match 'retailers/near/:lat/:lon' => 'retailers#near',
-                        :constraints => { :lat => /[-]?[0-9]+\.?[0-9]*/,
-                                          :lon => /[-]?[0-9]+\.?[0-9]*/ }
-
-  match 'retailers/nearaddy(.:format)' => 'retailers#nearaddy'
-  resources :retailers
+  #match 'retailers/near/:lat/:lon' => 'retailers#near',
+  #                      :constraints => { :lat => /[-]?[0-9]+\.?[0-9]*/,
+  #                                        :lon => /[-]?[0-9]+\.?[0-9]*/ }
+  #match 'retailers/list/:address' => 'retailers#list'
+  
+  #match 'retailers/nearaddy(.:format)' => 'retailers#nearaddy'
+  resources :retailers do
+    collection do
+      get "nearaddy"
+    end
+  end
 
   # root :to => 'retailers'
   # The priority is based upon order of creation:

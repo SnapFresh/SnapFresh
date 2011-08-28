@@ -12,6 +12,7 @@ zh:
   indexenter2: "例如"
   submit1: "或者，短信您的地址为："
   subbutton1: "提出"
+  nearaddy1: "鉴于上市的零售商从用户地址附近"
   date:
     formats:
       default: "%Y-%m-%d"
