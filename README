@@ -46,6 +46,10 @@ bundle install
 Now you're ready to start the server:
 You can use the pgAdmin tool to start up the server, located under /Library/PostgreSQL/9.0/. Remember the password you create for the postgres user.
 
+FYI: Anytime you do a bundle install, and you're installing the pg gem over again (coz say your HD crashes, or any 
+numerous annoying things that require you to rebuild your development environment) if you don't have the PATH set up ahead of time, you will get failure upon trying
+to install the pg gem. So be sure to always do the PATH if you need to reinstall the gem.
+
 ********************
 
 FOR LINUX OR MAC PEOPLE WHO ARE COMMAND LINE WIZARDS:
