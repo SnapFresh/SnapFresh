@@ -60,6 +60,8 @@ class RetailersController < ApplicationController
    geocoder = "http://maps.googleapis.com/maps/api/geocode/json?address="
     output = "&sensor=false"
     #address = "424+ellis+st+san+francisco"
+    # replace any ampersands with "and" since ampersands don't seem to work with the google query
+    address =  address.sub( "&", "and" )
     request = geocoder + address.tr(' ', '+') + output
     url = URI.escape(request)
     resp = Net::HTTP.get_response(URI.parse(url))
