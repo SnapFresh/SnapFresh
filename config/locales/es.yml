@@ -9,7 +9,7 @@
 # Corrected by Eloy Serra Labán: http://goo.gl/i9Kts, /nQ928, /XfKaX
 
 es:
-  credits1: "SnapFresh encuentre los sitios cerca de usted que aceptan"
+  credits1: "SnapFresh buscara los sitios cerca de usted que aceptan"
   credits2: "tarjetas de EBT (estampillas de alimentos)"
   credits3: "Usamos"
   credits4: "para ayudar encontrar los lugares más saludables"
@@ -18,7 +18,7 @@ es:
   indexenter1: "Entra tu dirección y código postal, o tu intersección de calle y tu ciudad para encontrar tiendas cerca de usted que aceptan tarjetas de EBT. (Tarjeta de alimentos)"
   indexenter2: "Ejemplo (ej.)"
   submit1: "También puedes mandar un mensaje de texto con la dirección a:"
-  subbutton1: "Submit (needs es translation)"
+  subbutton1: "Buscar"
   nearaddy1: "Listing nearby retailers by given address from user (needs translation)"
   number:
     percentage:
