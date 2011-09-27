@@ -11,14 +11,6 @@ Release Showstoppers
 
 Version 1.0: Pilot
 
-* Localize the website - Michelle can handle
-    - Create a simple way for our website to be localized for
-      any future language.
-
-* Add translations for Cantonese - Michelle can handle
-
-* Add translations for Spanish - Michelle
-
 * Design a leaflet / flyer "wallet-sized"
     - multi-lingual (English, Cantonese, Spanish to start)
     - target audience is people applying for or receiving
@@ -38,8 +30,6 @@ Version 1.0: Pilot
 
 * Add link to our discuss@snapfresh.org mailing list to snapfresh.org
 
-* Improve the color scheme of the website
-
 * Improve the instructions for inputting an address.
     - suggest that adding a zip code may improve results
     - make sure our examples work properly
@@ -58,6 +48,9 @@ Version 1.1:
     - it could be automatic or could be triggered on user action
 
 * Set up a wiki (mediawiki). [aaron]
+
+* Voice support (for at least English - don't know whether our telephony platform supports multi-lingual 
+  transcription)
 
 
 
@@ -102,6 +95,19 @@ Done
 Release 1.0.0:
 
 * Acquire a 415 number for the pilot. [jeremy]
+
+* Improve the color scheme of the website. [jeremy]
+
+* Localize the website - [michelle]
+    - Our website is localized using the builtin Rails i18n method. For each language that needs
+    translation, just need the actual translations placed into a custom .yml file in the config/locales folder. The
+    i18n is configured to default to whatever language a user has set their browser to. If nothing is set, then
+    it defaults to English, and a user can easily switch between languages by clicking on the appropriate language
+    link at the bottom of each page.
+    - As of 9/27/2011, we have support for the following lanugages:
+      English
+      Spanish
+      Chinese (written, so no difference between Cantonese and Mandarin)
 
 TBD, please add in other items as you complete them, if they are user visible.
 This will be used to keep track of high-level changes for whenever we want to
