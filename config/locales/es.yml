@@ -19,7 +19,7 @@ es:
   indexenter2: "Ejemplo (ej.)"
   submit1: "También puedes mandar un mensaje de texto con la dirección a:"
   subbutton1: "Buscar"
-  nearaddy1: "Listing nearby retailers by given address from user (needs translation)"
+  nearaddy1: "Abajo encontrará su lista de supermercados según la dirección que ha introducido."
   number:
     percentage:
       format:
