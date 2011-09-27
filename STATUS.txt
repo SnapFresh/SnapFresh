@@ -11,35 +11,52 @@ Release Showstoppers
 
 Version 1.0: Pilot
 
-* Design a leaflet / flyer "wallet-sized"
-    - multi-lingual (English, Cantonese, Spanish to start)
-    - target audience is people applying for or receiving
-      SNAP benefits.
+* Proof the Chinese wallet-card. [suzanne]
 
-* Create a press kit
-    - icon in EPS
-    - mission statement blurb or other approved blurbs
-    - leaflet / flyer in EPS form (perhaps in 10-up layout)
+* Print the Wallet-cards. [vakil]
 
-* Create an About Us page
+* Press-sized EPS needs Chinese proof. [suzanne]
+
+* Create an About Us page [michelle]
     - who we are
     - why we're doing this
     - our story
     - (Make it easy for new contributors to add themselves to this list,
       as an incentive for new contributions)
 
-* Add link to our discuss@snapfresh.org mailing list to snapfresh.org
-
-* Improve the instructions for inputting an address.
-    - suggest that adding a zip code may improve results
-    - make sure our examples work properly
+* Add link to our discuss@snapfresh.org mailing list to snapfresh.org [michelle]
 
 * Add a privacy statement
+    - find sample copy from SF [vakil]
+    - "we value your privcy" link to privacy page
+    - we will track usage
+    - we won't sell it
+    - do we want to adhere to the government's own standards for privacy?
+    - are there other sites doing something similar to us that we could
+      steal from?
 
 * Add a disclaimer (this may be part of the privacy statement, IANAL)
+    - find sample copy from SF [vakil]
+    - independent project, not official part of government agency
+    - do we want to adhere to the government's own standards for this?
+    - are there other sites doing something similar to us that we could
+      steal from?
+
+* Install log-analytics programs onto dolores. [aaron]
+
+* Research including farmers markets into pilot. [jeremy]
 
 
 Version 1.1:
+
+* Research including restaurants that accept SNAP cards? [?]
+    - some SF restaurants support this
+        - elderly, homeless, disabled
+    - now other counties are supporting
+    - prep some sample data [vakil]
+    - CA may have a DB for this already [michelle]
+
+* Prepare sample food-bank data. [vakil]
 
 * Add geolocation support to the web app.
     - HTML5/JS has support for browser-based geolocation
@@ -49,9 +66,23 @@ Version 1.1:
 
 * Set up a wiki (mediawiki). [aaron]
 
-* Voice support (for at least English - don't know whether our telephony platform supports multi-lingual 
-  transcription)
+* Voice support (for at least English - don't know whether our
+  telephony platform supports multi-lingual transcription)
 
+
+Version 2:
+
+* Create a kiosk-branded version of our site.
+    - Include information specific to SF.
+    - Logos
+    - Allows us to track a separate URL in our analytics.
+
+* Can we get this into Library Kiosks? [vakil]
+
+* Press release after a month of feedback? [arthur?]
+
+* Can we incorporate food bank data beyond SF?
+    - Vakil has SF food bank data, but we know of no nation-wide DB.
 
 
 Known Bugs
@@ -99,15 +130,30 @@ Release 1.0.0:
 * Improve the color scheme of the website. [jeremy]
 
 * Localize the website - [michelle]
-    - Our website is localized using the builtin Rails i18n method. For each language that needs
-    translation, just need the actual translations placed into a custom .yml file in the config/locales folder. The
-    i18n is configured to default to whatever language a user has set their browser to. If nothing is set, then
-    it defaults to English, and a user can easily switch between languages by clicking on the appropriate language
-    link at the bottom of each page.
+    - Our website is localized using the builtin Rails i18n method.
+      For each language that needs translation, just need the actual
+      translations placed into a custom .yml file in the config/locales
+      folder. The i18n is configured to default to whatever language
+      a user has set their browser to. If nothing is set, then it
+      defaults to English, and a user can easily switch between
+      languages by clicking on the appropriate language link at the
+      bottom of each page.
     - As of 9/27/2011, we have support for the following lanugages:
       English
       Spanish
-      Chinese (written, so no difference between Cantonese and Mandarin)
+      Chinese Traditional (Cantonese)
+
+* Logo has been designed. [?]
+
+* Wallet-card is designed. [?]
+    - What languages?
+
+* Press-sized EPS is designed (still needs to be finished up).
+
+* Improve the instructions for inputting an address. [jeremy, ysiad]
+    - suggest that adding a zip code may improve results
+    - make sure our examples work properly
+
 
 TBD, please add in other items as you complete them, if they are user visible.
 This will be used to keep track of high-level changes for whenever we want to
