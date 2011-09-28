@@ -6,6 +6,22 @@ class RetailersController < ApplicationController
   def index
 
   end
+ 
+  def terms
+    @terms = "Our Policies: 1) Parties - these terms are defined between yourself (the User) and the SnapFresh product team (Product Team)
+    which includes volunteer developers, marketers and testers of this application; 2) Privacy - We value your privacy.
+    We will not give, share, sell, rent or transfer any personal information to anyone outside of the Product Team, unless we have your
+    consent. We may track usage of the service, so that the service can improve to suit the User's needs, but we will not
+    share usage data outside of the Product Team; 3) Disclaimer - the information and listings shared on SnapFresh may not be
+    correct, and occasionally SnapFresh may not be available. Therefore, your use of SnapFresh and any reliance upon the
+    information shared on SnapFresh is at your own risk."
+    respond_to do |format|
+      format.html 
+      format.xml  { render :xml => @terms }
+      format.json { render :json => @terms }
+      format.text { render :text => @terms}
+    end
+  end
 
   def browse 
     @retailers = Retailer.search(params[:search]).order( sort_column + " " + sort_direction).paginate(:page => params[:page])
