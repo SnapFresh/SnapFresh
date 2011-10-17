@@ -23,8 +23,9 @@ Version 1.0: Pilot
     - our story
     - (Make it easy for new contributors to add themselves to this list,
       as an incentive for new contributions)
-
-* Add link to our discuss@snapfresh.org mailing list to snapfresh.org [michelle]
+    - Add link to our discuss@snapfresh.org mailing list to snapfresh.org [michelle]
+    - link to "Why eat healthier" and link it to The Beehive healthy-eating tab: 
+      http://www.thebeehive.org/health/healthy-living/healthy-eating [michelle]
 
 * Add a privacy statement
     - find sample copy from SF [vakil]
