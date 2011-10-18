@@ -8,6 +8,7 @@ Allincomefoods::Application.routes.draw do
   match 'retailers/terms', :to=>'retailers#terms'
   #resources :requests
   match 'requests/:address' => 'requests#retailers'
+  match 'aboutus' => 'retailers#aboutus'
   get "lookup/new"
   #match 'retailers/near/:lat/:lon' => 'retailers#near',
   #                      :constraints => { :lat => /[-]?[0-9]+\.?[0-9]*/,

@@ -22,6 +22,10 @@ class RetailersController < ApplicationController
       format.text { render :text => @terms}
     end
   end
+  
+  def aboutus
+ 
+  end
 
   def browse 
     @retailers = Retailer.search(params[:search]).order( sort_column + " " + sort_direction).paginate(:page => params[:page])
