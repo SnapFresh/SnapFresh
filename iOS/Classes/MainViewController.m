@@ -8,13 +8,14 @@
 #import "ResponseParser.h"
 #import "Reachability.h"
 
-@interface MainViewController ()
+@interface MainViewController () // Class extension
+@property (nonatomic, unsafe_unretained) IBOutlet UIButton *centerButton;
 
+- (IBAction)centerAction:(id)sender;
+- (IBAction)showInfo:(id)sender;
 - (void)setAnnotationsForAddress:(NSString *)address;
 - (void)centerMapAroundAnnotations;
-
 @end
-
 
 @implementation MainViewController
 
@@ -30,44 +31,30 @@
 	// Create the location manager object 
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
-
-    // Once configured, the location manager must be "started".
-    [locationManager startUpdatingLocation];
 	
 	// Create the ReverseGeocoder object
 	reverseGeocoder = [[ReverseGeocoder alloc] initWithMapView:mapView];
 }
 
-/*
- * To ensure that you properly relinquish ownership of outlets,
- * in your custom view controller class you can implement viewDidUnload
- * to invoke your accessor methods to set outlets to nil.
- */
-- (void)viewDidUnload
-{	
-	self.mapView = nil;
-	self.centerButton = nil;
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [locationManager startUpdatingLocation];
+}
 
-	[super viewDidUnload];
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [locationManager stopUpdatingLocation];
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark -
 #pragma mark Memory management
 
-/*
- * Because of a detail of the implementation of dealloc in UIViewController,
- * you should also set outlet variables to nil in dealloc
- */
 - (void)dealloc
 {	
 	mapView.delegate = nil;
-	[mapView release], mapView = nil;
-	[centerButton release], centerButton = nil;
 	locationManager.delegate = nil;
-    [locationManager release];
-	[reverseGeocoder release];
-
-    [super dealloc];
 }
 
 #pragma mark -
@@ -85,7 +72,6 @@
 	controller.delegate = self;
 	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self presentModalViewController:controller animated:YES];
-	[controller release];
 }
 
 #pragma mark -
@@ -129,7 +115,7 @@
 		if (!annotationView)
 		{
 			// If an existing annotation view was not available, create one
-			annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID] autorelease];
+			annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
 			annotationView.canShowCallout = YES;
 		}
 		else
@@ -209,6 +195,8 @@
 		// Create the URL
 		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://snapfresh.org/retailers/nearaddy.text/?address=%@", 
 										   [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+        
+        NSLog(@"url = %@", url);
 		
 		// Show network activity indicator
 		UIApplication *app = [UIApplication sharedApplication];
@@ -255,7 +243,6 @@
 		
 		[mapView addAnnotation:centerAnnotation];
 		
-		[centerAnnotation release];
 		
 		for (id <MKAnnotation> annotation in mapView.annotations)
 		{
@@ -322,9 +309,6 @@
     CLLocationDistance lonMeters = [locSouthWest getDistanceFrom:locNorthEast];
 
     // Clean up
-    [locSouthWest release];
-    [locSouthEast release];
-    [locNorthEast release];
 	
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(centerCoordinate, latMeters, lonMeters);
 	

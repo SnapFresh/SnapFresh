@@ -6,12 +6,13 @@
 #import "MainViewController.h"
 #import "FlipsideViewController.h"
 
-@interface FlipsideViewController () // Private methods
-
+@interface FlipsideViewController () // Class extension
+@property (nonatomic, unsafe_unretained) IBOutlet UISegmentedControl *mapSegmentedControl;
+- (IBAction)done:(id)sender;
+- (IBAction)showMailPicker:(id)sender;
 - (void)changeType:(id)sender;
 - (void)displayComposerSheet;
 - (void)launchMailAppOnDevice;
-
 @end
 
 @implementation FlipsideViewController
@@ -28,8 +29,7 @@ static NSString *feedbackSubject = @"SnapFresh feedback";
 static NSString *recommendSubject = @"Check out SnapFresh on iTunes";
 static NSString *recommendBody = @"Please check out SnapFresh:\n\nhttp://www.snapfresh.org";
 
-#pragma mark - 
-#pragma mark Lifecycle methods
+#pragma mark - Lifecycle methods
 
 - (void)viewDidLoad
 {
@@ -51,30 +51,6 @@ static NSString *recommendBody = @"Please check out SnapFresh:\n\nhttp://www.sna
 	}
 }
 
-/*
- * To ensure that you properly relinquish ownership of outlets,
- * in your custom view controller class you can implement viewDidUnload
- * to invoke your accessor methods to set outlets to nil.
- */
-- (void)viewDidUnLoad
-{
-	self.mapSegmentedControl = nil;
-
-    [super viewDidUnload];
-}
-
-/*
- * Because of a detail of the implementation of dealloc in UIViewController,
- * you should also set outlet variables to nil in dealloc
- */
-- (void)dealloc
-{	
-	delegate = nil;
-	[mapSegmentedControl release];
-	mapSegmentedControl = nil;
-	
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark Button actions
@@ -170,7 +146,6 @@ static NSString *recommendBody = @"Please check out SnapFresh:\n\nhttp://www.sna
 	}
 
 	[self presentModalViewController:picker animated:YES];
-    [picker release];
 }
 
 // Dismisses the email composition interface when users tap Cancel or Send.

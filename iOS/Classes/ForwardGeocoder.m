@@ -18,7 +18,7 @@ static NSString *kApiKey = @"ABQIAAAAAQDWMJkctRvZkqkxCunDzhQn8vBtndM0mf8Dz_CkaUV
 {	
 	CLLocationCoordinate2D coord = kCLLocationCoordinate2DInvalid;
 
-	Reachability *internetReach = [[Reachability reachabilityForInternetConnection] retain];
+	Reachability *internetReach = [Reachability reachabilityForInternetConnection];
 	
 	if ([internetReach currentReachabilityStatus] != NotReachable)
 	{

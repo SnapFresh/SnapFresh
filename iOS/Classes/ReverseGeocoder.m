@@ -22,12 +22,6 @@
 	return self;
 }
 
-- (void)dealloc
-{
-	[mkReverseGeocoder release];
-	
-	[super dealloc];
-}
 
 #pragma mark -
 #pragma mark Start the reverse geocoder
@@ -38,7 +32,6 @@
 	if (mkReverseGeocoder)
 	{
 		[mkReverseGeocoder cancel];
-		[mkReverseGeocoder release];
 	}
 	
 	mkReverseGeocoder = [[MKReverseGeocoder alloc] initWithCoordinate:coordinate];
@@ -53,7 +46,6 @@
 {	
 	NSString *subtitle = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
 	mapView.userLocation.subtitle = subtitle;
-	[subtitle release];
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)reverseGeocoder didFailWithError:(NSError *)error

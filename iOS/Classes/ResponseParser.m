@@ -6,10 +6,8 @@
 #import "ForwardGeocoder.h"
 #import <MapKit/MapKit.h>
 
-@interface ResponseParser ()
-
+@interface ResponseParser () // Class extension
 + (MKPointAnnotation *)getAnnotationFromArray:(NSArray *)array;
-
 @end
 
 
@@ -24,7 +22,7 @@
 	
 	if (response)
 	{
-		annotations = [[[NSMutableArray alloc] init] autorelease];
+		annotations = [[NSMutableArray alloc] init];
 		
 		// The store names and addresses are contained in the return string
 		NSArray *returnArray = [response componentsSeparatedByString:@"\n\n"];
@@ -48,7 +46,7 @@
 
 + (id <MKAnnotation>)getAnnotationFromArray:(NSArray *)array
 {
-	MKPointAnnotation *annotation = [[[MKPointAnnotation alloc] init] autorelease];
+	MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
 	annotation.title = [array objectAtIndex:0]; // Store name
 	annotation.subtitle = [array objectAtIndex:1]; // Street address
 	

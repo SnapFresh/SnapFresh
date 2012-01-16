@@ -17,10 +17,6 @@
 	ReverseGeocoder *reverseGeocoder;
 }
 
-@property (nonatomic, retain) IBOutlet MKMapView *mapView;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *centerButton;
-
-- (IBAction)centerAction:(id)sender;
-- (IBAction)showInfo:(id)sender;
+@property (nonatomic, unsafe_unretained) IBOutlet MKMapView *mapView;
 	
 @end

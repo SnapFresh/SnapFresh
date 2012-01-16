@@ -7,15 +7,8 @@
 @protocol FlipsideViewControllerDelegate;
 
 @interface FlipsideViewController : UIViewController <MFMailComposeViewControllerDelegate>
-{
-}
 
-@property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
-@property (nonatomic, retain) IBOutlet UISegmentedControl *mapSegmentedControl;
-
-
-- (IBAction)done:(id)sender;
-- (IBAction)showMailPicker:(id)sender;
+@property (nonatomic, unsafe_unretained) id <FlipsideViewControllerDelegate> delegate;
 
 @end
 

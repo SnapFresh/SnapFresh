@@ -17,7 +17,7 @@
 		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
-		841EA80F13A419910079CAD9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EA80E13A419910079CAD9 /* Reachability.m */; };
+		841EA80F13A419910079CAD9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EA80E13A419910079CAD9 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		841EA81613A419B00079CAD9 /* ForwardGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EA81113A419B00079CAD9 /* ForwardGeocoder.m */; };
 		841EA81713A419B00079CAD9 /* ResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EA81313A419B00079CAD9 /* ResponseParser.m */; };
 		841EA81813A419B00079CAD9 /* ReverseGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EA81513A419B00079CAD9 /* ReverseGeocoder.m */; };
@@ -46,13 +46,13 @@
 		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SnapFresh_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapFresh_Prefix.pch; sourceTree = "<group>"; };
-		841EA80D13A419910079CAD9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; name = Reachability.h; path = Classes/Reachability.h; sourceTree = "<group>"; };
+		841EA80D13A419910079CAD9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Classes/Reachability.h; sourceTree = "<group>"; };
 		841EA80E13A419910079CAD9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Classes/Reachability.m; sourceTree = "<group>"; };
 		841EA81013A419B00079CAD9 /* ForwardGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForwardGeocoder.h; path = Classes/ForwardGeocoder.h; sourceTree = "<group>"; };
 		841EA81113A419B00079CAD9 /* ForwardGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForwardGeocoder.m; path = Classes/ForwardGeocoder.m; sourceTree = "<group>"; };
-		841EA81213A419B00079CAD9 /* ResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; name = ResponseParser.h; path = Classes/ResponseParser.h; sourceTree = "<group>"; };
+		841EA81213A419B00079CAD9 /* ResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResponseParser.h; path = Classes/ResponseParser.h; sourceTree = "<group>"; };
 		841EA81313A419B00079CAD9 /* ResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseParser.m; path = Classes/ResponseParser.m; sourceTree = "<group>"; };
-		841EA81413A419B00079CAD9 /* ReverseGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; name = ReverseGeocoder.h; path = Classes/ReverseGeocoder.h; sourceTree = "<group>"; };
+		841EA81413A419B00079CAD9 /* ReverseGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReverseGeocoder.h; path = Classes/ReverseGeocoder.h; sourceTree = "<group>"; };
 		841EA81513A419B00079CAD9 /* ReverseGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReverseGeocoder.m; path = Classes/ReverseGeocoder.m; sourceTree = "<group>"; };
 		841EA81913A419C20079CAD9 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 		841EA81A13A419C20079CAD9 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
@@ -219,6 +219,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SnapFresh" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -277,11 +280,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SnapFresh_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SnapFresh-Info.plist";
 				PRODUCT_NAME = SnapFresh;
 			};
@@ -291,9 +296,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SnapFresh_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SnapFresh-Info.plist";
 				PRODUCT_NAME = SnapFresh;
 				VALIDATE_PRODUCT = YES;
@@ -309,7 +316,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -323,7 +329,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Release;
