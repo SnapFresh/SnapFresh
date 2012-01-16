@@ -3,7 +3,7 @@
  File: Reachability.h
  Abstract: Basic demonstration of how to use the SystemConfiguration Reachablity APIs.
  
- Version: 2.1
+ Version: 2.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple Inc.
  ("Apple") in consideration of your agreement to the following terms, and your
@@ -43,7 +43,7 @@
  
  Copyright (C) 2010 Apple Inc. All Rights Reserved.
  
-*/
+ */
 
 
 #import <Foundation/Foundation.h>
@@ -65,9 +65,6 @@ typedef enum {
 //reachabilityWithHostName- Use to check the reachability of a particular host name. 
 + (Reachability*) reachabilityWithHostName: (NSString*) hostName;
 
-//reachabilityWithAddress- Use to check the reachability of a particular IP address. 
-+ (Reachability*) reachabilityWithAddress: (const struct sockaddr_in*) hostAddress;
-
 //reachabilityForInternetConnection- checks whether the default route is available.  
 //  Should be used by applications that do not connect to a particular host
 + (Reachability*) reachabilityForInternetConnection;
@@ -84,5 +81,3 @@ typedef enum {
 //WiFi may require a connection for VPN on Demand.
 - (BOOL) connectionRequired;
 @end
-
-
