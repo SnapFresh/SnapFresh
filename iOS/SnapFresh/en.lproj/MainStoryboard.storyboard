@@ -27,14 +27,38 @@
                         <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Enter your address or ZIP code to find stores which accept SNAP cards" id="k1p-ua-tJd">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Ehh-Xd-pHy">
                                 <rect key="frame" x="0.0" y="0.0" width="703" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="4" id="ccX-bT-x3u"/>
-                                </connections>
-                            </searchBar>
+                                <items>
+                                    <barButtonItem systemItem="refresh" id="wjJ-DR-xSx"/>
+                                    <barButtonItem style="plain" id="STF-rN-prg">
+                                        <searchBar key="customView" contentMode="redraw" placeholder="Enter your address or ZIP code" id="k1p-ua-tJd">
+                                            <rect key="frame" x="51" y="0.0" width="430" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="4" id="ccX-bT-x3u"/>
+                                            </connections>
+                                        </searchBar>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9gn-d2-Gvw"/>
+                                    <barButtonItem style="plain" id="vvJ-oC-Wsq">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="BmH-F9-ehj">
+                                            <rect key="frame" x="489" y="7" width="207" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Standard"/>
+                                                <segment title="Satellite"/>
+                                                <segment title="Hybrid"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentAction:" destination="4" eventType="valueChanged" id="oSl-lf-WLP"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Wyc-qr-lPA">
                                 <rect key="frame" x="0.0" y="44" width="746" height="660"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,22 +71,7 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="SNAP Retailer Locator" id="52">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="2bk-7k-1xo">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="2lg-k9-9kw">
-                                <rect key="frame" x="526" y="7" width="170" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Standard"/>
-                                    <segment title="Satellite"/>
-                                    <segment title="Hybrid"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentAction:" destination="4" eventType="valueChanged" id="Fwc-70-Kmj"/>
-                                </connections>
-                            </segmentedControl>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="SNAP Retailer Locator" id="52"/>
                     <connections>
                         <outlet property="mapView" destination="Wyc-qr-lPA" id="oUS-f3-mjq"/>
                     </connections>
