@@ -27,6 +27,7 @@
 
 @property (nonatomic, weak) id <DetailViewControllerDelegate> delegate;
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong, readonly) NSArray *retailers;
 
 @end
 

@@ -88,7 +88,7 @@
 
 - (void)annotationsDidLoad:(DetailViewController *)controller
 {
-    retailers = [self.detailViewController.mapView annotations];
+    retailers = [self.detailViewController retailers];
 
     // Reload the data when there are new annotations on the map.
     [self.tableView reloadData];

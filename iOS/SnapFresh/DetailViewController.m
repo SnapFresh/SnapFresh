@@ -19,7 +19,7 @@
 
 @interface DetailViewController () // Class extension
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
-- (void)fetchCoordinateForAnnotation:(id <MKAnnotation>)annotation;
+- (void)fetchCoordinateForRetailer:(SnapRetailer *)retailer;
 @end
 
 @implementation DetailViewController
@@ -27,6 +27,7 @@
 @synthesize mapView;
 @synthesize masterPopoverController;
 @synthesize delegate;
+@synthesize retailers;
 
 // The SnapFresh URI
 static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/?address=%@";
@@ -110,7 +111,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
             SnapRetailer *retailer = [[SnapRetailer alloc] initWithName:name andAddress:address];
             
             // Set its coordinate in this method, and add it to the map.
-            [self fetchCoordinateForAnnotation:retailer];
+            [self fetchCoordinateForRetailer:retailer];
 		}
 	}
 }
@@ -139,15 +140,19 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
     [mapView setVisibleMapRect:zoomRect animated:YES];
 }
 
+- (NSArray *)retailers
+{
+    // Return non-MKUserLocation annotations from the map
+	return [mapView.annotations filteredArrayUsingPredicate:
+                               [NSPredicate predicateWithFormat:@"!(self isKindOfClass:%@)", [MKUserLocation class]]];
+}
+
 #pragma mark - Set annotations for nearby addresses
 
 - (void)setAnnotationsForAddressString:(NSString *)address
 {
-	// First, remove non MKUserLocation annotations from the map
-	NSArray *oldAnnotations = [mapView.annotations filteredArrayUsingPredicate:
-                               [NSPredicate predicateWithFormat:@"!(self isKindOfClass:%@)", [MKUserLocation class]]];
-	
-	[mapView removeAnnotations:oldAnnotations];
+	// Remove retailers from the map
+	[mapView removeAnnotations:[self retailers]];
     
     // Create the SnapFresh web service URI with address as a parameter
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kSnapFreshURI, 
@@ -171,14 +176,12 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
 
 #pragma mark - Fetch the coordinate for an annotation
 
-- (void)fetchCoordinateForAnnotation:(id <MKAnnotation>)annotation
+- (void)fetchCoordinateForRetailer:(SnapRetailer *)retailer
 {
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     
-    NSString *address = annotation.subtitle;
-    
-	// Fetch the geocode for the street address
-    [geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error)
+	// Fetch the geocode for the retailer's street address
+    [geocoder geocodeAddressString:retailer.address completionHandler:^(NSArray *placemarks, NSError *error)
      {
          if (error)
          {
@@ -189,9 +192,8 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
          // Get the top result returned by the geocoder
          CLPlacemark *topResult = [placemarks objectAtIndex:0];
          CLLocationCoordinate2D coordinate = topResult.location.coordinate;
-         
-         // Set the annotation's coordinate
-         [annotation setCoordinate:coordinate];
+
+         [retailer setCoordinate:coordinate];
          
          // Dispatch a block that gets queued up in the main_queue
          // to add the annotation to the mapView.
@@ -199,7 +201,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
              // Stop the network activity indicator
              [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
-             [mapView addAnnotation:annotation];
+             [mapView addAnnotation:retailer];
          });
      }];
 }
