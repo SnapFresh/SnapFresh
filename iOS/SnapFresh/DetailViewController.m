@@ -33,6 +33,13 @@
 // The SnapFresh URI
 static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/?address=%@";
 
+#pragma mark - Memory management
+
+- (void)dealloc
+{
+	mapView.delegate = nil;
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -97,13 +104,9 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
         
         // Returns a string created by reading data from the SnapFresh web service
         NSString *addressesString = [NSString stringWithContentsOfURL:url usedEncoding:&encoding error:&error];
-        
-        // When the above method returns, create a block that gets 
-        // queued up in the main_queue and parse the response.
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Parse the SnapFresh response string
-            [self parseResponse:addressesString];
-        });
+
+        // Parse the SnapFresh response string
+        [self parseResponse:addressesString];
     });
 }
 
