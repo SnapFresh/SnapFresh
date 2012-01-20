@@ -15,6 +15,7 @@
  */
 
 #import "DetailViewController.h"
+#import <AddressBookUI/AddressBookUI.h>
 #import "SnapRetailer.h"
 
 @interface DetailViewController () // Class extension
@@ -24,7 +25,10 @@
 - (void)setAnnotationsForAddressString:(NSString *)address;
 - (void)fetchCoordinateForRetailer:(SnapRetailer *)retailer;
 - (void)parseResponse:(NSString *)response;
+- (void)updateVisibleMapRect;
 @end
+
+#pragma mark -
 
 @implementation DetailViewController
 
@@ -42,7 +46,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
 - (void)dealloc
 {
 	mapView.delegate = nil;
-    locationManager.delegate = nil;
 }
 
 #pragma mark - View lifecycle
@@ -53,26 +56,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
     
     // Create a new dispatch queue to which blocks can be submitted.
     dispatchQueue = dispatch_queue_create("com.shrtlist.snapfresh.dispatchQueue", NULL);
-    
-    // Create the location manager object 
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    // Start the location manager
-    [locationManager startMonitoringSignificantLocationChanges];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    // Stop the location manager
-    [locationManager stopMonitoringSignificantLocationChanges];
-
-    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidUnload
@@ -85,19 +68,29 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    return YES;
+    // return YES for supported orientations
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    }
+    else
+    {
+        return YES;
+    }
 }
 
 #pragma mark - Target action methods
 
 - (IBAction)centerAction:(id)sender
 {
-    CLLocationCoordinate2D coordinate = locationManager.location.coordinate;
-
-    NSString *address = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
-
-    [self setAnnotationsForAddressString:address];
+    CLLocationCoordinate2D coordinate = mapView.userLocation.coordinate;
+    
+    if (CLLocationCoordinate2DIsValid(coordinate))
+    {
+        NSString *address = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
+        
+        [self setAnnotationsForAddressString:address];
+    }
 }
 
 - (IBAction)segmentAction:(id)sender
@@ -195,6 +188,9 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
          [retailer setCoordinate:coordinate];
          
          [mapView addAnnotation:retailer];
+         
+         // Manually fire the mapView delegate method
+         [mapView.delegate mapView:mapView didAddAnnotationViews:[self retailers]];
      }];
 }
 
@@ -204,7 +200,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
 {
     MKMapRect zoomRect = MKMapRectNull;
 
-    for (id <MKAnnotation> annotation in mapView.annotations)
+    for (id <MKAnnotation> annotation in [self retailers])
     {
         MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
         MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
@@ -257,34 +253,44 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
     [delegate annotationsDidLoad:self];
 }
 
-#pragma mark - CLLocationManagerDelegate conformance
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)userLocation fromLocation:(CLLocation *)oldLocation
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
 	static BOOL didSetRegion = NO;
-	
-	if ((userLocation.coordinate.latitude != kCLLocationCoordinate2DInvalid.latitude) && (userLocation.coordinate.longitude != kCLLocationCoordinate2DInvalid.longitude))
-	{
-		[centerButton setEnabled:YES];
 
-		if (!didSetRegion)
-		{
-            CLLocationCoordinate2D coordinate = userLocation.coordinate;
-            
-            NSString *address = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
+    [centerButton setEnabled:YES];
 
-            [self setAnnotationsForAddressString:address];
-            
-            didSetRegion = YES;
-		}
-	}
+    // Set the map's region if it's not set
+    if (didSetRegion == NO)
+    {
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+
+        // Fetch the geocode for the retailer's street address
+        // Completion handler block will be executed on the main thread.
+        [geocoder reverseGeocodeLocation:userLocation.location completionHandler:^(NSArray *placemarks, NSError *error)
+         {
+             if (error)
+             {
+                 NSLog(@"Geocode failed with error: %@", error);
+                 return;
+             }
+
+             // Get the top result returned by the geocoder
+             CLPlacemark *topResult = [placemarks objectAtIndex:0];
+             
+             NSString *address = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+             
+             [self setAnnotationsForAddressString:address];
+             
+             didSetRegion = YES;
+         }];
+    }
 	else
 	{
 		[centerButton setEnabled:NO];
 	}
 }
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+- (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
 {
 	[centerButton setEnabled:NO];
 }

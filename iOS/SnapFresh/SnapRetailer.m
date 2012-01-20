@@ -22,7 +22,7 @@
 @synthesize address = _address;
 @synthesize coordinate = _coordinate;
 
-#pragma mark - Designated initalizer
+#pragma mark - Designated initializer
 
 - (id)initWithName:(NSString *)name andAddress:(NSString *)address
 {

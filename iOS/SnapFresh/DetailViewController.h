@@ -22,10 +22,8 @@
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate, 
                                                     UISearchBarDelegate, 
-                                                    MKMapViewDelegate,
-                                                    CLLocationManagerDelegate>
+                                                    MKMapViewDelegate>
 {
-    CLLocationManager *locationManager;
     dispatch_queue_t dispatchQueue;
 }
 

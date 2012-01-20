@@ -19,6 +19,8 @@
 		841705AD14C760E100ACF050 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841705AB14C760D200ACF050 /* MapKit.framework */; };
 		841705C614C76D9800ACF050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841705C414C76D8B00ACF050 /* CoreLocation.framework */; };
 		8417068C14C8B41200ACF050 /* SnapRetailer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8417068B14C8B41200ACF050 /* SnapRetailer.m */; };
+		842298A414CA147300D84986 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842298A114CA146600D84986 /* AddressBookUI.framework */; };
+		84DE528F14C949E50023073E /* snapfreshlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DE528E14C949E50023073E /* snapfreshlogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		841705C414C76D8B00ACF050 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8417068A14C8B41200ACF050 /* SnapRetailer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapRetailer.h; sourceTree = "<group>"; };
 		8417068B14C8B41200ACF050 /* SnapRetailer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapRetailer.m; sourceTree = "<group>"; };
+		842298A114CA146600D84986 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		84DE528E14C949E50023073E /* snapfreshlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snapfreshlogo.png; path = Images/snapfreshlogo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842298A414CA147300D84986 /* AddressBookUI.framework in Frameworks */,
 				841705C614C76D9800ACF050 /* CoreLocation.framework in Frameworks */,
 				841705AD14C760E100ACF050 /* MapKit.framework in Frameworks */,
 				8417058C14C75EA100ACF050 /* UIKit.framework in Frameworks */,
@@ -80,6 +85,7 @@
 		8417058A14C75EA100ACF050 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				842298A114CA146600D84986 /* AddressBookUI.framework */,
 				841705C414C76D8B00ACF050 /* CoreLocation.framework */,
 				841705BD14C7688500ACF050 /* SystemConfiguration.framework */,
 				841705AB14C760D200ACF050 /* MapKit.framework */,
@@ -110,12 +116,21 @@
 		8417059214C75EA100ACF050 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84DE528C14C9494C0023073E /* Images */,
 				8417059314C75EA100ACF050 /* SnapFresh-Info.plist */,
 				8417059414C75EA100ACF050 /* InfoPlist.strings */,
 				8417059714C75EA100ACF050 /* main.m */,
 				8417059914C75EA100ACF050 /* SnapFresh-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84DE528C14C9494C0023073E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				84DE528E14C949E50023073E /* snapfreshlogo.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +186,7 @@
 			files = (
 				8417059614C75EA100ACF050 /* InfoPlist.strings in Resources */,
 				8417059F14C75EA100ACF050 /* MainStoryboard.storyboard in Resources */,
+				84DE528F14C949E50023073E /* snapfreshlogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +315,7 @@
 				841705AA14C75EA100ACF050 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
