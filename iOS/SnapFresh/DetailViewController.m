@@ -41,20 +41,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
     
     // Create a new dispatch queue to which blocks can be submitted.
     dispatchQueue = dispatch_queue_create("com.shrtlist.snapfresh.dispatchQueue", NULL);
-    
-    // "Segmented" control to the right
-	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:
-                                            [NSArray arrayWithObjects:
-                                             @"Standard",
-                                             @"Satellite",
-                                             @"Hybrid",
-                                             nil]];
-	[segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
-	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    segmentedControl.selectedSegmentIndex = 0;
-    
-	UIBarButtonItem *segmentBarItem = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];    
-	self.navigationItem.rightBarButtonItem = segmentBarItem;
 }
 
 - (void)viewDidUnload
@@ -73,7 +59,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
 
 #pragma mark - Segmented control action method
 
-- (void)segmentAction:(id)sender
+- (IBAction)segmentAction:(id)sender
 {
 	// The segmented control was clicked, handle it here 
 	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
