@@ -20,6 +20,7 @@
 @interface DetailViewController () // Class extension
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)fetchCoordinateForRetailer:(SnapRetailer *)retailer;
+- (void)parseResponse:(NSString *)response;
 @end
 
 @implementation DetailViewController
@@ -93,6 +94,33 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
 
 #pragma mark - Parse the Snapfresh response
 
+- (void)setAnnotationsForAddressString:(NSString *)address
+{
+	// Remove retailers from the map
+	[mapView removeAnnotations:[self retailers]];
+    
+    // Create the SnapFresh web service URI with address as a parameter
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kSnapFreshURI, 
+                                       [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    
+    // Submit a block for asynchronous execution to our dispatchQueue and return immediately.
+    dispatch_async(dispatchQueue, ^{
+        
+        NSStringEncoding encoding;
+        NSError *error;
+        
+        // Returns a string created by reading data from the SnapFresh web service
+        NSString *addressesString = [NSString stringWithContentsOfURL:url usedEncoding:&encoding error:&error];
+        
+        // When the above method returns, create a block that gets 
+        // queued up in the main_queue and parse the response.
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Parse the SnapFresh response string
+            [self parseResponse:addressesString];
+        });
+    });
+}
+
 - (void)parseResponse:(NSString *)response
 {	
 	if (response)
@@ -114,6 +142,37 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
             [self fetchCoordinateForRetailer:retailer];
 		}
 	}
+}
+
+// Fetch the coordinate for a SnapFresh retailer
+- (void)fetchCoordinateForRetailer:(SnapRetailer *)retailer
+{
+    // Stop the network activity indicator
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    
+	// Fetch the geocode for the retailer's street address
+    // Completion handler block will be executed on the main thread.
+    [geocoder geocodeAddressString:retailer.address completionHandler:^(NSArray *placemarks, NSError *error)
+     {
+         // Stop the network activity indicator
+         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+         
+         if (error)
+         {
+             NSLog(@"Geocode failed with error: %@", error);
+             return;
+         }
+         
+         // Get the top result returned by the geocoder
+         CLPlacemark *topResult = [placemarks objectAtIndex:0];
+         CLLocationCoordinate2D coordinate = topResult.location.coordinate;
+         
+         [retailer setCoordinate:coordinate];
+         
+         [mapView addAnnotation:retailer];
+     }];
 }
 
 #pragma mark - Update the visible map rectangle
@@ -145,65 +204,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
     // Return non-MKUserLocation annotations from the map
 	return [mapView.annotations filteredArrayUsingPredicate:
                                [NSPredicate predicateWithFormat:@"!(self isKindOfClass:%@)", [MKUserLocation class]]];
-}
-
-#pragma mark - Set annotations for nearby addresses
-
-- (void)setAnnotationsForAddressString:(NSString *)address
-{
-	// Remove retailers from the map
-	[mapView removeAnnotations:[self retailers]];
-    
-    // Create the SnapFresh web service URI with address as a parameter
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kSnapFreshURI, 
-                                       [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-    
-    // Submit a block for asynchronous execution to our dispatchQueue and return immediately.
-    dispatch_async(dispatchQueue, ^{
-        // Start the network activity indicator
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-        
-        NSStringEncoding encoding;
-        NSError *error;
-        
-        // Returns a string created by reading data from the SnapFresh web service
-        NSString *addressesString = [NSString stringWithContentsOfURL:url usedEncoding:&encoding error:&error];
-        
-        // Parse the SnapFresh response string
-        [self parseResponse:addressesString];
-    });
-}
-
-#pragma mark - Fetch the coordinate for an annotation
-
-- (void)fetchCoordinateForRetailer:(SnapRetailer *)retailer
-{
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    
-	// Fetch the geocode for the retailer's street address
-    [geocoder geocodeAddressString:retailer.address completionHandler:^(NSArray *placemarks, NSError *error)
-     {
-         if (error)
-         {
-             NSLog(@"Geocode failed with error: %@", error);
-             return;
-         }
-         
-         // Get the top result returned by the geocoder
-         CLPlacemark *topResult = [placemarks objectAtIndex:0];
-         CLLocationCoordinate2D coordinate = topResult.location.coordinate;
-
-         [retailer setCoordinate:coordinate];
-         
-         // Dispatch a block that gets queued up in the main_queue
-         // to add the annotation to the mapView.
-         dispatch_async(dispatch_get_main_queue(),^ {
-             // Stop the network activity indicator
-             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-
-             [mapView addAnnotation:retailer];
-         });
-     }];
 }
 
 #pragma mark - UISplitViewControllerDelegate conformance

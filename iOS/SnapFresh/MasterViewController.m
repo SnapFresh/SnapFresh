@@ -75,6 +75,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     SnapRetailer *retailer = [retailers objectAtIndex:indexPath.row];
 
     NSArray *selectedAnnotations = [NSArray arrayWithObject:retailer];
