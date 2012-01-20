@@ -20,8 +20,12 @@
 
 @protocol DetailViewControllerDelegate;
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, UISearchBarDelegate, MKMapViewDelegate>
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, 
+                                                    UISearchBarDelegate, 
+                                                    MKMapViewDelegate,
+                                                    CLLocationManagerDelegate>
 {
+    CLLocationManager *locationManager;
     dispatch_queue_t dispatchQueue;
 }
 

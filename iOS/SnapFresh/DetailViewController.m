@@ -18,7 +18,10 @@
 #import "SnapRetailer.h"
 
 @interface DetailViewController () // Class extension
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *centerButton;
+@property (nonatomic, strong) UIPopoverController *masterPopoverController;
+
+- (void)setAnnotationsForAddressString:(NSString *)address;
 - (void)fetchCoordinateForRetailer:(SnapRetailer *)retailer;
 - (void)parseResponse:(NSString *)response;
 @end
@@ -26,6 +29,7 @@
 @implementation DetailViewController
 
 @synthesize mapView;
+@synthesize centerButton;
 @synthesize masterPopoverController;
 @synthesize delegate;
 @synthesize retailers;
@@ -38,6 +42,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
 - (void)dealloc
 {
 	mapView.delegate = nil;
+    locationManager.delegate = nil;
 }
 
 #pragma mark - View lifecycle
@@ -48,6 +53,26 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
     
     // Create a new dispatch queue to which blocks can be submitted.
     dispatchQueue = dispatch_queue_create("com.shrtlist.snapfresh.dispatchQueue", NULL);
+    
+    // Create the location manager object 
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Start the location manager
+    [locationManager startMonitoringSignificantLocationChanges];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // Stop the location manager
+    [locationManager stopMonitoringSignificantLocationChanges];
+
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidUnload
@@ -64,7 +89,16 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
     return YES;
 }
 
-#pragma mark - Segmented control action method
+#pragma mark - Target action methods
+
+- (IBAction)centerAction:(id)sender
+{
+    CLLocationCoordinate2D coordinate = locationManager.location.coordinate;
+
+    NSString *address = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
+
+    [self setAnnotationsForAddressString:address];
+}
 
 - (IBAction)segmentAction:(id)sender
 {
@@ -136,7 +170,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
 // Fetch the coordinate for a SnapFresh retailer
 - (void)fetchCoordinateForRetailer:(SnapRetailer *)retailer
 {
-    // Stop the network activity indicator
+    // Start the network activity indicator
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
@@ -221,6 +255,38 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
     
     // Notify our delegate that the map has new annotations.
     [delegate annotationsDidLoad:self];
+}
+
+#pragma mark - CLLocationManagerDelegate conformance
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)userLocation fromLocation:(CLLocation *)oldLocation
+{
+	static BOOL didSetRegion = NO;
+	
+	if ((userLocation.coordinate.latitude != kCLLocationCoordinate2DInvalid.latitude) && (userLocation.coordinate.longitude != kCLLocationCoordinate2DInvalid.longitude))
+	{
+		[centerButton setEnabled:YES];
+
+		if (!didSetRegion)
+		{
+            CLLocationCoordinate2D coordinate = userLocation.coordinate;
+            
+            NSString *address = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
+
+            [self setAnnotationsForAddressString:address];
+            
+            didSetRegion = YES;
+		}
+	}
+	else
+	{
+		[centerButton setEnabled:NO];
+	}
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+	[centerButton setEnabled:NO];
 }
 
 #pragma mark - UISearchBarDelegate conformance
