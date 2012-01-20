@@ -17,7 +17,7 @@
 #import "DetailViewController.h"
 #import "SnapRetailer.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () // Class extension
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)fetchCoordinateForAnnotation:(id <MKAnnotation>)annotation;
 @end
@@ -39,6 +39,20 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
     
     // Create a new dispatch queue to which blocks can be submitted.
     dispatchQueue = dispatch_queue_create("com.shrtlist.snapfresh.dispatchQueue", NULL);
+    
+    // "Segmented" control to the right
+	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:
+                                            [NSArray arrayWithObjects:
+                                             @"Standard",
+                                             @"Satellite",
+                                             @"Hybrid",
+                                             nil]];
+	[segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
+	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    segmentedControl.selectedSegmentIndex = 0;
+    
+	UIBarButtonItem *segmentBarItem = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];    
+	self.navigationItem.rightBarButtonItem = segmentBarItem;
 }
 
 - (void)viewDidUnload
@@ -53,6 +67,27 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
 {
     // Return YES for supported orientations
     return YES;
+}
+
+#pragma mark - Segmented control action method
+
+- (void)segmentAction:(id)sender
+{
+	// The segmented control was clicked, handle it here 
+	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    
+    if ([segmentedControl selectedSegmentIndex] == 0)
+	{
+		[mapView setMapType:MKMapTypeStandard];
+	}
+	else if ([segmentedControl selectedSegmentIndex] == 1)
+	{
+		[mapView setMapType:MKMapTypeSatellite];
+	}
+	else if ([segmentedControl selectedSegmentIndex] == 2)
+	{
+		[mapView setMapType:MKMapTypeHybrid];
+	}
 }
 
 #pragma mark - Parse the Snapfresh response
