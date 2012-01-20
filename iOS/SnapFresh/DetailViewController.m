@@ -201,9 +201,9 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
 
 - (NSArray *)retailers
 {
-    // Return non-MKUserLocation annotations from the map
+    // Return SnapRetailer annotations from the map
 	return [mapView.annotations filteredArrayUsingPredicate:
-                               [NSPredicate predicateWithFormat:@"!(self isKindOfClass:%@)", [MKUserLocation class]]];
+                               [NSPredicate predicateWithFormat:@"(self isKindOfClass:%@)", [SnapRetailer class]]];
 }
 
 #pragma mark - UISplitViewControllerDelegate conformance
