@@ -25,7 +25,11 @@
 - (void)awakeFromNib
 {
     self.clearsSelectionOnViewWillAppear = NO;
-    self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
+    
+    // Set content height to 5 rows (5 X 44), since currently
+    // 5 results are returned from the SnapFresh web service call.
+    self.contentSizeForViewInPopover = CGSizeMake(320.0, 220.0);
+
     [super awakeFromNib];
 }
 
