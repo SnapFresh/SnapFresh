@@ -271,7 +271,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
-    barButtonItem.title = NSLocalizedString(@"List", @"List");
+    barButtonItem.title = NSLocalizedString(@"Retailers", @"Retailers");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
 
     self.masterPopoverController = popoverController;

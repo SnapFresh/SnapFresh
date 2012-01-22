@@ -75,7 +75,7 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="SNAP Retailer Locator" id="52">
+                    <navigationItem key="navigationItem" title="SnapFresh" id="52">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="dfs-iJ-XPx">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="5aO-sY-LE2">
                                 <rect key="frame" x="678" y="12" width="18" height="19"/>
@@ -163,7 +163,7 @@
                             <outlet property="delegate" destination="19" id="21"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="List" id="39"/>
+                    <navigationItem key="navigationItem" title="Retailers" id="39"/>
                     <value key="contentSizeForViewInPopover" type="size" width="320" height="220"/>
                 </tableViewController>
             </objects>
