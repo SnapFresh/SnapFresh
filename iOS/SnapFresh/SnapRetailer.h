@@ -19,11 +19,13 @@
 
 @interface SnapRetailer : NSObject <MKAnnotation>
 
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *street;
+@property (nonatomic, strong) NSString *city;
+@property (nonatomic, strong) NSString *state;
+@property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSNumber *lat;
+@property (nonatomic, strong) NSNumber *lon;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
-@property (nonatomic, strong, readonly) NSString *name;
-@property (nonatomic, strong, readonly) NSString *address;
-
-// The designated initializer
-- (id)initWithName:(NSString *)name andAddress:(NSString *)address;
 
 @end

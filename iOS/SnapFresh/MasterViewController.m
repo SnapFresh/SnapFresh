@@ -22,17 +22,6 @@
 
 @synthesize detailViewController = _detailViewController;
 
-- (void)awakeFromNib
-{
-    self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Set content height to 5 rows (5 X 44), since currently
-    // 5 results are returned from the SnapFresh web service call.
-    self.contentSizeForViewInPopover = CGSizeMake(320.0, 220.0);
-
-    [super awakeFromNib];
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad

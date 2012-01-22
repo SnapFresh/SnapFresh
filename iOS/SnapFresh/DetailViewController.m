@@ -21,11 +21,11 @@
 @interface DetailViewController () // Class extension
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *centerButton;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
+@property (nonatomic, strong) SnapRetailer *retailer;
+// an ad hoc string to hold an XML element value
+@property (nonatomic, strong) NSMutableString *currentElementValue;
 
 - (void)setAnnotationsForAddressString:(NSString *)address;
-- (void)fetchCoordinateForRetailer:(SnapRetailer *)retailer;
-- (void)parseResponse:(NSString *)response;
-- (void)updateVisibleMapRect;
 @end
 
 #pragma mark -
@@ -36,10 +36,13 @@
 @synthesize centerButton;
 @synthesize masterPopoverController;
 @synthesize delegate;
-@synthesize retailers;
+// Synthesize a read-only property named "retailers", but wire it to the member variable named "_retailers".
+@synthesize retailers = _retailers;
+@synthesize retailer;
+@synthesize currentElementValue;
 
 // The SnapFresh URI
-static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/?address=%@";
+static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?address=%@";
 
 #pragma mark - Memory management
 
@@ -77,6 +80,13 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
     {
         return YES;
     }
+}
+
+#pragma mark - Implement getter
+
+- (NSArray *)retailers
+{
+    return [_retailers copy];
 }
 
 #pragma mark - Target action methods
@@ -122,76 +132,91 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
     // Create the SnapFresh web service URI with address as a parameter
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kSnapFreshURI, 
                                        [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-    
+
     // Submit a block for asynchronous execution to our dispatchQueue and return immediately.
     dispatch_async(dispatchQueue, ^{
         
-        NSStringEncoding encoding;
-        NSError *error;
+        // Initialize the parser with SnapFresh XML content
+        NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+        parser.delegate = self;
         
-        // Returns a string created by reading data from the SnapFresh web service
-        NSString *addressesString = [NSString stringWithContentsOfURL:url usedEncoding:&encoding error:&error];
-
-        // Parse the SnapFresh response string
-        [self parseResponse:addressesString];
+        // Create a block that gets queued up in the main_queue, a default serial queue,
+        // which parses the XML content
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Parse the SnapFresh XML response
+            [parser parse];
+            
+            [mapView addAnnotations:[self retailers]];
+            
+            // Manually fire the mapView delegate method
+            [mapView.delegate mapView:mapView didAddAnnotationViews:self.retailers];
+        });
     });
 }
 
-- (void)parseResponse:(NSString *)response
-{	
-	if (response)
-	{
-		// SnapFresh retailer names and addresses are contained in the response string
-		NSArray *retailersArray = [response componentsSeparatedByString:@"\n\n"];
-		
-		for (NSString *retailerString in retailersArray)
-		{
-			// Separate the retailerString into its components
-			NSArray *retailerComponents = [retailerString componentsSeparatedByString:@"\n"];
-            NSString *name = [retailerComponents objectAtIndex:0]; // Store name
-            NSString *address = [retailerComponents objectAtIndex:1]; // Address
-            
-            // Initialize the SnapRetailer model object with a name and address
-            SnapRetailer *retailer = [[SnapRetailer alloc] initWithName:name andAddress:address];
-            
-            // Set its coordinate in this method, and add it to the map.
-            [self fetchCoordinateForRetailer:retailer];
-		}
-	}
+#pragma mark - NSXMLParserDelegate conformance
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
+{
+    if ([elementName isEqualToString:@"retailers"])
+    {
+        //self.retailers = [NSMutableArray array];
+        _retailers = [NSMutableArray array];
+    }
+    else if ([elementName isEqualToString:@"retailer"])
+    {
+        self.retailer = [[SnapRetailer alloc] init];
+    }
 }
 
-// Fetch the coordinate for a SnapFresh retailer
-- (void)fetchCoordinateForRetailer:(SnapRetailer *)retailer
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-    // Start the network activity indicator
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    // Skip newline
+    if (![string hasPrefix:@"\n"])
+    {
+        if (!currentElementValue)
+        {
+            // Init the ad hoc string with the value     
+            self.currentElementValue = [[NSMutableString alloc] initWithString:string];
+        }
+        else
+        {
+            // Append value to the ad hoc string    
+            [currentElementValue appendString:string];
+        }
+        NSLog(@"Processing value for : %@", string);
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{    
+    if ([elementName isEqualToString:@"retailers"])
+    {
+        // We reached the end of the XML document
+        return;
+    }
     
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    
-	// Fetch the geocode for the retailer's street address
-    // Completion handler block will be executed on the main thread.
-    [geocoder geocodeAddressString:retailer.address completionHandler:^(NSArray *placemarks, NSError *error)
-     {
-         // Stop the network activity indicator
-         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-         
-         if (error)
-         {
-             NSLog(@"Geocode failed with error: %@", error);
-             return;
-         }
-         
-         // Get the top result returned by the geocoder
-         CLPlacemark *topResult = [placemarks objectAtIndex:0];
-         CLLocationCoordinate2D coordinate = topResult.location.coordinate;
-         
-         [retailer setCoordinate:coordinate];
-         
-         [mapView addAnnotation:retailer];
-         
-         // Manually fire the mapView delegate method
-         [mapView.delegate mapView:mapView didAddAnnotationViews:[self retailers]];
-     }];
+    if ([elementName isEqualToString:@"retailer"])
+    {
+        // We are done with retailer entry
+        [_retailers addObject:retailer];
+    }
+    else
+    {
+        // The parser hit one of the element values. 
+        // This syntax is possible because Retailer object 
+        // property names match the XML user element names
+        @try
+        {
+            [retailer setValue:currentElementValue forKey:elementName];
+        }
+        @catch (NSException *exception)
+        {
+            NSLog(@"%@", exception);
+        }
+    }
+
+    currentElementValue = nil;
 }
 
 #pragma mark - Update the visible map rectangle
@@ -218,11 +243,28 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
     [mapView setVisibleMapRect:zoomRect animated:YES];
 }
 
-- (NSArray *)retailers
+#pragma mark - InAppSettingsKit
+
+- (IBAction)showInfoView:(id)sender
 {
-    // Return SnapRetailer annotations from the map
-	return [mapView.annotations filteredArrayUsingPredicate:
-                               [NSPredicate predicateWithFormat:@"(self isKindOfClass:%@)", [SnapRetailer class]]];
+    IASKAppSettingsViewController *appSettingsViewController = [[IASKAppSettingsViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:appSettingsViewController];
+    [appSettingsViewController setShowCreditsFooter:NO];   // Uncomment to not display InAppSettingsKit credits for creators.
+    // But we encourage you not to uncomment. Thank you!
+    appSettingsViewController.showDoneButton = YES;
+    appSettingsViewController.delegate = self;
+
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        navController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    
+    [self presentModalViewController:navController animated:YES];
+}
+
+- (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - UISplitViewControllerDelegate conformance
@@ -264,13 +306,13 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.text/
     {
         CLGeocoder *geocoder = [[CLGeocoder alloc] init];
 
-        // Fetch the geocode for the retailer's street address
+        // Reverse geocode the retailer's street address
         // Completion handler block will be executed on the main thread.
         [geocoder reverseGeocodeLocation:userLocation.location completionHandler:^(NSArray *placemarks, NSError *error)
          {
              if (error)
              {
-                 NSLog(@"Geocode failed with error: %@", error);
+                 NSLog(@"Reverse geocode failed with error: %@", error);
                  return;
              }
 

@@ -75,7 +75,28 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="SNAP Retailer Locator" id="52"/>
+                    <navigationItem key="navigationItem" title="SNAP Retailer Locator" id="52">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="dfs-iJ-XPx">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="5aO-sY-LE2">
+                                <rect key="frame" x="678" y="12" width="18" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showInfoView:" destination="4" eventType="touchUpInside" id="TgI-nu-Dza"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="showInfoView:" destination="4" id="TAA-zX-LSU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="centerButton" destination="wjJ-DR-xSx" id="B23-g9-4VB"/>
                         <outlet property="mapView" destination="Wyc-qr-lPA" id="oUS-f3-mjq"/>
@@ -143,6 +164,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="List" id="39"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="220"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="843" y="-179"/>

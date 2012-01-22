@@ -1,0 +1,3 @@
+[submodule "iOS/SnapFresh/InAppSettingsKit"]
+	path = iOS/SnapFresh/InAppSettingsKit
+	url = https://github.com/futuretap/InAppSettingsKit.git

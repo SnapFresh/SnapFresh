@@ -17,13 +17,17 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "IASKAppSettingsViewController.h"
 
 @protocol DetailViewControllerDelegate;
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate, 
                                                     UISearchBarDelegate, 
-                                                    MKMapViewDelegate>
+                                                    MKMapViewDelegate,
+                                                    NSXMLParserDelegate,
+                                                    IASKSettingsDelegate>
 {
+    NSMutableArray *_retailers;
     dispatch_queue_t dispatchQueue;
 }
 

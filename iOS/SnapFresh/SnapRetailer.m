@@ -15,26 +15,24 @@
  */
 
 #import "SnapRetailer.h"
+#import <AddressBookUI/AddressBookUI.h>
 
 @implementation SnapRetailer
 
-@synthesize name = _name;
-@synthesize address = _address;
-@synthesize coordinate = _coordinate;
+@synthesize name;
+@synthesize address;
+@synthesize coordinate;
+@synthesize street;
+@synthesize state;
+@synthesize lat;
+@synthesize lon;
+@synthesize city;
 
-#pragma mark - Designated initializer
+#pragma mark - address getter implementation
 
-- (id)initWithName:(NSString *)name andAddress:(NSString *)address
+- (NSString *)address
 {
-    self = [super init];
-    
-    if (self)
-    {
-        _name = name;
-        _address = address;
-    }
-    
-    return self;
+    return [NSString stringWithFormat:@"%@ %@ %@", self.street, self.city, self.state];
 }
 
 #pragma mark - MKAnnotation conformance
@@ -49,9 +47,11 @@
     return self.address;
 }
 
-- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate
+- (CLLocationCoordinate2D)coordinate
 {
-    _coordinate = newCoordinate;
+    CLLocationCoordinate2D coord2D = { [self.lat doubleValue], [self.lon doubleValue] };
+	
+	return coord2D;
 }
 
 @end
