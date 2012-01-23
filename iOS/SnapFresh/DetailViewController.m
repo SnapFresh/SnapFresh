@@ -20,6 +20,7 @@
 
 @interface DetailViewController () // Class extension
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *centerButton;
+@property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
 @property (nonatomic, strong) SnapRetailer *retailer;
 // an ad hoc string to hold an XML element value
@@ -34,6 +35,7 @@
 
 @synthesize mapView;
 @synthesize centerButton;
+@synthesize searchBar = _searchBar;
 @synthesize masterPopoverController;
 @synthesize delegate;
 // Synthesize a read-only property named "retailers", but wire it to the member variable named "_retailers".
@@ -97,7 +99,9 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
     
     if (CLLocationCoordinate2DIsValid(coordinate))
     {
-        NSString *address = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
+        NSString *address = mapView.userLocation.subtitle;
+        
+        self.searchBar.text = address;
         
         [self setAnnotationsForAddressString:address];
     }
@@ -299,39 +303,36 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
 	static BOOL didSetRegion = NO;
-
-    [centerButton setEnabled:YES];
-
-    // Set the map's region if it's not set
-    if (didSetRegion == NO)
-    {
-        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-
-        // Reverse geocode the user's location
-        // Completion handler block will be executed on the main thread.
-        [geocoder reverseGeocodeLocation:userLocation.location completionHandler:^(NSArray *placemarks, NSError *error)
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    
+    // Reverse geocode the user's location
+    // Completion handler block will be executed on the main thread.
+    [geocoder reverseGeocodeLocation:userLocation.location completionHandler:^(NSArray *placemarks, NSError *error)
+     {
+         if (error)
          {
-             if (error)
-             {
-                 NSLog(@"Reverse geocode failed with error: %@", error);
-                 return;
-             }
-
-             // Get the top result returned by the geocoder
-             CLPlacemark *topResult = [placemarks objectAtIndex:0];
-             
-             NSString *address = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
-             userLocation.subtitle = address;
-             
+             NSLog(@"Reverse geocode failed with error: %@", error);
+             [centerButton setEnabled:NO];
+             return;
+         }
+         
+         // Get the top result returned by the geocoder
+         CLPlacemark *topResult = [placemarks objectAtIndex:0];
+         
+         NSString *address = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+         userLocation.subtitle = address;
+         
+         [centerButton setEnabled:YES];
+         
+         // Set the map's region if it's not set
+         if (didSetRegion == NO)
+         {
              [self setAnnotationsForAddressString:address];
              
              didSetRegion = YES;
-         }];
-    }
-	else
-	{
-		[centerButton setEnabled:NO];
-	}
+         }
+     }];
 }
 
 - (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error

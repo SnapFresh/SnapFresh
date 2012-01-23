@@ -100,6 +100,7 @@
                     <connections>
                         <outlet property="centerButton" destination="wjJ-DR-xSx" id="B23-g9-4VB"/>
                         <outlet property="mapView" destination="Wyc-qr-lPA" id="oUS-f3-mjq"/>
+                        <outlet property="searchBar" destination="k1p-ua-tJd" id="3e2-RI-eLC"/>
                     </connections>
                 </viewController>
             </objects>
@@ -190,6 +191,7 @@
             <relationships>
                 <relationship kind="outlet" name="centerButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
             </relationships>
         </class>
         <class className="MasterViewController" superclassName="UITableViewController">
