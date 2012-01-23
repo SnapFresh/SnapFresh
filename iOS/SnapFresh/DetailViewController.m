@@ -253,6 +253,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
     // But we encourage you not to uncomment. Thank you!
     appSettingsViewController.showDoneButton = YES;
     appSettingsViewController.delegate = self;
+    appSettingsViewController.title = NSLocalizedString(@"About", @"About");
 
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
