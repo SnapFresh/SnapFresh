@@ -43,6 +43,7 @@
 		84494D7514CB931C0018133C /* IASKSpecifierValuesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84494D6014CB931C0018133C /* IASKSpecifierValuesView.xib */; };
 		84494D7814CB93FE0018133C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84494D7614CB93EE0018133C /* MessageUI.framework */; };
 		84494D7A14CB9BBE0018133C /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84494D7914CB9BBE0018133C /* InAppSettings.bundle */; };
+		84C89E3E14CCEE6000F68CE0 /* licenses.html in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E3D14CCEE6000F68CE0 /* licenses.html */; };
 		84DE528F14C949E50023073E /* snapfreshlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DE528E14C949E50023073E /* snapfreshlogo.png */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,7 @@
 		84494D6014CB931C0018133C /* IASKSpecifierValuesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IASKSpecifierValuesView.xib; sourceTree = "<group>"; };
 		84494D7614CB93EE0018133C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		84494D7914CB9BBE0018133C /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
+		84C89E3D14CCEE6000F68CE0 /* licenses.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = licenses.html; sourceTree = "<group>"; };
 		84DE528E14C949E50023073E /* snapfreshlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snapfreshlogo.png; path = Images/snapfreshlogo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +186,7 @@
 				84DE528C14C9494C0023073E /* Images */,
 				8417059314C75EA100ACF050 /* SnapFresh-Info.plist */,
 				8417059414C75EA100ACF050 /* InfoPlist.strings */,
+				84C89E3D14CCEE6000F68CE0 /* licenses.html */,
 				8417059714C75EA100ACF050 /* main.m */,
 				8417059914C75EA100ACF050 /* SnapFresh-Prefix.pch */,
 			);
@@ -338,6 +341,7 @@
 				84494D7414CB931C0018133C /* IASKPSToggleSwitchSpecifierViewCell.xib in Resources */,
 				84494D7514CB931C0018133C /* IASKSpecifierValuesView.xib in Resources */,
 				84494D7A14CB9BBE0018133C /* InAppSettings.bundle in Resources */,
+				84C89E3E14CCEE6000F68CE0 /* licenses.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
