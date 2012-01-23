@@ -128,12 +128,35 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
 	}
 }
 
+- (IBAction)showInfoView:(id)sender
+{
+    IASKAppSettingsViewController *appSettingsViewController = [[IASKAppSettingsViewController alloc] init];
+    [appSettingsViewController setShowCreditsFooter:NO];   // Uncomment to not display InAppSettingsKit credits for creators.
+    // But we encourage you not to uncomment. Thank you!
+    appSettingsViewController.showDoneButton = YES;
+    appSettingsViewController.delegate = self;
+    appSettingsViewController.title = NSLocalizedString(@"About", @"About");
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:appSettingsViewController];
+    
+    // Set the nav bar tint color to the SnapFresh house color.
+    UIColor *color = [UIColor colorWithRed:0.39 green:0.60 blue:0.2 alpha:1.0];
+    [navController.navigationBar setTintColor:color];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        navController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    
+    [self presentModalViewController:navController animated:YES];
+}
+
 #pragma mark - Parse the Snapfresh response
 
 - (void)setAnnotationsForAddressString:(NSString *)address
 {
 	// Remove retailers from the map
-	[mapView removeAnnotations:[self retailers]];
+	[mapView removeAnnotations:self.retailers];
     
     // Create the SnapFresh web service URI with address as a parameter
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kSnapFreshURI, 
@@ -159,7 +182,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
             // Parse the SnapFresh XML response
             [parser parse];
             
-            [mapView addAnnotations:[self retailers]];
+            [mapView addAnnotations:self.retailers];
             
             // Manually fire the mapView delegate method
             [mapView.delegate mapView:mapView didAddAnnotationViews:self.retailers];
@@ -256,25 +279,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
     [mapView setVisibleMapRect:zoomRect animated:YES];
 }
 
-#pragma mark - InAppSettingsKit
-
-- (IBAction)showInfoView:(id)sender
-{
-    IASKAppSettingsViewController *appSettingsViewController = [[IASKAppSettingsViewController alloc] init];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:appSettingsViewController];
-    [appSettingsViewController setShowCreditsFooter:NO];   // Uncomment to not display InAppSettingsKit credits for creators.
-    // But we encourage you not to uncomment. Thank you!
-    appSettingsViewController.showDoneButton = YES;
-    appSettingsViewController.delegate = self;
-    appSettingsViewController.title = NSLocalizedString(@"About", @"About");
-
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-    {
-        navController.modalPresentationStyle = UIModalPresentationFormSheet;
-    }
-    
-    [self presentModalViewController:navController animated:YES];
-}
+#pragma mark - IASKSettingsDelegate conformance
 
 - (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender
 {
