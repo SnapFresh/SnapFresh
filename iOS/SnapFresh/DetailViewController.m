@@ -307,7 +307,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
     {
         CLGeocoder *geocoder = [[CLGeocoder alloc] init];
 
-        // Reverse geocode the retailer's street address
+        // Reverse geocode the user's location
         // Completion handler block will be executed on the main thread.
         [geocoder reverseGeocodeLocation:userLocation.location completionHandler:^(NSArray *placemarks, NSError *error)
          {
@@ -321,6 +321,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
              CLPlacemark *topResult = [placemarks objectAtIndex:0];
              
              NSString *address = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+             userLocation.subtitle = address;
              
              [self setAnnotationsForAddressString:address];
              
