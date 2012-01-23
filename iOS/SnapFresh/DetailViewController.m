@@ -141,6 +141,9 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
 
     // Submit a block for asynchronous execution to our dispatchQueue and return immediately.
     dispatch_async(dispatchQueue, ^{
+
+        UIApplication* app = [UIApplication sharedApplication];
+        app.networkActivityIndicatorVisible = YES;
         
         // Initialize the parser with SnapFresh XML content
         NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
@@ -149,6 +152,10 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
         // Create a block that gets queued up in the main_queue, a default serial queue,
         // which parses the XML content
         dispatch_async(dispatch_get_main_queue(), ^{
+
+            UIApplication* app = [UIApplication sharedApplication];
+            app.networkActivityIndicatorVisible = NO;
+            
             // Parse the SnapFresh XML response
             [parser parse];
             
