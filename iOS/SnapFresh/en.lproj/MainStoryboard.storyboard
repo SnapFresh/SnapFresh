@@ -31,14 +31,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="703" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <barButtonItem enabled="NO" systemItem="refresh" id="wjJ-DR-xSx">
+                                    <barButtonItem enabled="NO" image="location.png" id="wjJ-DR-xSx">
                                         <connections>
                                             <action selector="centerAction:" destination="4" id="tpG-Eo-t2G"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="STF-rN-prg">
                                         <searchBar key="customView" contentMode="redraw" placeholder="Enter your address or ZIP code" id="k1p-ua-tJd">
-                                            <rect key="frame" x="51" y="0.0" width="430" height="44"/>
+                                            <rect key="frame" x="57" y="0.0" width="430" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
@@ -185,6 +185,9 @@
             <point key="canvasLocation" x="-390" y="686"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="location.png" width="20" height="20"/>
+    </resources>
     <classes>
         <class className="DetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
