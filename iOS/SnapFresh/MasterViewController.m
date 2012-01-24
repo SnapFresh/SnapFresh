@@ -35,6 +35,17 @@
     self.detailViewController.delegate = self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation]))
+    {
+        UIImage *snapLogo = [UIImage imageNamed:@"snaplogo.png"];
+        self.navigationItem.titleView = [[UIImageView alloc] initWithImage:snapLogo];
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -45,6 +56,14 @@
     else
     {
         return YES;
+    }
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation))
+    {
+        self.navigationItem.titleView = nil;
     }
 }
 
