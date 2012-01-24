@@ -151,12 +151,46 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
     [self presentModalViewController:navController animated:YES];
 }
 
+- (void)setSearchBarAnnotation:(NSString *)text
+{
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    
+    [geocoder geocodeAddressString:text completionHandler:^(NSArray *placemarks, NSError *error)
+    {
+        if (error)
+        {
+            NSLog(@"Forward geocode failed with error: %@", error);
+            return;
+        }
+        
+        // Get the top result returned by the geocoder
+        CLPlacemark *topResult = [placemarks objectAtIndex:0];
+        
+        NSString *address = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+        
+        // Create an annotation from the placemark
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        annotation.title = @"Search address";
+        annotation.subtitle = address;
+        annotation.coordinate = topResult.location.coordinate;
+
+        [mapView addAnnotation:annotation];
+    }];
+}
+
+- (void)clearMapAnnotations
+{
+    NSArray *annotations = [mapView.annotations filteredArrayUsingPredicate:
+                            [NSPredicate predicateWithFormat:@"!(self isKindOfClass:%@)", [MKUserLocation class]]];
+    
+    [mapView removeAnnotations:annotations];
+}
+
 #pragma mark - Parse the Snapfresh response
 
 - (void)setAnnotationsForAddressString:(NSString *)address
 {
-	// Remove retailers from the map
-	[mapView removeAnnotations:self.retailers];
+    [self clearMapAnnotations];
     
     // Create the SnapFresh web service URI with address as a parameter
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kSnapFreshURI, 
@@ -196,7 +230,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
 {
     if ([elementName isEqualToString:@"retailers"])
     {
-        //self.retailers = [NSMutableArray array];
         _retailers = [NSMutableArray array];
     }
     else if ([elementName isEqualToString:@"retailer"])
@@ -314,6 +347,57 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
     [delegate annotationsDidLoad:self];
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    static NSString *retailerPinID = @"com.shrtlist.retailerPin";
+    static NSString *searchPinID = @"com.shrtlist.searchPin";
+	
+	MKPinAnnotationView *annotationView = nil;
+	
+	// If it's the user location, just return nil.
+    if (![annotation isKindOfClass:[MKUserLocation class]])
+    {
+        if ([annotation isKindOfClass:[SnapRetailer class]])
+        {
+            // Try to dequeue an existing annotation view first
+            annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:retailerPinID];
+            
+            if (!annotationView)
+            {
+                // If an existing annotation view was not available, create one
+                annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:retailerPinID];
+                annotationView.canShowCallout = YES;
+                annotationView.pinColor = MKPinAnnotationColorGreen;
+                annotationView.animatesDrop = YES;
+            }
+            else
+            {
+                annotationView.annotation = annotation;
+            }
+        }
+        else
+        {
+            // Try to dequeue an existing annotation view first
+            annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:searchPinID];
+            
+            if (!annotationView)
+            {
+                // If an existing annotation view was not available, create one
+                annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:searchPinID];
+                annotationView.canShowCallout = YES;
+                annotationView.pinColor = MKPinAnnotationColorRed;
+                annotationView.animatesDrop = YES;
+            }
+            else
+            {
+                annotationView.annotation = annotation;
+            }
+        }
+	}
+	
+    return annotationView;
+}
+
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
 	static BOOL didSetRegion = NO;
@@ -363,6 +447,8 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
     {
         [searchBar resignFirstResponder];
     }
+    
+    [self setSearchBarAnnotation:searchBar.text];
 
     [self setAnnotationsForAddressString:searchBar.text];
 }
