@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>SnapFresh helps you find the closest places that accept EBT cards (Food Stamps/SNAP). We use Yelp to try and show the healthier places first.</string>
+			<string>SnapFresh helps you find the closest places that accept SNAP (Food Stamp) EBT cards. We use Yelp to try and show the healthier places first.</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
