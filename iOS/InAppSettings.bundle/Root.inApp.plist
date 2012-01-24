@@ -34,13 +34,15 @@
 			<key>IASKMailComposeBccRecipents</key>
 			<array/>
 			<key>IASKMailComposeBody</key>
-			<string>SnapFresh helps you find the closest places that accept EBT cards (Food Stamps/SNAP).</string>
+			<string>Check out SnapFresh on iTunes:
+
+http://itunes.apple.com/us/app/snapfresh/id495606148?ls=1&amp;mt=8</string>
 			<key>IASKMailComposeBodyIsHTML</key>
 			<string>NO</string>
 			<key>IASKMailComposeCcRecipents</key>
 			<array/>
 			<key>IASKMailComposeSubject</key>
-			<string>SnapFresh</string>
+			<string>Check out SnapFresh on iTunes</string>
 			<key>IASKMailComposeToRecipents</key>
 			<array/>
 			<key>Title</key>
