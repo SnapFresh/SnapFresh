@@ -151,6 +151,16 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
     [self presentModalViewController:navController animated:YES];
 }
 
+#pragma mark - Map utility methods
+
+- (void)clearMapAnnotations
+{
+    NSArray *annotations = [mapView.annotations filteredArrayUsingPredicate:
+                            [NSPredicate predicateWithFormat:@"!(self isKindOfClass:%@)", [MKUserLocation class]]];
+    
+    [mapView removeAnnotations:annotations];
+}
+
 - (void)setSearchBarAnnotation:(NSString *)text
 {
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
@@ -176,14 +186,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
 
         [mapView addAnnotation:annotation];
     }];
-}
-
-- (void)clearMapAnnotations
-{
-    NSArray *annotations = [mapView.annotations filteredArrayUsingPredicate:
-                            [NSPredicate predicateWithFormat:@"!(self isKindOfClass:%@)", [MKUserLocation class]]];
-    
-    [mapView removeAnnotations:annotations];
 }
 
 #pragma mark - Parse the Snapfresh response
@@ -222,6 +224,30 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
             [mapView.delegate mapView:mapView didAddAnnotationViews:self.retailers];
         });
     });
+}
+
+#pragma mark - Update the visible map rectangle
+
+- (void)updateVisibleMapRect
+{
+    MKMapRect zoomRect = MKMapRectNull;
+    
+    for (id <MKAnnotation> annotation in [self retailers])
+    {
+        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
+        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
+        
+        if (MKMapRectIsNull(zoomRect))
+        {
+            zoomRect = pointRect;
+        }
+        else
+        {
+            zoomRect = MKMapRectUnion(zoomRect, pointRect);
+        }
+    }
+    
+    [mapView setVisibleMapRect:zoomRect animated:YES];
 }
 
 #pragma mark - NSXMLParserDelegate conformance
@@ -286,30 +312,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.xml/?
     }
 
     currentElementValue = nil;
-}
-
-#pragma mark - Update the visible map rectangle
-
-- (void)updateVisibleMapRect
-{
-    MKMapRect zoomRect = MKMapRectNull;
-
-    for (id <MKAnnotation> annotation in [self retailers])
-    {
-        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
-        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
-
-        if (MKMapRectIsNull(zoomRect))
-        {
-            zoomRect = pointRect;
-        }
-        else
-        {
-            zoomRect = MKMapRectUnion(zoomRect, pointRect);
-        }
-    }
-
-    [mapView setVisibleMapRect:zoomRect animated:YES];
 }
 
 #pragma mark - IASKSettingsDelegate conformance
