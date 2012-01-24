@@ -46,6 +46,8 @@
 		84C89E3E14CCEE6000F68CE0 /* licenses.html in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E3D14CCEE6000F68CE0 /* licenses.html */; };
 		84C89E5614CD300000F68CE0 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E5514CD300000F68CE0 /* location.png */; };
 		84C89E8914CF413600F68CE0 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E8814CF413600F68CE0 /* README.markdown */; };
+		84C89E9114CF587000F68CE0 /* 220px-Supplemental_Nutrition_Assistance_Program_logo.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E8F14CF587000F68CE0 /* 220px-Supplemental_Nutrition_Assistance_Program_logo.svg.png */; };
+		84C89E9214CF587000F68CE0 /* Powered_By_Yelp_Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E9014CF587000F68CE0 /* Powered_By_Yelp_Red.png */; };
 		84DE528F14C949E50023073E /* snapfreshlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DE528E14C949E50023073E /* snapfreshlogo.png */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +114,8 @@
 		84C89E3D14CCEE6000F68CE0 /* licenses.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = licenses.html; sourceTree = "<group>"; };
 		84C89E5514CD300000F68CE0 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location.png; path = Images/location.png; sourceTree = "<group>"; };
 		84C89E8814CF413600F68CE0 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		84C89E8F14CF587000F68CE0 /* 220px-Supplemental_Nutrition_Assistance_Program_logo.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "220px-Supplemental_Nutrition_Assistance_Program_logo.svg.png"; path = "Images/220px-Supplemental_Nutrition_Assistance_Program_logo.svg.png"; sourceTree = "<group>"; };
+		84C89E9014CF587000F68CE0 /* Powered_By_Yelp_Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Powered_By_Yelp_Red.png; path = Images/Powered_By_Yelp_Red.png; sourceTree = "<group>"; };
 		84DE528E14C949E50023073E /* snapfreshlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snapfreshlogo.png; path = Images/snapfreshlogo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -277,7 +281,9 @@
 		84DE528C14C9494C0023073E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				84C89E8F14CF587000F68CE0 /* 220px-Supplemental_Nutrition_Assistance_Program_logo.svg.png */,
 				84C89E5514CD300000F68CE0 /* location.png */,
+				84C89E9014CF587000F68CE0 /* Powered_By_Yelp_Red.png */,
 				84DE528E14C949E50023073E /* snapfreshlogo.png */,
 			);
 			name = Images;
@@ -350,6 +356,8 @@
 				84C89E3E14CCEE6000F68CE0 /* licenses.html in Resources */,
 				84C89E5614CD300000F68CE0 /* location.png in Resources */,
 				84C89E8914CF413600F68CE0 /* README.markdown in Resources */,
+				84C89E9114CF587000F68CE0 /* 220px-Supplemental_Nutrition_Assistance_Program_logo.svg.png in Resources */,
+				84C89E9214CF587000F68CE0 /* Powered_By_Yelp_Red.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
