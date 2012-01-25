@@ -25,3 +25,9 @@ Copyright 2012 Marco Abundo, Ysiad Ferreiras, Aaron Bannert, Jeremy Canfield and
 
 ## Contributing
 Forks, patches and other feedback are always welcome.
+
+## Screenshots
+
+![](https://github.com/ysiadf/AllIncomeFoods/blob/master/iOS/Screenshots/screenshot_landscape.png)
+
+![](https://github.com/ysiadf/AllIncomeFoods/blob/master/iOS/Screenshots/screenshot_portrait.png)
