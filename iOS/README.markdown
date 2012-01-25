@@ -28,6 +28,6 @@ Forks, patches and other feedback are always welcome.
 
 ## Screenshots
 
-![](https://github.com/ysiadf/AllIncomeFoods/blob/master/iOS/Screenshots/screenshot_landscape.png)
+![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_landscape.png)
 
-![](https://github.com/ysiadf/AllIncomeFoods/blob/master/iOS/Screenshots/screenshot_portrait.png)
+![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_portrait.png)
