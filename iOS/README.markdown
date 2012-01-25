@@ -35,3 +35,7 @@ Forks, patches and other feedback are always welcome.
 ### Portrait orientation:
 
 ![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_portrait.png)
+
+### About screen:
+
+![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_about.png)
