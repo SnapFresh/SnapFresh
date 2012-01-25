@@ -28,6 +28,8 @@ Forks, patches and other feedback are always welcome.
 
 ## Screenshots
 
+Landscape orientation:
 ![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_landscape.png)
 
+Portrait orientation:
 ![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_portrait.png)
