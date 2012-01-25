@@ -72,7 +72,7 @@ http://itunes.apple.com/us/app/snapfresh/id495606148?ls=1&amp;mt=8</string>
 			<key>IASKViewControllerSelector</key>
 			<string>initWithFile:key:</string>
 			<key>Title</key>
-			<string>Acknowledgements</string>
+			<string>Attributions</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
