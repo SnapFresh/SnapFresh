@@ -71,7 +71,8 @@ class RetailersController < ApplicationController
     @count = 1
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @retailers}
+      format.xml  { render :xml => @retailers }
+      format.json { render :json => @retailers } 
       format.text { render :text => @retailers.to_enum(:each_with_index).map{|r, i| r.name = "#{i+1}: #{r.name}\n#{r.text_address}"}.join("\n\n")}
     end
   end

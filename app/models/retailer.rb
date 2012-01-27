@@ -36,6 +36,17 @@ class Retailer < ActiveRecord::Base
       [self.street, self.city, self.state, self.zip].join(" ")
     end
     
+    # MMK added this 1/27/2012 due to null "type" errors from XML rendering
+    # See: http://stackoverflow.com/questions/6808958/to-xml-doesnt-work-on-objects-returned-through-rails-activerecord-habtm-referen
+    def to_xml(options = {})
+        to_xml_opts = {:skip_types => true} # no type information, not such a great idea!
+        to_xml_opts.merge!(options.slice(:builder, :skip_instruct))
+        # a builder instance is provided when to_xml is called on a collection,
+        # in which case you would not want to have <?xml ...?> added to each item
+        to_xml_opts[:root] ||= "retailer"
+        self.attributes.to_xml(to_xml_opts)
+    end
+    
     def text_address
       [self.street, self.city, self.state].join(" ")
     end
