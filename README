@@ -75,6 +75,11 @@ _____________________________________________________________________________
 TO CREATE DATABASE AND SEED DATA:
 
 $ rake db:create:all
+
+-- If you are using Ruby 1.9.2 and run into a segmentation fault error upon running the rake command (due to the
+nokogiri gem) run this first: gem pristine nokogiri
+Then rerun the rake command. 
+
 $ rake db:schema:load
 
 Now the database is created, and next you will seed the data, so be sure that you are in the db directory before
