@@ -27,31 +27,15 @@ Prototyping of extraction of backend data and some geocoding associated thereof 
 http://scraperwiki.com/scrapers/allincomefoods/
 
 ----------
-Installing and fixing geokit (DEPRECATED - SKIP TO NEXT SECTION)
-
-Geokit hasn't been upgraded for rails3 yet, but that's ok since there's
-an easy workaround. Once you have the geokit and geokit-rails gems
-installed, find your geokit-rails installation directory and apply a
-patch. My install dir on Fedora is here:
-
-/usr/lib64/ruby/gems/1.8/gems/geokit-rails-1.1.4/lib/geokit-rails
-
-So apply the patch "doc/geokit-rails3.patch" from our root source dir, like this:
-
-sudo cp /usr/lib64/ruby/gems/1.8/gems/geokit-rails-1.1.4/lib/geokit-rails/acts_as_mappable.rb /usr/lib64/ruby/gems/1.8/gems/geokit-rails-1.1.4/lib/geokit-rails/acts_as_mappable.rb.orig
-sudo patch -p0 geokit-rails3.patch /usr/lib64/ruby/gems/1.8/gems/geokit-rails-1.1.4/lib/geokit-rails/acts_as_mappable.rb
-(Sorry for the ugly commands ;)
-
-----------
 INSTALLING AND CONFIGURING POSTGRESQL:
 
-
-FOR MAC PEOPLE WHO AREN'T COMMAND LINE WIZARDS:
 There's many ways you can install postgres locally, but if you're on a Mac, one way that's pretty easy is to download the installer here: http://www.enterprisedb.com/products-services-training/pgdownload#osx (current version as of July 1, 2011 is Version 9.0.4-1, and this is a compatible version with our app).
 
 Once its installed, you need to create the user and install the gem.
 If you're running Mac OSX, you'll need to put pg_config in your path, or you'll get an error upon trying to install the pg
 gem. Do this by running this command at the prompt (instead of the above "sudo gem install pg" command, and assuming you've installed postgresql 9.0):
+
+- If you have installed a different version of PostgreSQL (for ex. 9.1), then set the path statement below accordingly
 
 $ PATH=$PATH:/Library/PostgreSQL/9.0/bin sudo gem install pg
 
