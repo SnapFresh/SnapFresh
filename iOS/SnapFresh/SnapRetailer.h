@@ -28,4 +28,6 @@
 @property (nonatomic, strong) NSNumber *lon;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
+- (id)initWithDictionary:(NSDictionary *)dictionary;
+
 @end

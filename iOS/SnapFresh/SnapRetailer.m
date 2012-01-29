@@ -28,6 +28,31 @@
 @synthesize lon;
 @synthesize city;
 
+#pragma mark - Designated initializer
+
+- (id)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [super init];
+    
+    if (self)
+    {
+        for (NSString *key in [dictionary allKeys])
+        {
+            @try
+            {
+                NSString *value = [dictionary objectForKey:key];
+                [self setValue:value forKey:key];
+            }
+            @catch (NSException *exception)
+            {
+                //NSLog(@"%@", exception);
+            }
+        }
+    }
+    
+    return self;
+}
+
 #pragma mark - address getter implementation
 
 - (NSString *)address

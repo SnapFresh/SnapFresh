@@ -23,7 +23,6 @@
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate, 
                                                     UISearchBarDelegate, 
                                                     MKMapViewDelegate,
-                                                    NSXMLParserDelegate,
                                                     IASKSettingsDelegate>
 {
     NSMutableArray *_retailers;
