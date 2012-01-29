@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-#import "MasterViewController.h"
-#import "DetailViewController.h"
+#import "ListViewController.h"
 #import "SnapRetailer.h"
 
-@implementation MasterViewController
+@implementation ListViewController
 
-@synthesize detailViewController = _detailViewController;
+@synthesize mapViewController = _mapViewController;
 
 #pragma mark - View lifecycle
 
@@ -29,10 +28,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.mapViewController = (MapViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    // Set ourselves as the detailViewController's delegate
-    self.detailViewController.delegate = self;
+    // Set ourselves as the mapViewController's delegate
+    self.mapViewController.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -100,16 +99,16 @@
 
     NSArray *selectedAnnotations = [NSArray arrayWithObject:retailer];
     
-    MKMapView *mapView = self.detailViewController.mapView;
+    MKMapView *mapView = self.mapViewController.mapView;
     
     [mapView setSelectedAnnotations:selectedAnnotations];
 }
 
-#pragma mark - DetailViewControllerDelegate conformance
+#pragma mark - MapViewControllerDelegate conformance
 
-- (void)annotationsDidLoad:(DetailViewController *)controller
+- (void)annotationsDidLoad:(MapViewController *)controller
 {
-    retailers = [self.detailViewController retailers];
+    retailers = [self.mapViewController retailers];
 
     // Reload the data when there are new annotations on the map.
     [self.tableView reloadData];

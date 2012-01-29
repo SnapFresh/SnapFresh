@@ -15,13 +15,13 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "DetailViewController.h"
+#import "MapViewController.h"
 
-@interface MasterViewController : UITableViewController <DetailViewControllerDelegate>
+@interface ListViewController : UITableViewController <MapViewControllerDelegate>
 {
     NSArray *retailers;
 }
 
-@property (nonatomic, strong) DetailViewController *detailViewController;
+@property (nonatomic, strong) MapViewController *mapViewController;
 
 @end

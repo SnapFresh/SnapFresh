@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-#import "DetailViewController.h"
+#import "MapViewController.h"
 #import <AddressBookUI/AddressBookUI.h>
 #import "SnapRetailer.h"
 
-@interface DetailViewController () // Class extension
+@interface MapViewController () // Class extension
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *centerButton;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
@@ -28,7 +28,7 @@
 
 #pragma mark -
 
-@implementation DetailViewController
+@implementation MapViewController
 
 @synthesize mapView;
 @synthesize centerButton;

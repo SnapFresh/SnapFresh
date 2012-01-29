@@ -18,9 +18,9 @@
 #import <MapKit/MapKit.h>
 #import "IASKAppSettingsViewController.h"
 
-@protocol DetailViewControllerDelegate;
+@protocol MapViewControllerDelegate;
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, 
+@interface MapViewController : UIViewController <UISplitViewControllerDelegate, 
                                                     UISearchBarDelegate, 
                                                     MKMapViewDelegate,
                                                     IASKSettingsDelegate>
@@ -29,7 +29,7 @@
     dispatch_queue_t dispatchQueue;
 }
 
-@property (nonatomic, weak) id <DetailViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <MapViewControllerDelegate> delegate;
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong, readonly) NSArray *retailers;
 
@@ -38,6 +38,6 @@
 /**
  * A delegate implements this protocol to be notified when the map is finished loading.
  */
-@protocol DetailViewControllerDelegate
-- (void)annotationsDidLoad:(DetailViewController *)controller;
+@protocol MapViewControllerDelegate
+- (void)annotationsDidLoad:(MapViewController *)controller;
 @end
