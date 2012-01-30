@@ -72,7 +72,7 @@ class RetailersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @retailers }
-      format.json { render :json => @retailers } 
+      format.json { render :json => { :origin => origin, :retailers => @retailers } }
       format.text { render :text => @retailers.to_enum(:each_with_index).map{|r, i| r.name = "#{i+1}: #{r.name}\n#{r.text_address}"}.join("\n\n")}
     end
   end
