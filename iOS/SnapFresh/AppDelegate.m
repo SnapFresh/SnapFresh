@@ -23,12 +23,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-
-    UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-
-    splitViewController.delegate = (id)navigationController.topViewController;
     
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+
+        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+
+        splitViewController.delegate = (id)navigationController.topViewController;
+    }
+
     UIColor *color = [UIColor colorWithRed:0.39 green:0.60 blue:0.2 alpha:1.0];
     [[UIToolbar appearance] setTintColor:color];
 
