@@ -210,14 +210,17 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
             
             // Parse the SnapFresh JSON response
             NSError* error;
-            NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data
-                                                                 options:kNilOptions
-                                                                   error:&error];
+            NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
+                                                                           options:kNilOptions
+                                                                             error:&error];
+            // Get the JSON array of retailers
+            NSArray *retailersJSON = [jsonResponse valueForKey:@"retailers"];
             
             _retailers = [NSMutableArray array];
             
-            for (NSDictionary *jsonDictionary in jsonArray)
+            for (NSDictionary *jsonDictionary in retailersJSON)
             {
+                // Get the JSON dictionary of a retailer
                 NSDictionary *retailerDictionary = [jsonDictionary objectForKey:@"retailer"];
                 SnapRetailer *retailer = [[SnapRetailer alloc] initWithDictionary:retailerDictionary];
                 [_retailers addObject:retailer];
