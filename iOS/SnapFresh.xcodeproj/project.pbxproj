@@ -13,7 +13,7 @@
 		8417059614C75EA100ACF050 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8417059414C75EA100ACF050 /* InfoPlist.strings */; };
 		8417059814C75EA100ACF050 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8417059714C75EA100ACF050 /* main.m */; };
 		8417059C14C75EA100ACF050 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8417059B14C75EA100ACF050 /* AppDelegate.m */; };
-		8417059F14C75EA100ACF050 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8417059D14C75EA100ACF050 /* MainStoryboard.storyboard */; };
+		8417059F14C75EA100ACF050 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8417059D14C75EA100ACF050 /* MainStoryboard_iPad.storyboard */; };
 		841705AD14C760E100ACF050 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841705AB14C760D200ACF050 /* MapKit.framework */; };
 		841705C614C76D9800ACF050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841705C414C76D8B00ACF050 /* CoreLocation.framework */; };
 		8417068C14C8B41200ACF050 /* SnapRetailer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8417068B14C8B41200ACF050 /* SnapRetailer.m */; };
@@ -49,6 +49,7 @@
 		BE7C4BEE14D78C09004A06D6 /* IASKPSTextFieldSpecifierViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7C4BD914D78C09004A06D6 /* IASKPSTextFieldSpecifierViewCell.xib */; };
 		BE7C4BEF14D78C09004A06D6 /* IASKPSToggleSwitchSpecifierViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7C4BDA14D78C09004A06D6 /* IASKPSToggleSwitchSpecifierViewCell.xib */; };
 		BE7C4BF014D78C09004A06D6 /* IASKSpecifierValuesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7C4BDB14D78C09004A06D6 /* IASKSpecifierValuesView.xib */; };
+		BE7C4BF314D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE7C4BF114D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +63,7 @@
 		8417059914C75EA100ACF050 /* SnapFresh-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SnapFresh-Prefix.pch"; sourceTree = "<group>"; };
 		8417059A14C75EA100ACF050 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8417059B14C75EA100ACF050 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8417059E14C75EA100ACF050 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		8417059E14C75EA100ACF050 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		841705AB14C760D200ACF050 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		841705BD14C7688500ACF050 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		841705C414C76D8B00ACF050 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -117,6 +118,7 @@
 		BE7C4BD914D78C09004A06D6 /* IASKPSTextFieldSpecifierViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IASKPSTextFieldSpecifierViewCell.xib; sourceTree = "<group>"; };
 		BE7C4BDA14D78C09004A06D6 /* IASKPSToggleSwitchSpecifierViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IASKPSToggleSwitchSpecifierViewCell.xib; sourceTree = "<group>"; };
 		BE7C4BDB14D78C09004A06D6 /* IASKSpecifierValuesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IASKSpecifierValuesView.xib; sourceTree = "<group>"; };
+		BE7C4BF214D79A3B004A06D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +181,8 @@
 				8417059B14C75EA100ACF050 /* AppDelegate.m */,
 				84C89EBC14D4D6FC00F68CE0 /* ListViewController.h */,
 				84C89EBD14D4D6FC00F68CE0 /* ListViewController.m */,
-				8417059D14C75EA100ACF050 /* MainStoryboard.storyboard */,
+				8417059D14C75EA100ACF050 /* MainStoryboard_iPad.storyboard */,
+				BE7C4BF114D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard */,
 				84C89EBE14D4D6FC00F68CE0 /* MapViewController.h */,
 				84C89EBF14D4D6FC00F68CE0 /* MapViewController.m */,
 				8417068A14C8B41200ACF050 /* SnapRetailer.h */,
@@ -344,7 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8417059614C75EA100ACF050 /* InfoPlist.strings in Resources */,
-				8417059F14C75EA100ACF050 /* MainStoryboard.storyboard in Resources */,
+				8417059F14C75EA100ACF050 /* MainStoryboard_iPad.storyboard in Resources */,
 				84DE528F14C949E50023073E /* snapfreshlogo.png in Resources */,
 				84494D7A14CB9BBE0018133C /* InAppSettings.bundle in Resources */,
 				84C89E3E14CCEE6000F68CE0 /* licenses.html in Resources */,
@@ -358,6 +361,7 @@
 				BE7C4BEE14D78C09004A06D6 /* IASKPSTextFieldSpecifierViewCell.xib in Resources */,
 				BE7C4BEF14D78C09004A06D6 /* IASKPSToggleSwitchSpecifierViewCell.xib in Resources */,
 				BE7C4BF014D78C09004A06D6 /* IASKSpecifierValuesView.xib in Resources */,
+				BE7C4BF314D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,12 +406,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		8417059D14C75EA100ACF050 /* MainStoryboard.storyboard */ = {
+		8417059D14C75EA100ACF050 /* MainStoryboard_iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8417059E14C75EA100ACF050 /* en */,
 			);
-			name = MainStoryboard.storyboard;
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		BE7C4BF114D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE7C4BF214D79A3B004A06D6 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -467,6 +479,7 @@
 				GCC_PREFIX_HEADER = "SnapFresh/SnapFresh-Prefix.pch";
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -478,6 +491,7 @@
 				GCC_PREFIX_HEADER = "SnapFresh/SnapFresh-Prefix.pch";
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
