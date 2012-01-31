@@ -32,6 +32,23 @@ class Retailer < ActiveRecord::Base
       end
     end
     
+    def distancefromorigin(orig)
+        #passed the origin array from the retailers controller
+        lat1 = orig[0]
+        long1 = orig[1]
+        lat2 = self.lat
+        long2 = self.lon
+        radiansperdegree = 3.14159265359 / 180	 
+        lonsrad = (long2 - long1) * radiansperdegree
+        latsrad = (lat2 - lat1) * radiansperdegree	 
+        lat1rad = lat1 * radiansperdegree	 
+        lat2rad = lat2 * radiansperdegree 	 
+        a = (Math.sin(latsrad/2))**2 + Math.cos(lat1rad) * Math.cos(lat2rad) * (Math.sin(lonsrad/2))**2
+        c = 2 * Math.atan2( Math.sqrt(a), Math.sqrt(1-a))
+        dist = 3956 * c        
+        return dist.round(3)
+    end
+    
     def address
       [self.street, self.city, self.state, self.zip].join(" ")
     end
