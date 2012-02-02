@@ -69,11 +69,16 @@ class RetailersController < ApplicationController
                               :order => 'distance',
                               :limit => 5
     @count = 1
+    # populates the instance variable rt array of hashes with the distance and unit for each retailer returned in the retailer collection
+    @rt = Array.new
+    @retailers.each_with_index do |r, ind|
+      @rt[ind] = { :dist => r.distancefromorigin(origin)[:dist], :unit => r.distancefromorigin(origin)[:unit] }
+    end
     respond_to do |format|
-      format.html # show.html.erb
+      format.html 
       format.xml  { render :xml => @retailers }
       format.json { render :json => { :origin => origin, :retailers => @retailers } }
-      format.text { render :text => @retailers.to_enum(:each_with_index).map{|r, i| r.name = "#{i+1} (#{r.distancefromorigin(origin)[:dist]} #{r.distancefromorigin(origin)[:unit]}): #{r.name}\n#{r.text_address}"}.join("\n\n")}
+      format.text { render :text => @retailers.to_enum(:each_with_index).map{|r, i| r.name = "#{i+1} (#{@rt[i][:dist]} #{@rt[i][:unit]}): #{r.name}\n#{r.text_address}"}.join("\n\n")}
     end
   end
 
