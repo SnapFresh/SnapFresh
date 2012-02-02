@@ -45,8 +45,17 @@ class Retailer < ActiveRecord::Base
         lat2rad = lat2 * radiansperdegree 	 
         a = (Math.sin(latsrad/2))**2 + Math.cos(lat1rad) * Math.cos(lat2rad) * (Math.sin(lonsrad/2))**2
         c = 2 * Math.atan2( Math.sqrt(a), Math.sqrt(1-a))
-        dist = 3956 * c        
-        return dist.round(3)
+        # assuming the great circle radius is 6371 km = abt 3958 miles
+        dist = 3958 * c
+        # list feet if under 1 mile. And miles to 2 decimal places if over 1 mile
+        if dist < 1
+            dist = dist * 5280
+            disthash = { :dist => dist.round.to_i, :unit => "ft" }
+        else
+            disthash = { :dist => dist.round(2), :unit => "mi" }
+        end
+        
+        return disthash
     end
     
     def address

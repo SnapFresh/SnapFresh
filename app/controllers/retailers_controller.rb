@@ -73,7 +73,7 @@ class RetailersController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @retailers }
       format.json { render :json => { :origin => origin, :retailers => @retailers } }
-      format.text { render :text => @retailers.to_enum(:each_with_index).map{|r, i| r.name = "#{i+1} (#{r.distancefromorigin(origin)} mi): #{r.name}\n#{r.text_address}"}.join("\n\n")}
+      format.text { render :text => @retailers.to_enum(:each_with_index).map{|r, i| r.name = "#{i+1} (#{r.distancefromorigin(origin)[:dist]} #{r.distancefromorigin(origin)[:unit]}): #{r.name}\n#{r.text_address}"}.join("\n\n")}
     end
   end
 
