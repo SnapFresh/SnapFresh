@@ -101,6 +101,7 @@
     
     MKMapView *mapView = self.mapViewController.mapView;
     
+    [mapView setCenterCoordinate:retailer.coordinate animated:YES];
     [mapView setSelectedAnnotations:selectedAnnotations];
 }
 
