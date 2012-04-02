@@ -403,6 +403,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     if ([searchBar isFirstResponder])
     {
         [searchBar resignFirstResponder];
+        [searchBar setShowsCancelButton:NO animated:YES];
     }
     
     [self setSearchBarAnnotation:searchBar.text];
