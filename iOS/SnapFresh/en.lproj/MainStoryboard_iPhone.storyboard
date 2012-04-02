@@ -37,8 +37,8 @@
                                     <outlet property="delegate" destination="3rx-kf-aqG" id="gDC-mU-pwB"/>
                                 </connections>
                             </searchBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Powered_By_Yelp_Red.png" id="Ry1-wn-Gzg">
-                                <rect key="frame" x="199" y="386" width="115" height="25"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yelp_logo.png" id="y9p-Ny-qb6">
+                                <rect key="frame" x="262" y="340" width="51" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -121,8 +121,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Powered_By_Yelp_Red.png" width="115" height="25"/>
         <image name="location.png" width="20" height="20"/>
+        <image name="yelp_logo.png" width="51" height="27"/>
     </resources>
     <classes>
         <class className="MapViewController" superclassName="UIViewController">

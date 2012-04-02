@@ -73,18 +73,10 @@
                                     <outlet property="delegate" destination="4" id="gFh-6G-jYF"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="f80-bo-Fbw">
-                                <rect key="frame" x="581" y="671" width="115" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="Powered_By_Yelp_Red.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yelp_logo.png" id="8fJ-kd-w0a">
+                                <rect key="frame" x="632" y="657" width="51" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -205,8 +197,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Powered_By_Yelp_Red.png" width="115" height="25"/>
         <image name="location.png" width="20" height="20"/>
+        <image name="yelp_logo.png" width="51" height="27"/>
     </resources>
     <classes>
         <class className="ListViewController" superclassName="UITableViewController">
