@@ -24,8 +24,6 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *segmentWrapper;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
-
-- (void)setAnnotationsForAddressString:(NSString *)address;
 @end
 
 #pragma mark -
@@ -187,6 +185,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
         annotation.coordinate = topResult.location.coordinate;
 
         [mapView addAnnotation:annotation];
+        [mapView setSelectedAnnotations:[NSArray arrayWithObject:annotation]];
     }];
 }
 
@@ -393,9 +392,9 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 
 #pragma mark - UISearchBarDelegate conformance
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-    [searchBar setShowsCancelButton:YES animated:true];
+    [searchBar setShowsCancelButton:YES animated:YES];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -413,7 +412,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    [searchBar setShowsCancelButton:NO animated:true];
+    [searchBar setShowsCancelButton:NO animated:YES];
     [searchBar resignFirstResponder];
 }
 
