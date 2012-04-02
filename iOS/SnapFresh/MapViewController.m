@@ -144,6 +144,11 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     {
         navController.modalPresentationStyle = UIModalPresentationFormSheet;
     }
+    else
+    {
+        appSettingsViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        navController.modalPresentationStyle = UIModalPresentationFullScreen;
+    }
     
     [self presentModalViewController:navController animated:YES];
 }
