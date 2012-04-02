@@ -21,6 +21,8 @@
 @interface MapViewController () // Class extension
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *centerButton;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *segmentWrapper;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
 
 - (void)setAnnotationsForAddressString:(NSString *)address;
@@ -33,6 +35,8 @@
 @synthesize mapView;
 @synthesize centerButton;
 @synthesize searchBar = _searchBar;
+@synthesize segmentWrapper;
+@synthesize mapTypeSegmentedControl;
 @synthesize masterPopoverController;
 @synthesize delegate;
 // Synthesize a read-only property named "retailers", but wire it to the member variable named "_retailers".
@@ -55,6 +59,8 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     [super viewDidLoad];
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"snapfreshlogo.png"]];
+    
+    [segmentWrapper setCustomView:mapTypeSegmentedControl];
     
     // Create a new dispatch queue to which blocks can be submitted.
     dispatchQueue = dispatch_queue_create("com.shrtlist.snapfresh.dispatchQueue", NULL);
@@ -133,10 +139,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     appSettingsViewController.title = NSLocalizedString(@"About", @"About");
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:appSettingsViewController];
-    
-    // Set the nav bar tint color to the SnapFresh house color.
-    UIColor *color = [UIColor colorWithRed:0.39 green:0.60 blue:0.2 alpha:1.0];
-    [navController.navigationBar setTintColor:color];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
@@ -386,6 +388,11 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 
 #pragma mark - UISearchBarDelegate conformance
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    [searchBar setShowsCancelButton:YES animated:true];
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     // Dismiss the keyboard if it's currently open
@@ -397,6 +404,12 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     [self setSearchBarAnnotation:searchBar.text];
 
     [self setAnnotationsForAddressString:searchBar.text];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar setShowsCancelButton:NO animated:true];
+    [searchBar resignFirstResponder];
 }
 
 @end

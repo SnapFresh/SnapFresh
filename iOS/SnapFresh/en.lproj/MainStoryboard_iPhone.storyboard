@@ -1,41 +1,109 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11C74" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3rx-kf-aqG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BFw-3D-97f">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
+        <!--Map View Controller-->
         <scene sceneID="eX1-Wa-Paa">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cda-OC-Gi0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="3rx-kf-aqG" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NS4-CS-cW5">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2Xa-3g-ebo">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="-44" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem image="location.png" id="lTP-Uw-2bK"/>
                                 </items>
                             </toolbar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="MnQ-xl-LwZ">
-                                <rect key="frame" x="0.0" y="44" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="372"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="3rx-kf-aqG" id="nh1-qm-eqe"/>
                                 </connections>
                             </mapView>
+                            <searchBar contentMode="redraw" placeholder="Enter your address or ZIP code" id="V3m-5O-6Zt">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" keyboardType="alphabet"/>
+                                <connections>
+                                    <outlet property="delegate" destination="3rx-kf-aqG" id="gDC-mU-pwB"/>
+                                </connections>
+                            </searchBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Powered_By_Yelp_Red.png" id="Ry1-wn-Gzg">
+                                <rect key="frame" x="199" y="386" width="115" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem image="location.png" id="uvz-oN-CKL">
+                            <connections>
+                                <action selector="centerAction:" destination="3rx-kf-aqG" id="zV5-gG-Pfx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zyz-0Y-KRz"/>
+                        <barButtonItem title="Item" id="2ey-Wn-QqX"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="2XD-PN-yp9"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="centerButton" destination="uvz-oN-CKL" id="0LL-p7-2py"/>
+                        <outlet property="mapTypeSegmentedControl" destination="c9W-U2-ILw" id="IRG-b6-uDL"/>
+                        <outlet property="mapView" destination="MnQ-xl-LwZ" id="3Qs-FL-7MR"/>
+                        <outlet property="searchBar" destination="V3m-5O-6Zt" id="NjV-rh-80c"/>
+                        <outlet property="segmentWrapper" destination="2ey-Wn-QqX" id="bej-PW-gW1"/>
+                    </connections>
                 </viewController>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="c9W-U2-ILw">
+                    <rect key="frame" x="0.0" y="7" width="207" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="Standard"/>
+                        <segment title="Satellite"/>
+                        <segment title="Hybrid"/>
+                    </segments>
+                    <connections>
+                        <action selector="segmentAction:" destination="3rx-kf-aqG" eventType="valueChanged" id="02f-r1-0jK"/>
+                    </connections>
+                </segmentedControl>
+            </objects>
+            <point key="canvasLocation" x="828" y="184"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aSm-At-1ur">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BPX-IA-3RC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController navigationBarHidden="YES" toolbarHidden="NO" id="BFw-3D-97f" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="LIl-3J-tzN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="8QD-xc-Dgf">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="3rx-kf-aqG" kind="relationship" relationship="rootViewController" id="cJ7-CE-orv"/>
+                    </connections>
+                </navigationController>
             </objects>
             <point key="canvasLocation" x="302" y="184"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Powered_By_Yelp_Red.png" width="115" height="25"/>
         <image name="location.png" width="20" height="20"/>
     </resources>
     <classes>
@@ -43,8 +111,10 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="centerButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="mapTypeSegmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="segmentWrapper" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
     </classes>
