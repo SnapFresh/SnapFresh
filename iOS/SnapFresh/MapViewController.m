@@ -233,9 +233,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
             }
             
             [mapView addAnnotations:self.retailers];
-            
-            // Manually fire the mapView delegate method
-            [mapView.delegate mapView:mapView didAddAnnotationViews:self.retailers];
         });
     });
 }
@@ -245,8 +242,8 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 - (void)updateVisibleMapRect
 {
     MKMapRect zoomRect = MKMapRectNull;
-    
-    for (id <MKAnnotation> annotation in [self retailers])
+
+    for (id <MKAnnotation> annotation in mapView.annotations)
     {
         MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
         MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
@@ -293,6 +290,12 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
 {
+    MKAnnotationView *annView = [views objectAtIndex:0];
+    MKAnnotationView *userLocationView = [self.mapView viewForAnnotation:self.mapView.userLocation];
+    if (annView == userLocationView ) {
+        return;
+    }
+    
     [self updateVisibleMapRect];
     
     // Notify our delegate that the map has new annotations.
@@ -321,6 +324,9 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
                 annotationView.canShowCallout = YES;
                 annotationView.pinColor = MKPinAnnotationColorGreen;
                 annotationView.animatesDrop = YES;
+                
+                UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"snap.png"]];
+                annotationView.leftCalloutAccessoryView = sfIconView;
             }
             else
             {
