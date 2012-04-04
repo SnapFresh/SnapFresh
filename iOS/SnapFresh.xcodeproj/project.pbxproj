@@ -20,14 +20,15 @@
 		842298A414CA147300D84986 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842298A114CA146600D84986 /* AddressBookUI.framework */; };
 		84494D7814CB93FE0018133C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84494D7614CB93EE0018133C /* MessageUI.framework */; };
 		84494D7A14CB9BBE0018133C /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84494D7914CB9BBE0018133C /* InAppSettings.bundle */; };
-		8486A890152930CC00F9C918 /* yelp_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8486A88E152930CC00F9C918 /* yelp_logo.png */; };
-		8486A891152930CC00F9C918 /* yelp_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8486A88F152930CC00F9C918 /* yelp_logo@2x.png */; };
 		84AFF098152C1D72007F4534 /* snap.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF097152C1D72007F4534 /* snap.png */; };
 		84AFF09A152C202D007F4534 /* snap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF099152C202D007F4534 /* snap@2x.png */; };
 		84AFF0A9152C2F23007F4534 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0A7152C2F23007F4534 /* location.png */; };
 		84AFF0AA152C2F23007F4534 /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0A8152C2F23007F4534 /* location@2x.png */; };
 		84AFF0AD152C38BA007F4534 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0AB152C38BA007F4534 /* Icon.png */; };
 		84AFF0AE152C38BA007F4534 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0AC152C38BA007F4534 /* Icon@2x.png */; };
+		84AFF0B1152C48DB007F4534 /* yelp_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0AF152C48DB007F4534 /* yelp_logo.png */; };
+		84AFF0B2152C48DB007F4534 /* yelp_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0B0152C48DB007F4534 /* yelp_logo@2x.png */; };
+		84AFF0B4152C4A02007F4534 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0B3152C4A02007F4534 /* Icon-72.png */; };
 		84C89E3E14CCEE6000F68CE0 /* licenses.html in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E3D14CCEE6000F68CE0 /* licenses.html */; };
 		84C89E8914CF413600F68CE0 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E8814CF413600F68CE0 /* README.markdown */; };
 		84C89E9614CF6EBC00F68CE0 /* snaplogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E9514CF6EBC00F68CE0 /* snaplogo.png */; };
@@ -78,14 +79,15 @@
 		842298A114CA146600D84986 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		84494D7614CB93EE0018133C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		84494D7914CB9BBE0018133C /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
-		8486A88E152930CC00F9C918 /* yelp_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yelp_logo.png; sourceTree = "<group>"; };
-		8486A88F152930CC00F9C918 /* yelp_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yelp_logo@2x.png"; sourceTree = "<group>"; };
 		84AFF097152C1D72007F4534 /* snap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snap.png; path = Images/snap.png; sourceTree = "<group>"; };
 		84AFF099152C202D007F4534 /* snap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snap@2x.png"; path = "Images/snap@2x.png"; sourceTree = "<group>"; };
 		84AFF0A7152C2F23007F4534 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location.png; path = Images/location.png; sourceTree = "<group>"; };
 		84AFF0A8152C2F23007F4534 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location@2x.png"; path = "Images/location@2x.png"; sourceTree = "<group>"; };
 		84AFF0AB152C38BA007F4534 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Images/Icon.png; sourceTree = "<group>"; };
 		84AFF0AC152C38BA007F4534 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Images/Icon@2x.png"; sourceTree = "<group>"; };
+		84AFF0AF152C48DB007F4534 /* yelp_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yelp_logo.png; path = Images/yelp_logo.png; sourceTree = "<group>"; };
+		84AFF0B0152C48DB007F4534 /* yelp_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yelp_logo@2x.png"; path = "Images/yelp_logo@2x.png"; sourceTree = "<group>"; };
+		84AFF0B3152C4A02007F4534 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Images/Icon-72.png"; sourceTree = "<group>"; };
 		84C89E3D14CCEE6000F68CE0 /* licenses.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = licenses.html; sourceTree = "<group>"; };
 		84C89E8814CF413600F68CE0 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		84C89E9514CF6EBC00F68CE0 /* snaplogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snaplogo.png; path = Images/snaplogo.png; sourceTree = "<group>"; };
@@ -222,14 +224,15 @@
 			children = (
 				84AFF0AB152C38BA007F4534 /* Icon.png */,
 				84AFF0AC152C38BA007F4534 /* Icon@2x.png */,
+				84AFF0B3152C4A02007F4534 /* Icon-72.png */,
 				84AFF0A7152C2F23007F4534 /* location.png */,
 				84AFF0A8152C2F23007F4534 /* location@2x.png */,
 				84AFF097152C1D72007F4534 /* snap.png */,
 				84AFF099152C202D007F4534 /* snap@2x.png */,
 				84DE528E14C949E50023073E /* snapfreshlogo.png */,
 				84C89E9514CF6EBC00F68CE0 /* snaplogo.png */,
-				8486A88E152930CC00F9C918 /* yelp_logo.png */,
-				8486A88F152930CC00F9C918 /* yelp_logo@2x.png */,
+				84AFF0AF152C48DB007F4534 /* yelp_logo.png */,
+				84AFF0B0152C48DB007F4534 /* yelp_logo@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -378,14 +381,15 @@
 				BE7C4BEF14D78C09004A06D6 /* IASKPSToggleSwitchSpecifierViewCell.xib in Resources */,
 				BE7C4BF014D78C09004A06D6 /* IASKSpecifierValuesView.xib in Resources */,
 				BE7C4BF314D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard in Resources */,
-				8486A890152930CC00F9C918 /* yelp_logo.png in Resources */,
-				8486A891152930CC00F9C918 /* yelp_logo@2x.png in Resources */,
 				84AFF098152C1D72007F4534 /* snap.png in Resources */,
 				84AFF09A152C202D007F4534 /* snap@2x.png in Resources */,
 				84AFF0A9152C2F23007F4534 /* location.png in Resources */,
 				84AFF0AA152C2F23007F4534 /* location@2x.png in Resources */,
 				84AFF0AD152C38BA007F4534 /* Icon.png in Resources */,
 				84AFF0AE152C38BA007F4534 /* Icon@2x.png in Resources */,
+				84AFF0B1152C48DB007F4534 /* yelp_logo.png in Resources */,
+				84AFF0B2152C48DB007F4534 /* yelp_logo@2x.png in Resources */,
+				84AFF0B4152C4A02007F4534 /* Icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,7 +485,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -490,6 +494,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
