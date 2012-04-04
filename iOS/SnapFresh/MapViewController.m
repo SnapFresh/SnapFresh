@@ -63,8 +63,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 {
     [super viewDidLoad];
     
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"snapfreshlogo.png"]];
-    
     [segmentWrapper setCustomView:mapTypeSegmentedControl];
     
     // Create a new dispatch queue to which blocks can be submitted.
