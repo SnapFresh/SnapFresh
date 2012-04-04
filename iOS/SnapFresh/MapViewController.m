@@ -148,7 +148,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
                           duration:0.5 
                            options:UIViewAnimationOptionTransitionFlipFromRight 
                         animations:^{ listView.hidden = YES; mapView.hidden = NO; yelpLogo.hidden = NO; } 
-                        completion:^(BOOL finished){ listBarButtonItem.title = @"List"; }];
+                        completion:^(BOOL finished){ listBarButtonItem.title = @" List"; }];
     }
 }
 

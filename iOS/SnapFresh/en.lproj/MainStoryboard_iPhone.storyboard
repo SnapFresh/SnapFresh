@@ -90,7 +90,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="iPP-pi-kob"/>
                         <barButtonItem title="Item" id="2ey-Wn-QqX"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="bAh-pL-67v"/>
-                        <barButtonItem title="List" id="Iey-7b-n5f">
+                        <barButtonItem title=" List" id="Iey-7b-n5f">
                             <connections>
                                 <action selector="toggleListView" destination="3rx-kf-aqG" id="3Kg-Oj-zUQ"/>
                             </connections>
@@ -183,22 +183,6 @@
         <image name="snapfreshlogo.png" width="105" height="35"/>
         <image name="yelp_logo.png" width="51" height="27"/>
     </resources>
-    <classes>
-        <class className="MapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="toggleListView"/>
-                <relationship kind="outlet" name="centerButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="listBarButtonItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="listView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="mapTypeSegmentedControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="segmentWrapper" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="yelpLogo" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
