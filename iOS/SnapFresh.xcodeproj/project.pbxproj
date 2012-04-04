@@ -36,6 +36,11 @@
 		84C89EC114D4D6FD00F68CE0 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C89EBF14D4D6FC00F68CE0 /* MapViewController.m */; };
 		84D96C50152CA0D300C7CA02 /* snapfreshlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D96C4F152CA0D300C7CA02 /* snapfreshlogo@2x.png */; };
 		84DE528F14C949E50023073E /* snapfreshlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DE528E14C949E50023073E /* snapfreshlogo.png */; };
+		BE108577152CBEEB0015A268 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108572152CBEEB0015A268 /* Icon-29.png */; };
+		BE108578152CBEEB0015A268 /* Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108573152CBEEB0015A268 /* Icon-29@2x.png */; };
+		BE108579152CBEEB0015A268 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108574152CBEEB0015A268 /* Icon-50.png */; };
+		BE10857A152CBEEB0015A268 /* Icon-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108575152CBEEB0015A268 /* Icon-50@2x.png */; };
+		BE10857B152CBEEB0015A268 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108576152CBEEB0015A268 /* Icon-72@2x.png */; };
 		BE7C4BDC14D78C09004A06D6 /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7C4BB614D78C09004A06D6 /* IASKAppSettingsViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BE7C4BDD14D78C09004A06D6 /* IASKAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7C4BB814D78C09004A06D6 /* IASKAppSettingsWebViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BE7C4BDE14D78C09004A06D6 /* IASKSpecifierValuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7C4BBA14D78C09004A06D6 /* IASKSpecifierValuesViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -98,6 +103,11 @@
 		84C89EBF14D4D6FC00F68CE0 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		84D96C4F152CA0D300C7CA02 /* snapfreshlogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snapfreshlogo@2x.png"; path = "Images/snapfreshlogo@2x.png"; sourceTree = "<group>"; };
 		84DE528E14C949E50023073E /* snapfreshlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snapfreshlogo.png; path = Images/snapfreshlogo.png; sourceTree = "<group>"; };
+		BE108572152CBEEB0015A268 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29.png"; path = "Images/Icon-29.png"; sourceTree = "<group>"; };
+		BE108573152CBEEB0015A268 /* Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29@2x.png"; path = "Images/Icon-29@2x.png"; sourceTree = "<group>"; };
+		BE108574152CBEEB0015A268 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-50.png"; path = "Images/Icon-50.png"; sourceTree = "<group>"; };
+		BE108575152CBEEB0015A268 /* Icon-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-50@2x.png"; path = "Images/Icon-50@2x.png"; sourceTree = "<group>"; };
+		BE108576152CBEEB0015A268 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Images/Icon-72@2x.png"; sourceTree = "<group>"; };
 		BE7C4BB514D78C09004A06D6 /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsViewController.h; sourceTree = "<group>"; };
 		BE7C4BB614D78C09004A06D6 /* IASKAppSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASKAppSettingsViewController.m; sourceTree = "<group>"; };
 		BE7C4BB714D78C09004A06D6 /* IASKAppSettingsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsWebViewController.h; sourceTree = "<group>"; };
@@ -226,6 +236,11 @@
 			children = (
 				84AFF0AB152C38BA007F4534 /* Icon.png */,
 				84AFF0AC152C38BA007F4534 /* Icon@2x.png */,
+				BE108572152CBEEB0015A268 /* Icon-29.png */,
+				BE108573152CBEEB0015A268 /* Icon-29@2x.png */,
+				BE108574152CBEEB0015A268 /* Icon-50.png */,
+				BE108575152CBEEB0015A268 /* Icon-50@2x.png */,
+				BE108576152CBEEB0015A268 /* Icon-72@2x.png */,
 				84AFF0B3152C4A02007F4534 /* Icon-72.png */,
 				84AFF0A7152C2F23007F4534 /* location.png */,
 				84AFF0A8152C2F23007F4534 /* location@2x.png */,
@@ -394,6 +409,11 @@
 				84AFF0B2152C48DB007F4534 /* yelp_logo@2x.png in Resources */,
 				84AFF0B4152C4A02007F4534 /* Icon-72.png in Resources */,
 				84D96C50152CA0D300C7CA02 /* snapfreshlogo@2x.png in Resources */,
+				BE108577152CBEEB0015A268 /* Icon-29.png in Resources */,
+				BE108578152CBEEB0015A268 /* Icon-29@2x.png in Resources */,
+				BE108579152CBEEB0015A268 /* Icon-50.png in Resources */,
+				BE10857A152CBEEB0015A268 /* Icon-50@2x.png in Resources */,
+				BE10857B152CBEEB0015A268 /* Icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
