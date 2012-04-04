@@ -20,10 +20,12 @@
 
 @protocol MapViewControllerDelegate;
 
-@interface MapViewController : UIViewController <UISplitViewControllerDelegate, 
-                                                    UISearchBarDelegate, 
-                                                    MKMapViewDelegate,
-                                                    IASKSettingsDelegate>
+@interface MapViewController : UIViewController <UISplitViewControllerDelegate,
+                                                 UISearchBarDelegate,
+                                                 MKMapViewDelegate,
+                                                 UITableViewDataSource,
+                                                 UITableViewDelegate,
+                                                 IASKSettingsDelegate>
 {
     NSMutableArray *_retailers;
     dispatch_queue_t dispatchQueue;

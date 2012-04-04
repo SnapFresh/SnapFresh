@@ -19,11 +19,15 @@
 #import "SnapRetailer.h"
 
 @interface MapViewController () // Class extension
+@property (nonatomic, weak) IBOutlet UITableView *listView;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *centerButton;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *segmentWrapper;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *listBarButtonItem;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
+@property (nonatomic, weak) IBOutlet UIImageView *yelpLogo;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
+- (IBAction)toggleListView;
 @end
 
 #pragma mark -
@@ -31,10 +35,13 @@
 @implementation MapViewController
 
 @synthesize mapView;
+@synthesize listView;
 @synthesize centerButton;
 @synthesize searchBar = _searchBar;
 @synthesize segmentWrapper;
+@synthesize listBarButtonItem;
 @synthesize mapTypeSegmentedControl;
+@synthesize yelpLogo;
 @synthesize masterPopoverController;
 @synthesize delegate;
 // Synthesize a read-only property named "retailers", but wire it to the member variable named "_retailers".
@@ -125,6 +132,26 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 	{
 		[mapView setMapType:MKMapTypeHybrid];
 	}
+}
+
+- (IBAction)toggleListView
+{
+    if (listView.hidden)
+    {
+        [UIView transitionWithView:self.view 
+                          duration:0.5 
+                           options:UIViewAnimationOptionTransitionFlipFromLeft 
+                        animations:^{ listView.hidden = NO; mapView.hidden = YES; yelpLogo.hidden = YES; } 
+                        completion:^(BOOL finished){ listBarButtonItem.title = @"Map"; }];
+    }
+    else
+    {
+        [UIView transitionWithView:self.view 
+                          duration:0.5 
+                           options:UIViewAnimationOptionTransitionFlipFromRight 
+                        animations:^{ listView.hidden = YES; mapView.hidden = NO; yelpLogo.hidden = NO; } 
+                        completion:^(BOOL finished){ listBarButtonItem.title = @"List"; }];
+    }
 }
 
 - (IBAction)showInfoView:(id)sender
@@ -233,6 +260,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
             
             [mapView addAnnotations:self.retailers];
             [mapView selectAnnotation:[self.retailers objectAtIndex:0] animated:YES];
+            [listView reloadData];
             [self updateVisibleMapRect];
             
             // Notify our delegate that the map has new annotations.
@@ -384,6 +412,42 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 - (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
 {
 	[centerButton setEnabled:NO];
+}
+
+
+#pragma mark - UITableViewDataSource conformance
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.retailers.count;
+}
+
+// Customize the appearance of table view cells
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{	
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    SnapRetailer *retailer = [self.retailers objectAtIndex:indexPath.row];
+    
+    // Set the cell labels with SnapFresh retailer info
+    cell.textLabel.text = retailer.name;
+    cell.detailTextLabel.text = retailer.address;
+	
+	return cell;
+}
+
+#pragma mark - UITableViewDelegate conformance
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    SnapRetailer *retailer = [self.retailers objectAtIndex:indexPath.row];
+    [mapView setCenterCoordinate:retailer.coordinate];
+    [mapView selectAnnotation:retailer animated:NO];
+    [self toggleListView];
 }
 
 #pragma mark - UISearchBarDelegate conformance
