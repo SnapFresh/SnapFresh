@@ -185,7 +185,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
         annotation.coordinate = topResult.location.coordinate;
 
         [mapView addAnnotation:annotation];
-        [mapView setSelectedAnnotations:[NSArray arrayWithObject:annotation]];
     }];
 }
 
@@ -233,6 +232,11 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
             }
             
             [mapView addAnnotations:self.retailers];
+            [mapView selectAnnotation:[self.retailers objectAtIndex:0] animated:YES];
+            [self updateVisibleMapRect];
+            
+            // Notify our delegate that the map has new annotations.
+            [delegate annotationsDidLoad:self];
         });
     });
 }
@@ -243,7 +247,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 {
     MKMapRect zoomRect = MKMapRectNull;
 
-    for (id <MKAnnotation> annotation in mapView.annotations)
+    for (id <MKAnnotation> annotation in [self retailers])
     {
         MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
         MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
@@ -287,20 +291,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 }
 
 #pragma mark - MKMapViewDelegate conformance
-
-- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
-{
-    MKAnnotationView *annView = [views objectAtIndex:0];
-    MKAnnotationView *userLocationView = [self.mapView viewForAnnotation:self.mapView.userLocation];
-    if (annView == userLocationView ) {
-        return;
-    }
-    
-    [self updateVisibleMapRect];
-    
-    // Notify our delegate that the map has new annotations.
-    [delegate annotationsDidLoad:self];
-}
 
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
