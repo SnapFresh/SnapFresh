@@ -234,12 +234,15 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
         UIApplication* app = [UIApplication sharedApplication];
         app.networkActivityIndicatorVisible = NO;
         
-        if (data)
-        {
-            // Create a block that gets queued up in the main_queue, a default serial queue,
-            // which parses the XML content
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
+        // Create a block that gets queued up in the main_queue, a default serial queue
+        dispatch_async(dispatch_get_main_queue(), ^{
+        
+            if (data == nil)
+            {
+                self.searchBar.text = nil;
+            }
+            else
+            {
                 // Parse the SnapFresh JSON response
                 NSError* error;
                 NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
@@ -265,8 +268,8 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
                 
                 // Notify our delegate that the map has new annotations.
                 [delegate annotationsDidLoad:self];
-            });
-        }
+            }
+        });
     });
 }
 
