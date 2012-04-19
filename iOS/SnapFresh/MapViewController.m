@@ -231,39 +231,42 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
         
         NSData *data = [NSData dataWithContentsOfURL:url];
         
-        // Create a block that gets queued up in the main_queue, a default serial queue,
-        // which parses the XML content
-        dispatch_async(dispatch_get_main_queue(), ^{
-
-            UIApplication* app = [UIApplication sharedApplication];
-            app.networkActivityIndicatorVisible = NO;
-            
-            // Parse the SnapFresh JSON response
-            NSError* error;
-            NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
-                                                                           options:kNilOptions
-                                                                             error:&error];
-            // Get the JSON array of retailers
-            NSArray *retailersJSON = [jsonResponse valueForKey:@"retailers"];
-            
-            _retailers = [NSMutableArray array];
-            
-            for (NSDictionary *jsonDictionary in retailersJSON)
-            {
-                // Get the JSON dictionary of a retailer
-                NSDictionary *retailerDictionary = [jsonDictionary objectForKey:@"retailer"];
-                SnapRetailer *retailer = [[SnapRetailer alloc] initWithDictionary:retailerDictionary];
-                [_retailers addObject:retailer];
-            }
-            
-            [mapView addAnnotations:self.retailers];
-            [mapView selectAnnotation:[self.retailers objectAtIndex:0] animated:YES];
-            [listView reloadData];
-            [self updateVisibleMapRect];
-            
-            // Notify our delegate that the map has new annotations.
-            [delegate annotationsDidLoad:self];
-        });
+        UIApplication* app = [UIApplication sharedApplication];
+        app.networkActivityIndicatorVisible = NO;
+        
+        if (data)
+        {
+            // Create a block that gets queued up in the main_queue, a default serial queue,
+            // which parses the XML content
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                // Parse the SnapFresh JSON response
+                NSError* error;
+                NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
+                                                                               options:kNilOptions
+                                                                                 error:&error];
+                // Get the JSON array of retailers
+                NSArray *retailersJSON = [jsonResponse valueForKey:@"retailers"];
+                
+                _retailers = [NSMutableArray array];
+                
+                for (NSDictionary *jsonDictionary in retailersJSON)
+                {
+                    // Get the JSON dictionary of a retailer
+                    NSDictionary *retailerDictionary = [jsonDictionary objectForKey:@"retailer"];
+                    SnapRetailer *retailer = [[SnapRetailer alloc] initWithDictionary:retailerDictionary];
+                    [_retailers addObject:retailer];
+                }
+                
+                [mapView addAnnotations:self.retailers];
+                [mapView selectAnnotation:[self.retailers objectAtIndex:0] animated:YES];
+                [listView reloadData];
+                [self updateVisibleMapRect];
+                
+                // Notify our delegate that the map has new annotations.
+                [delegate annotationsDidLoad:self];
+            });
+        }
     });
 }
 
