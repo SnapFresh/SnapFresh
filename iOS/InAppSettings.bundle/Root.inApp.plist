@@ -84,7 +84,7 @@ http://itunes.apple.com/us/app/snapfresh/id495606148?ls=1&amp;mt=8</string>
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>1.0</string>
+			<string>1.1</string>
 			<key>Key</key>
 			<string>version</string>
 			<key>Title</key>
