@@ -41,3 +41,11 @@ default_environment["PATH"] = %w[ /bin
                                  ].join(":")
 role :app, "localhost"
 
+namespace :deploy do
+  task :restart do 
+    # passenger
+    run "touch tmp/restart.txt"
+   # or 
+   # sudo "/etc/init.d/apache2 restart"
+  end
+end
