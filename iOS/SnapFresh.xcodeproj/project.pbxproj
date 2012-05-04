@@ -20,6 +20,8 @@
 		842298A414CA147300D84986 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842298A114CA146600D84986 /* AddressBookUI.framework */; };
 		84494D7814CB93FE0018133C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84494D7614CB93EE0018133C /* MessageUI.framework */; };
 		84494D7A14CB9BBE0018133C /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84494D7914CB9BBE0018133C /* InAppSettings.bundle */; };
+		8474D0E3155397480087483E /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8474D0E0155397480087483E /* SVProgressHUD.bundle */; };
+		8474D0E4155397480087483E /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8474D0E2155397480087483E /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84AFF098152C1D72007F4534 /* snap.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF097152C1D72007F4534 /* snap.png */; };
 		84AFF09A152C202D007F4534 /* snap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF099152C202D007F4534 /* snap@2x.png */; };
 		84AFF0A9152C2F23007F4534 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0A7152C2F23007F4534 /* location.png */; };
@@ -88,6 +90,9 @@
 		842298A114CA146600D84986 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		84494D7614CB93EE0018133C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		84494D7914CB9BBE0018133C /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
+		8474D0E0155397480087483E /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		8474D0E1155397480087483E /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		8474D0E2155397480087483E /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		84AFF097152C1D72007F4534 /* snap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snap.png; path = Images/snap.png; sourceTree = "<group>"; };
 		84AFF099152C202D007F4534 /* snap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snap@2x.png"; path = "Images/snap@2x.png"; sourceTree = "<group>"; };
 		84AFF0A7152C2F23007F4534 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location.png; path = Images/location.png; sourceTree = "<group>"; };
@@ -208,6 +213,7 @@
 		8417059114C75EA100ACF050 /* SnapFresh */ = {
 			isa = PBXGroup;
 			children = (
+				8474D0DF155397480087483E /* SVProgressHUD */,
 				BE7C4BB314D78C09004A06D6 /* InAppSettingsKit */,
 				8417059A14C75EA100ACF050 /* AppDelegate.h */,
 				8417059B14C75EA100ACF050 /* AppDelegate.m */,
@@ -235,6 +241,16 @@
 				8417059914C75EA100ACF050 /* SnapFresh-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8474D0DF155397480087483E /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8474D0E0155397480087483E /* SVProgressHUD.bundle */,
+				8474D0E1155397480087483E /* SVProgressHUD.h */,
+				8474D0E2155397480087483E /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		84DE528C14C9494C0023073E /* Images */ = {
@@ -426,6 +442,7 @@
 				BE108589152CC91A0015A268 /* Default-Portrait~ipad.png in Resources */,
 				BE10858B152CCA450015A268 /* Default.png in Resources */,
 				BE10858D152CCB1A0015A268 /* Default-Landscape~ipad.png in Resources */,
+				8474D0E3155397480087483E /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +473,7 @@
 				BE7C4BE814D78C09004A06D6 /* IASKSlider.m in Sources */,
 				BE7C4BE914D78C09004A06D6 /* IASKSwitch.m in Sources */,
 				BE7C4BEA14D78C09004A06D6 /* IASKTextField.m in Sources */,
+				8474D0E4155397480087483E /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

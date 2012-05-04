@@ -17,6 +17,7 @@
 #import "MapViewController.h"
 #import <AddressBookUI/AddressBookUI.h>
 #import "SnapRetailer.h"
+#import "SVProgressHUD.h"
 
 @interface MapViewController () // Class extension
 @property (nonatomic, weak) IBOutlet UITableView *listView;
@@ -106,9 +107,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     if (CLLocationCoordinate2DIsValid(coordinate))
     {
         NSString *address = mapView.userLocation.subtitle;
-        
         self.searchBar.text = address;
-        
         [self setAnnotationsForAddressString:address];
     }
 }
@@ -225,6 +224,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 
     UIApplication* app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = YES;
+    [SVProgressHUD showWithStatus:@"Finding SNAP retailers..."];
 
     // Submit a block for asynchronous execution to our dispatchQueue and return immediately.
     dispatch_async(dispatchQueue, ^{
@@ -239,10 +239,13 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
         
             if (data == nil)
             {
+                [SVProgressHUD dismissWithError:@"No SNAP retailers found" afterDelay:1];
                 self.searchBar.text = nil;
             }
             else
-            {
+            {                
+                [SVProgressHUD dismissWithSuccess:@"Loading SNAP retailers" afterDelay:1];
+
                 // Parse the SnapFresh JSON response
                 NSError* error;
                 NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
