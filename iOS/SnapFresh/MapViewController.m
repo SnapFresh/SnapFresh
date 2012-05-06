@@ -153,8 +153,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 
 - (IBAction)showInfoView:(id)sender
 {
-    [SVProgressHUD dismiss];
-
     MDAboutController *aboutController = [[MDAboutController alloc] initWithStyle:[MDACMochiDevStyle style]];
     [aboutController removeLastCredit];    
     
@@ -168,8 +166,9 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
         aboutController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         aboutController.modalPresentationStyle = UIModalPresentationFullScreen;
     }
-    
+
     [self presentModalViewController:aboutController animated:YES];
+    [SVProgressHUD dismiss];
 }
 
 #pragma mark - Map utility methods
