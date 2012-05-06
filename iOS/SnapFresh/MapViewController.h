@@ -16,7 +16,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "IASKAppSettingsViewController.h"
 
 @protocol MapViewControllerDelegate;
 
@@ -24,8 +23,7 @@
                                                  UISearchBarDelegate,
                                                  MKMapViewDelegate,
                                                  UITableViewDataSource,
-                                                 UITableViewDelegate,
-                                                 IASKSettingsDelegate>
+                                                 UITableViewDelegate>
 {
     NSMutableArray *_retailers;
     dispatch_queue_t dispatchQueue;

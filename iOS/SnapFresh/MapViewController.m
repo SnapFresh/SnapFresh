@@ -18,6 +18,7 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "SnapRetailer.h"
 #import "SVProgressHUD.h"
+#import "MDACClasses.h"
 
 @interface MapViewController () // Class extension
 @property (nonatomic, weak) IBOutlet UITableView *listView;
@@ -28,7 +29,6 @@
 @property (nonatomic, weak) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (nonatomic, weak) IBOutlet UIImageView *yelpLogo;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
-- (IBAction)toggleListView;
 @end
 
 #pragma mark -
@@ -152,27 +152,22 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 }
 
 - (IBAction)showInfoView:(id)sender
-{
-    IASKAppSettingsViewController *appSettingsViewController = [[IASKAppSettingsViewController alloc] init];
-    [appSettingsViewController setShowCreditsFooter:NO];   // Uncomment to not display InAppSettingsKit credits for creators.
-    // But we encourage you not to uncomment. Thank you!
-    appSettingsViewController.showDoneButton = YES;
-    appSettingsViewController.delegate = self;
-    appSettingsViewController.title = NSLocalizedString(@"About", @"About");
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:appSettingsViewController];
+{    
+    MDAboutController *aboutController = [[MDAboutController alloc] initWithStyle:[MDACMochiDevStyle style]];
+    [aboutController removeLastCredit];    
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        navController.modalPresentationStyle = UIModalPresentationFormSheet;
+        aboutController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        aboutController.modalPresentationStyle = UIModalPresentationFormSheet;
     }
     else
     {
-        appSettingsViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        navController.modalPresentationStyle = UIModalPresentationFullScreen;
+        aboutController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        aboutController.modalPresentationStyle = UIModalPresentationFullScreen;
     }
     
-    [self presentModalViewController:navController animated:YES];
+    [self presentModalViewController:aboutController animated:YES];
 }
 
 #pragma mark - Map utility methods
@@ -298,13 +293,6 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     }
     
     [mapView setVisibleMapRect:zoomRect animated:YES];
-}
-
-#pragma mark - IASKSettingsDelegate conformance
-
-- (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender
-{
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - UISplitViewControllerDelegate conformance
