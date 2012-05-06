@@ -97,7 +97,6 @@
 		84AFF0B2152C48DB007F4534 /* yelp_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0B0152C48DB007F4534 /* yelp_logo@2x.png */; };
 		84AFF0B4152C4A02007F4534 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0B3152C4A02007F4534 /* Icon-72.png */; };
 		84C89E3E14CCEE6000F68CE0 /* licenses.html in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E3D14CCEE6000F68CE0 /* licenses.html */; };
-		84C89E8914CF413600F68CE0 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E8814CF413600F68CE0 /* README.markdown */; };
 		84C89E9614CF6EBC00F68CE0 /* snaplogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E9514CF6EBC00F68CE0 /* snaplogo.png */; };
 		84C89EC014D4D6FD00F68CE0 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C89EBD14D4D6FC00F68CE0 /* ListViewController.m */; };
 		84C89EC114D4D6FD00F68CE0 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C89EBF14D4D6FC00F68CE0 /* MapViewController.m */; };
@@ -226,7 +225,6 @@
 		84AFF0B0152C48DB007F4534 /* yelp_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yelp_logo@2x.png"; path = "Images/yelp_logo@2x.png"; sourceTree = "<group>"; };
 		84AFF0B3152C4A02007F4534 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Images/Icon-72.png"; sourceTree = "<group>"; };
 		84C89E3D14CCEE6000F68CE0 /* licenses.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = licenses.html; sourceTree = "<group>"; };
-		84C89E8814CF413600F68CE0 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		84C89E9514CF6EBC00F68CE0 /* snaplogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snaplogo.png; path = Images/snaplogo.png; sourceTree = "<group>"; };
 		84C89EBC14D4D6FC00F68CE0 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		84C89EBD14D4D6FC00F68CE0 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
@@ -266,7 +264,6 @@
 		8417057C14C75EA100ACF050 = {
 			isa = PBXGroup;
 			children = (
-				84C89E8814CF413600F68CE0 /* README.markdown */,
 				8417059114C75EA100ACF050 /* SnapFresh */,
 				8417058A14C75EA100ACF050 /* Frameworks */,
 				8417058814C75EA100ACF050 /* Products */,
@@ -527,7 +524,6 @@
 				8417059F14C75EA100ACF050 /* MainStoryboard_iPad.storyboard in Resources */,
 				84DE528F14C949E50023073E /* snapfreshlogo.png in Resources */,
 				84C89E3E14CCEE6000F68CE0 /* licenses.html in Resources */,
-				84C89E8914CF413600F68CE0 /* README.markdown in Resources */,
 				84C89E9614CF6EBC00F68CE0 /* snaplogo.png in Resources */,
 				BE7C4BF314D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard in Resources */,
 				84AFF098152C1D72007F4534 /* snap.png in Resources */,
