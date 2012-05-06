@@ -117,15 +117,15 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 	// The segmented control was clicked, handle it here 
 	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     
-    if ([segmentedControl selectedSegmentIndex] == 0)
+    if ([segmentedControl selectedSegmentIndex] == MKMapTypeStandard)
 	{
 		[mapView setMapType:MKMapTypeStandard];
 	}
-	else if ([segmentedControl selectedSegmentIndex] == 1)
+	else if ([segmentedControl selectedSegmentIndex] == MKMapTypeSatellite)
 	{
 		[mapView setMapType:MKMapTypeSatellite];
 	}
-	else if ([segmentedControl selectedSegmentIndex] == 2)
+	else if ([segmentedControl selectedSegmentIndex] == MKMapTypeHybrid)
 	{
 		[mapView setMapType:MKMapTypeHybrid];
 	}
@@ -152,7 +152,9 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 }
 
 - (IBAction)showInfoView:(id)sender
-{    
+{
+    [SVProgressHUD dismiss];
+
     MDAboutController *aboutController = [[MDAboutController alloc] initWithStyle:[MDACMochiDevStyle style]];
     [aboutController removeLastCredit];    
     
