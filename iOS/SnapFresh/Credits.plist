@@ -59,7 +59,7 @@
 		<key>Type</key>
 		<string>List</string>
 		<key>Title</key>
-		<string>Who We Are</string>
+		<string>App Team</string>
 	</dict>
 	<dict>
 		<key>Items</key>
@@ -74,7 +74,13 @@
 				<key>Link</key>
 				<string>http://www.shrtlist.com</string>
 				<key>Name</key>
-				<string>shrtlist.com</string>
+				<string>Shrtlist</string>
+			</dict>
+			<dict>
+				<key>Link</key>
+				<string>http://snapfresh.org/#/retailers/terms</string>
+				<key>Name</key>
+				<string>Privacy policy</string>
 			</dict>
 			<dict>
 				<key>Email</key>
