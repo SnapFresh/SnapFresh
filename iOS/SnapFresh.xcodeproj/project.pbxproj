@@ -304,8 +304,6 @@
 				8417059B14C75EA100ACF050 /* AppDelegate.m */,
 				84C89EBC14D4D6FC00F68CE0 /* ListViewController.h */,
 				84C89EBD14D4D6FC00F68CE0 /* ListViewController.m */,
-				8417059D14C75EA100ACF050 /* MainStoryboard_iPad.storyboard */,
-				BE7C4BF114D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard */,
 				84C89EBE14D4D6FC00F68CE0 /* MapViewController.h */,
 				84C89EBF14D4D6FC00F68CE0 /* MapViewController.m */,
 				8417068A14C8B41200ACF050 /* SnapRetailer.h */,
@@ -324,6 +322,8 @@
 				8417059314C75EA100ACF050 /* SnapFresh-Info.plist */,
 				8417059414C75EA100ACF050 /* InfoPlist.strings */,
 				8417059714C75EA100ACF050 /* main.m */,
+				8417059D14C75EA100ACF050 /* MainStoryboard_iPad.storyboard */,
+				BE7C4BF114D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard */,
 				8417059914C75EA100ACF050 /* SnapFresh-Prefix.pch */,
 				84DE528C14C9494C0023073E /* Images */,
 			);
