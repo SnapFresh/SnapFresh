@@ -70,7 +70,10 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
     tapInterceptor.touchesEndedCallback = ^(NSSet * touches, UIEvent * event)
     {
-        redoSearchView.hidden = NO;
+        if (![SVProgressHUD isVisible])
+        {
+            redoSearchView.hidden = NO;
+        }
     };
     [mapView addGestureRecognizer:tapInterceptor];
     
@@ -143,6 +146,8 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 
 - (IBAction)redoSearchTapped
 {
+    redoSearchView.hidden = YES;
+
     CLLocationCoordinate2D center = mapView.centerCoordinate;
     CLLocation *location = [[CLLocation alloc] initWithLatitude:center.latitude 
                                                       longitude:center.longitude];
