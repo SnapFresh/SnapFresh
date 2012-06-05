@@ -93,6 +93,7 @@
 		847E540B1564ED4B004E78CA /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E54091564ED4B004E78CA /* Default-Portrait~ipad.png */; };
 		847E540E1564F024004E78CA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E540C1564F023004E78CA /* Default.png */; };
 		847E540F1564F024004E78CA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E540D1564F023004E78CA /* Default@2x.png */; };
+		84A0A1BF157E411D001765AC /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0A1BE157E411D001765AC /* WildcardGestureRecognizer.m */; };
 		84AFF098152C1D72007F4534 /* snap.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF097152C1D72007F4534 /* snap.png */; };
 		84AFF09A152C202D007F4534 /* snap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF099152C202D007F4534 /* snap@2x.png */; };
 		84AFF0A9152C2F23007F4534 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0A7152C2F23007F4534 /* location.png */; };
@@ -223,6 +224,8 @@
 		847E54091564ED4B004E78CA /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "Images/Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		847E540C1564F023004E78CA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Images/Default.png; sourceTree = "<group>"; };
 		847E540D1564F023004E78CA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Images/Default@2x.png"; sourceTree = "<group>"; };
+		84A0A1BD157E411D001765AC /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildcardGestureRecognizer.h; sourceTree = "<group>"; };
+		84A0A1BE157E411D001765AC /* WildcardGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildcardGestureRecognizer.m; sourceTree = "<group>"; };
 		84AFF097152C1D72007F4534 /* snap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snap.png; path = Images/snap.png; sourceTree = "<group>"; };
 		84AFF099152C202D007F4534 /* snap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snap@2x.png"; path = "Images/snap@2x.png"; sourceTree = "<group>"; };
 		84AFF0A7152C2F23007F4534 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location.png; path = Images/location.png; sourceTree = "<group>"; };
@@ -308,6 +311,8 @@
 				84C89EBF14D4D6FC00F68CE0 /* MapViewController.m */,
 				8417068A14C8B41200ACF050 /* SnapRetailer.h */,
 				8417068B14C8B41200ACF050 /* SnapRetailer.m */,
+				84A0A1BD157E411D001765AC /* WildcardGestureRecognizer.h */,
+				84A0A1BE157E411D001765AC /* WildcardGestureRecognizer.m */,
 				8474D0EC1553A0900087483E /* MDAboutController */,
 				8474D0DF155397480087483E /* SVProgressHUD */,
 				8417059214C75EA100ACF050 /* Supporting Files */,
@@ -635,6 +640,7 @@
 				8474D1481553A0900087483E /* MDACTitleBar.m in Sources */,
 				8474D1491553A0900087483E /* MDACWebViewController.m in Sources */,
 				8474D14A1553A0900087483E /* UIImage+DBMaskedImageAdditions.m in Sources */,
+				84A0A1BF157E411D001765AC /* WildcardGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

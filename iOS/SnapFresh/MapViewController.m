@@ -19,6 +19,7 @@
 #import "SnapRetailer.h"
 #import "SVProgressHUD.h"
 #import "MDACClasses.h"
+#import "WildcardGestureRecognizer.h"
 
 @interface MapViewController () // Class extension
 @property (nonatomic, weak) IBOutlet UITableView *listView;
@@ -27,6 +28,7 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *segmentWrapper;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *listBarButtonItem;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
+@property (nonatomic, weak) IBOutlet UIView *redoSearchView;
 @property (nonatomic, weak) IBOutlet UIImageView *yelpLogo;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
 @end
@@ -42,6 +44,7 @@
 @synthesize segmentWrapper;
 @synthesize listBarButtonItem;
 @synthesize mapTypeSegmentedControl;
+@synthesize redoSearchView;
 @synthesize yelpLogo;
 @synthesize masterPopoverController;
 @synthesize delegate;
@@ -63,6 +66,13 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
+    tapInterceptor.touchesEndedCallback = ^(NSSet * touches, UIEvent * event)
+    {
+        redoSearchView.hidden = NO;
+    };
+    [mapView addGestureRecognizer:tapInterceptor];
     
     [segmentWrapper setCustomView:mapTypeSegmentedControl];
     
@@ -91,7 +101,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     }
 }
 
-#pragma mark - Implement getter
+#pragma mark - Implement property accessor
 
 - (NSArray *)retailers
 {
@@ -129,6 +139,32 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 	{
 		[mapView setMapType:MKMapTypeHybrid];
 	}
+}
+
+- (IBAction)redoSearchTapped
+{
+    CLLocationCoordinate2D center = mapView.centerCoordinate;
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:center.latitude 
+                                                      longitude:center.longitude];
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"Reverse geocode failed with error: %@", error);
+             return;
+         }
+         
+         // Get the top result returned by the geocoder
+         CLPlacemark *topResult = [placemarks objectAtIndex:0];
+         
+         NSString *address = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+         
+         self.searchBar.text = address;
+         [self setAnnotationsForAddressString:address];
+     }];
 }
 
 - (IBAction)toggleListView
@@ -262,8 +298,8 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
                 
                 [mapView addAnnotations:self.retailers];
                 [mapView selectAnnotation:[self.retailers objectAtIndex:0] animated:YES];
-                [listView reloadData];
                 [self updateVisibleMapRect];
+                [listView reloadData];
                 
                 // Notify our delegate that the map has new annotations.
                 [delegate annotationsDidLoad:self];
@@ -296,7 +332,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     [mapView setVisibleMapRect:zoomRect animated:YES];
 }
 
-#pragma mark - UISplitViewControllerDelegate conformance
+#pragma mark - UISplitViewControllerDelegate protocol conformance
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
@@ -314,7 +350,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     self.masterPopoverController = nil;
 }
 
-#pragma mark - MKMapViewDelegate conformance
+#pragma mark - MKMapViewDelegate protocol conformance
 
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
@@ -410,8 +446,12 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 	[centerButton setEnabled:NO];
 }
 
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
+    redoSearchView.hidden = YES;
+}
 
-#pragma mark - UITableViewDataSource conformance
+#pragma mark - UITableViewDataSource protocol conformance
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -434,7 +474,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
 	return cell;
 }
 
-#pragma mark - UITableViewDelegate conformance
+#pragma mark - UITableViewDelegate protocol conformance
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -446,7 +486,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     [self toggleListView];
 }
 
-#pragma mark - UISearchBarDelegate conformance
+#pragma mark - UISearchBarDelegate protocol conformance
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
