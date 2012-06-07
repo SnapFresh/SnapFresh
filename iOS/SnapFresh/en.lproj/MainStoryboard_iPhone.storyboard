@@ -78,11 +78,11 @@
                                 <rect key="frame" x="262" y="340" width="51" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             </imageView>
-                            <view hidden="YES" contentMode="scaleToFill" id="aKi-bR-1LL">
+                            <view hidden="YES" contentMode="scaleToFill" id="aKi-bR-1LL" userLabel="View - redo search">
                                 <rect key="frame" x="0.0" y="322" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <view alpha="0.50000000000000011" contentMode="scaleToFill" id="LQ0-YO-S7J">
+                                    <view alpha="0.70000000000000007" contentMode="scaleToFill" id="LQ0-YO-S7J">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

@@ -91,6 +91,12 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     [super viewDidUnload];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    redoSearchView.hidden = YES;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // return YES for supported orientations
@@ -179,7 +185,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
         [UIView transitionWithView:self.view 
                           duration:0.5 
                            options:UIViewAnimationOptionTransitionFlipFromLeft 
-                        animations:^{ listView.hidden = NO; mapView.hidden = YES; yelpLogo.hidden = YES; } 
+                        animations:^{ listView.hidden = NO; mapView.hidden = YES; redoSearchView.hidden = YES; yelpLogo.hidden = YES; } 
                         completion:^(BOOL finished){ listBarButtonItem.title = @"Map"; }];
     }
     else

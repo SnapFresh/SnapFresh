@@ -77,11 +77,11 @@
                                 <rect key="frame" x="639" y="670" width="51" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             </imageView>
-                            <view hidden="YES" contentMode="scaleToFill" id="Jzc-KD-pYh">
+                            <view hidden="YES" contentMode="scaleToFill" id="Jzc-KD-pYh" userLabel="View - redo search">
                                 <rect key="frame" x="0.0" y="654" width="703" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <view alpha="0.50000000000000011" contentMode="scaleToFill" id="yfN-2T-OIr">
+                                    <view alpha="0.70000000000000007" contentMode="scaleToFill" id="yfN-2T-OIr">
                                         <rect key="frame" x="0.0" y="0.0" width="703" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
