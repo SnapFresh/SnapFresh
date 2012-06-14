@@ -39,14 +39,14 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (touchesEndedCallback)
-    {
-        touchesEndedCallback(touches, event);
-    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (touchesEndedCallback)
+    {
+        touchesEndedCallback(touches, event);
+    }
 }
 
 - (void)reset
