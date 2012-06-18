@@ -20,6 +20,7 @@
 #import "SVProgressHUD.h"
 #import "MDACClasses.h"
 #import "WildcardGestureRecognizer.h"
+#import "Constants.h"
 
 @interface MapViewController () // Class extension
 @property (nonatomic, weak) IBOutlet UITableView *listView; // For iPhone version
@@ -50,9 +51,6 @@
 @synthesize delegate;
 // Synthesize a read-only property named "retailers", but wire it to the member variable named "_retailers".
 @synthesize retailers = _retailers;
-
-// The SnapFresh URI
-static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/?address=%@";
 
 #pragma mark - View lifecycle
 
