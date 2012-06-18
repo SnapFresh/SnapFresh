@@ -89,7 +89,7 @@
     
     SnapRetailer *retailer = [retailers objectAtIndex:indexPath.row];
     
-    // Set the cell labels with SnapFresh retailer info
+    // Set the cell labels with SNAP retailer info
     cell.textLabel.text = retailer.name;
     cell.detailTextLabel.text = retailer.address;
 	

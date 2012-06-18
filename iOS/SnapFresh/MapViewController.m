@@ -22,7 +22,7 @@
 #import "WildcardGestureRecognizer.h"
 
 @interface MapViewController () // Class extension
-@property (nonatomic, weak) IBOutlet UITableView *listView;
+@property (nonatomic, weak) IBOutlet UITableView *listView; // For iPhone version
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *centerButton;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *segmentWrapper;
@@ -462,7 +462,7 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     redoSearchView.hidden = YES;
 }
 
-#pragma mark - UITableViewDataSource protocol conformance
+#pragma mark - UITableViewDataSource protocol conformance (for iPhone version)
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -478,14 +478,14 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     
     SnapRetailer *retailer = [self.retailers objectAtIndex:indexPath.row];
     
-    // Set the cell labels with SnapFresh retailer info
+    // Set the cell labels with SNAP retailer info
     cell.textLabel.text = retailer.name;
     cell.detailTextLabel.text = retailer.address;
 	
 	return cell;
 }
 
-#pragma mark - UITableViewDelegate protocol conformance
+#pragma mark - UITableViewDelegate protocol conformance (for iPhone version)
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
