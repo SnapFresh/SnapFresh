@@ -16,7 +16,6 @@
 		8417059F14C75EA100ACF050 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8417059D14C75EA100ACF050 /* MainStoryboard_iPad.storyboard */; };
 		841705AD14C760E100ACF050 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841705AB14C760D200ACF050 /* MapKit.framework */; };
 		841705C614C76D9800ACF050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841705C414C76D8B00ACF050 /* CoreLocation.framework */; };
-		8417068C14C8B41200ACF050 /* SnapRetailer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8417068B14C8B41200ACF050 /* SnapRetailer.m */; };
 		842298A414CA147300D84986 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842298A114CA146600D84986 /* AddressBookUI.framework */; };
 		843B6BB7158ED09C0031A968 /* MDAboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843B6B4B158ED09C0031A968 /* MDAboutController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		843B6BB8158ED09C0031A968 /* MDAboutNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843B6B4D158ED09C0031A968 /* MDAboutNavigationController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -93,7 +92,6 @@
 		847E540B1564ED4B004E78CA /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E54091564ED4B004E78CA /* Default-Portrait~ipad.png */; };
 		847E540E1564F024004E78CA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E540C1564F023004E78CA /* Default.png */; };
 		847E540F1564F024004E78CA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E540D1564F023004E78CA /* Default@2x.png */; };
-		84A0A1BF157E411D001765AC /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0A1BE157E411D001765AC /* WildcardGestureRecognizer.m */; };
 		84AFF098152C1D72007F4534 /* snap.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF097152C1D72007F4534 /* snap.png */; };
 		84AFF09A152C202D007F4534 /* snap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF099152C202D007F4534 /* snap@2x.png */; };
 		84AFF0A9152C2F23007F4534 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0A7152C2F23007F4534 /* location.png */; };
@@ -103,9 +101,11 @@
 		84AFF0B1152C48DB007F4534 /* yelp_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0AF152C48DB007F4534 /* yelp_logo.png */; };
 		84AFF0B2152C48DB007F4534 /* yelp_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0B0152C48DB007F4534 /* yelp_logo@2x.png */; };
 		84AFF0B4152C4A02007F4534 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0B3152C4A02007F4534 /* Icon-72.png */; };
+		84B78D00158EE54E00033B7F /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78CFD158EE54E00033B7F /* ListViewController.m */; };
+		84B78D01158EE54E00033B7F /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78CFF158EE54E00033B7F /* MapViewController.m */; };
+		84B78D05158EE55800033B7F /* SnapRetailer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78D04158EE55800033B7F /* SnapRetailer.m */; };
+		84B78D09158EE55F00033B7F /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78D08158EE55F00033B7F /* WildcardGestureRecognizer.m */; };
 		84C89E9614CF6EBC00F68CE0 /* snaplogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E9514CF6EBC00F68CE0 /* snaplogo.png */; };
-		84C89EC014D4D6FD00F68CE0 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C89EBD14D4D6FC00F68CE0 /* ListViewController.m */; };
-		84C89EC114D4D6FD00F68CE0 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C89EBF14D4D6FC00F68CE0 /* MapViewController.m */; };
 		84D96C50152CA0D300C7CA02 /* snapfreshlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D96C4F152CA0D300C7CA02 /* snapfreshlogo@2x.png */; };
 		84DE528F14C949E50023073E /* snapfreshlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DE528E14C949E50023073E /* snapfreshlogo.png */; };
 		BE108577152CBEEB0015A268 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108572152CBEEB0015A268 /* Icon-29.png */; };
@@ -131,8 +131,6 @@
 		841705AB14C760D200ACF050 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		841705BD14C7688500ACF050 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		841705C414C76D8B00ACF050 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		8417068A14C8B41200ACF050 /* SnapRetailer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapRetailer.h; sourceTree = "<group>"; };
-		8417068B14C8B41200ACF050 /* SnapRetailer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapRetailer.m; sourceTree = "<group>"; };
 		842298A114CA146600D84986 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		843B6B4A158ED09C0031A968 /* MDAboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAboutController.h; sourceTree = "<group>"; };
 		843B6B4B158ED09C0031A968 /* MDAboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAboutController.m; sourceTree = "<group>"; };
@@ -224,8 +222,6 @@
 		847E54091564ED4B004E78CA /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "Images/Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		847E540C1564F023004E78CA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Images/Default.png; sourceTree = "<group>"; };
 		847E540D1564F023004E78CA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Images/Default@2x.png"; sourceTree = "<group>"; };
-		84A0A1BD157E411D001765AC /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildcardGestureRecognizer.h; sourceTree = "<group>"; };
-		84A0A1BE157E411D001765AC /* WildcardGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildcardGestureRecognizer.m; sourceTree = "<group>"; };
 		84AFF097152C1D72007F4534 /* snap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snap.png; path = Images/snap.png; sourceTree = "<group>"; };
 		84AFF099152C202D007F4534 /* snap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snap@2x.png"; path = "Images/snap@2x.png"; sourceTree = "<group>"; };
 		84AFF0A7152C2F23007F4534 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location.png; path = Images/location.png; sourceTree = "<group>"; };
@@ -235,11 +231,15 @@
 		84AFF0AF152C48DB007F4534 /* yelp_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yelp_logo.png; path = Images/yelp_logo.png; sourceTree = "<group>"; };
 		84AFF0B0152C48DB007F4534 /* yelp_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yelp_logo@2x.png"; path = "Images/yelp_logo@2x.png"; sourceTree = "<group>"; };
 		84AFF0B3152C4A02007F4534 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Images/Icon-72.png"; sourceTree = "<group>"; };
+		84B78CFC158EE54E00033B7F /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		84B78CFD158EE54E00033B7F /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		84B78CFE158EE54E00033B7F /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		84B78CFF158EE54E00033B7F /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		84B78D03158EE55800033B7F /* SnapRetailer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapRetailer.h; sourceTree = "<group>"; };
+		84B78D04158EE55800033B7F /* SnapRetailer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapRetailer.m; sourceTree = "<group>"; };
+		84B78D07158EE55F00033B7F /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildcardGestureRecognizer.h; sourceTree = "<group>"; };
+		84B78D08158EE55F00033B7F /* WildcardGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildcardGestureRecognizer.m; sourceTree = "<group>"; };
 		84C89E9514CF6EBC00F68CE0 /* snaplogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snaplogo.png; path = Images/snaplogo.png; sourceTree = "<group>"; };
-		84C89EBC14D4D6FC00F68CE0 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
-		84C89EBD14D4D6FC00F68CE0 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
-		84C89EBE14D4D6FC00F68CE0 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		84C89EBF14D4D6FC00F68CE0 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		84D96C4F152CA0D300C7CA02 /* snapfreshlogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snapfreshlogo@2x.png"; path = "Images/snapfreshlogo@2x.png"; sourceTree = "<group>"; };
 		84DE528E14C949E50023073E /* snapfreshlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snapfreshlogo.png; path = Images/snapfreshlogo.png; sourceTree = "<group>"; };
 		BE108572152CBEEB0015A268 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29.png"; path = "Images/Icon-29.png"; sourceTree = "<group>"; };
@@ -306,14 +306,9 @@
 			children = (
 				8417059A14C75EA100ACF050 /* AppDelegate.h */,
 				8417059B14C75EA100ACF050 /* AppDelegate.m */,
-				84C89EBC14D4D6FC00F68CE0 /* ListViewController.h */,
-				84C89EBD14D4D6FC00F68CE0 /* ListViewController.m */,
-				84C89EBE14D4D6FC00F68CE0 /* MapViewController.h */,
-				84C89EBF14D4D6FC00F68CE0 /* MapViewController.m */,
-				8417068A14C8B41200ACF050 /* SnapRetailer.h */,
-				8417068B14C8B41200ACF050 /* SnapRetailer.m */,
-				84A0A1BD157E411D001765AC /* WildcardGestureRecognizer.h */,
-				84A0A1BE157E411D001765AC /* WildcardGestureRecognizer.m */,
+				84B78CFB158EE54E00033B7F /* Controllers */,
+				84B78D02158EE55800033B7F /* Model */,
+				84B78D06158EE55F00033B7F /* Utils */,
 				8417059214C75EA100ACF050 /* Supporting Files */,
 			);
 			path = SnapFresh;
@@ -461,6 +456,35 @@
 				843B6BB1158ED09C0031A968 /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		84B78CFB158EE54E00033B7F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84B78CFC158EE54E00033B7F /* ListViewController.h */,
+				84B78CFD158EE54E00033B7F /* ListViewController.m */,
+				84B78CFE158EE54E00033B7F /* MapViewController.h */,
+				84B78CFF158EE54E00033B7F /* MapViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		84B78D02158EE55800033B7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84B78D03158EE55800033B7F /* SnapRetailer.h */,
+				84B78D04158EE55800033B7F /* SnapRetailer.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84B78D06158EE55F00033B7F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				84B78D07158EE55F00033B7F /* WildcardGestureRecognizer.h */,
+				84B78D08158EE55F00033B7F /* WildcardGestureRecognizer.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		84DE528C14C9494C0023073E /* Images */ = {
@@ -639,10 +663,6 @@
 			files = (
 				8417059814C75EA100ACF050 /* main.m in Sources */,
 				8417059C14C75EA100ACF050 /* AppDelegate.m in Sources */,
-				8417068C14C8B41200ACF050 /* SnapRetailer.m in Sources */,
-				84C89EC014D4D6FD00F68CE0 /* ListViewController.m in Sources */,
-				84C89EC114D4D6FD00F68CE0 /* MapViewController.m in Sources */,
-				84A0A1BF157E411D001765AC /* WildcardGestureRecognizer.m in Sources */,
 				843B6BB7158ED09C0031A968 /* MDAboutController.m in Sources */,
 				843B6BB8158ED09C0031A968 /* MDAboutNavigationController.m in Sources */,
 				843B6BB9158ED09C0031A968 /* MDACCredit.m in Sources */,
@@ -657,6 +677,10 @@
 				843B6BC2158ED09C0031A968 /* MDACWebViewController.m in Sources */,
 				843B6BC3158ED09C0031A968 /* UIImage+DBMaskedImageAdditions.m in Sources */,
 				843B6C03158ED09D0031A968 /* SVProgressHUD.m in Sources */,
+				84B78D00158EE54E00033B7F /* ListViewController.m in Sources */,
+				84B78D01158EE54E00033B7F /* MapViewController.m in Sources */,
+				84B78D05158EE55800033B7F /* SnapRetailer.m in Sources */,
+				84B78D09158EE55F00033B7F /* WildcardGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
