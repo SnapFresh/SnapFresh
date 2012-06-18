@@ -282,12 +282,12 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
         
             if (data == nil)
             {
-                [SVProgressHUD dismissWithError:@"No SNAP retailers found" afterDelay:1];
+                [SVProgressHUD showErrorWithStatus:@"No SNAP retailers found"];
                 self.searchBar.text = nil;
             }
             else
             {                
-                [SVProgressHUD dismissWithSuccess:@"Loading SNAP retailers" afterDelay:1];
+                [SVProgressHUD showSuccessWithStatus:@"Loading SNAP retailers"];
 
                 // Parse the SnapFresh JSON response
                 NSError* error;

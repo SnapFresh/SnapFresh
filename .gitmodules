@@ -1,6 +1,6 @@
-[submodule "iOS/SnapFresh/InAppSettingsKit"]
-	path = iOS/SnapFresh/InAppSettingsKit
-	url = https://github.com/futuretap/InAppSettingsKit.git
-[submodule "iOS/MDAboutController"]
-	path = iOS/MDAboutController
+[submodule "iOS/ThirdParty/MDAboutController"]
+	path = iOS/ThirdParty/MDAboutController
 	url = https://github.com/mochidev/MDAboutController.git
+[submodule "iOS/ThirdParty/SVProgressHUD"]
+	path = iOS/ThirdParty/SVProgressHUD
+	url = https://github.com/samvermette/SVProgressHUD.git
