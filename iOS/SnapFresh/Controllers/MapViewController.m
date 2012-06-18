@@ -182,7 +182,7 @@
     {
         [UIView transitionWithView:self.view 
                           duration:0.5 
-                           options:UIViewAnimationOptionTransitionFlipFromLeft 
+                           options:UIViewAnimationOptionTransitionFlipFromRight 
                         animations:^{ listView.hidden = NO; mapView.hidden = YES; redoSearchView.hidden = YES; yelpLogo.hidden = YES; } 
                         completion:^(BOOL finished){ listBarButtonItem.title = @"Map"; }];
     }
@@ -190,7 +190,7 @@
     {
         [UIView transitionWithView:self.view 
                           duration:0.5 
-                           options:UIViewAnimationOptionTransitionFlipFromRight 
+                           options:UIViewAnimationOptionTransitionFlipFromLeft 
                         animations:^{ listView.hidden = YES; mapView.hidden = NO; yelpLogo.hidden = NO; } 
                         completion:^(BOOL finished){ listBarButtonItem.title = @" List"; }];
     }
