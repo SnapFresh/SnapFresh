@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-#import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
 @protocol MapViewControllerDelegate;

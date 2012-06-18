@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-#import <UIKit/UIKit.h>
 #import "MapViewController.h"
 
 @interface ListViewController : UITableViewController <MapViewControllerDelegate>
