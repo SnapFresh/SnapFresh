@@ -54,13 +54,6 @@
 // The SnapFresh URI
 static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/?address=%@";
 
-#pragma mark - Memory management
-
-- (void)dealloc
-{
-	mapView.delegate = nil;
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -108,6 +101,13 @@ static NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/
     {
         return YES;
     }
+}
+
+#pragma mark - Memory management
+
+- (void)dealloc
+{
+	mapView.delegate = nil;
 }
 
 #pragma mark - Implement property accessor
