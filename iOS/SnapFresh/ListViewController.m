@@ -103,13 +103,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     SnapRetailer *retailer = [retailers objectAtIndex:indexPath.row];
-
-    NSArray *selectedAnnotations = [NSArray arrayWithObject:retailer];
-    
     MKMapView *mapView = self.mapViewController.mapView;
-    
     [mapView setCenterCoordinate:retailer.coordinate animated:YES];
-    [mapView setSelectedAnnotations:selectedAnnotations];
+    [mapView selectAnnotation:retailer animated:YES];
 }
 
 #pragma mark - MapViewControllerDelegate conformance
