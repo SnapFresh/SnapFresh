@@ -30,6 +30,14 @@ GEM
     activesupport (3.0.7)
     arel (2.0.9)
     builder (2.1.2)
+    capistrano (2.12.0)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+    capistrano-ext (1.2.1)
+      capistrano (>= 1.0.0)
     crack (0.1.8)
     diff-lcs (1.1.2)
     erubis (2.6.6)
@@ -39,6 +47,7 @@ GEM
       geokit (>= 1.5.0)
     haml (3.1.1)
     hashie (1.0.0)
+    highline (1.6.11)
     i18n (0.5.0)
     jquery-rails (1.0.2)
       railties (~> 3.0)
@@ -50,6 +59,13 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.3.0)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
     nokogiri (1.4.4)
     pg (0.11.0)
     polyglot (0.3.1)
@@ -66,6 +82,7 @@ GEM
       activesupport (= 3.0.7)
       bundler (~> 1.0)
       railties (= 3.0.7)
+    railsless-deploy (1.0.2)
     railties (3.0.7)
       actionpack (= 3.0.7)
       activesupport (= 3.0.7)
@@ -101,6 +118,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  capistrano
+  capistrano-ext
   crack
   geokit
   geokit-rails
@@ -108,6 +127,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 3.0.7)
+  railsless-deploy
   rspec
   sass
   sqlite3
