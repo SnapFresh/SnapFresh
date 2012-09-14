@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		8408F66F1602F3F10008639E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8408F66E1602F3F10008639E /* Default-568h@2x.png */; };
+		8408F86A16031A7E0008639E /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8408F85816031A7E0008639E /* EasyTracker.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8408F87016031AC70008639E /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8408F86F16031AC70008639E /* EasyTracker.plist */; };
+		8408F89516031B860008639E /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F88916031B860008639E /* libGoogleAnalytics.a */; };
+		8408F89616031B860008639E /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F88A16031B860008639E /* libGoogleAnalytics_NoThumb.a */; };
+		8408F89C16031BE50008639E /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F89B16031BE50008639E /* libsqlite3.0.dylib */; };
+		8408F89E16031BF60008639E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F89D16031BF60008639E /* CFNetwork.framework */; };
 		8417058C14C75EA100ACF050 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8417058B14C75EA100ACF050 /* UIKit.framework */; };
 		8417058E14C75EA100ACF050 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8417058D14C75EA100ACF050 /* Foundation.framework */; };
 		8417059014C75EA100ACF050 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8417058F14C75EA100ACF050 /* CoreGraphics.framework */; };
@@ -120,6 +126,14 @@
 
 /* Begin PBXFileReference section */
 		8408F66E1602F3F10008639E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		8408F85716031A7E0008639E /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTracker.h; sourceTree = "<group>"; };
+		8408F85816031A7E0008639E /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyTracker.m; sourceTree = "<group>"; };
+		8408F86F16031AC70008639E /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
+		8408F88816031B860008639E /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
+		8408F88916031B860008639E /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
+		8408F88A16031B860008639E /* libGoogleAnalytics_NoThumb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics_NoThumb.a; sourceTree = "<group>"; };
+		8408F89B16031BE50008639E /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		8408F89D16031BF60008639E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8417058714C75EA100ACF050 /* SnapFresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapFresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8417058B14C75EA100ACF050 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8417058D14C75EA100ACF050 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -260,6 +274,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8408F89E16031BF60008639E /* CFNetwork.framework in Frameworks */,
+				8408F89C16031BE50008639E /* libsqlite3.0.dylib in Frameworks */,
 				84494D7814CB93FE0018133C /* MessageUI.framework in Frameworks */,
 				842298A414CA147300D84986 /* AddressBookUI.framework in Frameworks */,
 				841705C614C76D9800ACF050 /* CoreLocation.framework in Frameworks */,
@@ -267,12 +283,49 @@
 				8417058C14C75EA100ACF050 /* UIKit.framework in Frameworks */,
 				8417058E14C75EA100ACF050 /* Foundation.framework in Frameworks */,
 				8417059014C75EA100ACF050 /* CoreGraphics.framework in Frameworks */,
+				8408F89516031B860008639E /* libGoogleAnalytics.a in Frameworks */,
+				8408F89616031B860008639E /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8408F84016031A7E0008639E /* EasyTracker */ = {
+			isa = PBXGroup;
+			children = (
+				8408F85616031A7E0008639E /* Library */,
+			);
+			path = EasyTracker;
+			sourceTree = "<group>";
+		};
+		8408F85616031A7E0008639E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				8408F85716031A7E0008639E /* EasyTracker.h */,
+				8408F85816031A7E0008639E /* EasyTracker.m */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		8408F87916031B860008639E /* Google Analytics SDK */ = {
+			isa = PBXGroup;
+			children = (
+				8408F88716031B860008639E /* Library */,
+			);
+			path = "Google Analytics SDK";
+			sourceTree = "<group>";
+		};
+		8408F88716031B860008639E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				8408F88816031B860008639E /* GANTracker.h */,
+				8408F88916031B860008639E /* libGoogleAnalytics.a */,
+				8408F88A16031B860008639E /* libGoogleAnalytics_NoThumb.a */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		8417057C14C75EA100ACF050 = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +347,8 @@
 		8417058A14C75EA100ACF050 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8408F89B16031BE50008639E /* libsqlite3.0.dylib */,
+				8408F89D16031BF60008639E /* CFNetwork.framework */,
 				84494D7614CB93EE0018133C /* MessageUI.framework */,
 				842298A114CA146600D84986 /* AddressBookUI.framework */,
 				841705C414C76D8B00ACF050 /* CoreLocation.framework */,
@@ -325,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				8474D1811553AD6E0087483E /* Credits.plist */,
+				8408F86F16031AC70008639E /* EasyTracker.plist */,
 				8417059314C75EA100ACF050 /* SnapFresh-Info.plist */,
 				8417059414C75EA100ACF050 /* InfoPlist.strings */,
 				8417059714C75EA100ACF050 /* main.m */,
@@ -339,6 +395,8 @@
 		843B6B47158ED09C0031A968 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				8408F87916031B860008639E /* Google Analytics SDK */,
+				8408F84016031A7E0008639E /* EasyTracker */,
 				843B6B48158ED09C0031A968 /* MDAboutController */,
 				843B6B9A158ED09C0031A968 /* SVProgressHUD */,
 			);
@@ -660,6 +718,7 @@
 				843B6BF7158ED09D0031A968 /* MDACTitleBar@2x.png in Resources */,
 				843B6C02158ED09D0031A968 /* SVProgressHUD.bundle in Resources */,
 				8408F66F1602F3F10008639E /* Default-568h@2x.png in Resources */,
+				8408F87016031AC70008639E /* EasyTracker.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,6 +750,7 @@
 				84B78D05158EE55800033B7F /* SnapRetailer.m in Sources */,
 				84B78D09158EE55F00033B7F /* WildcardGestureRecognizer.m in Sources */,
 				84B78D0C158EF0A100033B7F /* Constants.m in Sources */,
+				8408F86A16031A7E0008639E /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,7 +788,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = armv7;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -754,7 +814,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = armv7;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
@@ -778,6 +838,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SnapFresh/SnapFresh-Prefix.pch";
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Desktop/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParty/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -790,6 +855,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SnapFresh/SnapFresh-Prefix.pch";
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Desktop/Google Analytics SDK/Library\"",
+					"\"$(SRCROOT)/ThirdParty/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

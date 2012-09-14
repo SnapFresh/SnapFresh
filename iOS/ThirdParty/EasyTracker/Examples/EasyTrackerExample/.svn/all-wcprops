@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/17/tags/EasyTracker-release-1.0/ios/EasyTracker/Examples/EasyTrackerExample
+END
+EasyTrackerExample_Prefix.pch
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/!svn/ver/17/tags/EasyTracker-release-1.0/ios/EasyTracker/Examples/EasyTrackerExample/EasyTrackerExample_Prefix.pch
+END
+main.m
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/17/tags/EasyTracker-release-1.0/ios/EasyTracker/Examples/EasyTrackerExample/main.m
+END
+FirstView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/17/tags/EasyTracker-release-1.0/ios/EasyTracker/Examples/EasyTrackerExample/FirstView.xib
+END
+SecondView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/17/tags/EasyTracker-release-1.0/ios/EasyTracker/Examples/EasyTrackerExample/SecondView.xib
+END
+EasyTracker.plist
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/17/tags/EasyTracker-release-1.0/ios/EasyTracker/Examples/EasyTrackerExample/EasyTracker.plist
+END
+EasyTrackerExample-Info.plist
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/!svn/ver/17/tags/EasyTracker-release-1.0/ios/EasyTracker/Examples/EasyTrackerExample/EasyTrackerExample-Info.plist
+END
+MainWindow.xib
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/17/tags/EasyTracker-release-1.0/ios/EasyTracker/Examples/EasyTrackerExample/MainWindow.xib
+END

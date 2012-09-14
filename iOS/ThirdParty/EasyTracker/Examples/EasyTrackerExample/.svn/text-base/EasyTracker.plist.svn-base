@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!-- This account id is a placeholder ONLY.
+       You must supply your own Google Analytics account id. -->
+  <key>accountId</key>
+  <string>UA-00000000-1</string>
+
+  <key>debugEnabled</key>
+  <true/>
+
+  <!-- Mapping from view controller names to pageview names. -->
+  <key>FirstViewController</key>
+  <string>First View</string>
+</dict>
+</plist>
