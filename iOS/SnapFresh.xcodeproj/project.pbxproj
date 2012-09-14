@@ -119,7 +119,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8408F66E1602F3F10008639E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8408F66E1602F3F10008639E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		8417058714C75EA100ACF050 /* SnapFresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapFresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8417058B14C75EA100ACF050 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8417058D14C75EA100ACF050 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -276,7 +276,6 @@
 		8417057C14C75EA100ACF050 = {
 			isa = PBXGroup;
 			children = (
-				8408F66E1602F3F10008639E /* Default-568h@2x.png */,
 				8417059114C75EA100ACF050 /* SnapFresh */,
 				843B6B47158ED09C0031A968 /* ThirdParty */,
 				8417058A14C75EA100ACF050 /* Frameworks */,
@@ -499,6 +498,7 @@
 			isa = PBXGroup;
 			children = (
 				847E540C1564F023004E78CA /* Default.png */,
+				8408F66E1602F3F10008639E /* Default-568h@2x.png */,
 				847E540D1564F023004E78CA /* Default@2x.png */,
 				847E54041564EBB2004E78CA /* Default-Landscape@2x~ipad.png */,
 				847E54051564EBB2004E78CA /* Default-Landscape~ipad.png */,
