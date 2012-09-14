@@ -7,4 +7,10 @@
 //
 
 // The SnapFresh URI
-NSString *kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/?address=%@";
+NSString* const kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/?address=%@";
+
+// Google Analytics Web property ID
+NSString* const kAnalyticsAccountId = @"UA-25396637-1";
+
+// Dispatch period in seconds
+NSInteger kGANDispatchPeriodSec = 10;

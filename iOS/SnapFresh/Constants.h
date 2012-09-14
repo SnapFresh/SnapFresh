@@ -7,4 +7,10 @@
 //
 
 // The SnapFresh URI
-extern NSString *kSnapFreshURI;
+extern NSString* const kSnapFreshURI;
+
+// Google Analytics Web property ID
+static NSString* const kAnalyticsAccountId;
+
+// Dispatch period in seconds
+static const NSInteger kGANDispatchPeriodSec;
