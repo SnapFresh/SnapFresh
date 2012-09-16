@@ -8,3 +8,6 @@
 
 // The SnapFresh URI
 extern NSString* const kSnapFreshURI;
+
+// Base URL for Google Maps
+extern NSString *const kMapsBaseUrl;

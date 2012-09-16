@@ -383,6 +383,11 @@
                 annotationView.canShowCallout = YES;
                 annotationView.pinColor = MKPinAnnotationColorGreen;
                 annotationView.animatesDrop = YES;
+
+                // Add Detail Disclosure button
+                UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+                button.showsTouchWhenHighlighted = YES;
+                annotationView.rightCalloutAccessoryView = button;
                 
                 UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"snap.png"]];
                 annotationView.leftCalloutAccessoryView = sfIconView;
@@ -458,6 +463,15 @@
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
 {
     redoSearchView.hidden = YES;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    SnapRetailer *retailer = (SnapRetailer *)view.annotation;
+
+    NSString *currentLocation = @"Current%20Location";
+    NSString *routeString = [NSString stringWithFormat:@"%@saddr=%@&daddr=%@", kMapsBaseUrl, currentLocation, retailer.mapAddress];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:routeString]];
 }
 
 #pragma mark - UITableViewDataSource protocol conformance (for iPhone version)

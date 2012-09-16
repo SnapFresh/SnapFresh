@@ -27,6 +27,7 @@
 @property (nonatomic, strong) NSNumber *lat;
 @property (nonatomic, strong) NSNumber *lon;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly) NSString *mapAddress;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

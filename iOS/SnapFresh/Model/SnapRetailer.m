@@ -27,6 +27,7 @@
 @synthesize lat;
 @synthesize lon;
 @synthesize city;
+@synthesize mapAddress;
 
 #pragma mark - Designated initializer
 
@@ -58,6 +59,13 @@
 - (NSString *)address
 {
     return [NSString stringWithFormat:@"%@ %@ %@", self.street, self.city, self.state];
+}
+
+- (NSString *)mapAddress
+{
+    NSString *mapString = [NSString stringWithFormat:@"%@ %@ %@", self.street, city, state];
+    NSString *formattedMapString = [mapString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    return formattedMapString;
 }
 
 #pragma mark - MKAnnotation conformance
