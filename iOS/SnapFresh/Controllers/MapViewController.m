@@ -69,17 +69,6 @@
     [mapView addGestureRecognizer:tapInterceptor];
     
     [segmentWrapper setCustomView:mapTypeSegmentedControl];
-    
-    // Create a new dispatch queue to which blocks can be submitted.
-    dispatchQueue = dispatch_queue_create("com.shrtlist.snapfresh.dispatchQueue", NULL);
-}
-
-- (void)viewDidUnload
-{
-    // Release the dispatch queue
-    dispatch_release(dispatchQueue);
-    
-    [super viewDidUnload];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -268,7 +257,7 @@
     [SVProgressHUD showWithStatus:@"Finding SNAP retailers..."];
 
     // Submit a block for asynchronous execution to our dispatchQueue and return immediately.
-    dispatch_async(dispatchQueue, ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         NSData *data = [NSData dataWithContentsOfURL:url];
         

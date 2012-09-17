@@ -25,7 +25,6 @@
                                                  UITableViewDelegate>
 {
     NSMutableArray *_retailers;
-    dispatch_queue_t dispatchQueue;
 }
 
 @property (nonatomic, weak) id <MapViewControllerDelegate> delegate;
