@@ -54,7 +54,7 @@
     return self;
 }
 
-#pragma mark - address getter implementation
+#pragma mark - address getter implementations
 
 - (NSString *)address
 {

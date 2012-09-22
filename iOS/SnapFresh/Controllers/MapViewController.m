@@ -21,6 +21,7 @@
 #import "MDACClasses.h"
 #import "WildcardGestureRecognizer.h"
 #import "Constants.h"
+#import "MapUtils.h"
 
 @interface MapViewController () // Class extension
 @property (nonatomic, weak) IBOutlet UITableView *listView; // For iPhone version
@@ -457,10 +458,8 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
     SnapRetailer *retailer = (SnapRetailer *)view.annotation;
-
-    NSString *currentLocation = @"Current%20Location";
-    NSString *routeString = [NSString stringWithFormat:@"%@saddr=%@&daddr=%@", kMapsBaseUrl, currentLocation, retailer.mapAddress];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:routeString]];
+    
+    [MapUtils openMapWithDestinationAddress:retailer];
 }
 
 #pragma mark - UITableViewDataSource protocol conformance (for iPhone version)

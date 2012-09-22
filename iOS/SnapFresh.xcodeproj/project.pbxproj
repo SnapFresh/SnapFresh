@@ -121,6 +121,7 @@
 		BE108579152CBEEB0015A268 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108574152CBEEB0015A268 /* Icon-50.png */; };
 		BE10857A152CBEEB0015A268 /* Icon-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108575152CBEEB0015A268 /* Icon-50@2x.png */; };
 		BE10857B152CBEEB0015A268 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108576152CBEEB0015A268 /* Icon-72@2x.png */; };
+		BE655AB1160E72BC003C32B6 /* MapUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BE655AB0160E72BC003C32B6 /* MapUtils.m */; };
 		BE7C4BF314D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE7C4BF114D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -266,6 +267,8 @@
 		BE108574152CBEEB0015A268 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-50.png"; path = "Images/Icon-50.png"; sourceTree = "<group>"; };
 		BE108575152CBEEB0015A268 /* Icon-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-50@2x.png"; path = "Images/Icon-50@2x.png"; sourceTree = "<group>"; };
 		BE108576152CBEEB0015A268 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Images/Icon-72@2x.png"; sourceTree = "<group>"; };
+		BE655AAF160E72BC003C32B6 /* MapUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapUtils.h; sourceTree = "<group>"; };
+		BE655AB0160E72BC003C32B6 /* MapUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapUtils.m; sourceTree = "<group>"; };
 		BE7C4BF214D79A3B004A06D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -546,6 +549,8 @@
 		84B78D06158EE55F00033B7F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BE655AAF160E72BC003C32B6 /* MapUtils.h */,
+				BE655AB0160E72BC003C32B6 /* MapUtils.m */,
 				84B78D07158EE55F00033B7F /* WildcardGestureRecognizer.h */,
 				84B78D08158EE55F00033B7F /* WildcardGestureRecognizer.m */,
 			);
@@ -751,6 +756,7 @@
 				84B78D09158EE55F00033B7F /* WildcardGestureRecognizer.m in Sources */,
 				84B78D0C158EF0A100033B7F /* Constants.m in Sources */,
 				8408F86A16031A7E0008639E /* EasyTracker.m in Sources */,
+				BE655AB1160E72BC003C32B6 /* MapUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
