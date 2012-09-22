@@ -297,6 +297,7 @@
                 
                 [mapView addAnnotations:self.retailers];
                 [mapView selectAnnotation:[self.retailers objectAtIndex:0] animated:YES];
+
                 [self updateVisibleMapRect];
                 [listView reloadData];
                 
@@ -311,22 +312,7 @@
 
 - (void)updateVisibleMapRect
 {
-    MKMapRect zoomRect = MKMapRectNull;
-
-    for (id <MKAnnotation> annotation in [self retailers])
-    {
-        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
-        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
-        
-        if (MKMapRectIsNull(zoomRect))
-        {
-            zoomRect = pointRect;
-        }
-        else
-        {
-            zoomRect = MKMapRectUnion(zoomRect, pointRect);
-        }
-    }
+    MKMapRect zoomRect = [MapUtils regionToFitMapAnnotations:self.retailers];
     
     [mapView setVisibleMapRect:zoomRect animated:YES];
 }
