@@ -21,6 +21,7 @@
 @interface MapViewController : UIViewController <UISplitViewControllerDelegate,
                                                  UISearchBarDelegate,
                                                  MKMapViewDelegate,
+                                                 UIAlertViewDelegate,
                                                  UITableViewDataSource,
                                                  UITableViewDelegate>
 {

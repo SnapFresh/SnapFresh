@@ -443,9 +443,12 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    SnapRetailer *retailer = (SnapRetailer *)view.annotation;
-    
-    [MapUtils openMapWithDestinationAddress:retailer];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Show driving directions?"
+                                                        message:@"You will be taken to the Map app"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"OK", nil];
+    [alertView show];
 }
 
 #pragma mark - UITableViewDataSource protocol conformance (for iPhone version)
@@ -508,6 +511,20 @@
 {
     [searchBar setShowsCancelButton:NO animated:YES];
     [searchBar resignFirstResponder];
+}
+
+#pragma mark - UIAlertViewDelegate protocol conformance
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        id <MKAnnotation> annotation = [[self.mapView selectedAnnotations] objectAtIndex:0];
+        
+        SnapRetailer *retailer = (SnapRetailer *)annotation;
+        
+        [MapUtils openMapWithDestinationAddress:retailer];
+    }
 }
 
 @end
