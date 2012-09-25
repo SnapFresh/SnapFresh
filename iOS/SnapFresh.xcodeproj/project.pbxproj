@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8408F66F1602F3F10008639E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8408F66E1602F3F10008639E /* Default-568h@2x.png */; };
 		8408F86A16031A7E0008639E /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8408F85816031A7E0008639E /* EasyTracker.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8408F87016031AC70008639E /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8408F86F16031AC70008639E /* EasyTracker.plist */; };
 		8408F89516031B860008639E /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F88916031B860008639E /* libGoogleAnalytics.a */; };
@@ -123,10 +122,10 @@
 		BE10857B152CBEEB0015A268 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108576152CBEEB0015A268 /* Icon-72@2x.png */; };
 		BE655AB1160E72BC003C32B6 /* MapUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BE655AB0160E72BC003C32B6 /* MapUtils.m */; };
 		BE7C4BF314D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE7C4BF114D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard */; };
+		BEFA907F161228C6006B345D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEFA907E161228C6006B345D /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8408F66E1602F3F10008639E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		8408F85716031A7E0008639E /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTracker.h; sourceTree = "<group>"; };
 		8408F85816031A7E0008639E /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyTracker.m; sourceTree = "<group>"; };
 		8408F86F16031AC70008639E /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
@@ -270,6 +269,7 @@
 		BE655AAF160E72BC003C32B6 /* MapUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapUtils.h; sourceTree = "<group>"; };
 		BE655AB0160E72BC003C32B6 /* MapUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapUtils.m; sourceTree = "<group>"; };
 		BE7C4BF214D79A3B004A06D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		BEFA907E161228C6006B345D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Images/Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -561,8 +561,8 @@
 			isa = PBXGroup;
 			children = (
 				847E540C1564F023004E78CA /* Default.png */,
-				8408F66E1602F3F10008639E /* Default-568h@2x.png */,
 				847E540D1564F023004E78CA /* Default@2x.png */,
+				BEFA907E161228C6006B345D /* Default-568h@2x.png */,
 				847E54041564EBB2004E78CA /* Default-Landscape@2x~ipad.png */,
 				847E54051564EBB2004E78CA /* Default-Landscape~ipad.png */,
 				847E54091564ED4B004E78CA /* Default-Portrait~ipad.png */,
@@ -722,8 +722,8 @@
 				843B6BF6158ED09D0031A968 /* MDACTitleBar.png in Resources */,
 				843B6BF7158ED09D0031A968 /* MDACTitleBar@2x.png in Resources */,
 				843B6C02158ED09D0031A968 /* SVProgressHUD.bundle in Resources */,
-				8408F66F1602F3F10008639E /* Default-568h@2x.png in Resources */,
 				8408F87016031AC70008639E /* EasyTracker.plist in Resources */,
+				BEFA907F161228C6006B345D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
