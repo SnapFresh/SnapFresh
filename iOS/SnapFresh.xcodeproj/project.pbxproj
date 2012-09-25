@@ -846,7 +846,6 @@
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Desktop/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParty/Google Analytics SDK/Library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -863,7 +862,6 @@
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Desktop/Google Analytics SDK/Library\"",
 					"\"$(SRCROOT)/ThirdParty/Google Analytics SDK/Library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
