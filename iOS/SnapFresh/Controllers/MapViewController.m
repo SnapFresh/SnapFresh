@@ -225,6 +225,7 @@
         if (error)
         {
             [SVProgressHUD showErrorWithStatus:@"Invalid search address"];
+            self.searchBar.text = nil;
             NSLog(@"Forward geocode failed with error: %@", error);
             return;
         }
