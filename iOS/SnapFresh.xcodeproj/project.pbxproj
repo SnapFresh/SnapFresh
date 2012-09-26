@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		8408F86A16031A7E0008639E /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8408F85816031A7E0008639E /* EasyTracker.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8408F87016031AC70008639E /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8408F86F16031AC70008639E /* EasyTracker.plist */; };
-		8408F89516031B860008639E /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F88916031B860008639E /* libGoogleAnalytics.a */; };
-		8408F89616031B860008639E /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F88A16031B860008639E /* libGoogleAnalytics_NoThumb.a */; };
 		8408F89C16031BE50008639E /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F89B16031BE50008639E /* libsqlite3.0.dylib */; };
 		8408F89E16031BF60008639E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F89D16031BF60008639E /* CFNetwork.framework */; };
 		8417058C14C75EA100ACF050 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8417058B14C75EA100ACF050 /* UIKit.framework */; };
@@ -121,6 +119,7 @@
 		BE10857A152CBEEB0015A268 /* Icon-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108575152CBEEB0015A268 /* Icon-50@2x.png */; };
 		BE10857B152CBEEB0015A268 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108576152CBEEB0015A268 /* Icon-72@2x.png */; };
 		BE655AB1160E72BC003C32B6 /* MapUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BE655AB0160E72BC003C32B6 /* MapUtils.m */; };
+		BE6861E4161389410053A437 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE6861CF161389410053A437 /* libGoogleAnalytics.a */; };
 		BE7C4BF314D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE7C4BF114D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard */; };
 		BEFA907F161228C6006B345D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEFA907E161228C6006B345D /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
@@ -129,9 +128,6 @@
 		8408F85716031A7E0008639E /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTracker.h; sourceTree = "<group>"; };
 		8408F85816031A7E0008639E /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyTracker.m; sourceTree = "<group>"; };
 		8408F86F16031AC70008639E /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
-		8408F88816031B860008639E /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
-		8408F88916031B860008639E /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
-		8408F88A16031B860008639E /* libGoogleAnalytics_NoThumb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics_NoThumb.a; sourceTree = "<group>"; };
 		8408F89B16031BE50008639E /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		8408F89D16031BF60008639E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8417058714C75EA100ACF050 /* SnapFresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapFresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,6 +264,8 @@
 		BE108576152CBEEB0015A268 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Images/Icon-72@2x.png"; sourceTree = "<group>"; };
 		BE655AAF160E72BC003C32B6 /* MapUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapUtils.h; sourceTree = "<group>"; };
 		BE655AB0160E72BC003C32B6 /* MapUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapUtils.m; sourceTree = "<group>"; };
+		BE6861CE161389410053A437 /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
+		BE6861CF161389410053A437 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		BE7C4BF214D79A3B004A06D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		BEFA907E161228C6006B345D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Images/Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -286,8 +284,7 @@
 				8417058C14C75EA100ACF050 /* UIKit.framework in Frameworks */,
 				8417058E14C75EA100ACF050 /* Foundation.framework in Frameworks */,
 				8417059014C75EA100ACF050 /* CoreGraphics.framework in Frameworks */,
-				8408F89516031B860008639E /* libGoogleAnalytics.a in Frameworks */,
-				8408F89616031B860008639E /* libGoogleAnalytics_NoThumb.a in Frameworks */,
+				BE6861E4161389410053A437 /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,24 +304,6 @@
 			children = (
 				8408F85716031A7E0008639E /* EasyTracker.h */,
 				8408F85816031A7E0008639E /* EasyTracker.m */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
-		8408F87916031B860008639E /* Google Analytics SDK */ = {
-			isa = PBXGroup;
-			children = (
-				8408F88716031B860008639E /* Library */,
-			);
-			path = "Google Analytics SDK";
-			sourceTree = "<group>";
-		};
-		8408F88716031B860008639E /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				8408F88816031B860008639E /* GANTracker.h */,
-				8408F88916031B860008639E /* libGoogleAnalytics.a */,
-				8408F88A16031B860008639E /* libGoogleAnalytics_NoThumb.a */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -398,7 +377,7 @@
 		843B6B47158ED09C0031A968 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				8408F87916031B860008639E /* Google Analytics SDK */,
+				BE6861AE161389410053A437 /* Google Analytics SDK */,
 				8408F84016031A7E0008639E /* EasyTracker */,
 				843B6B48158ED09C0031A968 /* MDAboutController */,
 				843B6B9A158ED09C0031A968 /* SVProgressHUD */,
@@ -586,6 +565,23 @@
 				84AFF0B0152C48DB007F4534 /* yelp_logo@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		BE6861AE161389410053A437 /* Google Analytics SDK */ = {
+			isa = PBXGroup;
+			children = (
+				BE6861CD161389410053A437 /* Library */,
+			);
+			path = "Google Analytics SDK";
+			sourceTree = "<group>";
+		};
+		BE6861CD161389410053A437 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				BE6861CE161389410053A437 /* GANTracker.h */,
+				BE6861CF161389410053A437 /* libGoogleAnalytics.a */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -794,7 +790,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = armv7;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -820,7 +815,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = armv7;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
