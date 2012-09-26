@@ -18,12 +18,12 @@
 
 @protocol MapViewControllerDelegate;
 
-@interface MapViewController : UIViewController <UISplitViewControllerDelegate,
-                                                 UISearchBarDelegate,
-                                                 MKMapViewDelegate,
-                                                 UIAlertViewDelegate,
-                                                 UITableViewDataSource,
-                                                 UITableViewDelegate>
+@interface MapViewController : TrackedUIViewController <UISplitViewControllerDelegate,
+                                                        UISearchBarDelegate,
+                                                        MKMapViewDelegate,
+                                                        UIAlertViewDelegate,
+                                                        UITableViewDataSource,
+                                                        UITableViewDelegate>
 {
     NSMutableArray *_retailers;
 }

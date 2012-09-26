@@ -15,7 +15,6 @@
  */
 
 #import "AppDelegate.h"
-#import "EasyTracker.h"
 
 @implementation AppDelegate
 
