@@ -16,17 +16,12 @@
 
 #import <MapKit/MapKit.h>
 
-@interface SnapRetailer : NSObject <MKAnnotation>
+@interface SnapRetailer : MKPlacemark
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *street;
-@property (nonatomic, strong) NSString *city;
-@property (nonatomic, strong) NSString *state;
-@property (nonatomic, strong) NSString *address;
-@property (nonatomic, strong) NSNumber *lat;
-@property (nonatomic, strong) NSNumber *lon;
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *address;
 @property (nonatomic, readonly) NSString *mapAddress;
+@property (nonatomic, readonly) NSNumber *distance;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

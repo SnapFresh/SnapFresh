@@ -15,56 +15,56 @@
  */
 
 #import "SnapRetailer.h"
+#import <AddressBook/AddressBook.h>
+
 
 @implementation SnapRetailer
 
-@synthesize name;
+@synthesize name = _name;
 @synthesize address;
-@synthesize coordinate;
-@synthesize street;
-@synthesize state;
-@synthesize lat;
-@synthesize lon;
-@synthesize city;
 @synthesize mapAddress;
+@synthesize distance = _distance;
 
 #pragma mark - Designated initializer
 
 - (id)initWithDictionary:(NSDictionary *)dictionary
 {
-    self = [super init];
+    _name = [dictionary valueForKey:@"name"];
+    _distance = [dictionary valueForKey:@"distance"];
     
-    if (self)
-    {
-        for (NSString *key in [dictionary allKeys])
-        {
-            @try
-            {
-                NSString *value = [dictionary objectForKey:key];
-                [self setValue:value forKey:key];
-            }
-            @catch (NSException *exception)
-            {
-                //NSLog(@"%@", exception);
-            }
-        }
-    }
+    NSMutableDictionary *addressDictionary = [NSMutableDictionary dictionary];
+    
+    NSString *street = [dictionary valueForKey:@"street"];
+    NSString *city = [dictionary valueForKey:@"city"];
+    NSString *state = [dictionary valueForKey:@"state"];
+    NSString *zip = [dictionary valueForKey:@"zip"];
+    NSNumber *lat = [dictionary valueForKey:@"lat"];
+    NSNumber *lon = [dictionary valueForKey:@"lon"];
+    
+    [addressDictionary setValue:street forKey:(NSString *)kABPersonAddressStreetKey];
+    [addressDictionary setValue:city forKey:(NSString *)kABPersonAddressCityKey];
+    [addressDictionary setValue:state forKey:(NSString *)kABPersonAddressStateKey];
+    [addressDictionary setValue:zip forKey:(NSString *)kABPersonAddressZIPKey];
+
+    CLLocationCoordinate2D coordinate = { [lat doubleValue], [lon doubleValue] };
+    
+    self = [super initWithCoordinate:coordinate addressDictionary:addressDictionary];
     
     return self;
 }
 
-#pragma mark - address getter implementations
+#pragma mark - Address getter implementations
 
 - (NSString *)address
 {
-    return [NSString stringWithFormat:@"%@ %@ %@", self.street, self.city, self.state];
+    NSString *addressString = [NSString stringWithFormat:@"%@ %@ %@", self.thoroughfare, self.locality, self.administrativeArea];
+    return addressString;
 }
 
 - (NSString *)mapAddress
 {
-    NSString *mapString = [NSString stringWithFormat:@"%@ %@ %@", self.street, city, state];
-    NSString *formattedMapString = [mapString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    return formattedMapString;
+    NSString *mapString = [NSString stringWithFormat:@"%@+%@+%@", self.thoroughfare, self.locality, self.administrativeArea];
+    return mapString;
 }
 
 #pragma mark - MKAnnotation conformance
@@ -77,13 +77,6 @@
 - (NSString *)subtitle
 {
     return self.address;
-}
-
-- (CLLocationCoordinate2D)coordinate
-{
-    CLLocationCoordinate2D coord2D = { [self.lat doubleValue], [self.lon doubleValue] };
-	
-	return coord2D;
 }
 
 @end

@@ -45,38 +45,21 @@
 
 + (void)openMapWithDestinationAddress:(SnapRetailer *)retailer
 {
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    MKMapItem* destination =  [[MKMapItem alloc] initWithPlacemark:retailer];
     
-    [geocoder geocodeAddressString:retailer.address completionHandler:^(NSArray *placemarks, NSError *error)
+    if([destination respondsToSelector:@selector(openInMapsWithLaunchOptions:)])
     {
-        if (error)
-        {
-            NSLog(@"Reverse geocode failed with error: %@", error);
-            return;
-        }
+        // Using iOS6 native maps app
+        [destination openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving}];
         
-        // Get the top result returned by the geocoder
-        CLPlacemark *topResult = [placemarks objectAtIndex:0];
-        CLLocationCoordinate2D coordinate = topResult.location.coordinate;
-        
-        // Create MKMapItem out of coordinates
-        MKPlacemark* placeMark = [[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:topResult.addressDictionary];
-        MKMapItem* destination =  [[MKMapItem alloc] initWithPlacemark:placeMark];
-        
-        if([destination respondsToSelector:@selector(openInMapsWithLaunchOptions:)])
-        {
-            // Using iOS6 native maps app
-            [destination openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving}];
-            
-        }
-        else
-        {
-            // Using iOS5 which has the Google Maps application
-            NSString *currentLocation = @"Current%20Location";
-            NSString *routeString = [NSString stringWithFormat:@"%@saddr=%@&daddr=%@", kMapsBaseUrl, currentLocation, retailer.mapAddress];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:routeString]];
-        }
-     }];
+    }
+    else
+    {
+        // Using iOS5 which has the Google Maps application
+        NSString *currentLocation = @"Current%20Location";
+        NSString *routeString = [NSString stringWithFormat:@"%@saddr=%@&daddr=%@", kMapsBaseUrl, currentLocation, retailer.mapAddress];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:routeString]];
+    }
 }
 
 @end
