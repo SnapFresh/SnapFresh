@@ -244,11 +244,9 @@
         <class className="ListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ListViewController.h"/>
         </class>
-        <class className="MapViewController" superclassName="UIViewController">
+        <class className="MapViewController" superclassName="TrackedUIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
             <relationships>
-                <relationship kind="action" name="segmentAction:"/>
-                <relationship kind="action" name="showInfoView:"/>
                 <relationship kind="outlet" name="centerButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="listBarButtonItem" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="listView" candidateClass="UITableView"/>
@@ -259,6 +257,9 @@
                 <relationship kind="outlet" name="segmentWrapper" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="yelpLogo" candidateClass="UIImageView"/>
             </relationships>
+        </class>
+        <class className="TrackedUIViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TrackedUIViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
