@@ -30,7 +30,7 @@
                             </searchBar>
                             <view contentMode="scaleToFill" id="3Lm-i5-FR9" userLabel="Toggle view">
                                 <rect key="frame" x="0.0" y="44" width="320" height="328"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jFk-X3-WhL">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
