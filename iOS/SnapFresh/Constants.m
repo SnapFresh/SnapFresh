@@ -6,8 +6,14 @@
 //  Copyright (c) 2012 shrtlist.com. All rights reserved.
 //
 
-// The SnapFresh URI
-NSString* const kSnapFreshURI = @"http://snapfresh.org/retailers/nearaddy.json/?address=%@";
+// SnapFresh API base URL
+NSString * const kSnapFreshBaseURL = @"http://snapfresh.org";
 
-// Base URL for Google Maps
-NSString *const kMapsBaseUrl = @"http://maps.google.com/maps?";
+// SnapFresh API endpoint
+NSString * const kSnapFreshEndpoint = @"/retailers/nearaddy.json/?address=%@";
+
+// Google Maps URL
+NSString * const kGoogleMapsURL = @"http://maps.google.com/maps?";
+
+// Animation duration
+CGFloat const kAnimationDuration = 0.5;

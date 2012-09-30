@@ -15,7 +15,6 @@
  */
 
 #import <MapKit/MapKit.h>
-#import "SnapRetailer.h"
 
 /**
  * Map view utility class.
@@ -29,8 +28,8 @@
 + (MKMapRect)regionToFitMapAnnotations:(NSArray *)annotations;
 
 /**
- @param address of destination
+ @param destination placemark
  */
-+ (void)openMapWithDestinationAddress:(SnapRetailer *)retailer;
++ (void)openMapWithDestination:(MKPlacemark *)placemark;
 
 @end

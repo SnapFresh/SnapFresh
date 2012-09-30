@@ -16,24 +16,18 @@
 
 #import "SnapRetailer.h"
 #import <AddressBook/AddressBook.h>
-
+#import <AddressBookUI/AddressBookUI.h>
 
 @implementation SnapRetailer
 
 @synthesize name = _name;
-@synthesize address;
-@synthesize mapAddress;
+@synthesize address = _address;
 @synthesize distance = _distance;
 
 #pragma mark - Designated initializer
 
 - (id)initWithDictionary:(NSDictionary *)dictionary
 {
-    _name = [dictionary valueForKey:@"name"];
-    _distance = [dictionary valueForKey:@"distance"];
-    
-    NSMutableDictionary *addressDictionary = [NSMutableDictionary dictionary];
-    
     NSString *street = [dictionary valueForKey:@"street"];
     NSString *city = [dictionary valueForKey:@"city"];
     NSString *state = [dictionary valueForKey:@"state"];
@@ -41,33 +35,29 @@
     NSNumber *lat = [dictionary valueForKey:@"lat"];
     NSNumber *lon = [dictionary valueForKey:@"lon"];
     
-    [addressDictionary setValue:street forKey:(NSString *)kABPersonAddressStreetKey];
-    [addressDictionary setValue:city forKey:(NSString *)kABPersonAddressCityKey];
-    [addressDictionary setValue:state forKey:(NSString *)kABPersonAddressStateKey];
-    [addressDictionary setValue:zip forKey:(NSString *)kABPersonAddressZIPKey];
+    // Create the address dictionary
+    NSDictionary *addressDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       street, (NSString *)kABPersonAddressStreetKey,
+                                       city, (NSString *)kABPersonAddressCityKey,
+                                       state, (NSString *)kABPersonAddressStateKey,
+                                       zip, (NSString *)kABPersonAddressZIPKey, nil];
 
+    // Create the coordinate
     CLLocationCoordinate2D coordinate = { [lat doubleValue], [lon doubleValue] };
     
     self = [super initWithCoordinate:coordinate addressDictionary:addressDictionary];
     
+    if (self)
+    {
+        _name = [dictionary valueForKey:@"name"];
+        _address = ABCreateStringWithAddressDictionary(self.addressDictionary, NO);
+        _distance = [dictionary valueForKey:@"distance"];
+    }
+    
     return self;
 }
 
-#pragma mark - Address getter implementations
-
-- (NSString *)address
-{
-    NSString *addressString = [NSString stringWithFormat:@"%@ %@ %@", self.thoroughfare, self.locality, self.administrativeArea];
-    return addressString;
-}
-
-- (NSString *)mapAddress
-{
-    NSString *mapString = [NSString stringWithFormat:@"%@+%@+%@", self.thoroughfare, self.locality, self.administrativeArea];
-    return mapString;
-}
-
-#pragma mark - MKAnnotation conformance
+#pragma mark - Override MKAnnotation protocol accessors
 
 - (NSString *)title
 {

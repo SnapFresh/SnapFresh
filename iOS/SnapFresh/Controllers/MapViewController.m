@@ -171,16 +171,16 @@
     if (listView.hidden)
     {
         [UIView transitionWithView:self.view 
-                          duration:0.5 
-                           options:UIViewAnimationOptionTransitionFlipFromRight 
+                          duration:kAnimationDuration
+                           options:UIViewAnimationOptionTransitionFlipFromRight
                         animations:^{ listView.hidden = NO; mapView.hidden = YES; redoSearchView.hidden = YES; yelpLogo.hidden = YES; } 
                         completion:^(BOOL finished){ listBarButtonItem.title = @"Map"; }];
     }
     else
     {
         [UIView transitionWithView:self.view 
-                          duration:0.5 
-                           options:UIViewAnimationOptionTransitionFlipFromLeft 
+                          duration:kAnimationDuration
+                           options:UIViewAnimationOptionTransitionFlipFromLeft
                         animations:^{ listView.hidden = YES; mapView.hidden = NO; yelpLogo.hidden = NO; } 
                         completion:^(BOOL finished){ listBarButtonItem.title = @" List"; }];
     }
@@ -245,22 +245,45 @@
         annotation.title = @"Search address";
         annotation.subtitle = searchAddress;
         annotation.coordinate = topResult.location.coordinate;
+        
         [mapView addAnnotation:annotation];
     }];
 }
 
-#pragma mark - Parse the Snapfresh response
+#pragma mark - Parse the Snapfresh JSON response
+
+- (void)parseJSONResponse:(NSData *)data
+{
+    NSError* error;
+    NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
+                                                                 options:kNilOptions
+                                                                   error:&error];
+    // Get the JSON array of retailers
+    NSArray *retailersJSON = [jsonResponse valueForKey:@"retailers"];
+    
+    _retailers = [NSMutableArray array];
+    
+    for (NSDictionary *jsonDictionary in retailersJSON)
+    {
+        // Get the JSON dictionary of a retailer
+        NSDictionary *retailerDictionary = [jsonDictionary objectForKey:@"retailer"];
+        SnapRetailer *retailer = [[SnapRetailer alloc] initWithDictionary:retailerDictionary];
+        [_retailers addObject:retailer];
+    }
+}
 
 - (void)setAnnotationsForAddressString:(NSString *)address
 {
     [self clearMapAnnotations];
     
     // Create the SnapFresh web service URI with address as a parameter
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kSnapFreshURI, 
-                                       [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%@", kSnapFreshBaseURL, kSnapFreshEndpoint, address];
+    
+    NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 
     UIApplication* app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = YES;
+
     [SVProgressHUD showWithStatus:@"Finding SNAP retailers..."];
 
     // Submit a block for asynchronous execution to our dispatchQueue and return immediately.
@@ -268,11 +291,11 @@
         
         NSData *data = [NSData dataWithContentsOfURL:url];
         
-        UIApplication* app = [UIApplication sharedApplication];
-        app.networkActivityIndicatorVisible = NO;
-        
         // Create a block that gets queued up in the main_queue, a default serial queue
         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            UIApplication* app = [UIApplication sharedApplication];
+            app.networkActivityIndicatorVisible = NO;
         
             if (data == nil)
             {
@@ -280,27 +303,11 @@
                 self.searchBar.text = nil;
             }
             else
-            {                
-                [SVProgressHUD showSuccessWithStatus:@"Loading SNAP retailers"];
+            {
+                [self parseJSONResponse:data];
+                
+                [SVProgressHUD dismiss];
 
-                // Parse the SnapFresh JSON response
-                NSError* error;
-                NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
-                                                                               options:kNilOptions
-                                                                                 error:&error];
-                // Get the JSON array of retailers
-                NSArray *retailersJSON = [jsonResponse valueForKey:@"retailers"];
-                
-                _retailers = [NSMutableArray array];
-                
-                for (NSDictionary *jsonDictionary in retailersJSON)
-                {
-                    // Get the JSON dictionary of a retailer
-                    NSDictionary *retailerDictionary = [jsonDictionary objectForKey:@"retailer"];
-                    SnapRetailer *retailer = [[SnapRetailer alloc] initWithDictionary:retailerDictionary];
-                    [_retailers addObject:retailer];
-                }
-                
                 [mapView addAnnotations:self.retailers];
                 [mapView selectAnnotation:[self.retailers objectAtIndex:0] animated:YES];
 
@@ -527,7 +534,7 @@
         
         SnapRetailer *retailer = (SnapRetailer *)annotation;
         
-        [MapUtils openMapWithDestinationAddress:retailer];
+        [MapUtils openMapWithDestination:retailer];
     }
 }
 

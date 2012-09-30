@@ -6,8 +6,14 @@
 //  Copyright (c) 2012 shrtlist.com. All rights reserved.
 //
 
-// The SnapFresh URI
-extern NSString* const kSnapFreshURI;
+// SnapFresh API base URL
+extern NSString * const kSnapFreshBaseURL;
 
-// Base URL for Google Maps
-extern NSString *const kMapsBaseUrl;
+// SnapFresh API endpoint
+extern NSString * const kSnapFreshEndpoint;
+
+// Google Maps URL
+extern NSString * const kGoogleMapsURL;
+
+// Animation duration
+extern CGFloat const kAnimationDuration;

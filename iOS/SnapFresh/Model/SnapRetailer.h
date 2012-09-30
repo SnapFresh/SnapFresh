@@ -20,7 +20,6 @@
 
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSString *address;
-@property (nonatomic, readonly) NSString *mapAddress;
 @property (nonatomic, readonly) NSNumber *distance;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;

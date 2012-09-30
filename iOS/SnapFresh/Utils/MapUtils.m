@@ -43,22 +43,24 @@
     return zoomRect;
 }
 
-+ (void)openMapWithDestinationAddress:(SnapRetailer *)retailer
++ (void)openMapWithDestination:(MKPlacemark *)placemark
 {
-    MKMapItem* destination =  [[MKMapItem alloc] initWithPlacemark:retailer];
+    MKMapItem *destination =  [[MKMapItem alloc] initWithPlacemark:placemark];
     
-    if([destination respondsToSelector:@selector(openInMapsWithLaunchOptions:)])
+    if ([destination respondsToSelector:@selector(openInMapsWithLaunchOptions:)])
     {
-        // Using iOS6 native maps app
+        // Using iOS 6 native maps app
         [destination openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving}];
         
     }
     else
     {
-        // Using iOS5 which has the Google Maps application
-        NSString *currentLocation = @"Current%20Location";
-        NSString *routeString = [NSString stringWithFormat:@"%@saddr=%@&daddr=%@", kMapsBaseUrl, currentLocation, retailer.mapAddress];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:routeString]];
+        // Using iOS 5 which has the Google Maps application
+        NSString *currentLocation = @"Current Location";
+        NSString *googleMapsURL = [NSString stringWithFormat:@"%@saddr=%@&daddr=%@", kGoogleMapsURL, currentLocation, placemark.subtitle];
+        NSString *urlString = [googleMapsURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
     }
 }
 
