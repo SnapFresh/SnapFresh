@@ -25,6 +25,7 @@
 
 @interface MapViewController () // Class extension
 @property (nonatomic, weak) IBOutlet UIView *toggleView; // Contains map and list views
+@property (nonatomic, weak) IBOutlet UIView *mapContainerView; // For iPhone version, contains map view
 @property (nonatomic, weak) IBOutlet UITableView *listView; // For iPhone version
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *centerButton;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
@@ -32,7 +33,6 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *listBarButtonItem;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (nonatomic, weak) IBOutlet UIView *redoSearchView;
-@property (nonatomic, weak) IBOutlet UIImageView *yelpLogo;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
 @end
 
@@ -41,6 +41,7 @@
 @implementation MapViewController
 
 @synthesize toggleView;
+@synthesize mapContainerView;
 @synthesize mapView;
 @synthesize listView;
 @synthesize centerButton;
@@ -49,7 +50,6 @@
 @synthesize listBarButtonItem;
 @synthesize mapTypeSegmentedControl;
 @synthesize redoSearchView;
-@synthesize yelpLogo;
 @synthesize masterPopoverController;
 @synthesize delegate;
 @synthesize retailers;
@@ -176,16 +176,16 @@
         [UIView transitionWithView:self.toggleView
                           duration:kAnimationDuration
                            options:UIViewAnimationOptionTransitionFlipFromRight
-                        animations:^{ listView.hidden = NO; mapView.hidden = YES; redoSearchView.hidden = YES; yelpLogo.hidden = YES; } 
-                        completion:^(BOOL finished){ listBarButtonItem.title = @"Map"; }];
+                        animations:^{ listView.hidden = NO; mapContainerView.hidden = YES; redoSearchView.hidden = YES; }
+                        completion:^(BOOL finished) { listBarButtonItem.title = @"Map"; }];
     }
     else
     {
         [UIView transitionWithView:self.toggleView
                           duration:kAnimationDuration
                            options:UIViewAnimationOptionTransitionFlipFromLeft
-                        animations:^{ listView.hidden = YES; mapView.hidden = NO; yelpLogo.hidden = NO; } 
-                        completion:^(BOOL finished){ listBarButtonItem.title = @" List"; }];
+                        animations:^{ listView.hidden = YES; mapContainerView.hidden = NO; }
+                        completion:^(BOOL finished) { listBarButtonItem.title = @" List"; }];
     }
 }
 
@@ -348,6 +348,16 @@
     }
     
     MKMapRect zoomRect = [MapUtils regionToFitMapAnnotations:annotations];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        MKMapSize mapSize = zoomRect.size;
+        MKMapPoint mapPoint = zoomRect.origin;
+        CGFloat height = mapSize.height * 2.5;
+        CGFloat width = mapSize.width * 2.5;
+        zoomRect.size = MKMapSizeMake(width, height);
+        zoomRect.origin = MKMapPointMake((mapPoint.x + height/2.0), (mapPoint.y + width/2.0));
+    }
     
     [mapView setVisibleMapRect:zoomRect animated:YES];
 }

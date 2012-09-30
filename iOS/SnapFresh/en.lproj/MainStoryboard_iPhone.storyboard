@@ -69,19 +69,26 @@
                                             <outlet property="delegate" destination="3rx-kf-aqG" id="Q9U-Pl-gUT"/>
                                         </connections>
                                     </tableView>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="MnQ-xl-LwZ">
+                                    <view contentMode="scaleToFill" id="EoB-pm-Ajk" userLabel="Map container view">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="3rx-kf-aqG" id="nh1-qm-eqe"/>
-                                        </connections>
-                                    </mapView>
+                                        <subviews>
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="MnQ-xl-LwZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="3rx-kf-aqG" id="nh1-qm-eqe"/>
+                                                </connections>
+                                            </mapView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yelp_logo.png" id="y9p-Ny-qb6">
+                                                <rect key="frame" x="262" y="295" width="51" height="27"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yelp_logo.png" id="y9p-Ny-qb6">
-                                <rect key="frame" x="262" y="340" width="51" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                            </imageView>
                             <view hidden="YES" contentMode="scaleToFill" id="aKi-bR-1LL" userLabel="View - redo search">
                                 <rect key="frame" x="0.0" y="322" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -163,13 +170,13 @@
                         <outlet property="centerButton" destination="uvz-oN-CKL" id="0LL-p7-2py"/>
                         <outlet property="listBarButtonItem" destination="Iey-7b-n5f" id="mmR-X8-sM2"/>
                         <outlet property="listView" destination="jFk-X3-WhL" id="2LS-y6-CbI"/>
+                        <outlet property="mapContainerView" destination="EoB-pm-Ajk" id="jAp-gS-Qmp"/>
                         <outlet property="mapTypeSegmentedControl" destination="c9W-U2-ILw" id="IRG-b6-uDL"/>
                         <outlet property="mapView" destination="MnQ-xl-LwZ" id="3Qs-FL-7MR"/>
                         <outlet property="redoSearchView" destination="aKi-bR-1LL" id="y13-ka-Y78"/>
                         <outlet property="searchBar" destination="V3m-5O-6Zt" id="NjV-rh-80c"/>
                         <outlet property="segmentWrapper" destination="2ey-Wn-QqX" id="bej-PW-gW1"/>
                         <outlet property="toggleView" destination="3Lm-i5-FR9" id="JsQ-9k-nik"/>
-                        <outlet property="yelpLogo" destination="y9p-Ny-qb6" id="9z9-tR-7CP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cda-OC-Gi0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -223,16 +230,17 @@
             <relationships>
                 <relationship kind="action" name="centerAction:"/>
                 <relationship kind="action" name="segmentAction:"/>
+                <relationship kind="action" name="showInfoView:"/>
                 <relationship kind="outlet" name="centerButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="listBarButtonItem" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="listView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="mapContainerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="mapTypeSegmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="redoSearchView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="segmentWrapper" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="toggleView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="yelpLogo" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="TrackedUIViewController" superclassName="UIViewController">
