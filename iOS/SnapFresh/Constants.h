@@ -17,3 +17,6 @@ extern NSString * const kGoogleMapsURL;
 
 // Animation duration
 extern CGFloat const kAnimationDuration;
+
+// Edge insets
+extern CGFloat const kEdgeInset;

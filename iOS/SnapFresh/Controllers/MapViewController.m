@@ -349,14 +349,10 @@
     
     MKMapRect zoomRect = [MapUtils regionToFitMapAnnotations:annotations];
     
+    // Add some padding for iPad
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        MKMapSize mapSize = zoomRect.size;
-        MKMapPoint mapPoint = zoomRect.origin;
-        CGFloat height = mapSize.height * 2.5;
-        CGFloat width = mapSize.width * 2.5;
-        zoomRect.size = MKMapSizeMake(width, height);
-        zoomRect.origin = MKMapPointMake((mapPoint.x + height/2.0), (mapPoint.y + width/2.0));
+        zoomRect = [mapView mapRectThatFits:zoomRect edgePadding:UIEdgeInsetsMake(kEdgeInset, kEdgeInset, kEdgeInset, kEdgeInset)];
     }
     
     [mapView setVisibleMapRect:zoomRect animated:YES];
