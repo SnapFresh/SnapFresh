@@ -116,18 +116,20 @@
 	// The segmented control was clicked, handle it here 
 	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     
-    if ([segmentedControl selectedSegmentIndex] == MKMapTypeStandard)
-	{
-		[mapView setMapType:MKMapTypeStandard];
-	}
-	else if ([segmentedControl selectedSegmentIndex] == MKMapTypeSatellite)
-	{
-		[mapView setMapType:MKMapTypeSatellite];
-	}
-	else if ([segmentedControl selectedSegmentIndex] == MKMapTypeHybrid)
-	{
-		[mapView setMapType:MKMapTypeHybrid];
-	}
+    switch (segmentedControl.selectedSegmentIndex)
+    {
+        case MKMapTypeStandard:
+            [mapView setMapType:MKMapTypeStandard];
+            break;
+        case MKMapTypeSatellite:
+            [mapView setMapType:MKMapTypeSatellite];
+            break;
+        case MKMapTypeHybrid:
+            [mapView setMapType:MKMapTypeHybrid];
+            break;
+        default:
+            break;
+    }
 }
 
 - (IBAction)redoSearchTapped
