@@ -24,13 +24,10 @@
                                                         UIAlertViewDelegate,
                                                         UITableViewDataSource,
                                                         UITableViewDelegate>
-{
-    NSMutableArray *_retailers;
-}
 
 @property (nonatomic, weak) id <MapViewControllerDelegate> delegate;
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
-@property (nonatomic, strong, readonly) NSArray *retailers;
+@property (nonatomic, strong) NSArray *retailers;
 
 @end
 

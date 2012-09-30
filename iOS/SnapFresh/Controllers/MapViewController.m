@@ -50,8 +50,7 @@
 @synthesize yelpLogo;
 @synthesize masterPopoverController;
 @synthesize delegate;
-// Synthesize a read-only property named "retailers", but wire it to the member variable named "_retailers".
-@synthesize retailers = _retailers;
+@synthesize retailers;
 
 #pragma mark - View lifecycle
 
@@ -96,13 +95,6 @@
 - (void)dealloc
 {
 	mapView.delegate = nil;
-}
-
-#pragma mark - Implement property accessor
-
-- (NSArray *)retailers
-{
-    return [_retailers copy];
 }
 
 #pragma mark - Target action methods
@@ -254,14 +246,14 @@
 
 - (void)parseJSONResponse:(NSData *)data
 {
-    NSError* error;
+    NSError *error;
     NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
                                                                  options:kNilOptions
                                                                    error:&error];
     // Get the JSON array of retailers
     NSArray *retailersJSON = [jsonResponse valueForKey:@"retailers"];
     
-    _retailers = [NSMutableArray array];
+    NSMutableArray *_retailers = [NSMutableArray array];
     
     for (NSDictionary *jsonDictionary in retailersJSON)
     {
@@ -270,6 +262,8 @@
         SnapRetailer *retailer = [[SnapRetailer alloc] initWithDictionary:retailerDictionary];
         [_retailers addObject:retailer];
     }
+    
+    self.retailers = [NSArray arrayWithArray:_retailers];
 }
 
 - (void)setAnnotationsForAddressString:(NSString *)address
@@ -281,7 +275,7 @@
     
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 
-    UIApplication* app = [UIApplication sharedApplication];
+    UIApplication *app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = YES;
 
     [SVProgressHUD showWithStatus:@"Finding SNAP retailers..."];
@@ -294,7 +288,7 @@
         // Create a block that gets queued up in the main_queue, a default serial queue
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            UIApplication* app = [UIApplication sharedApplication];
+            UIApplication *app = [UIApplication sharedApplication];
             app.networkActivityIndicatorVisible = NO;
         
             if (data == nil)
