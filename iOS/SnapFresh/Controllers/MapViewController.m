@@ -307,15 +307,18 @@
                 [self parseJSONResponse:data];
                 
                 [SVProgressHUD dismiss];
-
-                [mapView addAnnotations:self.retailers];
-                [mapView selectAnnotation:[self.retailers objectAtIndex:0] animated:YES];
-
-                [self updateVisibleMapRect];
-                [listView reloadData];
                 
-                // Notify our delegate that the map has new annotations.
-                [delegate annotationsDidLoad:self];
+                if (self.retailers.count > 0)
+                {
+                    [mapView addAnnotations:self.retailers];
+                    [mapView selectAnnotation:[self.retailers objectAtIndex:0] animated:YES];
+
+                    [self updateVisibleMapRect];
+                    [listView reloadData];
+                    
+                    // Notify our delegate that the map has new annotations.
+                    [delegate annotationsDidLoad:self];
+                }
             }
         });
     });
