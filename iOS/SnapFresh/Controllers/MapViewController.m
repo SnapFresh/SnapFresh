@@ -324,7 +324,21 @@
 
 - (void)updateVisibleMapRect
 {
-    MKMapRect zoomRect = [MapUtils regionToFitMapAnnotations:self.retailers];
+    NSArray *annotations = mapView.annotations;
+    
+    // Get non-SnapRetailer annotations
+    NSArray *otherAnnotations = [annotations filteredArrayUsingPredicate:
+                            [NSPredicate predicateWithFormat:@"!(self isKindOfClass:%@)", [SnapRetailer class]]];
+    
+    // Check if both search annotation and MKUserLocation are on the map
+    if (otherAnnotations.count > 1)
+    {
+        // If so, filter out MKUserLocation
+        annotations = [mapView.annotations filteredArrayUsingPredicate:
+                                [NSPredicate predicateWithFormat:@"!(self isKindOfClass:%@)", [MKUserLocation class]]];
+    }
+    
+    MKMapRect zoomRect = [MapUtils regionToFitMapAnnotations:annotations];
     
     [mapView setVisibleMapRect:zoomRect animated:YES];
 }
