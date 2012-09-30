@@ -153,10 +153,17 @@
          // Get the top result returned by the geocoder
          CLPlacemark *topResult = [placemarks objectAtIndex:0];
          
-         NSString *address = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
-         
-         self.searchBar.text = address;
-         [self setAnnotationsForAddressString:address];
+         NSString *searchAddress = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+
+         self.searchBar.text = searchAddress;
+         [self setAnnotationsForAddressString:searchAddress];
+
+         // Create an annotation from the placemark
+         MKPointAnnotation *searchAnnotation = [[MKPointAnnotation alloc] init];
+         searchAnnotation.title = @"Search address";
+         searchAnnotation.subtitle = searchAddress;
+         searchAnnotation.coordinate = topResult.location.coordinate;
+         [mapView addAnnotation:searchAnnotation];
      }];
 }
 
