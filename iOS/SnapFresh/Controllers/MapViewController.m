@@ -24,6 +24,7 @@
 #import "MapUtils.h"
 
 @interface MapViewController () // Class extension
+@property (nonatomic, weak) IBOutlet UIView *toggleView; // Contains map and list views
 @property (nonatomic, weak) IBOutlet UITableView *listView; // For iPhone version
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *centerButton;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
@@ -39,6 +40,7 @@
 
 @implementation MapViewController
 
+@synthesize toggleView;
 @synthesize mapView;
 @synthesize listView;
 @synthesize centerButton;
@@ -171,7 +173,7 @@
 {
     if (listView.hidden)
     {
-        [UIView transitionWithView:self.view 
+        [UIView transitionWithView:self.toggleView
                           duration:kAnimationDuration
                            options:UIViewAnimationOptionTransitionFlipFromRight
                         animations:^{ listView.hidden = NO; mapView.hidden = YES; redoSearchView.hidden = YES; yelpLogo.hidden = YES; } 
@@ -179,7 +181,7 @@
     }
     else
     {
-        [UIView transitionWithView:self.view 
+        [UIView transitionWithView:self.toggleView
                           duration:kAnimationDuration
                            options:UIViewAnimationOptionTransitionFlipFromLeft
                         animations:^{ listView.hidden = YES; mapView.hidden = NO; yelpLogo.hidden = NO; } 
