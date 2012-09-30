@@ -316,9 +316,13 @@
                 if (self.retailers.count > 0)
                 {
                     [mapView addAnnotations:self.retailers];
-                    [mapView selectAnnotation:[self.retailers objectAtIndex:0] animated:YES];
-
+                    
                     [self updateVisibleMapRect];
+                    
+                    // Select nearest retailer
+                    SnapRetailer *nearestRetailer = [self.retailers objectAtIndex:0];
+                    [mapView selectAnnotation:nearestRetailer animated:YES];
+
                     [listView reloadData];
                     
                     // Notify our delegate that the map has new annotations.
