@@ -103,6 +103,8 @@
 
 - (IBAction)centerAction:(id)sender
 {
+    redoSearchView.hidden = YES;
+
     CLLocationCoordinate2D coordinate = mapView.userLocation.coordinate;
     
     if (CLLocationCoordinate2DIsValid(coordinate))
