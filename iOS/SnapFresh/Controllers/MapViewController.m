@@ -169,6 +169,11 @@
      }];
 }
 
+- (IBAction)dismissButtonTapped
+{
+    redoSearchView.hidden = YES;
+}
+
 - (IBAction)toggleListView
 {
     if (listView.hidden)
