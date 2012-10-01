@@ -142,7 +142,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem image="location.png" id="uvz-oN-CKL">
+                        <barButtonItem enabled="NO" image="location.png" id="uvz-oN-CKL">
                             <connections>
                                 <action selector="centerAction:" destination="3rx-kf-aqG" id="zV5-gG-Pfx"/>
                             </connections>
