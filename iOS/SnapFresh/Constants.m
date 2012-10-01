@@ -19,4 +19,4 @@ NSString * const kGoogleMapsURL = @"http://maps.google.com/maps?";
 CGFloat const kAnimationDuration = 0.5;
 
 // Edge insets
-CGFloat const kEdgeInset = 20.0;
+CGFloat const kEdgeInset = 100.0;
