@@ -18,7 +18,6 @@
 
 @interface SnapRetailer : MKPlacemark
 
-@property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSString *address;
 @property (nonatomic, readonly) NSNumber *distance;
 
