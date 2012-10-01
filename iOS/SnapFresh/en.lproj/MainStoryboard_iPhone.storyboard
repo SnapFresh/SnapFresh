@@ -113,7 +113,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wKO-Uc-gf5" userLabel="Dismiss button - ❌">
-                                                                <rect key="frame" x="253" y="10" width="19" height="19"/>
+                                                                <rect key="frame" x="239" y="0.0" width="37" height="37"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                 <state key="normal" title="❌">
