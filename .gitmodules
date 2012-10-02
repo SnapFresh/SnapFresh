@@ -4,3 +4,6 @@
 [submodule "iOS/ThirdParty/SVProgressHUD"]
 	path = iOS/ThirdParty/SVProgressHUD
 	url = https://github.com/samvermette/SVProgressHUD.git
+[submodule "iOS/ThirdParty/RestKit"]
+	path = iOS/ThirdParty/RestKit
+	url = https://github.com/RestKit/RestKit.git
