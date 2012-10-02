@@ -139,6 +139,8 @@
 - (IBAction)redoSearchTapped
 {
     redoSearchView.hidden = YES;
+    
+    [SVProgressHUD showWithStatus:@"Finding search address..."];
 
     CLLocationCoordinate2D center = mapView.centerCoordinate;
     CLLocation *location = [[CLLocation alloc] initWithLatitude:center.latitude 
@@ -150,7 +152,7 @@
      {
          if (error)
          {
-             NSLog(@"Reverse geocode failed with error: %@", error);
+             [SVProgressHUD showErrorWithStatus:@"We couldn't find your search address."];
              return;
          }
          
@@ -198,6 +200,8 @@
 
 - (IBAction)showInfoView:(id)sender
 {
+    [SVProgressHUD dismiss];
+
     MDAboutController *aboutController = [[MDAboutController alloc] initWithStyle:[MDACMochiDevStyle style]];
     [aboutController removeLastCredit];    
     
@@ -213,7 +217,6 @@
     }
 
     [self presentModalViewController:aboutController animated:YES];
-    [SVProgressHUD dismiss];
 }
 
 #pragma mark - Map utility methods
@@ -228,6 +231,8 @@
 
 - (void)setSearchBarAnnotation:(NSString *)text
 {
+    [SVProgressHUD showWithStatus:@"Finding search address"];
+
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     
     [geocoder geocodeAddressString:text completionHandler:^(NSArray *placemarks, NSError *error)
@@ -286,6 +291,8 @@
 
 - (void)setAnnotationsForAddressString:(NSString *)address
 {
+    [SVProgressHUD showWithStatus:@"Finding SNAP retailers..."];
+
     [self clearMapAnnotations];
     
     // Create the SnapFresh web service URI with address as a parameter
@@ -295,8 +302,6 @@
 
     UIApplication *app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = YES;
-
-    [SVProgressHUD showWithStatus:@"Finding SNAP retailers..."];
 
     // Submit a block for asynchronous execution to our dispatchQueue and return immediately.
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
