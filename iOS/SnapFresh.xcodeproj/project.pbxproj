@@ -144,7 +144,6 @@
 		BE821C50161A7FEC00AB8620 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BE821A75161A7FEB00AB8620 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BE821C52161A7FEC00AB8620 /* lcl.m in Sources */ = {isa = PBXBuildFile; fileRef = BE821A7A161A7FEB00AB8620 /* lcl.m */; };
 		BE821C54161A7FEC00AB8620 /* LCLNSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = BE821A82161A7FEB00AB8620 /* LCLNSLog.m */; };
-		BE821C56161A7FEC00AB8620 /* PortableStaticLibrary.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BE821A84161A7FEB00AB8620 /* PortableStaticLibrary.xcconfig */; };
 		BE821C5C161A7FEC00AB8620 /* SOCKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BE821A8C161A7FEB00AB8620 /* SOCKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BE821C61161A7FEC00AB8620 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = BE821A98161A7FEB00AB8620 /* XMLReader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BE821DBD161A864200AB8620 /* NSEntityDescription+RKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BE821CD9161A864200AB8620 /* NSEntityDescription+RKAdditions.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
@@ -1425,7 +1424,7 @@
 		8417057E14C75EA100ACF050 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = shrtlist.com;
 			};
 			buildConfigurationList = 8417058114C75EA100ACF050 /* Build configuration list for PBXProject "SnapFresh" */;
@@ -1549,7 +1548,6 @@
 				BE821B99161A7FEC00AB8620 /* whiteArrow.png in Resources */,
 				BE821B9A161A7FEC00AB8620 /* whiteArrow@2x.png in Resources */,
 				BE821B9B161A7FEC00AB8620 /* RestKitResources.bundle in Resources */,
-				BE821C56161A7FEC00AB8620 /* PortableStaticLibrary.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
