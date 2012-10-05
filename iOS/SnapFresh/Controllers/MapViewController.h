@@ -23,7 +23,8 @@
                                                         MKMapViewDelegate,
                                                         UIAlertViewDelegate,
                                                         UITableViewDataSource,
-                                                        UITableViewDelegate>
+                                                        UITableViewDelegate,
+                                                        RKRequestDelegate>
 
 @property (nonatomic, weak) id <MapViewControllerDelegate> delegate;
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;

@@ -10,7 +10,10 @@
 NSString * const kSnapFreshBaseURL = @"http://snapfresh.org";
 
 // SnapFresh API endpoint
-NSString * const kSnapFreshEndpoint = @"/retailers/nearaddy.json/?address=%@";
+NSString * const kSnapFreshEndpoint = @"/retailers/nearaddy.json/";
+
+// SnapFresh timeout interval
+NSTimeInterval const kSnapFreshTimeout = 10.0;
 
 // Google Maps URL
 NSString * const kGoogleMapsURL = @"http://maps.google.com/maps?";

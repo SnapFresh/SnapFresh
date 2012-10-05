@@ -12,6 +12,9 @@ extern NSString * const kSnapFreshBaseURL;
 // SnapFresh API endpoint
 extern NSString * const kSnapFreshEndpoint;
 
+// SnapFresh timeout interval
+extern NSTimeInterval const kSnapFreshTimeout;
+
 // Google Maps URL
 extern NSString * const kGoogleMapsURL;
 

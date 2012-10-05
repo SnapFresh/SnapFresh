@@ -15,6 +15,7 @@
  */
 
 #import "AppDelegate.h"
+#import "Constants.h"
 
 @implementation AppDelegate
 
@@ -24,9 +25,14 @@
 {
     // Override point for customization after application launch.
     
+    // Enable Google Analytics
     [EasyTracker launchWithOptions:launchOptions
                     withParameters:nil
                          withError:nil];
+    
+    // Configure RestKit client
+    [RKClient clientWithBaseURLString:kSnapFreshBaseURL];
+    [[RKClient sharedClient] setTimeoutInterval:kSnapFreshTimeout];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {

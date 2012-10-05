@@ -265,6 +265,55 @@
     }];
 }
 
+#pragma mark - Send request
+
+- (void)sendRequest:(NSString *)address
+{
+    UIApplication *app = [UIApplication sharedApplication];
+    app.networkActivityIndicatorVisible = YES;
+
+    NSString *resourcePath = [NSString stringWithFormat:@"%@?address=%@", kSnapFreshEndpoint, address];
+    RKRequest *request = [[RKClient sharedClient] requestWithResourcePath:resourcePath];
+    [request setDelegate:self];
+    [request send];
+}
+
+#pragma mark - RKRequestDelegate protocol conformance
+
+- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response
+{
+    UIApplication *app = [UIApplication sharedApplication];
+    app.networkActivityIndicatorVisible = NO;
+
+    [self parseJSONResponse:response.body];
+    
+    [SVProgressHUD dismiss];
+    
+    if (self.retailers.count > 0)
+    {
+        [mapView addAnnotations:self.retailers];
+        
+        [self updateVisibleMapRect];
+        
+        // Select nearest retailer
+        SnapRetailer *nearestRetailer = [self.retailers objectAtIndex:0];
+        [mapView selectAnnotation:nearestRetailer animated:YES];
+        
+        [listView reloadData];
+        
+        // Notify our delegate that the map has new annotations.
+        [delegate annotationsDidLoad:self];
+    }
+}
+
+- (void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error
+{
+    UIApplication *app = [UIApplication sharedApplication];
+    app.networkActivityIndicatorVisible = NO;
+
+    [SVProgressHUD showErrorWithStatus:error.description];
+}
+
 #pragma mark - Parse the Snapfresh JSON response
 
 - (void)parseJSONResponse:(NSData *)data
@@ -295,54 +344,7 @@
 
     [self clearMapAnnotations];
     
-    // Create the SnapFresh web service URI with address as a parameter
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%@", kSnapFreshBaseURL, kSnapFreshEndpoint, address];
-    
-    NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-
-    UIApplication *app = [UIApplication sharedApplication];
-    app.networkActivityIndicatorVisible = YES;
-
-    // Submit a block for asynchronous execution to our dispatchQueue and return immediately.
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        
-        // Create a block that gets queued up in the main_queue, a default serial queue
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            UIApplication *app = [UIApplication sharedApplication];
-            app.networkActivityIndicatorVisible = NO;
-        
-            if (data == nil)
-            {
-                [SVProgressHUD showErrorWithStatus:@"No SNAP retailers found"];
-                self.searchBar.text = nil;
-            }
-            else
-            {
-                [self parseJSONResponse:data];
-                
-                [SVProgressHUD dismiss];
-                
-                if (self.retailers.count > 0)
-                {
-                    [mapView addAnnotations:self.retailers];
-                    
-                    [self updateVisibleMapRect];
-                    
-                    // Select nearest retailer
-                    SnapRetailer *nearestRetailer = [self.retailers objectAtIndex:0];
-                    [mapView selectAnnotation:nearestRetailer animated:YES];
-
-                    [listView reloadData];
-                    
-                    // Notify our delegate that the map has new annotations.
-                    [delegate annotationsDidLoad:self];
-                }
-            }
-        });
-    });
+    [self sendRequest:address];
 }
 
 #pragma mark - Update the visible map rectangle
