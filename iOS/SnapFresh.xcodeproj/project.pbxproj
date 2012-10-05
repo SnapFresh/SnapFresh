@@ -111,8 +111,6 @@
 		84B78D09158EE55F00033B7F /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78D08158EE55F00033B7F /* WildcardGestureRecognizer.m */; };
 		84B78D0C158EF0A100033B7F /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78D0B158EF0A100033B7F /* Constants.m */; };
 		84C89E9614CF6EBC00F68CE0 /* snaplogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E9514CF6EBC00F68CE0 /* snaplogo.png */; };
-		84D96C50152CA0D300C7CA02 /* snapfreshlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D96C4F152CA0D300C7CA02 /* snapfreshlogo@2x.png */; };
-		84DE528F14C949E50023073E /* snapfreshlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DE528E14C949E50023073E /* snapfreshlogo.png */; };
 		84F7F139161758D400196B65 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F7F138161758D400196B65 /* AddressBook.framework */; };
 		BE108577152CBEEB0015A268 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108572152CBEEB0015A268 /* Icon-29.png */; };
 		BE108578152CBEEB0015A268 /* Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108573152CBEEB0015A268 /* Icon-29@2x.png */; };
@@ -377,8 +375,6 @@
 		84B78D0A158EF0A100033B7F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		84B78D0B158EF0A100033B7F /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		84C89E9514CF6EBC00F68CE0 /* snaplogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snaplogo.png; path = Images/snaplogo.png; sourceTree = "<group>"; };
-		84D96C4F152CA0D300C7CA02 /* snapfreshlogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snapfreshlogo@2x.png"; path = "Images/snapfreshlogo@2x.png"; sourceTree = "<group>"; };
-		84DE528E14C949E50023073E /* snapfreshlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snapfreshlogo.png; path = Images/snapfreshlogo.png; sourceTree = "<group>"; };
 		84F7F138161758D400196B65 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		BE108572152CBEEB0015A268 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29.png"; path = "Images/Icon-29.png"; sourceTree = "<group>"; };
 		BE108573152CBEEB0015A268 /* Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-29@2x.png"; path = "Images/Icon-29@2x.png"; sourceTree = "<group>"; };
@@ -943,8 +939,6 @@
 				84AFF0A8152C2F23007F4534 /* location@2x.png */,
 				84AFF097152C1D72007F4534 /* snap.png */,
 				84AFF099152C202D007F4534 /* snap@2x.png */,
-				84DE528E14C949E50023073E /* snapfreshlogo.png */,
-				84D96C4F152CA0D300C7CA02 /* snapfreshlogo@2x.png */,
 				84C89E9514CF6EBC00F68CE0 /* snaplogo.png */,
 				84AFF0AF152C48DB007F4534 /* yelp_logo.png */,
 				84AFF0B0152C48DB007F4534 /* yelp_logo@2x.png */,
@@ -1454,7 +1448,6 @@
 			files = (
 				8417059614C75EA100ACF050 /* InfoPlist.strings in Resources */,
 				8417059F14C75EA100ACF050 /* MainStoryboard_iPad.storyboard in Resources */,
-				84DE528F14C949E50023073E /* snapfreshlogo.png in Resources */,
 				84C89E9614CF6EBC00F68CE0 /* snaplogo.png in Resources */,
 				BE7C4BF314D79A3B004A06D6 /* MainStoryboard_iPhone.storyboard in Resources */,
 				84AFF098152C1D72007F4534 /* snap.png in Resources */,
@@ -1466,7 +1459,6 @@
 				84AFF0B1152C48DB007F4534 /* yelp_logo.png in Resources */,
 				84AFF0B2152C48DB007F4534 /* yelp_logo@2x.png in Resources */,
 				84AFF0B4152C4A02007F4534 /* Icon-72.png in Resources */,
-				84D96C50152CA0D300C7CA02 /* snapfreshlogo@2x.png in Resources */,
 				BE108577152CBEEB0015A268 /* Icon-29.png in Resources */,
 				BE108578152CBEEB0015A268 /* Icon-29@2x.png in Resources */,
 				BE108579152CBEEB0015A268 /* Icon-50.png in Resources */,
