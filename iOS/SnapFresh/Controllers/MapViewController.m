@@ -96,7 +96,8 @@
 
 - (void)dealloc
 {
-	mapView.delegate = nil;
+	self.mapView.delegate = nil;
+    self.searchBar.delegate = nil;
 }
 
 - (void)configureView
