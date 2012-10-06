@@ -37,8 +37,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation]))
+
+    if (!UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation]))
     {
         UIImage *snapLogo = [UIImage imageNamed:@"snaplogo.png"];
         self.navigationItem.titleView = [[UIImageView alloc] initWithImage:snapLogo];
