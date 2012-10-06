@@ -70,7 +70,7 @@
     };
     [mapView addGestureRecognizer:tapInterceptor];
     
-    [self configureView];
+    [segmentWrapper setCustomView:mapTypeSegmentedControl];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -98,24 +98,6 @@
 {
 	self.mapView.delegate = nil;
     self.searchBar.delegate = nil;
-}
-
-- (void)configureView
-{
-    [segmentWrapper setCustomView:mapTypeSegmentedControl];
-
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-        // Make the search bar take up the entire window.
-        self.searchBar.delegate = self;
-        self.searchBar.frame = [[UIApplication sharedApplication] keyWindow].frame;
-        
-        // http://stackoverflow.com/questions/10944891/uisearchbar-not-responding-when-clicked
-        [self.searchBar sizeToFit];
-
-        // Set the search bar as the navigation item's titleView
-        self.navigationItem.titleView = self.searchBar;
-    }
 }
 
 #pragma mark - Target action methods

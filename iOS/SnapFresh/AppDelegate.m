@@ -44,10 +44,6 @@
 
         splitViewController.delegate = (id)navigationController.topViewController;
     }
-    else
-    {
-        [[UINavigationBar appearance] setTintColor:color];
-    }
     
     [[UIToolbar appearance] setTintColor:color];
     [[UISearchBar appearance] setTintColor:color];
