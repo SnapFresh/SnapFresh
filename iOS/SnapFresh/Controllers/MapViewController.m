@@ -155,7 +155,7 @@
 {
     redoSearchView.hidden = YES;
     
-    [SVProgressHUD showWithStatus:@"Finding search address..."];
+    [SVProgressHUD showWithStatus:@"Finding search address"];
 
     CLLocationCoordinate2D center = mapView.centerCoordinate;
     CLLocation *location = [[CLLocation alloc] initWithLatitude:center.latitude 
@@ -371,7 +371,7 @@
 
 - (void)setAnnotationsForAddressString:(NSString *)address
 {
-    [SVProgressHUD showWithStatus:@"Finding SNAP retailers..."];
+    [SVProgressHUD showWithStatus:@"Finding SNAP retailers"];
 
     [self clearMapAnnotations];
     
