@@ -58,14 +58,6 @@
     }
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation))
-    {
-        self.navigationItem.titleView = nil;
-    }
-}
-
 #pragma mark - Memory management
 
 - (void)dealloc
