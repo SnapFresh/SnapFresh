@@ -34,6 +34,8 @@
 @property (nonatomic, weak) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (nonatomic, weak) IBOutlet UIView *redoSearchView;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
+@property (nonatomic, strong) UIImage *mapImage;
+@property (nonatomic, strong) UIImage *listImage;
 @end
 
 #pragma mark -
@@ -53,6 +55,8 @@
 @synthesize masterPopoverController;
 @synthesize delegate;
 @synthesize retailers;
+@synthesize mapImage;
+@synthesize listImage;
 
 #pragma mark - View lifecycle
 
@@ -70,7 +74,7 @@
     };
     [mapView addGestureRecognizer:tapInterceptor];
     
-    [segmentWrapper setCustomView:mapTypeSegmentedControl];
+    [self configureView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -98,6 +102,16 @@
 {
 	self.mapView.delegate = nil;
     self.searchBar.delegate = nil;
+}
+
+#pragma mark - UI configuration
+
+- (void)configureView
+{
+    self.mapImage = [UIImage imageNamed:kMapImageName];
+    self.listImage = [UIImage imageNamed:kListImageName];
+
+    [self.segmentWrapper setCustomView:mapTypeSegmentedControl];
 }
 
 #pragma mark - Target action methods
@@ -188,14 +202,14 @@
 }
 
 - (IBAction)toggleListView
-{
+{    
     if (listView.hidden)
     {
         [UIView transitionWithView:self.toggleView
                           duration:kAnimationDuration
                            options:UIViewAnimationOptionTransitionFlipFromRight
                         animations:^{ listView.hidden = NO; mapContainerView.hidden = YES; redoSearchView.hidden = YES; }
-                        completion:^(BOOL finished) { listBarButtonItem.title = @"Map"; }];
+                        completion:^(BOOL finished) { listBarButtonItem.image = mapImage; }];
     }
     else
     {
@@ -203,7 +217,7 @@
                           duration:kAnimationDuration
                            options:UIViewAnimationOptionTransitionFlipFromLeft
                         animations:^{ listView.hidden = YES; mapContainerView.hidden = NO; }
-                        completion:^(BOOL finished) { listBarButtonItem.title = @" List"; }];
+                        completion:^(BOOL finished) { listBarButtonItem.image = listImage; }];
     }
 }
 

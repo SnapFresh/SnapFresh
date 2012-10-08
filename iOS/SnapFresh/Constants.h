@@ -23,3 +23,9 @@ extern CGFloat const kAnimationDuration;
 
 // Edge insets
 extern CGFloat const kEdgeInset;
+
+// Map image name
+extern NSString * const kMapImageName;
+
+// List image name
+extern NSString * const kListImageName;
