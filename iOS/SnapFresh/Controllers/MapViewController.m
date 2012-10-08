@@ -153,12 +153,19 @@
      {
          if (error)
          {
-             [SVProgressHUD showErrorWithStatus:@"We couldn't find your search address."];
+             [SVProgressHUD showErrorWithStatus:@"We couldn't find your search address"];
              return;
          }
          
          // Get the top result returned by the geocoder
          CLPlacemark *topResult = [placemarks objectAtIndex:0];
+         
+         // Fix for Issue #16 - Filter out non-US search addresses
+         if (![topResult.ISOcountryCode isEqualToString:@"US"])
+         {
+             [SVProgressHUD showErrorWithStatus:@"Non-US search address"];
+             return;
+         }
          
          NSString *searchAddress = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
 
