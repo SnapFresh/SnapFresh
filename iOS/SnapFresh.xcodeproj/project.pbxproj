@@ -651,6 +651,8 @@
 		BEFF210C16249AF9004AD960 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BEFF210D16249AF9004AD960 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEFF210E16249AF9004AD960 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BEFF211116249E84004AD960 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		BEFF211216249E84004AD960 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1459,6 +1461,7 @@
 				French,
 				German,
 				es,
+				"zh-Hans",
 			);
 			mainGroup = 8417057C14C75EA100ACF050;
 			productRefGroup = 8417058814C75EA100ACF050 /* Products */;
@@ -1721,6 +1724,7 @@
 			children = (
 				BEFF210A16249AF9004AD960 /* en */,
 				BEFF210D16249AF9004AD960 /* es */,
+				BEFF211116249E84004AD960 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1730,6 +1734,7 @@
 			children = (
 				BEFF210C16249AF9004AD960 /* en */,
 				BEFF210E16249AF9004AD960 /* es */,
+				BEFF211216249E84004AD960 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
