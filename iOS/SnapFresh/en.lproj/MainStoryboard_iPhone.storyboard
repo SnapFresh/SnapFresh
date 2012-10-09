@@ -171,6 +171,7 @@
                         <outlet property="mapContainerView" destination="EoB-pm-Ajk" id="jAp-gS-Qmp"/>
                         <outlet property="mapTypeSegmentedControl" destination="c9W-U2-ILw" id="IRG-b6-uDL"/>
                         <outlet property="mapView" destination="MnQ-xl-LwZ" id="3Qs-FL-7MR"/>
+                        <outlet property="redoSearchButton" destination="qah-07-DS3" id="UM1-ok-kZ3"/>
                         <outlet property="redoSearchView" destination="aKi-bR-1LL" id="y13-ka-Y78"/>
                         <outlet property="searchBar" destination="cMu-5j-Z9M" id="geB-w5-4NK"/>
                         <outlet property="segmentWrapper" destination="2ey-Wn-QqX" id="bej-PW-gW1"/>
@@ -450,6 +451,7 @@
                 <relationship kind="outlet" name="mapContainerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="mapTypeSegmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="redoSearchButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="redoSearchView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="segmentWrapper" candidateClass="UIBarButtonItem"/>

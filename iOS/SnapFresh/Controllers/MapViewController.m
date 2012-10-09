@@ -33,6 +33,7 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *listBarButtonItem;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (nonatomic, weak) IBOutlet UIView *redoSearchView;
+@property (nonatomic, weak) IBOutlet UIButton *redoSearchButton;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
 @property (nonatomic, strong) UIImage *mapImage;
 @property (nonatomic, strong) UIImage *listImage;
@@ -52,6 +53,7 @@
 @synthesize listBarButtonItem;
 @synthesize mapTypeSegmentedControl;
 @synthesize redoSearchView;
+@synthesize redoSearchButton;
 @synthesize masterPopoverController;
 @synthesize delegate;
 @synthesize retailers;
@@ -112,6 +114,22 @@
     self.listImage = [UIImage imageNamed:kListImageName];
 
     [self.segmentWrapper setCustomView:mapTypeSegmentedControl];
+    
+    [self localizeView];
+}
+
+- (void)localizeView
+{
+    NSString *standard = NSLocalizedString(@"Standard", @"Standard");
+    NSString *satellite = NSLocalizedString(@"Satellite", @"Satellite");
+    NSString *hybrid = NSLocalizedString(@"Hybrid", @"Hybrid");
+    
+    [self.mapTypeSegmentedControl setTitle:standard forSegmentAtIndex:MKMapTypeStandard];
+    [self.mapTypeSegmentedControl setTitle:satellite forSegmentAtIndex:MKMapTypeSatellite];
+    [self.mapTypeSegmentedControl setTitle:hybrid forSegmentAtIndex:MKMapTypeHybrid];
+    
+    self.redoSearchButton.titleLabel.text = NSLocalizedString(@"Redo search in this area", @"Redo search in this area");
+    self.searchBar.placeholder = NSLocalizedString(@"Enter US address or ZIP code", @"Enter US address or ZIP code");
 }
 
 #pragma mark - Target action methods
@@ -155,7 +173,8 @@
 {
     redoSearchView.hidden = YES;
     
-    [SVProgressHUD showWithStatus:@"Finding search address"];
+    NSString *status = NSLocalizedString(@"Finding search address", @"Finding search address");
+    [SVProgressHUD showWithStatus:status];
 
     CLLocationCoordinate2D center = mapView.centerCoordinate;
     CLLocation *location = [[CLLocation alloc] initWithLatitude:center.latitude 
@@ -167,7 +186,8 @@
      {
          if (error)
          {
-             [SVProgressHUD showErrorWithStatus:@"We couldn't find your search address"];
+             NSString *errorStatus = NSLocalizedString(@"We couldn't find your search address", @"We couldn't find your search address");
+             [SVProgressHUD showErrorWithStatus:errorStatus];
              return;
          }
          
@@ -177,7 +197,8 @@
          // Fix for Issue #18 - Filter out non-US search addresses
          if (![topResult.ISOcountryCode isEqualToString:@"US"])
          {
-             [SVProgressHUD showErrorWithStatus:@"Non-US search address"];
+             NSString *nonUSErrorStatus = NSLocalizedString(@"Non-US search address", @"Non-US search address");
+             [SVProgressHUD showErrorWithStatus:nonUSErrorStatus];
              self.searchBar.text = nil;
              return;
          }
@@ -189,7 +210,7 @@
 
          // Create an annotation from the placemark
          MKPointAnnotation *searchAnnotation = [[MKPointAnnotation alloc] init];
-         searchAnnotation.title = @"Search address";
+         searchAnnotation.title = NSLocalizedString(@"Search address", @"Search address");
          searchAnnotation.subtitle = searchAddress;
          searchAnnotation.coordinate = topResult.location.coordinate;
          [mapView addAnnotation:searchAnnotation];
@@ -254,7 +275,8 @@
 
 - (void)setSearchBarAnnotation:(NSString *)text
 {
-    [SVProgressHUD showWithStatus:@"Finding search address"];
+    NSString *status = NSLocalizedString(@"Finding search address", @"Finding search address");
+    [SVProgressHUD showWithStatus:status];
 
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     
@@ -262,7 +284,8 @@
     {
         if (error)
         {
-            [SVProgressHUD showErrorWithStatus:@"Invalid search address"];
+            NSString *errorStatus = NSLocalizedString(@"Invalid search address", @"Invalid search address");
+            [SVProgressHUD showErrorWithStatus:errorStatus];
             self.searchBar.text = nil;
             NSLog(@"Forward geocode failed with error: %@", error);
             return;
@@ -274,7 +297,8 @@
         // Fix for Issue #18 - Filter out non-US search addresses
         if (![topResult.ISOcountryCode isEqualToString:@"US"])
         {
-            [SVProgressHUD showErrorWithStatus:@"Non-US search address"];
+            NSString *nonUSErrorStatus = NSLocalizedString(@"Non-US search address", @"Non-US search address");
+            [SVProgressHUD showErrorWithStatus:nonUSErrorStatus];
             self.searchBar.text = nil;
             return;
         }
@@ -288,7 +312,7 @@
         
         // Create an annotation from the placemark
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-        annotation.title = @"Search address";
+        annotation.title = NSLocalizedString(@"Search address", @"Search address");
         annotation.subtitle = searchAddress;
         annotation.coordinate = topResult.location.coordinate;
         
@@ -371,7 +395,8 @@
 
 - (void)setAnnotationsForAddressString:(NSString *)address
 {
-    [SVProgressHUD showWithStatus:@"Finding SNAP retailers"];
+    NSString *status = NSLocalizedString(@"Finding SNAP retailers", @"Finding SNAP retailers");
+    [SVProgressHUD showWithStatus:status];
 
     [self clearMapAnnotations];
     
@@ -533,11 +558,16 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Show driving directions?"
-                                                        message:@"You will be taken to the Map app"
+    NSString *title = NSLocalizedString(@"Show driving directions?", @"Show driving directions?");
+    NSString *message = NSLocalizedString(@"You will be taken to the Map app", @"You will be taken to the Map app");
+    NSString *cancelButtonTitle = NSLocalizedString(@"Cancel", @"Cancel");
+    NSString *okButtonTitle = NSLocalizedString(@"OK", @"OK");
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                        message:message
                                                        delegate:self
-                                              cancelButtonTitle:@"Cancel"
-                                              otherButtonTitles:@"OK", nil];
+                                              cancelButtonTitle:cancelButtonTitle
+                                              otherButtonTitles:okButtonTitle, nil];
     [alertView show];
 }
 

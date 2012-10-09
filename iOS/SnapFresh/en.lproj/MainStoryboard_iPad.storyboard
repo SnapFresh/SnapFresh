@@ -167,6 +167,7 @@
                         <outlet property="centerButton" destination="wjJ-DR-xSx" id="B23-g9-4VB"/>
                         <outlet property="mapTypeSegmentedControl" destination="BmH-F9-ehj" id="Z7Y-5V-ayX"/>
                         <outlet property="mapView" destination="Wyc-qr-lPA" id="oUS-f3-mjq"/>
+                        <outlet property="redoSearchButton" destination="ba3-vg-XmK" id="or1-XO-Axc"/>
                         <outlet property="redoSearchView" destination="Jzc-KD-pYh" id="58v-Pr-Jfg"/>
                         <outlet property="searchBar" destination="k1p-ua-tJd" id="3e2-RI-eLC"/>
                     </connections>
@@ -269,12 +270,16 @@
         <class className="MapViewController" superclassName="TrackedUIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
             <relationships>
+                <relationship kind="action" name="centerAction:"/>
+                <relationship kind="action" name="segmentAction:"/>
+                <relationship kind="action" name="showInfoView:"/>
                 <relationship kind="outlet" name="centerButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="listBarButtonItem" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="listView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="mapContainerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="mapTypeSegmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="redoSearchButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="redoSearchView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="segmentWrapper" candidateClass="UIBarButtonItem"/>
