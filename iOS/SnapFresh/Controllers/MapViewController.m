@@ -132,7 +132,7 @@
     self.searchBar.placeholder = NSLocalizedString(@"Enter US address or ZIP code", @"Enter US address or ZIP code");
 }
 
-#pragma mark - Target action methods
+#pragma mark - Target-action methods
 
 - (IBAction)centerAction:(id)sender
 {
@@ -144,7 +144,7 @@
     {
         NSString *address = mapView.userLocation.subtitle;
         self.searchBar.text = address;
-        [self setAnnotationsForAddressString:address];
+        [self setAnnotationsForCoordinate:coordinate];
     }
 }
 
@@ -206,7 +206,7 @@
          NSString *searchAddress = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
 
          self.searchBar.text = searchAddress;
-         [self setAnnotationsForAddressString:searchAddress];
+         [self setAnnotationsForCoordinate:topResult.location.coordinate];
 
          // Create an annotation from the placemark
          MKPointAnnotation *searchAnnotation = [[MKPointAnnotation alloc] init];
@@ -308,7 +308,7 @@
         // Update the searchBar text
         self.searchBar.text = searchAddress;
         
-        [self setAnnotationsForAddressString:searchAddress];
+        [self setAnnotationsForCoordinate:topResult.location.coordinate];
         
         // Create an annotation from the placemark
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
@@ -320,14 +320,18 @@
     }];
 }
 
-#pragma mark - Send request
+#pragma mark - Send SnapFresh request
 
-- (void)sendRequest:(NSString *)address
+- (void)sendRequestForCoordinate:(CLLocationCoordinate2D)coordinate
 {
     UIApplication *app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = YES;
-
+    
+    // Set up our resource path
+    NSString *address = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
     NSString *resourcePath = [NSString stringWithFormat:@"%@?address=%@", kSnapFreshEndpoint, address];
+    
+    // Set up our request
     RKRequest *request = [[RKClient sharedClient] requestWithResourcePath:resourcePath];
     [request setDelegate:self];
     [request send];
@@ -393,14 +397,14 @@
     self.retailers = [NSArray arrayWithArray:_retailers];
 }
 
-- (void)setAnnotationsForAddressString:(NSString *)address
+- (void)setAnnotationsForCoordinate:(CLLocationCoordinate2D)coordinate
 {
     NSString *status = NSLocalizedString(@"Finding SNAP retailers", @"Finding SNAP retailers");
     [SVProgressHUD showWithStatus:status];
 
     [self clearMapAnnotations];
     
-    [self sendRequest:address];
+    [self sendRequestForCoordinate:coordinate];
 }
 
 #pragma mark - Update the visible map rectangle
@@ -539,7 +543,7 @@
          // Set the map's region if it's not set
          if (didSetRegion == NO)
          {
-             [self setAnnotationsForAddressString:address];
+             [self setAnnotationsForCoordinate:topResult.location.coordinate];
              
              didSetRegion = YES;
          }
