@@ -62,7 +62,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return retailers.count;
+    return _retailers.count;
 }
 
 // Customize the appearance of table view cells
@@ -72,7 +72,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    SnapRetailer *retailer = [retailers objectAtIndex:indexPath.row];
+    SnapRetailer *retailer = [_retailers objectAtIndex:indexPath.row];
     
     // Set the cell labels with SNAP retailer info
     cell.textLabel.text = retailer.name;
@@ -87,7 +87,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    SnapRetailer *retailer = [retailers objectAtIndex:indexPath.row];
+    SnapRetailer *retailer = [_retailers objectAtIndex:indexPath.row];
     MKMapView *mapView = self.mapViewController.mapView;
     [mapView setCenterCoordinate:retailer.coordinate animated:YES];
     [mapView selectAnnotation:retailer animated:YES];
@@ -95,9 +95,9 @@
 
 #pragma mark - MapViewControllerDelegate conformance
 
-- (void)annotationsDidLoad:(MapViewController *)controller
+- (void)annotationsDidLoad:(NSArray *)retailers
 {
-    retailers = [self.mapViewController retailers];
+    _retailers = retailers;
 
     // Reload the data when there are new annotations on the map.
     [self.tableView reloadData];

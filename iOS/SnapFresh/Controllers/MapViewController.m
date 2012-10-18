@@ -15,6 +15,7 @@
  */
 
 #import "MapViewController.h"
+#import "ListViewController.h"
 #import <AddressBookUI/AddressBookUI.h>
 #import "SnapRetailer.h"
 #import "SVProgressHUD.h"
@@ -37,6 +38,7 @@
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
 @property (nonatomic, strong) UIImage *mapImage;
 @property (nonatomic, strong) UIImage *listImage;
+@property (nonatomic, strong) ListViewController *listViewController;
 @end
 
 #pragma mark -
@@ -59,6 +61,7 @@
 @synthesize retailers;
 @synthesize mapImage;
 @synthesize listImage;
+@synthesize listViewController;
 
 #pragma mark - View lifecycle
 
@@ -75,6 +78,14 @@
         }
     };
     [mapView addGestureRecognizer:tapInterceptor];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        self.listViewController = [[ListViewController alloc] init];
+        listViewController.tableView = listView;
+        listView.delegate = self;
+        self.delegate = listViewController;
+    }
     
     [self configureView];
 }
@@ -362,7 +373,7 @@
         [listView reloadData];
         
         // Notify our delegate that the map has new annotations.
-        [delegate annotationsDidLoad:self];
+        [delegate annotationsDidLoad:self.retailers];
     }
 }
 
@@ -576,29 +587,6 @@
     [alertView show];
 }
 
-#pragma mark - UITableViewDataSource protocol conformance (for iPhone version)
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.retailers.count;
-}
-
-// Customize the appearance of table view cells
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{	
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    SnapRetailer *retailer = [self.retailers objectAtIndex:indexPath.row];
-    
-    // Set the cell labels with SNAP retailer info
-    cell.textLabel.text = retailer.name;
-    cell.detailTextLabel.text = retailer.address;
-	
-	return cell;
-}
-
 #pragma mark - UITableViewDelegate protocol conformance (for iPhone version)
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -608,6 +596,7 @@
     SnapRetailer *retailer = [self.retailers objectAtIndex:indexPath.row];
     [mapView setCenterCoordinate:retailer.coordinate];
     [mapView selectAnnotation:retailer animated:NO];
+
     [self toggleListView];
 }
 

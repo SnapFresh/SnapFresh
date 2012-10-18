@@ -18,7 +18,7 @@
 
 @interface ListViewController : UITableViewController <MapViewControllerDelegate>
 {
-    NSArray *retailers;
+    NSArray *_retailers;
 }
 
 @property (nonatomic, strong) MapViewController *mapViewController;

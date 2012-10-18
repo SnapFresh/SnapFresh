@@ -22,7 +22,6 @@
                                                         UISearchBarDelegate,
                                                         MKMapViewDelegate,
                                                         UIAlertViewDelegate,
-                                                        UITableViewDataSource,
                                                         UITableViewDelegate,
                                                         RKRequestDelegate>
 
@@ -36,5 +35,5 @@
  * A delegate implements this protocol to be notified when the map is finished loading.
  */
 @protocol MapViewControllerDelegate
-- (void)annotationsDidLoad:(MapViewController *)controller;
+- (void)annotationsDidLoad:(NSArray *)retailers;
 @end
