@@ -58,13 +58,6 @@
     }
 }
 
-#pragma mark - Memory management
-
-- (void)dealloc
-{
-    self.mapViewController.delegate = nil;
-}
-
 #pragma mark - UITableViewDataSource conformance
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
