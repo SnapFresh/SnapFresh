@@ -215,9 +215,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="193-location-arrow.png" width="12" height="12"/>
+        <image name="193-location-arrow.png" width="18" height="18"/>
         <image name="259-list.png" width="20" height="14"/>
-        <image name="yelp_logo.png" width="51" height="27"/>
     </resources>
     <classes>
         <class className="MapViewController" superclassName="TrackedUIViewController">
