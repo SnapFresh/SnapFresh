@@ -242,7 +242,7 @@
                           duration:kAnimationDuration
                            options:UIViewAnimationOptionTransitionFlipFromRight
                         animations:^{ listView.hidden = NO; mapContainerView.hidden = YES; redoSearchView.hidden = YES; }
-                        completion:^(BOOL finished) { listBarButtonItem.image = mapImage; }];
+                        completion:^(BOOL finished) { listBarButtonItem.image = mapImage; [listViewController viewDidAppear:NO]; }];
     }
     else
     {
@@ -250,7 +250,7 @@
                           duration:kAnimationDuration
                            options:UIViewAnimationOptionTransitionFlipFromLeft
                         animations:^{ listView.hidden = YES; mapContainerView.hidden = NO; }
-                        completion:^(BOOL finished) { listBarButtonItem.image = listImage; }];
+                        completion:^(BOOL finished) { listBarButtonItem.image = listImage; [self viewDidAppear:NO]; }];
     }
 }
 
