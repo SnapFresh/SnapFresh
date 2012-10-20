@@ -16,7 +16,7 @@
 
 #import "MapViewController.h"
 
-@interface ListViewController : UITableViewController <MapViewControllerDelegate>
+@interface ListViewController : TrackedUITableViewController <MapViewControllerDelegate>
 {
     NSArray *_retailers;
 }

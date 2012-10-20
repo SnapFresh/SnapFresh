@@ -185,3 +185,11 @@ extern NSString *const kGANCustomVariable5;
 - (void)viewDidAppear:(BOOL)animated;
 
 @end
+
+@interface TrackedUITableViewController : UITableViewController
+
+// If you override this method, you must call [super viewDidAppear:animated] at
+// some point in your implementation.
+- (void)viewDidAppear:(BOOL)animated;
+
+@end

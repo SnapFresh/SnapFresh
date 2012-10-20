@@ -493,4 +493,18 @@ static EasyTracker *sSharedTracker = nil;
   [[EasyTracker sharedTracker] dispatchViewDidAppear:className];
 }
 
-@end  // TrackedUIViewController
+@end
+
+#pragma mark TrackedUITableViewController
+
+@implementation TrackedUITableViewController
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // Determine the class name of this view controller using reflection.
+    NSString *className = NSStringFromClass([self class]);
+    [[EasyTracker sharedTracker] dispatchViewDidAppear:className];
+}
+
+@end
