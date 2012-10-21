@@ -637,12 +637,12 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    SnapRetailer *retailer = (SnapRetailer *)view.annotation;
+    id <MKAnnotation> annotation = view.annotation;
 
     NSString *className = NSStringFromClass([self class]);
     [[GANTracker sharedTracker] trackEvent:className
                                     action:@"didSelectAnnotationView"
-                                     label:retailer.name
+                                     label:annotation.title
                                      value:-1
                                  withError:nil];
 }
