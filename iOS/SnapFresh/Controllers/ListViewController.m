@@ -45,6 +45,15 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Determine the class name of this view controller using reflection.
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackPageview:className withError:nil];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -88,6 +97,14 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     SnapRetailer *retailer = [_retailers objectAtIndex:indexPath.row];
+    
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackEvent:className
+                                    action:@"didSelectRowAtIndexPath"
+                                     label:retailer.name
+                                     value:-1
+                                 withError:nil];
+    
     MKMapView *mapView = self.mapViewController.mapView;
     [mapView setCenterCoordinate:retailer.coordinate animated:YES];
     [mapView selectAnnotation:retailer animated:YES];

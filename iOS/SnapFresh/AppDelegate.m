@@ -25,10 +25,12 @@
 {
     // Override point for customization after application launch.
     
-    // Enable Google Analytics
-    [EasyTracker launchWithOptions:launchOptions
-                    withParameters:nil
-                         withError:nil];
+    // Start up the Google Analytics tracker
+    [[GANTracker sharedTracker] startTrackerWithAccountID:kGANAccountId
+                                           dispatchPeriod:kGANDispatchPeriodSec
+                                                 delegate:nil];
+    
+    [[GANTracker sharedTracker] setDebug:YES];
     
     // Configure RestKit client
     [RKClient clientWithBaseURLString:kSnapFreshBaseURL];
@@ -49,6 +51,19 @@
     [[UISearchBar appearance] setTintColor:color];
 
     return YES;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    // Restart the Google Analytics tracker
+    [[GANTracker sharedTracker] startTrackerWithAccountID:kGANAccountId
+                                           dispatchPeriod:kGANDispatchPeriodSec
+                                                 delegate:nil];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [[GANTracker sharedTracker] stopTracker];
 }
 
 @end

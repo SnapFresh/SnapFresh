@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8408F86A16031A7E0008639E /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8408F85816031A7E0008639E /* EasyTracker.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8408F87016031AC70008639E /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8408F86F16031AC70008639E /* EasyTracker.plist */; };
 		8408F89C16031BE50008639E /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F89B16031BE50008639E /* libsqlite3.0.dylib */; };
 		8408F89E16031BF60008639E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F89D16031BF60008639E /* CFNetwork.framework */; };
@@ -251,8 +250,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8408F85716031A7E0008639E /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTracker.h; sourceTree = "<group>"; };
-		8408F85816031A7E0008639E /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyTracker.m; sourceTree = "<group>"; };
 		8408F86F16031AC70008639E /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
 		8408F89B16031BE50008639E /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		8408F89D16031BF60008639E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -682,23 +679,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8408F84016031A7E0008639E /* EasyTracker */ = {
-			isa = PBXGroup;
-			children = (
-				8408F85616031A7E0008639E /* Library */,
-			);
-			path = EasyTracker;
-			sourceTree = "<group>";
-		};
-		8408F85616031A7E0008639E /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				8408F85716031A7E0008639E /* EasyTracker.h */,
-				8408F85816031A7E0008639E /* EasyTracker.m */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
 		8417057C14C75EA100ACF050 = {
 			isa = PBXGroup;
 			children = (
@@ -774,7 +754,6 @@
 			isa = PBXGroup;
 			children = (
 				BE6861AE161389410053A437 /* Google Analytics SDK */,
-				8408F84016031A7E0008639E /* EasyTracker */,
 				843B6B48158ED09C0031A968 /* MDAboutController */,
 				BE8217A1161A7FEA00AB8620 /* RestKit */,
 				843B6B9A158ED09C0031A968 /* SVProgressHUD */,
@@ -1609,7 +1588,6 @@
 				84B78D05158EE55800033B7F /* SnapRetailer.m in Sources */,
 				84B78D09158EE55F00033B7F /* WildcardGestureRecognizer.m in Sources */,
 				84B78D0C158EF0A100033B7F /* Constants.m in Sources */,
-				8408F86A16031A7E0008639E /* EasyTracker.m in Sources */,
 				BE655AB1160E72BC003C32B6 /* MapUtils.m in Sources */,
 				BE821B92161A7FEC00AB8620 /* RestKitCoreData.xcdatamodeld in Sources */,
 				BE821C45161A7FEC00AB8620 /* GCOAuth.m in Sources */,

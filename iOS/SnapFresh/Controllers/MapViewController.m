@@ -90,6 +90,15 @@
     [self configureView];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Determine the class name of this view controller using reflection.
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackPageview:className withError:nil];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -118,7 +127,7 @@
     self.searchBar.delegate = nil;
 }
 
-#pragma mark - UI configuration
+#pragma mark - UI methods
 
 - (void)configureView
 {
@@ -144,10 +153,49 @@
     self.searchBar.placeholder = NSLocalizedString(@"Enter US address or ZIP code", @"Enter US address or ZIP code");
 }
 
+- (void)showListView
+{
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackEvent:className
+                                    action:@"showListView"
+                                     label:nil
+                                     value:-1
+                                 withError:nil];
+    
+    [UIView transitionWithView:self.toggleView
+                      duration:kAnimationDuration
+                       options:UIViewAnimationOptionTransitionFlipFromRight
+                    animations:^{ listView.hidden = NO; mapContainerView.hidden = YES; redoSearchView.hidden = YES; }
+                    completion:^(BOOL finished) { listBarButtonItem.image = mapImage; [listViewController viewDidAppear:NO]; }];
+}
+
+- (void)showMapView
+{
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackEvent:className
+                                    action:@"showMapView"
+                                     label:nil
+                                     value:-1
+                                 withError:nil];
+    
+    [UIView transitionWithView:self.toggleView
+                      duration:kAnimationDuration
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{ listView.hidden = YES; mapContainerView.hidden = NO; }
+                    completion:^(BOOL finished) { listBarButtonItem.image = listImage; [self viewDidAppear:NO]; }];
+}
+
 #pragma mark - Target-action methods
 
 - (IBAction)centerAction:(id)sender
 {
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackEvent:className
+                                    action:@"centerAction"
+                                     label:nil
+                                     value:-1
+                                 withError:nil];
+    
     redoSearchView.hidden = YES;
 
     CLLocationCoordinate2D coordinate = mapView.userLocation.coordinate;
@@ -165,7 +213,16 @@
 	// The segmented control was clicked, handle it here 
 	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     
-    switch (segmentedControl.selectedSegmentIndex)
+    NSInteger selectedSegmentIndex = segmentedControl.selectedSegmentIndex;
+    
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackEvent:className
+                                    action:@"segmentAction"
+                                     label:nil
+                                     value:selectedSegmentIndex
+                                 withError:nil];
+    
+    switch (selectedSegmentIndex)
     {
         case MKMapTypeStandard:
             [mapView setMapType:MKMapTypeStandard];
@@ -183,6 +240,13 @@
 
 - (IBAction)redoSearchTapped
 {
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackEvent:className
+                                    action:@"redoSearchTapped"
+                                     label:nil
+                                     value:-1
+                                 withError:nil];
+    
     redoSearchView.hidden = YES;
     
     NSString *status = NSLocalizedString(@"Finding search address", @"Finding search address");
@@ -231,6 +295,13 @@
 
 - (IBAction)dismissButtonTapped
 {
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackEvent:className
+                                    action:@"dismissButtonTapped"
+                                     label:nil
+                                     value:-1
+                                 withError:nil];
+
     redoSearchView.hidden = YES;
 }
 
@@ -238,19 +309,11 @@
 {    
     if (listView.hidden)
     {
-        [UIView transitionWithView:self.toggleView
-                          duration:kAnimationDuration
-                           options:UIViewAnimationOptionTransitionFlipFromRight
-                        animations:^{ listView.hidden = NO; mapContainerView.hidden = YES; redoSearchView.hidden = YES; }
-                        completion:^(BOOL finished) { listBarButtonItem.image = mapImage; [listViewController viewDidAppear:NO]; }];
+        [self showListView];
     }
     else
     {
-        [UIView transitionWithView:self.toggleView
-                          duration:kAnimationDuration
-                           options:UIViewAnimationOptionTransitionFlipFromLeft
-                        animations:^{ listView.hidden = YES; mapContainerView.hidden = NO; }
-                        completion:^(BOOL finished) { listBarButtonItem.image = listImage; [self viewDidAppear:NO]; }];
+        [self showMapView];
     }
 }
 
@@ -572,6 +635,18 @@
     redoSearchView.hidden = YES;
 }
 
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    SnapRetailer *retailer = (SnapRetailer *)view.annotation;
+
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackEvent:className
+                                    action:@"didSelectAnnotationView"
+                                     label:retailer.name
+                                     value:-1
+                                 withError:nil];
+}
+
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
     NSString *title = NSLocalizedString(@"Show driving directions?", @"Show driving directions?");
@@ -594,6 +669,14 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     SnapRetailer *retailer = [self.retailers objectAtIndex:indexPath.row];
+    
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackEvent:className
+                                    action:@"didSelectRowAtIndexPath"
+                                     label:retailer.name
+                                     value:-1
+                                 withError:nil];
+    
     [mapView setCenterCoordinate:retailer.coordinate];
     [mapView selectAnnotation:retailer animated:NO];
 
@@ -609,6 +692,13 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackEvent:className
+                                    action:@"searchBarSearchButtonClicked"
+                                     label:searchBar.text
+                                     value:-1
+                                 withError:nil];
+    
     // Dismiss the keyboard if it's currently open
     if ([searchBar isFirstResponder])
     {
@@ -621,6 +711,13 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackEvent:className
+                                    action:@"searchBarCancelButtonClicked"
+                                     label:nil
+                                     value:-1
+                                 withError:nil];
+
     [searchBar setShowsCancelButton:NO animated:YES];
     [searchBar resignFirstResponder];
 }

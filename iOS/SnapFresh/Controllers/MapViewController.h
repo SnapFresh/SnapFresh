@@ -18,12 +18,12 @@
 
 @protocol MapViewControllerDelegate;
 
-@interface MapViewController : TrackedUIViewController <UISplitViewControllerDelegate,
-                                                        UISearchBarDelegate,
-                                                        MKMapViewDelegate,
-                                                        UIAlertViewDelegate,
-                                                        UITableViewDelegate,
-                                                        RKRequestDelegate>
+@interface MapViewController : UIViewController <UISplitViewControllerDelegate,
+                                                 UISearchBarDelegate,
+                                                 MKMapViewDelegate,
+                                                 UIAlertViewDelegate,
+                                                 UITableViewDelegate,
+                                                 RKRequestDelegate>
 
 @property (nonatomic, weak) id <MapViewControllerDelegate> delegate;
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;

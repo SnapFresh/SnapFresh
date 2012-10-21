@@ -24,5 +24,5 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "RestKit.h"
-    #import "EasyTracker.h"
+    #import "GANTracker.h"
 #endif

@@ -46,6 +46,13 @@
 
 + (void)openMapWithDestination:(MKPlacemark *)placemark
 {
+    NSString *className = NSStringFromClass([self class]);
+    [[GANTracker sharedTracker] trackEvent:className
+                                    action:@"openMapWithDestination"
+                                     label:placemark.name
+                                     value:-1
+                                 withError:nil];
+    
     MKMapItem *destination =  [[MKMapItem alloc] initWithPlacemark:placemark];
     
     if ([destination respondsToSelector:@selector(openInMapsWithLaunchOptions:)])
