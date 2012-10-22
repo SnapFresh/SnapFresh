@@ -32,6 +32,12 @@
 
     [[GANTracker sharedTracker] setDebug:YES];
     
+    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
+                                    action:@"didFinishLaunchingWithOptions"
+                                     label:nil
+                                     value:-1
+                                 withError:nil];
+    
     // Configure RestKit client
     [RKClient clientWithBaseURLString:kSnapFreshBaseURL];
     [[RKClient sharedClient] setTimeoutInterval:kSnapFreshTimeout];
@@ -55,7 +61,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    [[GANTracker sharedTracker] trackEvent:application.description
+    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
                                     action:@"applicationDidEnterBackground"
                                      label:nil
                                      value:-1
@@ -66,7 +72,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    [[GANTracker sharedTracker] trackEvent:application.description
+    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
                                     action:@"applicationWillEnterForeground"
                                      label:nil
                                      value:-1
@@ -75,7 +81,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    [[GANTracker sharedTracker] trackEvent:application.description
+    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
                                     action:@"applicationDidBecomeActive"
                                      label:nil
                                      value:-1
@@ -84,7 +90,7 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    [[GANTracker sharedTracker] trackEvent:application.description
+    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
                                     action:@"applicationWillResignActive"
                                      label:nil
                                      value:-1
@@ -94,7 +100,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [[GANTracker sharedTracker] trackEvent:application.description
+    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
                                     action:@"applicationWillTerminate"
                                      label:nil
                                      value:-1
@@ -105,7 +111,7 @@
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
 {
-    [[GANTracker sharedTracker] trackEvent:application.description
+    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
                                     action:@"applicationDidReceiveMemoryWarning"
                                      label:nil
                                      value:-1
