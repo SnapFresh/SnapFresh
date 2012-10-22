@@ -24,6 +24,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+
+    // Start the Google Analytics tracker
+    [[GANTracker sharedTracker] startTrackerWithAccountID:kGANAccountId
+                                           dispatchPeriod:kGANDispatchPeriodSec
+                                                 delegate:nil];
+
+    [[GANTracker sharedTracker] setDebug:YES];
     
     // Configure RestKit client
     [RKClient clientWithBaseURLString:kSnapFreshBaseURL];
@@ -46,19 +53,63 @@
     return YES;
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [[GANTracker sharedTracker] trackEvent:application.description
+                                    action:@"applicationDidEnterBackground"
+                                     label:nil
+                                     value:-1
+                                 withError:nil];
+    
+    [[GANTracker sharedTracker] dispatchSynchronous:kGANDispatchPeriodSec];
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    [[GANTracker sharedTracker] trackEvent:application.description
+                                    action:@"applicationWillEnterForeground"
+                                     label:nil
+                                     value:-1
+                                 withError:nil];
+}
+
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Start the Google Analytics tracker
-    [[GANTracker sharedTracker] startTrackerWithAccountID:kGANAccountId
-                                           dispatchPeriod:kGANDispatchPeriodSec
-                                                 delegate:nil];
-    
-    [[GANTracker sharedTracker] setDebug:YES];
+    [[GANTracker sharedTracker] trackEvent:application.description
+                                    action:@"applicationDidBecomeActive"
+                                     label:nil
+                                     value:-1
+                                 withError:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    [[GANTracker sharedTracker] stopTracker];
+    [[GANTracker sharedTracker] trackEvent:application.description
+                                    action:@"applicationWillResignActive"
+                                     label:nil
+                                     value:-1
+                                 withError:nil];
+}
+
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    [[GANTracker sharedTracker] trackEvent:application.description
+                                    action:@"applicationWillTerminate"
+                                     label:nil
+                                     value:-1
+                                 withError:nil];
+    
+    [[GANTracker sharedTracker] dispatchSynchronous:kGANDispatchPeriodSec];
+}
+
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
+{
+    [[GANTracker sharedTracker] trackEvent:application.description
+                                    action:@"applicationDidReceiveMemoryWarning"
+                                     label:nil
+                                     value:-1
+                                 withError:nil];
 }
 
 @end
