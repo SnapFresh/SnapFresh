@@ -25,13 +25,6 @@
 {
     // Override point for customization after application launch.
     
-    // Start up the Google Analytics tracker
-    [[GANTracker sharedTracker] startTrackerWithAccountID:kGANAccountId
-                                           dispatchPeriod:kGANDispatchPeriodSec
-                                                 delegate:nil];
-    
-    [[GANTracker sharedTracker] setDebug:YES];
-    
     // Configure RestKit client
     [RKClient clientWithBaseURLString:kSnapFreshBaseURL];
     [[RKClient sharedClient] setTimeoutInterval:kSnapFreshTimeout];
@@ -53,15 +46,17 @@
     return YES;
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
+- (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart the Google Analytics tracker
+    // Start the Google Analytics tracker
     [[GANTracker sharedTracker] startTrackerWithAccountID:kGANAccountId
                                            dispatchPeriod:kGANDispatchPeriodSec
                                                  delegate:nil];
+    
+    [[GANTracker sharedTracker] setDebug:YES];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
+- (void)applicationWillResignActive:(UIApplication *)application
 {
     [[GANTracker sharedTracker] stopTracker];
 }
