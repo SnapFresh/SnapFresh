@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8408F87016031AC70008639E /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8408F86F16031AC70008639E /* EasyTracker.plist */; };
 		8408F89C16031BE50008639E /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F89B16031BE50008639E /* libsqlite3.0.dylib */; };
 		8408F89E16031BF60008639E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F89D16031BF60008639E /* CFNetwork.framework */; };
 		8417058C14C75EA100ACF050 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8417058B14C75EA100ACF050 /* UIKit.framework */; };
@@ -250,7 +249,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8408F86F16031AC70008639E /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
 		8408F89B16031BE50008639E /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		8408F89D16031BF60008639E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8417058714C75EA100ACF050 /* SnapFresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapFresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -741,7 +739,6 @@
 				BEFF210216249846004AD960 /* MainStoryboard_iPad.storyboard */,
 				BEFF210316249846004AD960 /* MainStoryboard_iPhone.storyboard */,
 				8474D1811553AD6E0087483E /* Credits.plist */,
-				8408F86F16031AC70008639E /* EasyTracker.plist */,
 				8417059314C75EA100ACF050 /* SnapFresh-Info.plist */,
 				8417059714C75EA100ACF050 /* main.m */,
 				8417059914C75EA100ACF050 /* SnapFresh-Prefix.pch */,
@@ -1532,7 +1529,6 @@
 				843B6BF6158ED09D0031A968 /* MDACTitleBar.png in Resources */,
 				843B6BF7158ED09D0031A968 /* MDACTitleBar@2x.png in Resources */,
 				843B6C02158ED09D0031A968 /* SVProgressHUD.bundle in Resources */,
-				8408F87016031AC70008639E /* EasyTracker.plist in Resources */,
 				BEFA907F161228C6006B345D /* Default-568h@2x.png in Resources */,
 				BE821B8E161A7FEC00AB8620 /* RestKitFramework-Info.plist in Resources */,
 				BE821B8F161A7FEC00AB8620 /* RestKitFrameworkTests-Info.plist in Resources */,
