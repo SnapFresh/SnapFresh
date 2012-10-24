@@ -29,8 +29,6 @@
     [[GANTracker sharedTracker] startTrackerWithAccountID:kGANAccountId
                                            dispatchPeriod:kGANDispatchPeriodSec
                                                  delegate:nil];
-
-    [[GANTracker sharedTracker] setDebug:YES];
     
     [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
                                     action:@"didFinishLaunchingWithOptions"
