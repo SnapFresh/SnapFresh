@@ -122,7 +122,6 @@
 
 - (void)dealloc
 {
-    self.delegate = nil;
 	self.mapView.delegate = nil;
     self.searchBar.delegate = nil;
 }
