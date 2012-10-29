@@ -40,7 +40,7 @@
 
     if (!UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation]))
     {
-        UIImage *snapLogo = [UIImage imageNamed:@"snaplogo.png"];
+        UIImage *snapLogo = [UIImage imageNamed:@"snaplogo"];
         self.navigationItem.titleView = [[UIImageView alloc] initWithImage:snapLogo];
     }
 }

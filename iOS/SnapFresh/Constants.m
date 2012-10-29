@@ -31,7 +31,7 @@ CGFloat const kAnimationDuration = 0.5;
 CGFloat const kEdgeInset = 100.0;
 
 // Map image name
-NSString * const kMapImageName = @"103-map.png";
+NSString * const kMapImageName = @"103-map";
 
 // List image name
-NSString * const kListImageName = @"259-list.png";
+NSString * const kListImageName = @"259-list";

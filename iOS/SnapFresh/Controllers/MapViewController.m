@@ -558,7 +558,7 @@
                 button.showsTouchWhenHighlighted = YES;
                 annotationView.rightCalloutAccessoryView = button;
                 
-                UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"snap.png"]];
+                UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"snap"]];
                 annotationView.leftCalloutAccessoryView = sfIconView;
             }
             else
