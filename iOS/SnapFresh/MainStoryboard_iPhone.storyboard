@@ -158,7 +158,6 @@
                     <navigationItem key="navigationItem" id="2XD-PN-yp9">
                         <nil key="title"/>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="centerButton" destination="uvz-oN-CKL" id="0LL-p7-2py"/>
                         <outlet property="listBarButtonItem" destination="Iey-7b-n5f" id="mmR-X8-sM2"/>
@@ -194,7 +193,6 @@
             <objects>
                 <navigationController navigationBarHidden="YES" toolbarHidden="NO" id="BFw-3D-97f" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="LIl-3J-tzN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
