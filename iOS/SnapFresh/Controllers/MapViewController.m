@@ -90,12 +90,6 @@
     [self configureView];
 }
 
-- (void)viewDidUnload
-{
-    self.mapView = nil;
-    [super viewDidUnload];
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
