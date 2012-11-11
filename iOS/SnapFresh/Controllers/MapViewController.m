@@ -501,10 +501,14 @@
     
     MKMapRect zoomRect = [MapUtils regionToFitMapAnnotations:annotations];
     
-    // Add some padding for iPad
+    // Add some edge padding
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        zoomRect = [mapView mapRectThatFits:zoomRect edgePadding:UIEdgeInsetsMake(kEdgeInset, kEdgeInset, kEdgeInset, kEdgeInset)];
+        zoomRect = [mapView mapRectThatFits:zoomRect edgePadding:UIEdgeInsetsMake(kEdgeInsetPad, kEdgeInsetPad, kEdgeInsetPad, kEdgeInsetPad)];
+    }
+    else
+    {
+        zoomRect = [mapView mapRectThatFits:zoomRect edgePadding:UIEdgeInsetsMake(kEdgeInsetPhone, kEdgeInsetPhone, kEdgeInsetPhone, kEdgeInsetPhone)];
     }
     
     [mapView setVisibleMapRect:zoomRect animated:YES];

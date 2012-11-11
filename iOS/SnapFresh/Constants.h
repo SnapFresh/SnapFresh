@@ -28,7 +28,8 @@ extern NSString * const kGoogleMapsURL;
 extern CGFloat const kAnimationDuration;
 
 // Edge insets
-extern CGFloat const kEdgeInset;
+extern CGFloat const kEdgeInsetPhone;
+extern CGFloat const kEdgeInsetPad;
 
 // Map image name
 extern NSString * const kMapImageName;
