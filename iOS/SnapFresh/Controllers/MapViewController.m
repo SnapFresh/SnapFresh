@@ -321,7 +321,8 @@
     [SVProgressHUD dismiss];
 
     MDAboutController *aboutController = [[MDAboutController alloc] initWithStyle:[MDACMochiDevStyle style]];
-    [aboutController removeLastCredit];    
+    [aboutController removeLastCredit];
+    aboutController.title = NSLocalizedString(@"About", @"About");
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
