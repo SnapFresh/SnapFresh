@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8406DF9D166503880039066D /* Credits.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8406DF9F166503880039066D /* Credits.plist */; };
 		8408F89C16031BE50008639E /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F89B16031BE50008639E /* libsqlite3.0.dylib */; };
 		8408F89E16031BF60008639E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408F89D16031BF60008639E /* CFNetwork.framework */; };
 		8417058C14C75EA100ACF050 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8417058B14C75EA100ACF050 /* UIKit.framework */; };
@@ -85,7 +86,6 @@
 		843B6C02158ED09D0031A968 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 843B6BAF158ED09C0031A968 /* SVProgressHUD.bundle */; };
 		843B6C03158ED09D0031A968 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 843B6BB1158ED09C0031A968 /* SVProgressHUD.m */; };
 		84494D7814CB93FE0018133C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84494D7614CB93EE0018133C /* MessageUI.framework */; };
-		8474D1821553AD6F0087483E /* Credits.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8474D1811553AD6E0087483E /* Credits.plist */; };
 		847E54061564EBB2004E78CA /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E54041564EBB2004E78CA /* Default-Landscape@2x~ipad.png */; };
 		847E54071564EBB2004E78CA /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E54051564EBB2004E78CA /* Default-Landscape~ipad.png */; };
 		847E540A1564ED4B004E78CA /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E54081564ED4B004E78CA /* Default-Portrait@2x~ipad.png */; };
@@ -249,6 +249,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8406DF9E166503880039066D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Credits.plist; sourceTree = "<group>"; };
+		8406DFA1166503990039066D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/Credits.plist; sourceTree = "<group>"; };
+		8406DFA21665039D0039066D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/Credits.plist"; sourceTree = "<group>"; };
 		8408F89B16031BE50008639E /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		8408F89D16031BF60008639E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8417058714C75EA100ACF050 /* SnapFresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapFresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -347,7 +350,6 @@
 		843B6BB0158ED09C0031A968 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		843B6BB1158ED09C0031A968 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		84494D7614CB93EE0018133C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		8474D1811553AD6E0087483E /* Credits.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credits.plist; sourceTree = "<group>"; };
 		847E54041564EBB2004E78CA /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "Images/Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		847E54051564EBB2004E78CA /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Images/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		847E54081564ED4B004E78CA /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "Images/Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
@@ -738,7 +740,7 @@
 				BEFF210816249AF9004AD960 /* i18n */,
 				BEFF210216249846004AD960 /* MainStoryboard_iPad.storyboard */,
 				BEFF210316249846004AD960 /* MainStoryboard_iPhone.storyboard */,
-				8474D1811553AD6E0087483E /* Credits.plist */,
+				8406DF9F166503880039066D /* Credits.plist */,
 				8417059314C75EA100ACF050 /* SnapFresh-Info.plist */,
 				8417059714C75EA100ACF050 /* main.m */,
 				8417059914C75EA100ACF050 /* SnapFresh-Prefix.pch */,
@@ -1469,7 +1471,7 @@
 				BE108579152CBEEB0015A268 /* Icon-50.png in Resources */,
 				BE10857A152CBEEB0015A268 /* Icon-50@2x.png in Resources */,
 				BE10857B152CBEEB0015A268 /* Icon-72@2x.png in Resources */,
-				8474D1821553AD6F0087483E /* Credits.plist in Resources */,
+				8406DF9D166503880039066D /* Credits.plist in Resources */,
 				847E54061564EBB2004E78CA /* Default-Landscape@2x~ipad.png in Resources */,
 				847E54071564EBB2004E78CA /* Default-Landscape~ipad.png in Resources */,
 				847E540A1564ED4B004E78CA /* Default-Portrait@2x~ipad.png in Resources */,
@@ -1693,6 +1695,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		8406DF9F166503880039066D /* Credits.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8406DF9E166503880039066D /* en */,
+				8406DFA1166503990039066D /* es */,
+				8406DFA21665039D0039066D /* zh-Hans */,
+			);
+			name = Credits.plist;
+			sourceTree = "<group>";
+		};
 		BEFF210916249AF9004AD960 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
