@@ -418,25 +418,32 @@
 {
     UIApplication *app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = NO;
-
-    [self parseJSONResponse:response.body];
     
     [SVProgressHUD dismiss];
     
-    if (self.retailers.count > 0)
+    NSError *error = nil;
+
+    if ([response isSuccessful] && [response isJSON])
     {
-        [mapView addAnnotations:self.retailers];
+        NSDictionary *jsonDictionary = [response parsedBody:&error];
         
-        [self updateVisibleMapRect];
-        
-        // Select nearest retailer
-        SnapRetailer *nearestRetailer = [self.retailers objectAtIndex:0];
-        [mapView selectAnnotation:nearestRetailer animated:YES];
-        
-        [listView reloadData];
-        
-        // Notify our delegate that the map has new annotations.
-        [delegate annotationsDidLoad:self.retailers];
+        [self parseJSONResponse:jsonDictionary];
+
+        if (self.retailers.count > 0)
+        {
+            [mapView addAnnotations:self.retailers];
+            
+            [self updateVisibleMapRect];
+            
+            // Select nearest retailer
+            SnapRetailer *nearestRetailer = [self.retailers objectAtIndex:0];
+            [mapView selectAnnotation:nearestRetailer animated:YES];
+            
+            [listView reloadData];
+            
+            // Notify our delegate that the map has new annotations.
+            [delegate annotationsDidLoad:self.retailers];
+        }
     }
 }
 
@@ -448,14 +455,10 @@
     [SVProgressHUD showErrorWithStatus:error.description];
 }
 
-#pragma mark - Parse the Snapfresh JSON response
+#pragma mark - Parse the JSON response
 
-- (void)parseJSONResponse:(NSData *)data
+- (void)parseJSONResponse:(NSDictionary *)jsonResponse
 {
-    NSError *error;
-    NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
-                                                                 options:kNilOptions
-                                                                   error:&error];
     // Get the JSON array of retailers
     NSArray *retailersJSON = [jsonResponse valueForKey:@"retailers"];
     
