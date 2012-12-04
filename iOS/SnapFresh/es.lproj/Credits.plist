@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Alignment</key>
+		<string>Left</string>
+		<key>Text</key>
+		<string>SnapFresh para iOS te ayuda a encontrar los lugares más cercanos que aceptan SNAP (Cupones para Alimentos) tarjetas EBT. Nuestro usamos Yelp para tratar de mostrar los lugares más saludables en primer lugar.</string>
+		<key>Type</key>
+		<string>Text</string>
+		<key>Size</key>
+		<string>12</string>
+	</dict>
+	<dict>
+		<key>Items</key>
+		<array>
+			<dict>
+				<key>Link</key>
+				<string>http://twitter.com/#!/mabundo/</string>
+				<key>Name</key>
+				<string>Marco Abundo</string>
+				<key>Role</key>
+				<string>Creador</string>
+			</dict>
+			<dict>
+				<key>Link</key>
+				<string>http://www.codemass.com</string>
+				<key>Name</key>
+				<string>Aaron Bannert</string>
+				<key>Role</key>
+				<string>Consultor</string>
+			</dict>
+			<dict>
+				<key>Link</key>
+				<string>http://codeforamerica.org/author/jeremy</string>
+				<key>Name</key>
+				<string>Jeremy Canfield</string>
+				<key>Role</key>
+				<string>Revelador</string>
+			</dict>
+			<dict>
+				<key>Link</key>
+				<string>http://twitter.com/#!/ysiadf/</string>
+				<key>Name</key>
+				<string>Ysiad Ferreiras</string>
+				<key>Role</key>
+				<string>Contribuyente</string>
+			</dict>
+			<dict>
+				<key>Link</key>
+				<string>http://codeforamerica.org/author/michelle</string>
+				<key>Name</key>
+				<string>Michelle Koeth</string>
+				<key>Role</key>
+				<string>Revelador</string>
+			</dict>
+		</array>
+		<key>Type</key>
+		<string>List</string>
+		<key>Title</key>
+		<string>Equipo App</string>
+	</dict>
+	<dict>
+		<key>Items</key>
+		<array>
+			<dict>
+				<key>Link</key>
+				<string>http://snapfresh.org/#/?locale=es</string>
+				<key>Name</key>
+				<string>SnapFresh</string>
+			</dict>
+			<dict>
+				<key>Link</key>
+				<string>http://www.shrtlist.com</string>
+				<key>Name</key>
+				<string>Shrtlist</string>
+			</dict>
+			<dict>
+				<key>Link</key>
+				<string>http://snapfresh.org/#/retailers/terms</string>
+				<key>Name</key>
+				<string>Política de privacidad</string>
+			</dict>
+			<dict>
+				<key>Email</key>
+				<string>admin@snapfresh.org</string>
+				<key>EmailName</key>
+				<string>SnapFresh Appoyo</string>
+				<key>Name</key>
+				<string>Contáctenos</string>
+			</dict>
+		</array>
+		<key>Title</key>
+		<string>Enlaces</string>
+		<key>Type</key>
+		<string>List</string>
+	</dict>
+	<dict>
+		<key>Size</key>
+		<string>11</string>
+		<key>Text</key>
+		<string>SnapFresh © 2012 shrtlist.com
+Todos los derechos reservados.</string>
+		<key>Type</key>
+		<string>Text</string>
+	</dict>
+</array>
+</plist>

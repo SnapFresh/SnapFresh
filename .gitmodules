@@ -1,0 +1,9 @@
+[submodule "iOS/ThirdParty/MDAboutController"]
+	path = iOS/ThirdParty/MDAboutController
+	url = https://github.com/mochidev/MDAboutController.git
+[submodule "iOS/ThirdParty/SVProgressHUD"]
+	path = iOS/ThirdParty/SVProgressHUD
+	url = https://github.com/samvermette/SVProgressHUD.git
+[submodule "iOS/ThirdParty/RestKit"]
+	path = iOS/ThirdParty/RestKit
+	url = https://github.com/RestKit/RestKit.git
