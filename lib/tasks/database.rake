@@ -33,6 +33,7 @@ namespace :db do
             cr.zip = row[7]
             cr.zip_plus_four = row[8]
             cr.save
+	    i = i +1
         end
     end
 end
