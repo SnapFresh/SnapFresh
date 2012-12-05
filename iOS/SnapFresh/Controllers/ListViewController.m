@@ -67,7 +67,7 @@
     }
 }
 
-#pragma mark - UITableViewDataSource conformance
+#pragma mark - UITableViewDataSource protocol conformance
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -90,7 +90,7 @@
 	return cell;
 }
 
-#pragma mark - UITableViewDelegate conformance
+#pragma mark - UITableViewDelegate protocol conformance
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -110,7 +110,7 @@
     [mapView selectAnnotation:retailer animated:YES];
 }
 
-#pragma mark - MapViewControllerDelegate conformance
+#pragma mark - MapViewControllerDelegate protocol conformance
 
 - (void)annotationsDidLoad:(NSArray *)retailers
 {
