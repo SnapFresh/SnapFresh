@@ -15,7 +15,6 @@
  */
 
 #import "SnapRetailer.h"
-#import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 
 @implementation SnapRetailer
