@@ -147,8 +147,9 @@
     [self.mapTypeSegmentedControl setTitle:standard forSegmentAtIndex:MKMapTypeStandard];
     [self.mapTypeSegmentedControl setTitle:satellite forSegmentAtIndex:MKMapTypeSatellite];
     [self.mapTypeSegmentedControl setTitle:hybrid forSegmentAtIndex:MKMapTypeHybrid];
-    
-    self.redoSearchButton.titleLabel.text = NSLocalizedString(@"Redo search in this area", @"Redo search in this area");
+
+    NSString *title = NSLocalizedString(@"Redo search in this area", @"Redo search in this area");
+    [self.redoSearchButton setTitle:title forState: UIControlStateNormal];
     self.searchBar.placeholder = NSLocalizedString(@"Enter US address or ZIP code", @"Enter US address or ZIP code");
 }
 
