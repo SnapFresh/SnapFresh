@@ -92,6 +92,7 @@
 		847E540B1564ED4B004E78CA /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E54091564ED4B004E78CA /* Default-Portrait~ipad.png */; };
 		847E540E1564F024004E78CA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E540C1564F023004E78CA /* Default.png */; };
 		847E540F1564F024004E78CA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E540D1564F023004E78CA /* Default@2x.png */; };
+		847E5DD6169953F90093228B /* RequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E5DD5169953F90093228B /* RequestController.m */; };
 		84AFF098152C1D72007F4534 /* snap.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF097152C1D72007F4534 /* snap.png */; };
 		84AFF09A152C202D007F4534 /* snap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF099152C202D007F4534 /* snap@2x.png */; };
 		84AFF0AD152C38BA007F4534 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0AB152C38BA007F4534 /* Icon.png */; };
@@ -356,6 +357,8 @@
 		847E54091564ED4B004E78CA /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "Images/Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		847E540C1564F023004E78CA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Images/Default.png; sourceTree = "<group>"; };
 		847E540D1564F023004E78CA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Images/Default@2x.png"; sourceTree = "<group>"; };
+		847E5DD4169953F90093228B /* RequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestController.h; sourceTree = "<group>"; };
+		847E5DD5169953F90093228B /* RequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestController.m; sourceTree = "<group>"; };
 		84AFF097152C1D72007F4534 /* snap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snap.png; path = Images/snap.png; sourceTree = "<group>"; };
 		84AFF099152C202D007F4534 /* snap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snap@2x.png"; path = "Images/snap@2x.png"; sourceTree = "<group>"; };
 		84AFF0AB152C38BA007F4534 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Images/Icon.png; sourceTree = "<group>"; };
@@ -887,6 +890,8 @@
 				84B78CFD158EE54E00033B7F /* ListViewController.m */,
 				84B78CFE158EE54E00033B7F /* MapViewController.h */,
 				84B78CFF158EE54E00033B7F /* MapViewController.m */,
+				847E5DD4169953F90093228B /* RequestController.h */,
+				847E5DD5169953F90093228B /* RequestController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1689,6 +1694,7 @@
 				BE821E1E161A864200AB8620 /* RKTableViewCellMappings.m in Sources */,
 				BE821E1F161A864200AB8620 /* UIImage+RKAdditions.m in Sources */,
 				BE821E20161A864200AB8620 /* UIView+FindFirstResponder.m in Sources */,
+				847E5DD6169953F90093228B /* RequestController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@
  */
 
 #import <MapKit/MapKit.h>
+#import "RequestController.h"
 
 @protocol MapViewControllerDelegate;
 
@@ -23,7 +24,7 @@
                                                  MKMapViewDelegate,
                                                  UIAlertViewDelegate,
                                                  UITableViewDelegate,
-                                                 RKRequestDelegate>
+                                                 RequestControllerDelegate>
 
 @property (nonatomic, weak) id <MapViewControllerDelegate> delegate;
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;

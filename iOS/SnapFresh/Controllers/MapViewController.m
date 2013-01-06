@@ -37,6 +37,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *redoSearchButton;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
 @property (nonatomic, strong) ListViewController *listViewController;
+@property (nonatomic, strong) RequestController *requestController;
 @end
 
 #pragma mark -
@@ -48,6 +49,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.requestController = [[RequestController alloc] init];
+    self.requestController.delegate = self;
     
     WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
     tapInterceptor.touchesEndedCallback = ^(NSSet * touches, UIEvent * event)
@@ -102,8 +106,10 @@
 
 - (void)dealloc
 {
+    // Nil out delegates
 	self.mapView.delegate = nil;
     self.searchBar.delegate = nil;
+    self.requestController.delegate = nil;
 }
 
 #pragma mark - UI methods
@@ -373,94 +379,14 @@
     }];
 }
 
-#pragma mark - Send SnapFresh request
-
-- (void)sendRequestForCoordinate:(CLLocationCoordinate2D)coordinate
-{
-    UIApplication *app = [UIApplication sharedApplication];
-    app.networkActivityIndicatorVisible = YES;
-    
-    // Set up our resource path
-    NSString *address = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
-    NSString *resourcePath = [NSString stringWithFormat:@"%@?address=%@", kSnapFreshEndpoint, address];
-    
-    // Set up our request
-    RKRequest *request = [[RKClient sharedClient] requestWithResourcePath:resourcePath];
-    [request setDelegate:self];
-    [request send];
-}
-
-#pragma mark - RKRequestDelegate protocol conformance
-
-- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response
-{
-    UIApplication *app = [UIApplication sharedApplication];
-    app.networkActivityIndicatorVisible = NO;
-    
-    [SVProgressHUD dismiss];
-    
-    NSError *error = nil;
-
-    if ([response isSuccessful] && [response isJSON])
-    {
-        NSDictionary *jsonDictionary = [response parsedBody:&error];
-        
-        [self parseJSONResponse:jsonDictionary];
-
-        if (self.retailers.count > 0)
-        {
-            [self.mapView addAnnotations:self.retailers];
-            
-            [self updateVisibleMapRect];
-            
-            // Select nearest retailer
-            SnapRetailer *nearestRetailer = [self.retailers objectAtIndex:0];
-            [self.mapView selectAnnotation:nearestRetailer animated:YES];
-            
-            [self.listView reloadData];
-            
-            // Notify our delegate that the map has new annotations.
-            [self.delegate annotationsDidLoad:self.retailers];
-        }
-    }
-}
-
-- (void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error
-{
-    UIApplication *app = [UIApplication sharedApplication];
-    app.networkActivityIndicatorVisible = NO;
-
-    [SVProgressHUD showErrorWithStatus:error.description];
-}
-
-#pragma mark - Parse the JSON response
-
-- (void)parseJSONResponse:(NSDictionary *)jsonResponse
-{
-    // Get the JSON array of retailers
-    NSArray *retailersJSON = [jsonResponse valueForKey:@"retailers"];
-    
-    NSMutableArray *retailerArray = [NSMutableArray array];
-    
-    for (NSDictionary *jsonDictionary in retailersJSON)
-    {
-        // Get the JSON dictionary of a retailer
-        NSDictionary *retailerDictionary = [jsonDictionary objectForKey:@"retailer"];
-        SnapRetailer *retailer = [[SnapRetailer alloc] initWithDictionary:retailerDictionary];
-        [retailerArray addObject:retailer];
-    }
-    
-    self.retailers = [NSArray arrayWithArray:retailerArray];
-}
-
 - (void)setAnnotationsForCoordinate:(CLLocationCoordinate2D)coordinate
 {
     NSString *status = NSLocalizedString(@"Finding SNAP retailers", @"Finding SNAP retailers");
     [SVProgressHUD showWithStatus:status];
 
     [self clearMapAnnotations];
-    
-    [self sendRequestForCoordinate:coordinate];
+
+    [self.requestController sendRequestForCoordinate:coordinate];
 }
 
 #pragma mark - Update the visible map rectangle
@@ -494,6 +420,41 @@
     }
     
     [self.mapView setVisibleMapRect:zoomRect animated:YES];
+}
+
+#pragma mark - RequestControllerDelegate
+
+- (void)snapRetailersDidLoad:(NSArray *)snapRetailers
+{
+    UIApplication *app = [UIApplication sharedApplication];
+    app.networkActivityIndicatorVisible = NO;
+    
+    [SVProgressHUD dismiss];
+
+    if (snapRetailers > 0)
+    {
+        self.retailers = snapRetailers;
+        [self.mapView addAnnotations:self.retailers];
+        
+        [self updateVisibleMapRect];
+        
+        // Select nearest retailer
+        SnapRetailer *nearestRetailer = [self.retailers objectAtIndex:0];
+        [self.mapView selectAnnotation:nearestRetailer animated:YES];
+        
+        [self.listView reloadData];
+        
+        // Notify our delegate that the map has new annotations.
+        [self.delegate annotationsDidLoad:self.retailers];
+    }
+}
+
+- (void)snapRetailersDidNotLoadWithError:(NSError *)error
+{
+    UIApplication *app = [UIApplication sharedApplication];
+    app.networkActivityIndicatorVisible = NO;
+    
+    [SVProgressHUD showErrorWithStatus:error.description];
 }
 
 #pragma mark - UISplitViewControllerDelegate protocol conformance
