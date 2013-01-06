@@ -36,8 +36,6 @@
 @property (nonatomic, weak) IBOutlet UIView *redoSearchView;
 @property (nonatomic, weak) IBOutlet UIButton *redoSearchButton;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
-@property (nonatomic, strong) UIImage *mapImage;
-@property (nonatomic, strong) UIImage *listImage;
 @property (nonatomic, strong) ListViewController *listViewController;
 @end
 
@@ -112,9 +110,6 @@
 
 - (void)configureView
 {
-    self.mapImage = [UIImage imageNamed:kMapImageName];
-    self.listImage = [UIImage imageNamed:kListImageName];
-
     [self.segmentWrapper setCustomView:self.mapTypeSegmentedControl];
     
     [self localizeView];
@@ -148,7 +143,7 @@
                       duration:kAnimationDuration
                        options:UIViewAnimationOptionTransitionFlipFromRight
                     animations:^{ self.listView.hidden = NO; self.mapContainerView.hidden = YES; self.redoSearchView.hidden = YES; }
-                    completion:^(BOOL finished) { self.listBarButtonItem.image = self.mapImage; }];
+                    completion:^(BOOL finished) { self.listBarButtonItem.image = [UIImage imageNamed:kMapImageName]; }];
 }
 
 - (void)showMapView
@@ -164,7 +159,7 @@
                       duration:kAnimationDuration
                        options:UIViewAnimationOptionTransitionFlipFromLeft
                     animations:^{ self.listView.hidden = YES; self.mapContainerView.hidden = NO; }
-                    completion:^(BOOL finished) { self.listBarButtonItem.image = self.listImage; }];
+                    completion:^(BOOL finished) { self.listBarButtonItem.image = [UIImage imageNamed:kListImageName]; }];
 }
 
 #pragma mark - Target-action methods
