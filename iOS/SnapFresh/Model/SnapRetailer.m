@@ -20,8 +20,6 @@
 @implementation SnapRetailer
 
 @synthesize name = _name;
-@synthesize address = _address;
-@synthesize distance = _distance;
 
 #pragma mark - Designated initializer
 

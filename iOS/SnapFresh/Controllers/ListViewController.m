@@ -19,8 +19,6 @@
 
 @implementation ListViewController
 
-@synthesize mapViewController = _mapViewController;
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad

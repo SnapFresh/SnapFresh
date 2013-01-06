@@ -45,24 +45,6 @@
 
 @implementation MapViewController
 
-@synthesize toggleView;
-@synthesize mapContainerView;
-@synthesize mapView;
-@synthesize listView;
-@synthesize centerButton;
-@synthesize searchBar = _searchBar;
-@synthesize segmentWrapper;
-@synthesize listBarButtonItem;
-@synthesize mapTypeSegmentedControl;
-@synthesize redoSearchView;
-@synthesize redoSearchButton;
-@synthesize masterPopoverController;
-@synthesize delegate;
-@synthesize retailers;
-@synthesize mapImage;
-@synthesize listImage;
-@synthesize listViewController;
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -74,17 +56,17 @@
     {
         if (![SVProgressHUD isVisible])
         {
-            redoSearchView.hidden = NO;
+            self.redoSearchView.hidden = NO;
         }
     };
-    [mapView addGestureRecognizer:tapInterceptor];
+    [self.mapView addGestureRecognizer:tapInterceptor];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
         self.listViewController = [[ListViewController alloc] init];
-        listViewController.tableView = listView;
-        listView.delegate = self;
-        self.delegate = listViewController;
+        self.listViewController.tableView = self.listView;
+        self.listView.delegate = self;
+        self.delegate = self.listViewController;
     }
     
     [self configureView];
@@ -102,7 +84,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    redoSearchView.hidden = YES;
+    self.redoSearchView.hidden = YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -133,7 +115,7 @@
     self.mapImage = [UIImage imageNamed:kMapImageName];
     self.listImage = [UIImage imageNamed:kListImageName];
 
-    [self.segmentWrapper setCustomView:mapTypeSegmentedControl];
+    [self.segmentWrapper setCustomView:self.mapTypeSegmentedControl];
     
     [self localizeView];
 }
@@ -165,8 +147,8 @@
     [UIView transitionWithView:self.toggleView
                       duration:kAnimationDuration
                        options:UIViewAnimationOptionTransitionFlipFromRight
-                    animations:^{ listView.hidden = NO; mapContainerView.hidden = YES; redoSearchView.hidden = YES; }
-                    completion:^(BOOL finished) { listBarButtonItem.image = mapImage; }];
+                    animations:^{ self.listView.hidden = NO; self.mapContainerView.hidden = YES; self.redoSearchView.hidden = YES; }
+                    completion:^(BOOL finished) { self.listBarButtonItem.image = self.mapImage; }];
 }
 
 - (void)showMapView
@@ -181,8 +163,8 @@
     [UIView transitionWithView:self.toggleView
                       duration:kAnimationDuration
                        options:UIViewAnimationOptionTransitionFlipFromLeft
-                    animations:^{ listView.hidden = YES; mapContainerView.hidden = NO; }
-                    completion:^(BOOL finished) { listBarButtonItem.image = listImage; }];
+                    animations:^{ self.listView.hidden = YES; self.mapContainerView.hidden = NO; }
+                    completion:^(BOOL finished) { self.listBarButtonItem.image = self.listImage; }];
 }
 
 #pragma mark - Target-action methods
@@ -196,13 +178,13 @@
                                      value:-1
                                  withError:nil];
     
-    redoSearchView.hidden = YES;
+    self.redoSearchView.hidden = YES;
 
-    CLLocationCoordinate2D coordinate = mapView.userLocation.coordinate;
+    CLLocationCoordinate2D coordinate = self.mapView.userLocation.coordinate;
     
     if (CLLocationCoordinate2DIsValid(coordinate))
     {
-        NSString *address = mapView.userLocation.subtitle;
+        NSString *address = self.mapView.userLocation.subtitle;
         self.searchBar.text = address;
         [self setAnnotationsForCoordinate:coordinate];
     }
@@ -225,13 +207,13 @@
     switch (selectedSegmentIndex)
     {
         case MKMapTypeStandard:
-            [mapView setMapType:MKMapTypeStandard];
+            [self.mapView setMapType:MKMapTypeStandard];
             break;
         case MKMapTypeSatellite:
-            [mapView setMapType:MKMapTypeSatellite];
+            [self.mapView setMapType:MKMapTypeSatellite];
             break;
         case MKMapTypeHybrid:
-            [mapView setMapType:MKMapTypeHybrid];
+            [self.mapView setMapType:MKMapTypeHybrid];
             break;
         default:
             break;
@@ -247,12 +229,12 @@
                                      value:-1
                                  withError:nil];
     
-    redoSearchView.hidden = YES;
+    self.redoSearchView.hidden = YES;
     
     NSString *status = NSLocalizedString(@"Finding search address", @"Finding search address");
     [SVProgressHUD showWithStatus:status];
 
-    CLLocationCoordinate2D center = mapView.centerCoordinate;
+    CLLocationCoordinate2D center = self.mapView.centerCoordinate;
     CLLocation *location = [[CLLocation alloc] initWithLatitude:center.latitude 
                                                       longitude:center.longitude];
     
@@ -289,7 +271,7 @@
          searchAnnotation.title = NSLocalizedString(@"Search address", @"Search address");
          searchAnnotation.subtitle = searchAddress;
          searchAnnotation.coordinate = topResult.location.coordinate;
-         [mapView addAnnotation:searchAnnotation];
+         [self.mapView addAnnotation:searchAnnotation];
      }];
 }
 
@@ -302,12 +284,12 @@
                                      value:-1
                                  withError:nil];
 
-    redoSearchView.hidden = YES;
+    self.redoSearchView.hidden = YES;
 }
 
 - (IBAction)toggleListView
 {    
-    if (listView.hidden)
+    if (self.listView.hidden)
     {
         [self showListView];
     }
@@ -343,10 +325,10 @@
 
 - (void)clearMapAnnotations
 {
-    NSArray *annotations = [mapView.annotations filteredArrayUsingPredicate:
+    NSArray *annotations = [self.mapView.annotations filteredArrayUsingPredicate:
                             [NSPredicate predicateWithFormat:@"!(self isKindOfClass:%@)", [MKUserLocation class]]];
     
-    [mapView removeAnnotations:annotations];
+    [self.mapView removeAnnotations:annotations];
 }
 
 - (void)setSearchBarAnnotation:(NSString *)text
@@ -392,7 +374,7 @@
         annotation.subtitle = searchAddress;
         annotation.coordinate = topResult.location.coordinate;
         
-        [mapView addAnnotation:annotation];
+        [self.mapView addAnnotation:annotation];
     }];
 }
 
@@ -432,18 +414,18 @@
 
         if (self.retailers.count > 0)
         {
-            [mapView addAnnotations:self.retailers];
+            [self.mapView addAnnotations:self.retailers];
             
             [self updateVisibleMapRect];
             
             // Select nearest retailer
             SnapRetailer *nearestRetailer = [self.retailers objectAtIndex:0];
-            [mapView selectAnnotation:nearestRetailer animated:YES];
+            [self.mapView selectAnnotation:nearestRetailer animated:YES];
             
-            [listView reloadData];
+            [self.listView reloadData];
             
             // Notify our delegate that the map has new annotations.
-            [delegate annotationsDidLoad:self.retailers];
+            [self.delegate annotationsDidLoad:self.retailers];
         }
     }
 }
@@ -463,17 +445,17 @@
     // Get the JSON array of retailers
     NSArray *retailersJSON = [jsonResponse valueForKey:@"retailers"];
     
-    NSMutableArray *_retailers = [NSMutableArray array];
+    NSMutableArray *retailerArray = [NSMutableArray array];
     
     for (NSDictionary *jsonDictionary in retailersJSON)
     {
         // Get the JSON dictionary of a retailer
         NSDictionary *retailerDictionary = [jsonDictionary objectForKey:@"retailer"];
         SnapRetailer *retailer = [[SnapRetailer alloc] initWithDictionary:retailerDictionary];
-        [_retailers addObject:retailer];
+        [retailerArray addObject:retailer];
     }
     
-    self.retailers = [NSArray arrayWithArray:_retailers];
+    self.retailers = [NSArray arrayWithArray:retailerArray];
 }
 
 - (void)setAnnotationsForCoordinate:(CLLocationCoordinate2D)coordinate
@@ -490,7 +472,7 @@
 
 - (void)updateVisibleMapRect
 {
-    NSArray *annotations = mapView.annotations;
+    NSArray *annotations = self.mapView.annotations;
     
     // Get non-SnapRetailer annotations
     NSArray *otherAnnotations = [annotations filteredArrayUsingPredicate:
@@ -500,7 +482,7 @@
     if (otherAnnotations.count > 1)
     {
         // If so, filter out MKUserLocation
-        annotations = [mapView.annotations filteredArrayUsingPredicate:
+        annotations = [self.mapView.annotations filteredArrayUsingPredicate:
                                 [NSPredicate predicateWithFormat:@"!(self isKindOfClass:%@)", [MKUserLocation class]]];
     }
     
@@ -509,14 +491,14 @@
     // Add some edge padding
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        zoomRect = [mapView mapRectThatFits:zoomRect edgePadding:UIEdgeInsetsMake(kEdgeInsetPad, kEdgeInsetPad, kEdgeInsetPad, kEdgeInsetPad)];
+        zoomRect = [self.mapView mapRectThatFits:zoomRect edgePadding:UIEdgeInsetsMake(kEdgeInsetPad, kEdgeInsetPad, kEdgeInsetPad, kEdgeInsetPad)];
     }
     else
     {
-        zoomRect = [mapView mapRectThatFits:zoomRect edgePadding:UIEdgeInsetsMake(kEdgeInsetPhone, kEdgeInsetPhone, kEdgeInsetPhone, kEdgeInsetPhone)];
+        zoomRect = [self.mapView mapRectThatFits:zoomRect edgePadding:UIEdgeInsetsMake(kEdgeInsetPhone, kEdgeInsetPhone, kEdgeInsetPhone, kEdgeInsetPhone)];
     }
     
-    [mapView setVisibleMapRect:zoomRect animated:YES];
+    [self.mapView setVisibleMapRect:zoomRect animated:YES];
 }
 
 #pragma mark - UISplitViewControllerDelegate protocol conformance
@@ -552,7 +534,7 @@
         if ([annotation isKindOfClass:[SnapRetailer class]])
         {
             // Try to dequeue an existing annotation view first
-            annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:retailerPinID];
+            annotationView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:retailerPinID];
             
             if (!annotationView)
             {
@@ -578,7 +560,7 @@
         else
         {
             // Try to dequeue an existing annotation view first
-            annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:searchPinID];
+            annotationView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:searchPinID];
             
             if (!annotationView)
             {
@@ -611,7 +593,7 @@
          if (error)
          {
              NSLog(@"Reverse geocode failed with error: %@", error);
-             [centerButton setEnabled:NO];
+             [self.centerButton setEnabled:NO];
              return;
          }
          
@@ -621,7 +603,7 @@
          NSString *address = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
          userLocation.subtitle = address;
          
-         [centerButton setEnabled:YES];
+         [self.centerButton setEnabled:YES];
          
          // Set the map's region if it's not set
          if (didSetRegion == NO)
@@ -635,12 +617,12 @@
 
 - (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
 {
-	[centerButton setEnabled:NO];
+	[self.centerButton setEnabled:NO];
 }
 
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
 {
-    redoSearchView.hidden = YES;
+    self.redoSearchView.hidden = YES;
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
@@ -685,8 +667,8 @@
                                      value:-1
                                  withError:nil];
     
-    [mapView setCenterCoordinate:retailer.coordinate];
-    [mapView selectAnnotation:retailer animated:NO];
+    [self.mapView setCenterCoordinate:retailer.coordinate];
+    [self.mapView selectAnnotation:retailer animated:NO];
 
     [self toggleListView];
 }
