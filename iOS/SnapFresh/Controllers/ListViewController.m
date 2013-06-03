@@ -18,6 +18,9 @@
 #import "SnapRetailer.h"
 
 @implementation ListViewController
+{
+    NSArray *_retailers;
+}
 
 #pragma mark - View lifecycle
 

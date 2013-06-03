@@ -17,9 +17,6 @@
 #import "MapViewController.h"
 
 @interface ListViewController : UITableViewController <MapViewControllerDelegate>
-{
-    NSArray *_retailers;
-}
 
 @property (nonatomic, strong) MapViewController *mapViewController;
 
