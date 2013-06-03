@@ -25,8 +25,8 @@
 - (void)sendRequestForCoordinate:(CLLocationCoordinate2D)coordinate
 {
     // Set up our resource path
-    NSString *address = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
-    NSString *resourcePath = [NSString stringWithFormat:@"%@?address=%@", kSnapFreshEndpoint, address];
+    NSString *coordinateString = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
+    NSString *resourcePath = [NSString stringWithFormat:@"%@?address=%@", kSnapFreshEndpoint, coordinateString];
     
     // Set up our request
     RKRequest *request = [[RKClient sharedClient] requestWithResourcePath:resourcePath];
