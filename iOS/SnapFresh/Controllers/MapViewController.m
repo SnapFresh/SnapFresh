@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Marco Abundo, Ysiad Ferreiras, Aaron Bannert, Jeremy Canfield and Michelle Koeth
+ * Copyright 2013 Marco Abundo, Ysiad Ferreiras, Aaron Bannert, Jeremy Canfield and Michelle Koeth
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,6 +108,7 @@
 {
     // Nil out delegates
 	self.mapView.delegate = nil;
+    self.listView.delegate = nil;
     self.searchBar.delegate = nil;
     self.requestController.delegate = nil;
 }
