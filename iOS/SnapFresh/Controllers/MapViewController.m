@@ -320,7 +320,7 @@
         aboutController.modalPresentationStyle = UIModalPresentationFullScreen;
     }
 
-    [self presentModalViewController:aboutController animated:YES];
+    [self presentViewController:aboutController animated:YES completion:nil];
 }
 
 #pragma mark - Map utility methods

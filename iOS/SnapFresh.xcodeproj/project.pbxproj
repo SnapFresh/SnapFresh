@@ -1816,6 +1816,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SnapFresh/SnapFresh-Prefix.pch";
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Google Analytics SDK/Library\"",
@@ -1836,6 +1837,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SnapFresh/SnapFresh-Prefix.pch";
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Google Analytics SDK/Library\"",
