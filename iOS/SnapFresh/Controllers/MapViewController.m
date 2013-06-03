@@ -17,7 +17,6 @@
 #import "MapViewController.h"
 #import "ListViewController.h"
 #import <AddressBookUI/AddressBookUI.h>
-#import "SnapRetailer.h"
 #import "SVProgressHUD.h"
 #import "MDACClasses.h"
 #import "WildcardGestureRecognizer.h"
@@ -27,6 +26,7 @@
 @interface MapViewController () // Class extension
 @property (nonatomic, weak) IBOutlet UIView *toggleView; // Contains map and list views
 @property (nonatomic, weak) IBOutlet UIView *mapContainerView; // For iPhone version, contains map view
+@property (nonatomic, weak) IBOutlet MKMapView *mapView;
 @property (nonatomic, weak) IBOutlet UITableView *listView; // For iPhone version
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *centerButton;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
@@ -388,6 +388,12 @@
     [self clearMapAnnotations];
 
     [self.requestController sendRequestForCoordinate:coordinate];
+}
+
+- (void)didSelectRetailer:(SnapRetailer *)retailer
+{
+    [self.mapView setCenterCoordinate:retailer.coordinate animated:YES];
+    [self.mapView selectAnnotation:retailer animated:YES];
 }
 
 #pragma mark - Update the visible map rectangle

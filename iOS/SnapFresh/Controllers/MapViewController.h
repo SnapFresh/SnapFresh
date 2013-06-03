@@ -15,6 +15,7 @@
  */
 
 #import <MapKit/MapKit.h>
+#import "SnapRetailer.h"
 #import "RequestController.h"
 
 @protocol MapViewControllerDelegate;
@@ -27,8 +28,9 @@
                                                  RequestControllerDelegate>
 
 @property (nonatomic, weak) id <MapViewControllerDelegate> delegate;
-@property (nonatomic, weak) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) NSArray *retailers;
+
+- (void)didSelectRetailer:(SnapRetailer *)retailer;
 
 @end
 

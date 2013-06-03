@@ -106,16 +106,14 @@
 
     SnapRetailer *retailer = [_retailers objectAtIndex:indexPath.row];
     
+    [self.mapViewController didSelectRetailer:retailer];
+    
     NSString *className = NSStringFromClass([self class]);
     [[GANTracker sharedTracker] trackEvent:className
                                     action:@"didSelectRowAtIndexPath"
                                      label:retailer.name
                                      value:-1
                                  withError:nil];
-    
-    MKMapView *mapView = self.mapViewController.mapView;
-    [mapView setCenterCoordinate:retailer.coordinate animated:YES];
-    [mapView selectAnnotation:retailer animated:YES];
 }
 
 #pragma mark - MapViewControllerDelegate protocol conformance
