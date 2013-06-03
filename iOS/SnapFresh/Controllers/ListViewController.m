@@ -17,10 +17,11 @@
 #import "ListViewController.h"
 #import "SnapRetailer.h"
 
+@interface ListViewController () // Class extension
+@property (nonatomic, strong) NSArray *retailers;
+@end
+
 @implementation ListViewController
-{
-    NSArray *_retailers;
-}
 
 #pragma mark - View lifecycle
 
@@ -79,7 +80,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _retailers.count;
+    return self.retailers.count;
 }
 
 // Customize the appearance of table view cells
@@ -89,7 +90,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    SnapRetailer *retailer = [_retailers objectAtIndex:indexPath.row];
+    SnapRetailer *retailer = [self.retailers objectAtIndex:indexPath.row];
     
     // Set the cell labels with SNAP retailer info
     cell.textLabel.text = retailer.name;
@@ -104,7 +105,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    SnapRetailer *retailer = [_retailers objectAtIndex:indexPath.row];
+    SnapRetailer *retailer = [self.retailers objectAtIndex:indexPath.row];
     
     [self.mapViewController didSelectRetailer:retailer];
     
@@ -120,7 +121,7 @@
 
 - (void)annotationsDidLoad:(NSArray *)retailers
 {
-    _retailers = retailers;
+    self.retailers = retailers;
 
     // Reload the data when there are new annotations on the map.
     [self.tableView reloadData];
