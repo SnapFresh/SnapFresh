@@ -1,15 +1,28 @@
 ## SnapFresh
 A universal storyboard app that helps you find the closest places that accept SNAP (Food Stamp) EBT cards. SnapFresh uses Yelp to try and show the healthier places first.
 
+## Screenshots
+Landscape orientation:
+
+![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_landscape.png)
+
+Portrait orientation:
+
+![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_portrait.png)
+
+About screen:
+
+![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_about.png)
+
 ## Build requirements
-Xcode 4.2, iOS 5.0 SDK, LLVM Compiler 3.0, Automated Reference Counting (ARC).
+Xcode 4.2, iOS 6.0 SDK, LLVM Compiler 3.0, Automated Reference Counting (ARC).
 
 ## Runtime requirements
-iOS 5.0 and later
+iOS 6.0 and later
 
 ## License
 
-Copyright 2012 Marco Abundo, Ysiad Ferreiras, Aaron Bannert, Jeremy Canfield and Michelle Koeth
+Copyright 2013 Marco Abundo, Ysiad Ferreiras, Aaron Bannert, Jeremy Canfield and Michelle Koeth
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -25,17 +38,3 @@ Copyright 2012 Marco Abundo, Ysiad Ferreiras, Aaron Bannert, Jeremy Canfield and
 
 ## Contributing
 Forks, patches and other feedback are always welcome.
-
-## Screenshots
-
-### Landscape orientation:
-
-![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_landscape.png)
-
-### Portrait orientation:
-
-![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_portrait.png)
-
-### About screen:
-
-![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_about.png)
