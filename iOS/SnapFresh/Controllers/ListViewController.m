@@ -15,7 +15,6 @@
  */
 
 #import "ListViewController.h"
-#import "SnapRetailer.h"
 
 @interface ListViewController () // Class extension
 @property (nonatomic, strong) NSArray *retailers;
