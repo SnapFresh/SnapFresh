@@ -390,10 +390,9 @@
 
 - (void)didSelectRetailer:(SnapRetailer *)retailer
 {
+    [self.mapView selectAnnotation:retailer animated:NO];
+    [self.mapView setCenterCoordinate:retailer.coordinate animated:NO];
     [self toggleListView];
-    
-    [self.mapView setCenterCoordinate:retailer.coordinate animated:YES];
-    [self.mapView selectAnnotation:retailer animated:YES];
 }
 
 #pragma mark - Update the visible map rectangle
