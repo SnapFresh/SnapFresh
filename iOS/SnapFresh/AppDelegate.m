@@ -38,8 +38,6 @@
     [RKClient clientWithBaseURLString:kSnapFreshBaseURL];
     [[RKClient sharedClient] setTimeoutInterval:kSnapFreshTimeout];
 
-    UIColor *color = [UIColor colorWithRed:0.39 green:0.60 blue:0.2 alpha:1.0];
-    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
@@ -49,6 +47,7 @@
         splitViewController.delegate = (id)navigationController.topViewController;
     }
     
+    UIColor *color = [UIColor colorWithRed:0.39 green:0.60 blue:0.2 alpha:1.0];
     [[UIToolbar appearance] setTintColor:color];
     [[UISearchBar appearance] setTintColor:color];
 
