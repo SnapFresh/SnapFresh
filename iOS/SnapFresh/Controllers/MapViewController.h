@@ -24,7 +24,6 @@
                                                  UISearchBarDelegate,
                                                  MKMapViewDelegate,
                                                  UIAlertViewDelegate,
-                                                 UITableViewDelegate,
                                                  RequestControllerDelegate>
 
 @property (nonatomic, weak) id <MapViewControllerDelegate> delegate;

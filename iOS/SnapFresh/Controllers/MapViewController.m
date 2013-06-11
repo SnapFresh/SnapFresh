@@ -26,8 +26,8 @@
 @interface MapViewController () // Class extension
 @property (nonatomic, weak) IBOutlet UIView *toggleView; // Contains map and list views
 @property (nonatomic, weak) IBOutlet UIView *mapContainerView; // For iPhone version, contains map view
+@property (nonatomic, weak) IBOutlet UIView *listContainerView;
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
-@property (nonatomic, weak) IBOutlet UITableView *listView; // For iPhone version
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *centerButton;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *segmentWrapper;
@@ -65,9 +65,8 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-        self.listViewController = [[ListViewController alloc] init];
-        self.listViewController.tableView = self.listView;
-        self.listView.delegate = self;
+        self.listViewController = [self.childViewControllers objectAtIndex:0];
+        self.listViewController.mapViewController = self;
         self.delegate = self.listViewController;
     }
     
@@ -108,7 +107,6 @@
 {
     // Nil out delegates
 	self.mapView.delegate = nil;
-    self.listView.delegate = nil;
     self.searchBar.delegate = nil;
     self.requestController.delegate = nil;
 }
@@ -149,7 +147,7 @@
     [UIView transitionWithView:self.toggleView
                       duration:kAnimationDuration
                        options:UIViewAnimationOptionTransitionFlipFromRight
-                    animations:^{ self.listView.hidden = NO; self.mapContainerView.hidden = YES; self.redoSearchView.hidden = YES; }
+                    animations:^{ self.listContainerView.hidden = NO; self.mapContainerView.hidden = YES; self.redoSearchView.hidden = YES; }
                     completion:^(BOOL finished) { self.listBarButtonItem.image = [UIImage imageNamed:kMapImageName]; }];
 }
 
@@ -165,7 +163,7 @@
     [UIView transitionWithView:self.toggleView
                       duration:kAnimationDuration
                        options:UIViewAnimationOptionTransitionFlipFromLeft
-                    animations:^{ self.listView.hidden = YES; self.mapContainerView.hidden = NO; }
+                    animations:^{ self.listContainerView.hidden = YES; self.mapContainerView.hidden = NO; }
                     completion:^(BOOL finished) { self.listBarButtonItem.image = [UIImage imageNamed:kListImageName]; }];
 }
 
@@ -291,7 +289,7 @@
 
 - (IBAction)toggleListView
 {    
-    if (self.listView.hidden)
+    if (self.listContainerView.hidden)
     {
         [self showListView];
     }
@@ -392,6 +390,8 @@
 
 - (void)didSelectRetailer:(SnapRetailer *)retailer
 {
+    [self toggleListView];
+    
     [self.mapView setCenterCoordinate:retailer.coordinate animated:YES];
     [self.mapView selectAnnotation:retailer animated:YES];
 }
@@ -448,8 +448,6 @@
         // Select nearest retailer
         SnapRetailer *nearestRetailer = [self.retailers objectAtIndex:0];
         [self.mapView selectAnnotation:nearestRetailer animated:YES];
-        
-        [self.listView reloadData];
         
         // Notify our delegate that the map has new annotations.
         [self.delegate annotationsDidLoad:self.retailers];
@@ -613,27 +611,6 @@
                                               cancelButtonTitle:cancelButtonTitle
                                               otherButtonTitles:okButtonTitle, nil];
     [alertView show];
-}
-
-#pragma mark - UITableViewDelegate protocol conformance (for iPhone version)
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    SnapRetailer *retailer = [self.retailers objectAtIndex:indexPath.row];
-    
-    NSString *className = NSStringFromClass([self class]);
-    [[GANTracker sharedTracker] trackEvent:className
-                                    action:@"didSelectRowAtIndexPath"
-                                     label:retailer.name
-                                     value:-1
-                                 withError:nil];
-    
-    [self.mapView setCenterCoordinate:retailer.coordinate];
-    [self.mapView selectAnnotation:retailer animated:NO];
-
-    [self toggleListView];
 }
 
 #pragma mark - UISearchBarDelegate protocol conformance
