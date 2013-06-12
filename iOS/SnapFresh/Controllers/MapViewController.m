@@ -600,7 +600,7 @@
 {
     id<MKAnnotation> annotation = view.annotation;
     
-    if (![annotation isKindOfClass:[MKUserLocation class]])
+    if ([annotation isKindOfClass:[SnapRetailer class]])
     {
         SnapRetailer *retailer = (SnapRetailer *)annotation;
 
