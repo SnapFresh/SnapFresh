@@ -65,7 +65,7 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-        self.listViewController = [self.childViewControllers objectAtIndex:0];
+        self.listViewController = (self.childViewControllers)[0];
         self.listViewController.mapViewController = self;
         self.delegate = self.listViewController;
     }
@@ -250,7 +250,7 @@
          }
          
          // Get the top result returned by the geocoder
-         CLPlacemark *topResult = [placemarks objectAtIndex:0];
+         CLPlacemark *topResult = placemarks[0];
          
          // Fix for Issue #18 - Filter out non-US search addresses
          if (![topResult.ISOcountryCode isEqualToString:@"US"])
@@ -350,7 +350,7 @@
         }
         
         // Get the top result returned by the geocoder
-        CLPlacemark *topResult = [placemarks objectAtIndex:0];
+        CLPlacemark *topResult = placemarks[0];
         
         // Fix for Issue #18 - Filter out non-US search addresses
         if (![topResult.ISOcountryCode isEqualToString:@"US"])
@@ -445,7 +445,7 @@
         [self updateVisibleMapRect];
         
         // Select nearest retailer
-        SnapRetailer *nearestRetailer = [self.retailers objectAtIndex:0];
+        SnapRetailer *nearestRetailer = (self.retailers)[0];
         [self.mapView selectAnnotation:nearestRetailer animated:YES];
         
         // Notify our delegate that the map has new annotations.
@@ -558,7 +558,7 @@
          }
          
          // Get the top result returned by the geocoder
-         CLPlacemark *topResult = [placemarks objectAtIndex:0];
+         CLPlacemark *topResult = placemarks[0];
          
          NSString *address = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
          userLocation.subtitle = address;
@@ -657,7 +657,7 @@
 {
     if (buttonIndex == 1)
     {
-        id <MKAnnotation> annotation = [[self.mapView selectedAnnotations] objectAtIndex:0];
+        id <MKAnnotation> annotation = [self.mapView selectedAnnotations][0];
         
         SnapRetailer *retailer = (SnapRetailer *)annotation;
         
