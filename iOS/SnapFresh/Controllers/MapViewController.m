@@ -37,6 +37,7 @@
 @property (nonatomic, weak) IBOutlet UIView *redoSearchView;
 @property (nonatomic, weak) IBOutlet UIButton *redoSearchButton;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
+@property (nonatomic, strong) UIPopoverController *retailerPopoverController;
 @property (nonatomic, strong) ListViewController *listViewController;
 @property (nonatomic, strong) RequestController *requestController;
 @end
@@ -621,9 +622,9 @@
             personViewController.allowsActions = YES;
             personViewController.hidesBottomBarWhenPushed = YES;
             
-            self.masterPopoverController = [[UIPopoverController alloc] initWithContentViewController:personViewController];
+            self.retailerPopoverController = [[UIPopoverController alloc] initWithContentViewController:personViewController];
         
-            [self.masterPopoverController presentPopoverFromRect:CGRectMake(0, 0, 15.0, 35.0) inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            [self.retailerPopoverController presentPopoverFromRect:CGRectMake(0, 0, 15.0, 35.0) inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         }
     }
 }
@@ -642,10 +643,9 @@
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
-        UIPopoverController *addressPopup = [[UIPopoverController alloc] initWithContentViewController:personViewController];
+        self.retailerPopoverController = [[UIPopoverController alloc] initWithContentViewController:personViewController];
         
-        self.masterPopoverController = addressPopup;
-        [self.masterPopoverController presentPopoverFromRect:control.frame inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        [self.retailerPopoverController presentPopoverFromRect:control.frame inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
     else
     {
