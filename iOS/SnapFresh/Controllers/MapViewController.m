@@ -602,29 +602,29 @@
     
     if (![annotation isKindOfClass:[MKUserLocation class]])
     {
-    SnapRetailer *retailer = (SnapRetailer *)annotation;
+        SnapRetailer *retailer = (SnapRetailer *)annotation;
 
-    NSString *className = NSStringFromClass([self class]);
-    
-    [[GANTracker sharedTracker] trackEvent:className
-                                    action:@"didSelectAnnotationView"
-                                     label:retailer.title
-                                     value:-1
-                                 withError:nil];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        ABRecordRef contact = [ABUtils abRecordRefFromRetailer:retailer];
+        NSString *className = NSStringFromClass([self class]);
         
-        ABPersonViewController *personViewController = [[ABPersonViewController alloc] init];
-        personViewController.displayedPerson = contact;
-        personViewController.allowsActions = YES;
-        personViewController.hidesBottomBarWhenPushed = YES;
+        [[GANTracker sharedTracker] trackEvent:className
+                                        action:@"didSelectAnnotationView"
+                                         label:retailer.title
+                                         value:-1
+                                     withError:nil];
         
-        self.masterPopoverController = [[UIPopoverController alloc] initWithContentViewController:personViewController];
-    
-        [self.masterPopoverController presentPopoverFromRect:view.bounds inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    }
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        {
+            ABRecordRef contact = [ABUtils abRecordRefFromRetailer:retailer];
+            
+            ABPersonViewController *personViewController = [[ABPersonViewController alloc] init];
+            personViewController.displayedPerson = contact;
+            personViewController.allowsActions = YES;
+            personViewController.hidesBottomBarWhenPushed = YES;
+            
+            self.masterPopoverController = [[UIPopoverController alloc] initWithContentViewController:personViewController];
+        
+            [self.masterPopoverController presentPopoverFromRect:CGRectMake(0, 0, 15.0, 35.0) inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }
     }
 }
 
