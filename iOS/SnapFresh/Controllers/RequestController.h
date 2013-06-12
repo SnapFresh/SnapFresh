@@ -34,7 +34,7 @@
 /**
  * A delegate implements this protocol to be notified when the request is finished loading.
  */
-@protocol RequestControllerDelegate
+@protocol RequestControllerDelegate <NSObject>
 - (void)snapRetailersDidLoad:(NSArray *)snapRetailers;
 - (void)snapRetailersDidNotLoadWithError:(NSError *)error;
 @end

@@ -36,6 +36,6 @@
 /**
  * A delegate implements this protocol to be notified when the map is finished loading.
  */
-@protocol MapViewControllerDelegate
+@protocol MapViewControllerDelegate <NSObject>
 - (void)annotationsDidLoad:(NSArray *)retailers;
 @end
