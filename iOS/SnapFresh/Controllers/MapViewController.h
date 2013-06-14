@@ -27,7 +27,6 @@
                                                  RequestControllerDelegate>
 
 @property (nonatomic, weak) id <MapViewControllerDelegate> delegate;
-@property (nonatomic, strong) NSArray *retailers;
 
 - (void)didSelectRetailer:(SnapRetailer *)retailer;
 

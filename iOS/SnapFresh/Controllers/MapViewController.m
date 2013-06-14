@@ -464,17 +464,16 @@
 
     if (snapRetailers > 0)
     {
-        self.retailers = snapRetailers;
-        [self.mapView addAnnotations:self.retailers];
+        [self.mapView addAnnotations:snapRetailers];
         
         [self updateVisibleMapRect];
         
         // Select nearest retailer
-        SnapRetailer *nearestRetailer = (self.retailers)[0];
+        SnapRetailer *nearestRetailer = snapRetailers[0];
         [self.mapView selectAnnotation:nearestRetailer animated:YES];
         
         // Notify our delegate that the map has new annotations.
-        [self.delegate annotationsDidLoad:self.retailers];
+        [self.delegate annotationsDidLoad:snapRetailers];
     }
 }
 
