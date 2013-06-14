@@ -415,8 +415,8 @@
 
 - (void)didSelectRetailer:(SnapRetailer *)retailer
 {
-    [self.mapView selectAnnotation:retailer animated:NO];
     [self.mapView setCenterCoordinate:retailer.coordinate animated:NO];
+    [self.mapView selectAnnotation:retailer animated:NO];
     [self toggleListView];
 }
 
