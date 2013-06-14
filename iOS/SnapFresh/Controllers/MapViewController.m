@@ -77,7 +77,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
