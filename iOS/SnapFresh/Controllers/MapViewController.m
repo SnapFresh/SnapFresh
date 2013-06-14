@@ -111,6 +111,21 @@
     }
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (self.retailerPopoverController.isPopoverVisible)
+    {
+        [self.retailerPopoverController dismissPopoverAnimated:NO];
+    
+        CGRect yourNewRect = CGRectMake(0, 0, 15.0, 35.0);
+        
+        id<MKAnnotation> annotation = [self.mapView selectedAnnotations][0];
+        MKAnnotationView *view = [self.mapView viewForAnnotation:annotation];
+        
+        [self.retailerPopoverController presentPopoverFromRect:yourNewRect inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+}
+
 #pragma mark - Memory management
 
 - (void)dealloc
