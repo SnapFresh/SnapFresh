@@ -21,7 +21,6 @@
 #import "MDACClasses.h"
 #import "WildcardGestureRecognizer.h"
 #import "Constants.h"
-#import "ABUtils.h"
 #import "MapUtils.h"
 
 @interface MapViewController () // Class extension
@@ -37,7 +36,6 @@
 @property (nonatomic, weak) IBOutlet UIView *redoSearchView;
 @property (nonatomic, weak) IBOutlet UIButton *redoSearchButton;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
-@property (nonatomic, strong) UIPopoverController *retailerPopoverController;
 @property (nonatomic, strong) ListViewController *listViewController;
 @property (nonatomic, strong) RequestController *requestController;
 @end
@@ -108,21 +106,6 @@
     else
     {
         return YES;
-    }
-}
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    if (self.retailerPopoverController.isPopoverVisible)
-    {
-        [self.retailerPopoverController dismissPopoverAnimated:NO];
-    
-        CGRect yourNewRect = CGRectMake(0, 0, 15.0, 35.0);
-        
-        id<MKAnnotation> annotation = [self.mapView selectedAnnotations][0];
-        MKAnnotationView *view = [self.mapView viewForAnnotation:annotation];
-        
-        [self.retailerPopoverController presentPopoverFromRect:yourNewRect inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
 }
 
@@ -524,22 +507,17 @@
             {
                 // If an existing annotation view was not available, create one
                 annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:retailerPinID];
+                annotationView.canShowCallout = YES;
                 annotationView.pinColor = MKPinAnnotationColorRed;
                 annotationView.animatesDrop = YES;
-                annotationView.canShowCallout = NO;
+                    
+                // Add Detail Disclosure button
+                UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+                button.showsTouchWhenHighlighted = YES;
+                annotationView.rightCalloutAccessoryView = button;
                 
-                if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-                {
-                    annotationView.canShowCallout = YES;
-                    
-                    // Add Detail Disclosure button
-                    UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-                    button.showsTouchWhenHighlighted = YES;
-                    annotationView.rightCalloutAccessoryView = button;
-                    
-                    UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"snap"]];
-                    annotationView.leftCalloutAccessoryView = sfIconView;
-                }
+                UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"snap"]];
+                annotationView.leftCalloutAccessoryView = sfIconView;
             }
             else
             {
@@ -629,46 +607,22 @@
                                          label:retailer.title
                                          value:-1
                                      withError:nil];
-        
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        {
-            ABRecordRef contact = [ABUtils abRecordRefFromRetailer:retailer];
-            
-            ABPersonViewController *personViewController = [[ABPersonViewController alloc] init];
-            personViewController.displayedPerson = contact;
-            personViewController.allowsActions = YES;
-            personViewController.hidesBottomBarWhenPushed = YES;
-            
-            self.retailerPopoverController = [[UIPopoverController alloc] initWithContentViewController:personViewController];
-        
-            [self.retailerPopoverController presentPopoverFromRect:CGRectMake(0, 0, 15.0, 35.0) inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        }
     }
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    [mapView deselectAnnotation:view.annotation animated:YES];
+    NSString *title = NSLocalizedString(@"Show driving directions?", @"Show driving directions?");
+    NSString *message = NSLocalizedString(@"You will be taken to the Map app", @"You will be taken to the Map app");
+    NSString *cancelButtonTitle = NSLocalizedString(@"Cancel", @"Cancel");
+    NSString *okButtonTitle = NSLocalizedString(@"OK", @"OK");
     
-    SnapRetailer *retailer = (SnapRetailer *)view.annotation;
-    ABRecordRef contact = [ABUtils abRecordRefFromRetailer:retailer];
-    
-    ABPersonViewController *personViewController = [[ABPersonViewController alloc] init];
-    personViewController.displayedPerson = contact;
-    personViewController.allowsActions = YES;
-    personViewController.hidesBottomBarWhenPushed = YES;
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        self.retailerPopoverController = [[UIPopoverController alloc] initWithContentViewController:personViewController];
-        
-        [self.retailerPopoverController presentPopoverFromRect:control.frame inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    }
-    else
-    {
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
-        [self.navigationController pushViewController:personViewController animated:YES];
-    }
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:cancelButtonTitle
+                                              otherButtonTitles:okButtonTitle, nil];
+    [alertView show];
 }
 
 #pragma mark - UISearchBarDelegate protocol conformance

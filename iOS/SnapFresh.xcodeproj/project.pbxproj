@@ -97,7 +97,6 @@
 		847E540E1564F024004E78CA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E540C1564F023004E78CA /* Default.png */; };
 		847E540F1564F024004E78CA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E540D1564F023004E78CA /* Default@2x.png */; };
 		847E5DD6169953F90093228B /* RequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E5DD5169953F90093228B /* RequestController.m */; };
-		84AD407117681DC000890A11 /* ABUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AD407017681DC000890A11 /* ABUtils.m */; };
 		84AFF098152C1D72007F4534 /* snap.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF097152C1D72007F4534 /* snap.png */; };
 		84AFF09A152C202D007F4534 /* snap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF099152C202D007F4534 /* snap@2x.png */; };
 		84AFF0AD152C38BA007F4534 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AFF0AB152C38BA007F4534 /* Icon.png */; };
@@ -368,8 +367,6 @@
 		847E540D1564F023004E78CA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Images/Default@2x.png"; sourceTree = "<group>"; };
 		847E5DD4169953F90093228B /* RequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestController.h; sourceTree = "<group>"; };
 		847E5DD5169953F90093228B /* RequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestController.m; sourceTree = "<group>"; };
-		84AD406F17681DC000890A11 /* ABUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABUtils.h; sourceTree = "<group>"; };
-		84AD407017681DC000890A11 /* ABUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABUtils.m; sourceTree = "<group>"; };
 		84AFF097152C1D72007F4534 /* snap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snap.png; path = Images/snap.png; sourceTree = "<group>"; };
 		84AFF099152C202D007F4534 /* snap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snap@2x.png"; path = "Images/snap@2x.png"; sourceTree = "<group>"; };
 		84AFF0AB152C38BA007F4534 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Images/Icon.png; sourceTree = "<group>"; };
@@ -923,8 +920,6 @@
 		84B78D06158EE55F00033B7F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				84AD406F17681DC000890A11 /* ABUtils.h */,
-				84AD407017681DC000890A11 /* ABUtils.m */,
 				BE655AAF160E72BC003C32B6 /* MapUtils.h */,
 				BE655AB0160E72BC003C32B6 /* MapUtils.m */,
 				84B78D07158EE55F00033B7F /* WildcardGestureRecognizer.h */,
@@ -1716,7 +1711,6 @@
 				840B35A01708FE76002EBDF4 /* MDACTitleBar.m in Sources */,
 				840B35A11708FE76002EBDF4 /* MDACWebViewController.m in Sources */,
 				840B35A21708FE76002EBDF4 /* UIImage+DBMaskedImageAdditions.m in Sources */,
-				84AD407117681DC000890A11 /* ABUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
