@@ -87,6 +87,9 @@
 		841705AD14C760E100ACF050 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841705AB14C760D200ACF050 /* MapKit.framework */; };
 		841705C614C76D9800ACF050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841705C414C76D8B00ACF050 /* CoreLocation.framework */; };
 		842298A414CA147300D84986 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842298A114CA146600D84986 /* AddressBookUI.framework */; };
+		8429AE70176DA78B002AFEC7 /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 8429AE6F176DA78B002AFEC7 /* Icon-114.png */; };
+		8429AE73176DAD9A002AFEC7 /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 8429AE71176DAD99002AFEC7 /* Icon-144.png */; };
+		8429AE74176DAD9A002AFEC7 /* Icon-144@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8429AE72176DAD99002AFEC7 /* Icon-144@2x.png */; };
 		843B6C02158ED09D0031A968 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 843B6BAF158ED09C0031A968 /* SVProgressHUD.bundle */; };
 		843B6C03158ED09D0031A968 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 843B6BB1158ED09C0031A968 /* SVProgressHUD.m */; };
 		84494D7814CB93FE0018133C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84494D7614CB93EE0018133C /* MessageUI.framework */; };
@@ -355,6 +358,9 @@
 		841705BD14C7688500ACF050 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		841705C414C76D8B00ACF050 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		842298A114CA146600D84986 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		8429AE6F176DA78B002AFEC7 /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-114.png"; path = "Images/Icon-114.png"; sourceTree = "<group>"; };
+		8429AE71176DAD99002AFEC7 /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-144.png"; path = "Images/Icon-144.png"; sourceTree = "<group>"; };
+		8429AE72176DAD99002AFEC7 /* Icon-144@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-144@2x.png"; path = "Images/Icon-144@2x.png"; sourceTree = "<group>"; };
 		843B6BAF158ED09C0031A968 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		843B6BB0158ED09C0031A968 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		843B6BB1158ED09C0031A968 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -952,6 +958,9 @@
 				BE108575152CBEEB0015A268 /* Icon-50@2x.png */,
 				BE108576152CBEEB0015A268 /* Icon-72@2x.png */,
 				84AFF0B3152C4A02007F4534 /* Icon-72.png */,
+				8429AE6F176DA78B002AFEC7 /* Icon-114.png */,
+				8429AE71176DAD99002AFEC7 /* Icon-144.png */,
+				8429AE72176DAD99002AFEC7 /* Icon-144@2x.png */,
 				84AFF097152C1D72007F4534 /* snap.png */,
 				84AFF099152C202D007F4534 /* snap@2x.png */,
 				84DE528E14C949E50023073E /* snapfreshlogo.png */,
@@ -1576,6 +1585,9 @@
 				840B35D81708FE76002EBDF4 /* MDACLinkArrow@2x.png in Resources */,
 				840B35D91708FE76002EBDF4 /* MDACTitleBar.png in Resources */,
 				840B35DA1708FE76002EBDF4 /* MDACTitleBar@2x.png in Resources */,
+				8429AE70176DA78B002AFEC7 /* Icon-114.png in Resources */,
+				8429AE73176DAD9A002AFEC7 /* Icon-144.png in Resources */,
+				8429AE74176DAD9A002AFEC7 /* Icon-144@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
