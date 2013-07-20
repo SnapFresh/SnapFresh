@@ -35,6 +35,7 @@
 @property (nonatomic, weak) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (nonatomic, weak) IBOutlet UIView *redoSearchView;
 @property (nonatomic, weak) IBOutlet UIButton *redoSearchButton;
+@property (nonatomic, strong) MKUserTrackingBarButtonItem *trackingButton;
 @property (nonatomic, strong) UIPopoverController *masterPopoverController;
 @property (nonatomic, strong) ListViewController *listViewController;
 @property (nonatomic, strong) RequestController *requestController;
@@ -70,7 +71,7 @@
         self.delegate = self.listViewController;
     }
     
-    [self configureView];
+    [self configureViews];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -101,7 +102,7 @@
     // return YES for supported orientations
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
     }
     else
     {
@@ -121,11 +122,17 @@
 
 #pragma mark - UI methods
 
-- (void)configureView
+- (void)configureViews
 {
     [self.segmentWrapper setCustomView:self.mapTypeSegmentedControl];
     
     [self localizeView];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        [self.mapView setUserTrackingMode:MKUserTrackingModeFollowWithHeading animated:YES];
+        [self configureTrackingButton];
+    }
 }
 
 - (void)localizeView
@@ -141,6 +148,15 @@
     NSString *title = NSLocalizedString(@"Redo search in this area", @"Redo search in this area");
     [self.redoSearchButton setTitle:title forState: UIControlStateNormal];
     self.searchBar.placeholder = NSLocalizedString(@"Enter US address or ZIP code", @"Enter US address or ZIP code");
+}
+
+- (void)configureTrackingButton
+{
+    self.trackingButton = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+
+    NSMutableArray *items = [NSMutableArray arrayWithArray:self.toolbarItems];
+    [items insertObject:self.trackingButton atIndex:0];
+    self.toolbarItems = items;
 }
 
 - (void)showListView
@@ -623,6 +639,14 @@
                                               cancelButtonTitle:cancelButtonTitle
                                               otherButtonTitles:okButtonTitle, nil];
     [alertView show];
+}
+
+- (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
+{
+    if (mode == MKUserTrackingModeNone)
+    {
+        [self centerAction:nil];
+    }
 }
 
 #pragma mark - UISearchBarDelegate protocol conformance
