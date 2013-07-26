@@ -74,6 +74,8 @@ $ sudo -u postgres createuser -P aif
 _____________________________________________________________________________
 TO CREATE DATABASE AND SEED DATA:
 
+Inside of `config/`, locate `database.yml.example` and rename it too `database.yml`. You may have to change the examples to your personal configurations.
+
 $ rake db:create:all
 
 -- If you are using Ruby 1.9.2 and run into a segmentation fault error upon running the rake command (due to the
