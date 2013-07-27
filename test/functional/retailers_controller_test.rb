@@ -6,45 +6,64 @@ class RetailersControllerTest < ActionController::TestCase
     @retailer = retailers(:one)
   end
 
-  test "should get index" do
+  test "should set translation by locale" do
+    %w(en es zh).each do |language|
+      get :index, :locale => language
+      assert_response :success
+      assert locale = language
+    end
+  end
+
+  test "should set translation by request header" do
+    %w(en es zh).each do |language|
+      request.env['HTTP_ACCEPT_LANGUAGE'] = language
+      get :index
+      assert_response :success
+      assert locale = language
+    end
+  end
+
+  test "should set default translation" do
+    request.env['HTTP_ACCEPT_LANGUAGE'] = nil
     get :index
     assert_response :success
-    assert_not_nil assigns(:retailers)
+    assert locale = "en"
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
+  # test "should get index" do
+  #   get :index
+  #   assert_response :success
+  # end
 
-  test "should create retailer" do
-    assert_difference('Retailer.count') do
-      post :create, :retailer => @retailer.attributes
-    end
+  # test "should get new" do
+  #   get :new
+  #   assert_response :success
+  # end
 
-    assert_redirected_to retailer_path(assigns(:retailer))
-  end
+  # test "should show retailer" do
+  #   get :show, :id => @retailer.to_param
+  #   assert_response :success
+  # end
 
-  test "should show retailer" do
-    get :show, :id => @retailer.to_param
-    assert_response :success
-  end
+  # test "should get edit" do
+  #   get :edit, :id => @retailer.to_param
+  #   assert_response :success
+  # end
 
-  test "should get edit" do
-    get :edit, :id => @retailer.to_param
-    assert_response :success
-  end
+  # test "should get aboutus" do
+  #   get :aboutus
+  # end
 
-  test "should update retailer" do
-    put :update, :id => @retailer.to_param, :retailer => @retailer.attributes
-    assert_redirected_to retailer_path(assigns(:retailer))
-  end
+  # test "should get terms" do
+  #   get :terms
+  #   assert_response :success
+  #   assert_not_nil assigns(:terms)
+  # end
 
-  test "should destroy retailer" do
-    assert_difference('Retailer.count', -1) do
-      delete :destroy, :id => @retailer.to_param
-    end
+  # browse
+  # list
+  # neargeo
+  # nearaddy
+  # get_geo_from_goole
 
-    assert_redirected_to retailers_path
-  end
 end
