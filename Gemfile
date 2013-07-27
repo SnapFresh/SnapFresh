@@ -40,6 +40,7 @@ gem 'jquery-rails'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-  gem 'webrat'
-  gem 'rspec'
+  # Disable webrat and rspec because they are not being used
+  # gem 'webrat'
+  # gem 'rspec'
 end
