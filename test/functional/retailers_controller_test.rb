@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RetailersControllerTest < ActionController::TestCase
 
-  setup do
+  def setup
     @retailer = retailers(:one)
   end
 
@@ -30,31 +30,57 @@ class RetailersControllerTest < ActionController::TestCase
     assert locale = "en"
   end
 
-  # test "should get index" do
-  #   get :index
-  #   assert_response :success
-  # end
+  test "should get index" do
+    get :index
+    assert_response :success
+  end
 
+  test "should get aboutus" do
+    get :aboutus
+    assert_response :success
+  end
+
+  test "should get terms" do
+    get :terms
+    assert_response :success
+    assert_not_nil assigns(:terms)
+  end
+
+  test "should get browse" do
+    get :browse
+    assert_response :success
+    # TODO test that the correct list of retailers is being returned
+    assert_not_nil assigns(:retailers)
+  end
+
+  test "should get nearaddy" do
+    get :nearaddy, :address => "22314"
+    assert_response :success
+    # TODO This assertion should be more specific
+    assert_equal Retailer.all, assigns(:retailers)
+  end
+
+  # TODO is :show being used for anything?
   # test "should show retailer" do
-  #   get :show, :id => @retailer.to_param
+  #   get :show, :id => @retailer.id
   #   assert_response :success
+  #   assert_equal retailers(:one), assigns(:retailer)
   # end
 
-
-  # test "should get aboutus" do
-  #   get :aboutus
+  # TODO Is :list being used by anyting? It's not being used by rails
+  # Perhaps the iOS app?
+  # test "should get list" do
+  #   get :list
+  #   # TODO These tests should assert there is correct lat/long
+  #   assert_not_nil assigns(:latlon)
+  #   assert_not_nil assigns(:lat)
+  #   assert_not_nil assigns(:long)
+  #   # TODO this should be passing lat/long from params
+  #   assert_redirected_to near_retailers_path
   # end
 
-  # test "should get terms" do
-  #   get :terms
-  #   assert_response :success
-  #   assert_not_nil assigns(:terms)
+  # TODO How is this being used?
+  # test "should get neargeo" do
   # end
-
-  # browse
-  # list
-  # neargeo
-  # nearaddy
-  # get_geo_from_goole
 
 end
