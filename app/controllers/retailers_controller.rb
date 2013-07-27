@@ -121,18 +121,6 @@ class RetailersController < ApplicationController
     end
   end
 
-  # GET /retailers/new
-  # GET /retailers/new.xml
-  def new
-    @retailer = Retailer.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @retailer }
-    end
-  end
-
-
   private
     def sort_column
       Retailer.column_names.include?(params[:sort]) ? params[:sort] : "name"

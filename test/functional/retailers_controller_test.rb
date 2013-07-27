@@ -35,20 +35,11 @@ class RetailersControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should get new" do
-  #   get :new
-  #   assert_response :success
-  # end
-
   # test "should show retailer" do
   #   get :show, :id => @retailer.to_param
   #   assert_response :success
   # end
 
-  # test "should get edit" do
-  #   get :edit, :id => @retailer.to_param
-  #   assert_response :success
-  # end
 
   # test "should get aboutus" do
   #   get :aboutus
