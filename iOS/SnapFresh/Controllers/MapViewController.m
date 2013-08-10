@@ -481,7 +481,7 @@
     UIApplication *app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = NO;
     
-    [SVProgressHUD showErrorWithStatus:error.description];
+    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
 }
 
 #pragma mark - UISplitViewControllerDelegate protocol conformance
