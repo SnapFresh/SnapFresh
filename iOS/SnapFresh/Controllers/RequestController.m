@@ -17,6 +17,7 @@
 #import "RequestController.h"
 #import "Constants.h"
 #import "SnapRetailer.h"
+#import "AFNetworking.h"
 
 @implementation RequestController
 
@@ -24,39 +25,21 @@
 
 - (void)sendRequestForCoordinate:(CLLocationCoordinate2D)coordinate
 {
-    // Set up our resource path
     NSString *coordinateString = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
-    NSString *resourcePath = [NSString stringWithFormat:@"%@?address=%@", kSnapFreshEndpoint, coordinateString];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@?address=%@", kSnapFreshBaseURL, kSnapFreshEndpoint, coordinateString];
+
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     // Set up our request
-    RKRequest *request = [[RKClient sharedClient] requestWithResourcePath:resourcePath];
-    [request setDelegate:self];
-    [request send];
-}
-
-#pragma mark - RKRequestDelegate protocol conformance
-
-- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response
-{
-    NSError *error = nil;
-    
-    if ([response isSuccessful] && [response isJSON])
-    {
-        NSDictionary *jsonDictionary = [response parsedBody:&error];
-        
-        NSArray *snapRetailers = [self snapRetailersFromJSONDictionary:jsonDictionary];
-        
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSArray *snapRetailers = [self snapRetailersFromJSONDictionary:JSON];
         [self.delegate snapRetailersDidLoad:snapRetailers];
-    }
-    else
-    {
-        [self.delegate snapRetailersDidNotLoadWithError:nil];
-    }
-}
-
-- (void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error
-{
-    [self.delegate snapRetailersDidNotLoadWithError:error];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        [self.delegate snapRetailersDidNotLoadWithError:error];
+    }];
+    
+    [operation start];
 }
 
 #pragma mark - Parse the JSON response

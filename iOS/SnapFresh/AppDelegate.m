@@ -33,10 +33,6 @@
                                      label:nil
                                      value:-1
                                  withError:nil];
-    
-    // Configure RestKit client
-    [RKClient clientWithBaseURLString:kSnapFreshBaseURL];
-    [[RKClient sharedClient] setTimeoutInterval:kSnapFreshTimeout];
 
     UIColor *color = [UIColor colorWithRed:0.39 green:0.60 blue:0.2 alpha:1.0];
 

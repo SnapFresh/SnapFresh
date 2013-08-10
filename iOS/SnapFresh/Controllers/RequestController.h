@@ -18,7 +18,7 @@
 
 @protocol RequestControllerDelegate;
 
-@interface RequestController : NSObject <RKRequestDelegate>
+@interface RequestController : NSObject
 
 /**
  * Send a SNAP retailer request for a coordinate
