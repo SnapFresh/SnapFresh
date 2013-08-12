@@ -35,15 +35,17 @@
 @property (nonatomic, weak) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (nonatomic, weak) IBOutlet UIView *redoSearchView;
 @property (nonatomic, weak) IBOutlet UIButton *redoSearchButton;
-@property (nonatomic, strong) MKUserTrackingBarButtonItem *trackingButton;
-@property (nonatomic, strong) UIPopoverController *masterPopoverController;
-@property (nonatomic, strong) ListViewController *listViewController;
-@property (nonatomic, strong) RequestController *requestController;
 @end
 
 #pragma mark -
 
 @implementation MapViewController
+{
+    MKUserTrackingBarButtonItem *trackingButton;
+    UIPopoverController *masterPopoverController;
+    ListViewController *listViewController;
+    RequestController *requestController;
+}
 
 #pragma mark - View lifecycle
 
@@ -51,8 +53,8 @@
 {
     [super viewDidLoad];
 
-    self.requestController = [[RequestController alloc] init];
-    self.requestController.delegate = self;
+    requestController = [[RequestController alloc] init];
+    requestController.delegate = self;
     
     WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
     tapInterceptor.touchesEndedCallback = ^(NSSet * touches, UIEvent * event)
@@ -66,9 +68,9 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-        self.listViewController = (self.childViewControllers)[0];
-        self.listViewController.mapViewController = self;
-        self.delegate = self.listViewController;
+        listViewController = (self.childViewControllers)[0];
+        listViewController.mapViewController = self;
+        self.delegate = listViewController;
     }
     
     [self configureViews];
@@ -117,7 +119,7 @@
     // Nil out delegates
 	self.mapView.delegate = nil;
     self.searchBar.delegate = nil;
-    self.requestController.delegate = nil;
+    requestController.delegate = nil;
 }
 
 #pragma mark - UI methods
@@ -152,10 +154,10 @@
 
 - (void)configureTrackingButton
 {
-    self.trackingButton = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+    trackingButton = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
 
     NSMutableArray *items = [NSMutableArray arrayWithArray:self.toolbarItems];
-    [items insertObject:self.trackingButton atIndex:0];
+    [items insertObject:trackingButton atIndex:0];
     self.toolbarItems = items;
 }
 
@@ -409,7 +411,7 @@
 
     [self clearMapAnnotations];
 
-    [self.requestController sendRequestForCoordinate:coordinate];
+    [requestController sendRequestForCoordinate:coordinate];
 }
 
 - (void)didSelectRetailer:(SnapRetailer *)retailer
@@ -491,7 +493,7 @@
     barButtonItem.title = NSLocalizedString(@"Retailers", @"Retailers");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
 
-    self.masterPopoverController = popoverController;
+    masterPopoverController = popoverController;
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
