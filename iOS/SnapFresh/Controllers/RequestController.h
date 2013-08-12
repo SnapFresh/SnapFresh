@@ -16,7 +16,13 @@
 
 #import <MapKit/MapKit.h>
 
-@protocol RequestControllerDelegate;
+/**
+ * A delegate implements this protocol to be notified when the request is finished loading.
+ */
+@protocol RequestControllerDelegate <NSObject>
+- (void)snapRetailersDidLoad:(NSArray *)snapRetailers;
+- (void)snapRetailersDidNotLoadWithError:(NSError *)error;
+@end
 
 @interface RequestController : NSObject
 
@@ -29,12 +35,4 @@
 
 @property (nonatomic, weak) id <RequestControllerDelegate> delegate;
 
-@end
-
-/**
- * A delegate implements this protocol to be notified when the request is finished loading.
- */
-@protocol RequestControllerDelegate <NSObject>
-- (void)snapRetailersDidLoad:(NSArray *)snapRetailers;
-- (void)snapRetailersDidNotLoadWithError:(NSError *)error;
 @end
