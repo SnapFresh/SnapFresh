@@ -983,10 +983,7 @@
 		841705A914C75EA100ACF050 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/ThirdParty/RestKit/Tests/Vendor/OCHamcrest\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SnapFresh/SnapFresh-Prefix.pch";
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
@@ -1004,10 +1001,7 @@
 		841705AA14C75EA100ACF050 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/ThirdParty/RestKit/Tests/Vendor/OCHamcrest\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SnapFresh/SnapFresh-Prefix.pch";
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
