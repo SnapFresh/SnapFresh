@@ -53,6 +53,11 @@
 {
     [super viewDidLoad];
 
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        self.searchDisplayController.displaysSearchBarInNavigationBar = YES;
+    }
+
     requestController = [[RequestController alloc] init];
     requestController.delegate = self;
     
@@ -72,16 +77,8 @@
         listViewController.mapViewController = self;
         self.delegate = listViewController;
     }
-    
-    [self configureViews];
-}
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
-    }
+    [self configureViews];
 }
 
 - (void)viewDidAppear:(BOOL)animated

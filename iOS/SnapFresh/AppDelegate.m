@@ -35,6 +35,8 @@
                                  withError:nil];
 
     UIColor *color = [UIColor colorWithRed:0.39 green:0.60 blue:0.2 alpha:1.0];
+    
+    self.window.tintColor = color;
 
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
@@ -44,13 +46,6 @@
 
         splitViewController.delegate = (id)navigationController.topViewController;
     }
-    else
-    {
-        [[UINavigationBar appearance] setTintColor:color];
-    }
-    
-    [[UIToolbar appearance] setTintColor:color];
-    [[UISearchBar appearance] setTintColor:color];
 
     return YES;
 }
