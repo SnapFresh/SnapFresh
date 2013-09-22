@@ -714,6 +714,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = shrtlist.com;
+				TargetAttributes = {
+					8417058614C75EA100ACF050 = {
+						DevelopmentTeam = 6YCWDV2B6A;
+					};
+				};
 			};
 			buildConfigurationList = 8417058114C75EA100ACF050 /* Build configuration list for PBXProject "SnapFresh" */;
 			compatibilityVersion = "Xcode 3.2";
