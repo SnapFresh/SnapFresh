@@ -129,7 +129,7 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-        [self.mapView setUserTrackingMode:MKUserTrackingModeFollowWithHeading animated:YES];
+        [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
         [self configureTrackingButton];
     }
 }
