@@ -127,7 +127,6 @@
 		BE108578152CBEEB0015A268 /* Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE108573152CBEEB0015A268 /* Icon-29@2x.png */; };
 		BE655AB1160E72BC003C32B6 /* MapUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BE655AB0160E72BC003C32B6 /* MapUtils.m */; };
 		BE6861E4161389410053A437 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE6861CF161389410053A437 /* libGoogleAnalytics.a */; };
-		BE821E22161A877600AB8620 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE821E21161A877600AB8620 /* CoreData.framework */; };
 		BE821E23161A879000AB8620 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841705BD14C7688500ACF050 /* SystemConfiguration.framework */; };
 		BE821E25161A87BB00AB8620 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE821E24161A87BB00AB8620 /* Security.framework */; };
 		BE821E27161A87CC00AB8620 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE821E26161A87CC00AB8620 /* QuartzCore.framework */; };
@@ -336,7 +335,6 @@
 				BE821E27161A87CC00AB8620 /* QuartzCore.framework in Frameworks */,
 				BE821E25161A87BB00AB8620 /* Security.framework in Frameworks */,
 				BE821E23161A879000AB8620 /* SystemConfiguration.framework in Frameworks */,
-				BE821E22161A877600AB8620 /* CoreData.framework in Frameworks */,
 				8408F89E16031BF60008639E /* CFNetwork.framework in Frameworks */,
 				8408F89C16031BE50008639E /* libsqlite3.0.dylib in Frameworks */,
 				84F7F139161758D400196B65 /* AddressBook.framework in Frameworks */,
