@@ -1,21 +1,21 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
+  name: One Local Mart
   lat: 9.99
   lon: 9.99
-  street: MyString
-  city: 
-  state: MyString
-  zip: MyString
-  zip_plus_four: MyString
+  street: One Street
+  city: One Town
+  state: CA
+  zip: 94501
+  zip_plus_four:
 
 two:
-  name: MyString
-  lat: 9.99
-  lon: 9.99
-  street: MyString
-  city: 
-  state: MyString
-  zip: MyString
-  zip_plus_four: MyString
+  name: Two Local Mart
+  lat: 9.98
+  lon: 9.98
+  street: Two Street
+  city: Two Town
+  state: VA
+  zip: 22314
+  zip_plus_four:
