@@ -23,17 +23,6 @@
 {
     // Override point for customization after application launch.
 
-    // Start the Google Analytics tracker
-    [[GANTracker sharedTracker] startTrackerWithAccountID:kGANAccountId
-                                           dispatchPeriod:kGANDispatchPeriodSec
-                                                 delegate:nil];
-    
-    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
-                                    action:@"didFinishLaunchingWithOptions"
-                                     label:nil
-                                     value:-1
-                                 withError:nil];
-
     UIColor *color = [UIColor colorWithRed:0.39 green:0.60 blue:0.2 alpha:1.0];
     UIColor *whiteColor = [UIColor whiteColor];
     
@@ -56,65 +45,6 @@
     }
 
     return YES;
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
-                                    action:@"applicationDidEnterBackground"
-                                     label:nil
-                                     value:-1
-                                 withError:nil];
-    
-    [[GANTracker sharedTracker] dispatchSynchronous:kGANDispatchPeriodSec];
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
-                                    action:@"applicationWillEnterForeground"
-                                     label:nil
-                                     value:-1
-                                 withError:nil];
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
-                                    action:@"applicationDidBecomeActive"
-                                     label:nil
-                                     value:-1
-                                 withError:nil];
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
-                                    action:@"applicationWillResignActive"
-                                     label:nil
-                                     value:-1
-                                 withError:nil];
-}
-
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
-                                    action:@"applicationWillTerminate"
-                                     label:nil
-                                     value:-1
-                                 withError:nil];
-    
-    [[GANTracker sharedTracker] dispatchSynchronous:kGANDispatchPeriodSec];
-}
-
-- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
-{
-    [[GANTracker sharedTracker] trackEvent:@"UIApplicationDelegate"
-                                    action:@"applicationDidReceiveMemoryWarning"
-                                     label:nil
-                                     value:-1
-                                 withError:nil];
 }
 
 @end

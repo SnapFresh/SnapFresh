@@ -46,15 +46,6 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    // Determine the class name of this view controller using reflection.
-    NSString *className = NSStringFromClass([self class]);
-    [[GANTracker sharedTracker] trackPageview:className withError:nil];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -107,13 +98,6 @@
     SnapRetailer *retailer = [self.retailers objectAtIndex:indexPath.row];
     
     [self.mapViewController didSelectRetailer:retailer];
-    
-    NSString *className = NSStringFromClass([self class]);
-    [[GANTracker sharedTracker] trackEvent:className
-                                    action:@"didSelectRowAtIndexPath"
-                                     label:retailer.name
-                                     value:-1
-                                 withError:nil];
 }
 
 #pragma mark - MapViewControllerDelegate protocol conformance
