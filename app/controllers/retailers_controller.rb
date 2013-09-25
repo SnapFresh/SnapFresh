@@ -6,7 +6,7 @@ class RetailersController < ApplicationController
   def index
 
   end
- 
+
   def terms
     @terms = "Our Policies: 1) Parties - these terms are defined between yourself (the User) and the SnapFresh product team (Product Team)
     which includes volunteer developers, marketers and testers of this application; 2) Privacy - We value your privacy.
@@ -16,18 +16,18 @@ class RetailersController < ApplicationController
     correct, and occasionally SnapFresh may not be available. Therefore, your use of SnapFresh and any reliance upon the
     information shared on SnapFresh is at your own risk."
     respond_to do |format|
-      format.html 
+      format.html
       format.xml  { render :xml => @terms }
       format.json { render :json => @terms }
       format.text { render :text => @terms}
     end
   end
-  
+
   def aboutus
- 
+
   end
 
-  def browse 
+  def browse
     @retailers = Retailer.search(params[:search]).order( sort_column + " " + sort_direction).paginate(:page => params[:page])
 
     #respond_to do |format|
@@ -35,13 +35,13 @@ class RetailersController < ApplicationController
     #  format.xml  { render :xml => @retailers }
     #end
   end
-  
+
   def list
     @latlon = get_geo_from_google(params[:address])
     @lat = @latlon[:lat]
     @lon = @latlon[:lon]
-    
-    redirect_to :controller => 'retailers', :action => 'near', :params => 
+
+    redirect_to :controller => 'retailers', :action => 'near', :params =>
                                                                 params[ :lat => @lat, :lon => @lon ]
   end
 
@@ -59,7 +59,7 @@ class RetailersController < ApplicationController
       format.json { render :json => @retailer }
     end
   end
-  
+
   # GET /retailers/nearaddy/:address
   def nearaddy
     usergeo = get_geo_from_google(params[:address])
@@ -75,7 +75,7 @@ class RetailersController < ApplicationController
       @rt[ind] = { :dist => r.distancefromorigin(origin)[:dist], :unit => r.distancefromorigin(origin)[:unit] }
     end
     respond_to do |format|
-      format.html 
+      format.html
       format.xml  { render :xml => @retailers }
       format.json { render :json => { :origin => origin, :retailers => @retailers } }
       format.text { render :text => @retailers.to_enum(:each_with_index).map{|r, i| r.name = "#{i+1} (#{@rt[i][:dist]} #{@rt[i][:unit]}): #{r.name}\n#{r.text_address}"}.join("\n\n")}
@@ -107,7 +107,7 @@ class RetailersController < ApplicationController
      end
     end
 
-    return parse 
+    return parse
   end
 
   # GET /retailers/1
@@ -120,18 +120,6 @@ class RetailersController < ApplicationController
       format.xml  { render :xml => @retailer }
     end
   end
-
-  # GET /retailers/new
-  # GET /retailers/new.xml
-  def new
-    @retailer = Retailer.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @retailer }
-    end
-  end
-
 
   private
     def sort_column
