@@ -35,9 +35,13 @@
                                  withError:nil];
 
     UIColor *color = [UIColor colorWithRed:0.39 green:0.60 blue:0.2 alpha:1.0];
+    UIColor *whiteColor = [UIColor whiteColor];
     
-    self.window.tintColor = color;
-
+    [[UINavigationBar appearance] setBarTintColor:color];
+    [[UIToolbar appearance] setTintColor:whiteColor];
+    [[UIToolbar appearance] setBarTintColor:color];
+    [[UIButton appearance] setTintColor:whiteColor];
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
