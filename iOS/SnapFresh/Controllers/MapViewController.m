@@ -73,7 +73,7 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-        listViewController = (self.childViewControllers)[0];
+        listViewController = [self.childViewControllers firstObject];
         listViewController.mapViewController = self;
         self.delegate = listViewController;
     }
