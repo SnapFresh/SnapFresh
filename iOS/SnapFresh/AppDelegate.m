@@ -28,7 +28,6 @@
     
     [[UIToolbar appearance] setTintColor:whiteColor];
     [[UIToolbar appearance] setBarTintColor:color];
-    [[UIButton appearance] setTintColor:whiteColor];
     [[UIBarButtonItem appearance] setTintColor:whiteColor];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
