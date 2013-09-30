@@ -105,6 +105,7 @@
 - (void)dealloc
 {
     // Nil out delegates
+    self.delegate = nil;
 	self.mapView.delegate = nil;
     self.searchBar.delegate = nil;
     requestController.delegate = nil;
