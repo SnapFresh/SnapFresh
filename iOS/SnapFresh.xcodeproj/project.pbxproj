@@ -116,7 +116,6 @@
 		84B78D00158EE54E00033B7F /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78CFD158EE54E00033B7F /* ListViewController.m */; };
 		84B78D01158EE54E00033B7F /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78CFF158EE54E00033B7F /* MapViewController.m */; };
 		84B78D05158EE55800033B7F /* SnapRetailer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78D04158EE55800033B7F /* SnapRetailer.m */; };
-		84B78D09158EE55F00033B7F /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78D08158EE55F00033B7F /* WildcardGestureRecognizer.m */; };
 		84B78D0C158EF0A100033B7F /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78D0B158EF0A100033B7F /* Constants.m */; };
 		84C89E9614CF6EBC00F68CE0 /* snaplogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C89E9514CF6EBC00F68CE0 /* snaplogo.png */; };
 		84D96C50152CA0D300C7CA02 /* snapfreshlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D96C4F152CA0D300C7CA02 /* snapfreshlogo@2x.png */; };
@@ -288,8 +287,6 @@
 		84B78CFF158EE54E00033B7F /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		84B78D03158EE55800033B7F /* SnapRetailer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapRetailer.h; sourceTree = "<group>"; };
 		84B78D04158EE55800033B7F /* SnapRetailer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapRetailer.m; sourceTree = "<group>"; };
-		84B78D07158EE55F00033B7F /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildcardGestureRecognizer.h; sourceTree = "<group>"; };
-		84B78D08158EE55F00033B7F /* WildcardGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildcardGestureRecognizer.m; sourceTree = "<group>"; };
 		84B78D0A158EF0A100033B7F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		84B78D0B158EF0A100033B7F /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		84C89E9514CF6EBC00F68CE0 /* snaplogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snaplogo.png; path = Images/snaplogo.png; sourceTree = "<group>"; };
@@ -602,8 +599,6 @@
 			children = (
 				BE655AAF160E72BC003C32B6 /* MapUtils.h */,
 				BE655AB0160E72BC003C32B6 /* MapUtils.m */,
-				84B78D07158EE55F00033B7F /* WildcardGestureRecognizer.h */,
-				84B78D08158EE55F00033B7F /* WildcardGestureRecognizer.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -815,7 +810,6 @@
 				84B78D00158EE54E00033B7F /* ListViewController.m in Sources */,
 				84B78D01158EE54E00033B7F /* MapViewController.m in Sources */,
 				84B78D05158EE55800033B7F /* SnapRetailer.m in Sources */,
-				84B78D09158EE55F00033B7F /* WildcardGestureRecognizer.m in Sources */,
 				84B78D0C158EF0A100033B7F /* Constants.m in Sources */,
 				BE655AB1160E72BC003C32B6 /* MapUtils.m in Sources */,
 				847E5DD6169953F90093228B /* RequestController.m in Sources */,

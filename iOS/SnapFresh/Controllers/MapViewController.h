@@ -23,6 +23,7 @@
 @interface MapViewController : UIViewController <UISplitViewControllerDelegate,
                                                  UISearchBarDelegate,
                                                  MKMapViewDelegate,
+                                                 UIGestureRecognizerDelegate,
                                                  UIAlertViewDelegate,
                                                  RequestControllerDelegate>
 

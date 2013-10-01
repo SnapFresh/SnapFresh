@@ -19,7 +19,6 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "SVProgressHUD.h"
 #import "MDACClasses.h"
-#import "WildcardGestureRecognizer.h"
 #import "Constants.h"
 #import "MapUtils.h"
 
@@ -61,15 +60,9 @@
     requestController = [[RequestController alloc] init];
     requestController.delegate = self;
     
-    WildcardGestureRecognizer * tapInterceptor = [[WildcardGestureRecognizer alloc] init];
-    tapInterceptor.touchesEndedCallback = ^(NSSet * touches, UIEvent * event)
-    {
-        if (![SVProgressHUD isVisible])
-        {
-            self.redoSearchView.hidden = NO;
-        }
-    };
-    [self.mapView addGestureRecognizer:tapInterceptor];
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
+    [panRecognizer setDelegate:self];
+    [self.mapView addGestureRecognizer:panRecognizer];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
@@ -292,6 +285,17 @@
     }
 
     [self presentViewController:aboutController animated:YES completion:nil];
+}
+
+- (void)didDragMap:(UIGestureRecognizer*)gestureRecognizer
+{
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded)
+    {
+        if (![SVProgressHUD isVisible])
+        {
+            self.redoSearchView.hidden = NO;
+        }
+    }
 }
 
 #pragma mark - Map utility methods
@@ -601,6 +605,13 @@
 {
     [searchBar setShowsCancelButton:NO animated:YES];
     [searchBar resignFirstResponder];
+}
+
+#pragma mark - UIGestureRecognizerDelegate protocol conformance
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
 }
 
 #pragma mark - UIAlertViewDelegate protocol conformance
