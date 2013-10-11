@@ -3,52 +3,41 @@
 <head>
   <title>SnapFresh.org</title>
 
-	<link href='stylesheets/jquery.mobile-1.0b1.min.css' rel='stylesheet' type='text/css' />    
-
-
-
+  <link href='stylesheets/jquery.mobile-1.0b1.min.css' rel='stylesheet' type='text/css' />
   <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> -->
   <script>!window.jQuery && document.write('<script src="js/jquery-1.4.4.min.js"><\/script>')</script>
-		
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
-		<script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
-
-
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
   <script src="/javascripts/lazy-render.js" type="text/javascript" charset="utf-8"></script>
   <script src="/javascripts/render-functions.js?v=0000"></script>
-      <script src="/javascripts/yqlgeo.js"></script> 
-		<link href='stylesheets/custom.css' rel='stylesheet' type='text/css' />    
+  <script src="/javascripts/yqlgeo.js"></script>
+  <link href='stylesheets/custom.css' rel='stylesheet' type='text/css' />
 
   <script>
     $(document).ready(function(){
-            
-	var addressPrompt = $('#addressfield').val();
-	$('#addressfield').focus(function(){
-
-
-			if ($('#addressfield').val()==addressPrompt) {
-					$('#addressfield').empty();
-				} 
-   	  });
-   	   $("#locateme").click(function() {
-// 	 	alert('Handler for .submit() called.');
-		 initiate_geolocation();  
-		});
-   	</script>
+    var addressPrompt = $('#addressfield').val();
+    $('#addressfield').focus(function(){
+      if ($('#addressfield').val()==addressPrompt) {
+      $('#addressfield').empty();
+      }
+    });
+    $("#locateme").click(function() {
+      //    alert('Handler for .submit() called.');
+      initiate_geolocation();
+    });
+  </script>
   <%= csrf_meta_tag %>
   <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25396637-1']);
+    _gaq.push(['_trackPageview']);
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-25396637-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+    (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+  </script>
 </head>
 <body>
   <!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
@@ -57,25 +46,21 @@
   <!--[if IE 9 ]>    <body class="ie9"> <![endif]-->
   <!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
   <div class="general" data-role="page" data-theme="d">
-<div data-role="header" data-theme="f" class="ui-bar-f ui-header" role="banner">
-		<h1 class="ui-title logo" tabindex="0" role="heading" aria-level="1"></h1>
-		<!-- <a href="../../" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home ui-btn ui-btn-up-f ui-btn-icon-notext ui-btn-corner-all ui-shadow" title="Home" data-theme="f"> -->
-		<a href="../../" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-left jqm-home" data-inline="true">Home</a>
-		<!--		<span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home ui-icon-shadow"></span></span></a> -->
-		<%= link_to "About", aboutus_path, "data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
-		  
-</div>
+    <div data-role="header" data-theme="f" class="ui-bar-f ui-header" role="banner">
+      <h1 class="ui-title logo" tabindex="0" role="heading" aria-level="1"></h1>
+      <a href="../../" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-left jqm-home" data-inline="true">Home</a>
+      <%= link_to "About", aboutus_path, "data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
+    </div>
 
     <%= yield %>
 
-  <!-- The following content will be displayed to everyone -->
-  <div data-role="controlgroup" data-type="horizontal" >
-  <%= link_to "Espanol", { :controller => "retailers", :locale => "es" } , "data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
-  <%= link_to "Chinese", {:controller => "retailers", :locale => "zh"}, "data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
-  <%= link_to "English", {:controller => "retailers", :locale => "en"}, "data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
+    <!-- The following content will be displayed to everyone -->
+    <div data-role="controlgroup" data-type="horizontal" >
+      <%= link_to "Espanol", { :controller => "retailers", :locale => "es" } , "data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
+      <%= link_to "Chinese", {:controller => "retailers", :locale => "zh"}, "data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
+      <%= link_to "English", {:controller => "retailers", :locale => "en"}, "data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
+    </div>
   </div>
-  </div>
-	</div><!-- end content -->          
-  </div> <!-- end page -->          
+
 </body>
 </html>
