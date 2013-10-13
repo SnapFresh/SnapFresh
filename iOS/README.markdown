@@ -2,8 +2,10 @@
 A universal storyboard app that helps you find the closest places that accept SNAP (Food Stamp) EBT cards. SnapFresh uses Yelp to try and show the healthier places first.
 
 ## Screenshots
-Landscape orientation:
+iPhone:
+![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_iphone.png)
 
+Landscape orientation:
 ![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_landscape.png)
 
 Portrait orientation:
