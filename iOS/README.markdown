@@ -4,7 +4,9 @@ A universal storyboard app that helps you find the closest places that accept SN
 ## Screenshots
 iPhone:
 
-![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_iphone.png)
+![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_map.png)
+
+![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_list.png)
 
 Landscape orientation:
 
