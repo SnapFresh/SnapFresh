@@ -15,6 +15,9 @@ extern NSString * const kSnapFreshEndpoint;
 // SnapFresh timeout interval
 extern NSTimeInterval const kSnapFreshTimeout;
 
+// TestFlight app token
+extern NSString * const kTestFlightAppToken;
+
 // Google Analytics account ID
 extern NSString * const kGANAccountId;
 

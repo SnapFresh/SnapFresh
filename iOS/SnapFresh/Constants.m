@@ -15,6 +15,9 @@ NSString * const kSnapFreshEndpoint = @"/retailers/nearaddy.json/";
 // SnapFresh timeout interval
 NSTimeInterval const kSnapFreshTimeout = 10.0;
 
+// TestFlight app token
+NSString * const kTestFlightAppToken = @"a76ff8b0-cf5a-4c8b-a7d4-861a7b0cea61";
+
 // Google Analytics account ID
 NSString * const kGANAccountId = @"UA-25396637-1";
 

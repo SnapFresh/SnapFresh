@@ -16,12 +16,14 @@
 
 #import "AppDelegate.h"
 #import "Constants.h"
+#import "TestFlight.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [TestFlight takeOff:kTestFlightAppToken];
 
     UIColor *color = [UIColor colorWithRed:0.39 green:0.60 blue:0.2 alpha:1.0];
     UIColor *whiteColor = [UIColor whiteColor];
