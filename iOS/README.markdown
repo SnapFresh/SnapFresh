@@ -3,18 +3,16 @@ A universal storyboard app that helps you find the closest places that accept SN
 
 ## Screenshots
 iPhone:
+
 ![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_iphone.png)
 
 Landscape orientation:
+
 ![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_landscape.png)
 
 Portrait orientation:
 
 ![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_portrait.png)
-
-About screen:
-
-![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_about.png)
 
 ## Build requirements
 Xcode 5, iOS 7.0 SDK, LLVM Compiler 3.0, Automated Reference Counting (ARC).
