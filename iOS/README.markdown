@@ -15,10 +15,10 @@ About screen:
 ![](https://github.com/ysiadf/AllIncomeFoods/raw/master/iOS/Screenshots/screenshot_about.png)
 
 ## Build requirements
-Xcode 4.2, iOS 6.0 SDK, LLVM Compiler 3.0, Automated Reference Counting (ARC).
+Xcode 5, iOS 7.0 SDK, LLVM Compiler 3.0, Automated Reference Counting (ARC).
 
 ## Runtime requirements
-iOS 6.0 and later
+iOS 7.0 and later
 
 ## License
 
