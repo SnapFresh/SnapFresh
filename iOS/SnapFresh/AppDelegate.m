@@ -31,13 +31,15 @@
     [[UIToolbar appearance] setTintColor:whiteColor];
     [[UIToolbar appearance] setBarTintColor:color];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
 
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
 
         splitViewController.delegate = (id)navigationController.topViewController;
+        
+         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     }
     else
     {
