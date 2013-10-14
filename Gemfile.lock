@@ -104,6 +104,7 @@ DEPENDENCIES
   pg
   pry (~> 0.9.12.2)
   rails (= 3.0.7)
+  rake
   sass
   sqlite3
   sqlite3-ruby
