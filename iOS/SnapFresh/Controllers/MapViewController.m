@@ -277,14 +277,25 @@
     {
         aboutController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         aboutController.modalPresentationStyle = UIModalPresentationFormSheet;
+        
+        [self presentViewController:aboutController animated:YES completion:NULL];
     }
     else
     {
         aboutController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         aboutController.modalPresentationStyle = UIModalPresentationFullScreen;
+        
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aboutController];
+        UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped)];
+        aboutController.navigationItem.rightBarButtonItem = cancelBarButtonItem;
+        
+        [self presentViewController:navController animated:YES completion:nil];
     }
+}
 
-    [self presentViewController:aboutController animated:YES completion:nil];
+- (void)cancelButtonTapped
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)didDragMap:(UIGestureRecognizer*)gestureRecognizer
