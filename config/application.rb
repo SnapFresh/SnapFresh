@@ -4,7 +4,16 @@ require 'rails/all'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env) if defined?(Bundler)
+if defined?(Bundler)
+  if %w(development test).include?(Rails.env)
+    # Loads debug tools in development and test enviroments while allowing
+    # debug tools to be excluded from tests in Travis builds
+    Bundler.require(:default, :debug, Rails.env)
+  else
+    # Standard Rails Bundler Load
+    Bundler.require(:default, Rails.env)
+  end
+end
 
 module Allincomefoods
   class Application < Rails::Application
