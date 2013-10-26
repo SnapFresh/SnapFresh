@@ -7,6 +7,7 @@ gem 'crack', '~> 0.1.8'
 gem 'geokit', '~> 1.5.0'
 gem 'geokit-rails', '~> 1.1.4'
 gem 'will_paginate', '~> 3.0.pre2'
+gem 'whenever', '~> 0.8.4', :require => false
 
 # Assets
 gem 'haml', '~> 3.1.1'
