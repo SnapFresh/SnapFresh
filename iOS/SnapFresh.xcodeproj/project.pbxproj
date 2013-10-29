@@ -991,8 +991,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\\\"$(SRCROOT)/ThirdParty/Google\\ Analytics\\ SDK/Library\\\"",
-					/Users/mabundo/Developer/Universal/AllIncomeFoods/iOS/ThirdParty/TestFlightSDK2,
+					"\"$(SRCROOT)/ThirdParty/TestFlightSDK2\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1012,8 +1011,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\\\"$(SRCROOT)/ThirdParty/Google\\ Analytics\\ SDK/Library\\\"",
-					/Users/mabundo/Developer/Universal/AllIncomeFoods/iOS/ThirdParty/TestFlightSDK2,
+					"\"$(SRCROOT)/ThirdParty/TestFlightSDK2\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "04A86629-23E7-4489-ACD3-2752CE9D3F1C";
