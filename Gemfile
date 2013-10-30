@@ -19,6 +19,7 @@ gem 'pg', '~> 0.11.0'
 
 group :test do
   gem "capybara", "~> 2.1.0"
+  gem "simplecov", "~> 0.7.1", :require => false
   gem 'rake'
 end
 
