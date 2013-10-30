@@ -20,6 +20,7 @@ gem 'pg', '~> 0.11.0'
 group :test do
   gem "capybara", "~> 2.1.0"
   gem "simplecov", "~> 0.7.1", :require => false
+  gem "minitest-spec-rails", "~> 4.7.4"
   gem 'rake'
 end
 
