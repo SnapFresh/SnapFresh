@@ -18,6 +18,7 @@ gem 'jquery-rails', '~> 1.0.2'
 gem 'pg', '~> 0.11.0'
 
 group :test do
+  gem "capybara", "~> 2.1.0"
   gem 'rake'
 end
 
