@@ -67,6 +67,11 @@
 
 #pragma mark - UITableViewDataSource protocol conformance
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return NSLocalizedString(@"Retailers", @"Retailers");
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _retailers.count;
