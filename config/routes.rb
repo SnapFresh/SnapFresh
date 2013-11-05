@@ -1,5 +1,5 @@
 Allincomefoods::Application.routes.draw do
-  root :to => 'retailers#index'
+  root :to => 'pages#home'
 
   get 'about' => 'pages#about'
   get 'terms' => 'pages#terms'

@@ -1,17 +1,20 @@
-<div data-role="content">
-  <h1 class="logo"><img src="images/snapfreshlogo.png" width="40%" title="snapfresh.org" alt="snapfresh.org" /></span></h1>
-  <h2><%=t :indexenter1 %></h2>
+<h2 id="listhead"><%=t :nearaddy1 %></h2>
 
-  <form action="<%= nearaddy_retailers_path%>" method="get">
-    <input class="entryform-field" name="address" value="" id="addressfield"/>
-    <p class="eg"><%=t :indexenter2 %> 48104, 85 2nd St, San Francisco or Mission and 16th, 94106 </p>
-    <div class="buttondiv">
-      <input class="button" id="submitbutton" type="submit" value="<%=t :subbutton1 %>" data-inline="true"/>
+<div class="general">
+  <ul data-role="listview ui-listview">
+    <% @retailers.each_with_index do |retailer, ind| %>
+      <li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c">
+    <div class="ui-btn-inner ui-li">
+      <div class="ui-btn-text">
+        <a href= "<%= "http://maps.google.com/maps?q=" + retailer.google_safe_address %>"  class="ui-link-inherit">
+          <h3 class="ui-li-heading">(<%= @rt[ind][:dist] %> <%= @rt[ind][:unit] %>) <%= retailer.name.capitalize %></h3>
+          <p class="ui-li-desc"><%= retailer.address %></p>
+          <p class="ui-li-desc"><%= retailer.retailer_types.join ", " %></p>
+        </a>
+      </div>
+      <span class="ui-icon ui-icon-arrow-r"></span>
     </div>
-  </form>
-
-  <div class="sms">
-    <p><%=t :submit1 %></p>
-    <h1 class="phone">(415) 889-8650</h1>
-  </div>
+    </li>
+  <% end %>
+  </ul>
 </div>

@@ -1,9 +1,27 @@
 class RetailersController < ApplicationController
 
-  # Root
   def index
+    usergeo = get_geo_from_google(params[:address])
+    origin = [usergeo[:lat], usergeo[:long]]
+    @retailers = Retailer.find :all,
+                              :origin => origin,
+                              :order => 'distance',
+                              :limit => 5
+    # This appears to exist for content in internationalization files. Why?
+    @count = 1
+    # populates the instance variable rt array of hashes with the distance and unit for each 
+    # retailer returned in the retailer collection
+    @rt = Array.new
+    @retailers.each_with_index do |r, ind|
+      @rt[ind] = { :dist => r.distancefromorigin(origin)[:dist], :unit => r.distancefromorigin(origin)[:unit] }
+    end
+    respond_to do |format|
+      format.html
+      format.json { render :json => { :origin => origin, :retailers => @retailers } }
+    end
   end
 
+  ### Depreciated - Do not delete/modify, iOS app still uses API ####
   # GET /retailers/nearaddy/:address
   def nearaddy
     usergeo = get_geo_from_google(params[:address])
@@ -29,7 +47,7 @@ class RetailersController < ApplicationController
   private
 
   def get_geo_from_google(address)
-   geocoder = "http://maps.googleapis.com/maps/api/geocode/json?address="
+    geocoder = "http://maps.googleapis.com/maps/api/geocode/json?address="
     output = "&sensor=false"
     #address = "424+ellis+st+san+francisco"
     # replace any ampersands with "and" since ampersands don't seem to work with the google query
