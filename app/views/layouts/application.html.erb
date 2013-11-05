@@ -54,11 +54,11 @@
 
     <%= yield %>
 
-    <!-- The following content will be displayed to everyone -->
     <div data-role="controlgroup" data-type="horizontal" >
-      <%= link_to "Espanol", { :controller => "retailers", :locale => "es" } , "data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
-      <%= link_to "Chinese", {:controller => "retailers", :locale => "zh"}, "data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
-      <%= link_to "English", {:controller => "retailers", :locale => "en"}, "data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
+      <!-- TODO: sanitize params.merge to protect against XSS attacks -->
+      <%= link_to 'Espanol', url_for(params.merge(locale: "es")),"data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
+      <%= link_to 'Chinese', url_for(params.merge(locale: "zh")),"data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
+      <%= link_to 'English', url_for(params.merge(locale: "en")),"data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
     </div>
   </div>
 
