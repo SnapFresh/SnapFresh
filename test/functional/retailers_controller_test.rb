@@ -9,9 +9,9 @@ class RetailersControllerTest < ActionController::TestCase
   test "should get index" do
     get :index, :address => "22314"
     assert_response :success
-    assert_not_nil assigns(:retailers)
+    assert_not_nil assigns(:retailer_presenter)
     # TODO This assertion should be specific
-    assert_equal assigns(:retailers).count, 2
+    assert_equal assigns(:retailer_presenter).retailers.count, 2
   end
 
   # Depreciated; however, do not remove. Still in use by iOS application.
