@@ -1,27 +1,18 @@
 class RetailersController < ApplicationController
 
   def index
-    usergeo = get_geo_from_google(params[:address])
-    origin = [usergeo[:lat], usergeo[:long]]
-    @retailers = Retailer.find :all,
-                              :origin => origin,
-                              :order => 'distance',
-                              :limit => 5
-    # This appears to exist for content in internationalization files. Why?
+    @retailer_presenter = RetailerPresenter.new(params[:address])
+    # Count is used in the internationalization content, learn why it is setup this way
     @count = 1
-    # populates the instance variable rt array of hashes with the distance and unit for each 
-    # retailer returned in the retailer collection
-    @rt = Array.new
-    @retailers.each_with_index do |r, ind|
-      @rt[ind] = { :dist => r.distancefromorigin(origin)[:dist], :unit => r.distancefromorigin(origin)[:unit] }
-    end
     respond_to do |format|
       format.html
-      format.json { render :json => { :origin => origin, :retailers => @retailers } }
+      format.json { render :json => { origin: @retailer_presenter.origin, retailers: @retailer_presenter.retailers } }
     end
   end
 
-  ### Depreciated - Do not delete/modify, iOS app still uses API ####
+  # Everything below this point is considered depreciated.
+  # It hasn't been removed because the iOS applications still use this API
+
   # GET /retailers/nearaddy/:address
   def nearaddy
     usergeo = get_geo_from_google(params[:address])
@@ -39,7 +30,9 @@ class RetailersController < ApplicationController
     respond_to do |format|
       format.html
       format.xml  { render :xml => @retailers }
-      format.json { render :json => { :origin => origin, :retailers => @retailers } }
+      format.json {
+        render :json => { :origin => origin, :retailers => @retailers }
+      }
       format.text { render :text => @retailers.to_enum(:each_with_index).map{|r, i| r.name = "#{i+1} (#{@rt[i][:dist]} #{@rt[i][:unit]}): #{r.name}\n#{r.text_address}"}.join("\n\n")}
     end
   end
