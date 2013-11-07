@@ -7,7 +7,7 @@
     <div class="ui-btn-inner ui-li">
       <div class="ui-btn-text">
         <a href= "<%= "http://maps.google.com/maps?q=" + retailer.google_safe_address %>"  class="ui-link-inherit">
-          <h3 class="ui-li-heading">(<%= @retailer_presenter.rt[ind][:dist] %> <%= @retailer_presenter.rt[ind][:unit] %>) <%= retailer.name.capitalize %></h3>
+          <h3 class="ui-li-heading">(<%= @retailer_presenter.distances[ind][:dist] %> <%= @retailer_presenter.distances[ind][:unit] %>) <%= retailer.name.capitalize %></h3>
           <p class="ui-li-desc"><%= retailer.address %></p>
           <p class="ui-li-desc"><%= retailer.retailer_types.join ", " %></p>
         </a>

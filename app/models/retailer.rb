@@ -32,7 +32,7 @@ class Retailer < ActiveRecord::Base
       end
     end
     
-    def distancefromorigin(orig)
+    def distance_from_origin(orig)
         #passed the origin array from the retailers controller
         lat1 = orig[0]
         long1 = orig[1]
