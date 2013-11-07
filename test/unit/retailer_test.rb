@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class RetailerTest < ActiveSupport::TestCase
+describe Retailer do
 
-  def setup
+  before do
     @retailer = retailers(:one)
   end
 

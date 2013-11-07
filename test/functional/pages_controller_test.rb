@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PagesControllerTest < ActionController::TestCase
+describe PagesController do
 
   test "should GET #about" do
     get :about

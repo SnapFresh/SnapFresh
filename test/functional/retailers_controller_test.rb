@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class RetailersControllerTest < ActionController::TestCase
+describe RetailersController do
 
-  def setup
+  before do
     @retailer = retailers(:one)
   end
 

@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class RetailerPresenterTest < ActiveSupport::TestCase
+describe RetailerPresenter do
 
-  def setup
+  before do
     @retailer_presenter = RetailerPresenter.new("22314")
   end
 
