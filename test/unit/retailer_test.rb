@@ -2,28 +2,24 @@ require 'test_helper'
 
 class RetailerTest < ActiveSupport::TestCase
 
+  def setup
+    @retailer = retailers(:one)
+  end
+
   test "should return retailer types" do
-    skip("learn what method does")
+    assert_equal @retailer.retailer_types, ["grocery"]
   end
 
-  test "should return distance from origin" do
-    skip("learn what method does")
+  test "should return distance between a retailer location and a lat and long" do
+    assert_equal @retailer.distance_from_origin([38.7999723, -77.0506896]), {:dist=>452.98, :unit=>"mi"}
   end
 
-  test "should return address for a retailer" do
-    skip("learn what method does")
+  test "should return a googe safe address" do
+    assert_equal @retailer.google_safe_address, "3603+Maybank+Hwy+Johns+Island+SC+29455"
   end
 
-  test "should render customized xml" do
-    skip("learn what method does")
-  end
-
-  test "should return safe google address" do
-    skip("learn what method does")
-  end
-
-  test "should search by name" do
-    skip("learn what method does")
+  test "should return a retailers address" do
+    assert_equal @retailer.address, "3603 Maybank Hwy Johns Island SC 29455"
   end
 
 end

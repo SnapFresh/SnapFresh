@@ -1,14 +1,14 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: One Local Mart
-  lat: 9.99
-  lon: 9.99
-  street: One Street
-  city: One Town
-  state: CA
-  zip: 94501
-  zip_plus_four:
+  name: "CIRCLE K STORE 8103"
+  lat: 0.32720379E2
+  lon: -0.80082291E2
+  street: "3603 Maybank Hwy"
+  city: "Johns Island"
+  state: "SC"
+  zip: "29455"
+  zip_plus_four: "4825"
 
 two:
   name: Two Local Mart

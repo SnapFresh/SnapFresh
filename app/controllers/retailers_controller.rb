@@ -4,16 +4,18 @@ class RetailersController < ApplicationController
   # GET /retailers.json
   def index
     @retailer_presenter = RetailerPresenter.new(params[:address])
-    # Count is used in the internationalization content, learn why it is setup this way
+    # TODO Count is used in the internationalization content, learn why it is setup this way
     @count = 1
     respond_to do |format|
       format.html
-      format.json { render :json => { origin: @retailer_presenter.origin, retailers: @retailer_presenter.retailers } }
+      format.json do
+        render json: { origin: @retailer_presenter.origin, retailers: @retailer_presenter.retailers }
+      end
     end
   end
 
-  # Everything below this point is considered depreciated.
-  # It hasn't been removed because the iOS applications still use this API
+  # Everything below this point is considered depreciated
+  # It hasn't been removed because iOS applications and Tropo still use this API
 
   # GET /retailers/nearaddy/:address
   def nearaddy
@@ -25,9 +27,9 @@ class RetailersController < ApplicationController
                               :limit => 5
     @count = 1
     # populates the instance variable rt array of hashes with the distance and unit for each retailer returned in the retailer collection
-    @distances = Array.new
+    @rt = Array.new
     @retailers.each_with_index do |r, ind|
-      @distances[ind] = { :dist => r.distance_from_origin(origin)[:dist], :unit => r.distance_from_origin(origin)[:unit] }
+      @rt[ind] = { :dist => r.distance_from_origin(origin)[:dist], :unit => r.distance_from_origin(origin)[:unit] }
     end
     respond_to do |format|
       format.xml  { render :xml => @retailers }

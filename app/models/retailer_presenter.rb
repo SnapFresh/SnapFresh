@@ -3,7 +3,7 @@ class RetailerPresenter
 
   def initialize(address)
     @origin = retrieve_lat_long(address)
-    @distances = distance_from_origin
+    @distances = distance_from_origin(origin)
   end
 
   def retailers
@@ -12,16 +12,16 @@ class RetailerPresenter
 
   private
 
-  def distance_from_origin
+  def distance_from_origin(lat_long)
     dists = []
     retailers.each do |retailer|
-      dists << retailer.distance_from_origin(origin)
+      dists << retailer.distance_from_origin(lat_long)
     end
     return dists
   end
 
   def retrieve_lat_long(address)
-    @lat_long ||= Geocoder.search(address)[0].coordinates
+    Geocoder.search(address).first.coordinates
   end
 
 end

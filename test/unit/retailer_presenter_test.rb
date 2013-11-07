@@ -7,7 +7,7 @@ class RetailerPresenterTest < ActiveSupport::TestCase
   end
 
   test "should return retailers" do
-    assert_equal @retailer_presenter.retailers, [retailers(:two), retailers(:one)]
+    assert_equal @retailer_presenter.retailers, [retailers(:one), retailers(:two)]
   end
 
   test "should return lat and long" do
@@ -15,7 +15,7 @@ class RetailerPresenterTest < ActiveSupport::TestCase
   end
 
   test "should return array of distances from origin" do
-    assert_equal @retailer_presenter.distances, [{dist: 5627.86, unit: "mi"}, {dist: 5627.97, unit: "mi"}]
+    assert_equal @retailer_presenter.distances, [{:dist=>452.98, :unit=>"mi"}, {:dist=>5627.86, :unit=>"mi"}]
   end
 
 end
