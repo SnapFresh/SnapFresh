@@ -12,7 +12,6 @@ class Retailer < ActiveRecord::Base
     esclocation = "&location=" + URI.escape(self.street, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) + "%2C" +
       URI.escape(self.city, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) + "%2C" + URI.escape(self.state, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
     request = yelpurl + escname + esclocation + "&ywsid=VR0eNW8-767FtIrg21dKAA"
-    puts request
     #http://api.yelp.com/business_review_search?term=cream%20puffs&location=650%20Mission%20St%2ASan%20Francisco%2A%20CA&ywsid=XXXXXXXXXXXXXXXX
     url = URI.parse(request)
     yelpdata = Net::HTTP.get_response(url)

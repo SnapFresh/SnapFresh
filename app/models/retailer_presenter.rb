@@ -2,7 +2,7 @@ class RetailerPresenter
   attr_accessor :origin, :distances
 
   def initialize(address)
-    @origin = retrieve_users_lat_long(address)
+    @origin = retrieve_lat_long(address)
     @distances = distance_from_origin
   end
 
@@ -17,9 +17,10 @@ class RetailerPresenter
     retailers.each do |retailer|
       dists << retailer.distance_from_origin(origin)
     end
+    return dists
   end
 
-  def retrieve_users_lat_long(address)
+  def retrieve_lat_long(address)
     @lat_long ||= Geocoder.search(address)[0].coordinates
   end
 
