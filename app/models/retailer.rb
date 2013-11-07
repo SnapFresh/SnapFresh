@@ -72,6 +72,7 @@ class Retailer < ActiveRecord::Base
     self.attributes.to_xml(to_xml_opts)
   end
 
+  # can probably be deleted
   def text_address
     [self.street, self.city, self.state].join(" ")
   end

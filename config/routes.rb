@@ -4,6 +4,7 @@ Allincomefoods::Application.routes.draw do
   get 'about' => 'pages#about'
   get 'terms' => 'pages#terms'
 
+  # To be depreciated
   resources :retailers do
     collection do
       get "nearaddy"
