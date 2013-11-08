@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.0.7'
+gem 'rails', '~> 3.0.20'
 
 # Keep around until RetailersController#get_geo_from_google is removed
 gem 'crack', '~> 0.1.8'

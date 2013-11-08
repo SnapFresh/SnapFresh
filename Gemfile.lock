@@ -120,7 +120,7 @@ DEPENDENCIES
   minitest-spec-rails (~> 4.7.5)
   pg (~> 0.17.0)
   pry (~> 0.9.12.2)
-  rails (~> 3.0.7)
+  rails (~> 3.0.20)
   rake
   sass (~> 3.2.12)
   simplecov (~> 0.7.1)
