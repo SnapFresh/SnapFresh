@@ -4,19 +4,20 @@ gem 'rails', '~> 3.0.7'
 
 gem 'tropo-webapi-ruby', '~> 0.1.10'
 gem 'crack', '~> 0.1.8'
-gem 'geokit', '~> 1.5.0'
-gem 'geokit-rails', '~> 1.1.4'
-gem 'will_paginate', '~> 3.0.pre2'
-gem 'whenever', '~> 0.8.4', :require => false
-gem "geocoder", "~> 1.1.8"
 
 # Assets
-gem 'haml', '~> 3.1.1'
 gem 'sass', '~> 3.1.1'
 gem 'jquery-rails', '~> 1.0.2'
 
 # DB's
 gem 'pg', '~> 0.13.2'
+
+# Automated cron jobs
+gem 'whenever', '~> 0.8.4', :require => false
+
+# Geolocation tools
+gem 'geokit', '~> 1.6.7'
+gem 'geokit-rails', '~> 2.0.0'
 
 group :test do
   gem "capybara", "~> 2.1.0"

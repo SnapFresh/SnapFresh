@@ -7,7 +7,7 @@ class RetailerPresenter
   end
 
   def retailers
-    @retailers ||= Retailer.find( :all, origin: origin, order: 'distance', limit: 5)
+    @retailers ||= Retailer.by_distance(origin: origin).limit(5)
   end
 
   private
@@ -21,7 +21,7 @@ class RetailerPresenter
   end
 
   def retrieve_lat_long(address)
-    Geocoder.search(address).first.coordinates
+    Geokit::Geocoders::GoogleGeocoder3.geocode(address).ll.split(',').collect{ |i| i.to_f }
   end
 
 end

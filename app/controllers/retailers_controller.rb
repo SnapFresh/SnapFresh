@@ -21,10 +21,7 @@ class RetailersController < ApplicationController
   def nearaddy
     usergeo = get_geo_from_google(params[:address])
     origin = [usergeo[:lat], usergeo[:long]]
-    @retailers = Retailer.find :all,
-                              :origin => origin,
-                              :order => 'distance',
-                              :limit => 5
+    @retailers = Retailer.by_distance(origin: origin).limit(5)
     @count = 1
     # populates the instance variable rt array of hashes with the distance and unit for each retailer returned in the retailer collection
     @rt = Array.new
