@@ -7,3 +7,5 @@ vendor/bundle
 .ruby-version
 config/database.yml
 coverage/
+.sass-cache/
+public/assets/

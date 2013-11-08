@@ -2,49 +2,12 @@
 <html>
 <head>
   <title>SnapFresh.org</title>
-
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
-  <link href='stylesheets/jquery.mobile-1.0b1.min.css' rel='stylesheet' type='text/css' />
-  <script>!window.jQuery && document.write('<script src="js/jquery-1.4.4.min.js"><\/script>')</script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
-  <script src="/javascripts/lazy-render.js" type="text/javascript" charset="utf-8"></script>
-  <script src="/javascripts/render-functions.js?v=0000"></script>
-  <script src="/javascripts/yqlgeo.js"></script>
-  <link href='stylesheets/custom.css' rel='stylesheet' type='text/css' />
-
-  <script>
-    $(document).ready(function(){
-      var addressPrompt = $('#addressfield').val();
-      $('#addressfield').focus(function(){
-        if ($('#addressfield').val()==addressPrompt) {
-          $('#addressfield').empty()
-        }
-      });
-      $("#locateme").click(function() {
-        initiate_geolocation();
-      });
-    };
-  </script>
-
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-25396637-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     })();
-  </script>
 </head>
+
 <body>
-  <!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
-  <!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
-  <!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
-  <!--[if IE 9 ]>    <body class="ie9"> <![endif]-->
-  <!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
   <div class="general" data-role="page" data-theme="d">
     <div data-role="header" data-theme="f" class="ui-bar-f ui-header" role="banner">
       <h1 class="ui-title logo" tabindex="0" role="heading" aria-level="1"></h1>
@@ -62,5 +25,16 @@
     </div>
   </div>
 
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25396637-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 </body>
 </html>

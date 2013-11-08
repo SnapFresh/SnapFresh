@@ -1,5 +1,7 @@
 <div data-role="content">
-  <h1 class="logo"><img src="images/snapfreshlogo.png" width="40%" title="snapfresh.org" alt="snapfresh.org" /></span></h1>
+  <h1 class="logo">
+    <%= image_tag "snapfreshlogo.png", width: "40%", title: "snapfresh.org", alt: "snapfresh.org" %>
+  </h1>
   <h2><%= t(:indexenter1) %></h2>
 
   <%= form_tag retailers_path, method: 'get' do %>
