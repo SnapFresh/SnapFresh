@@ -16,7 +16,7 @@ describe RetailersController do
 
   # Depreciated; however, do not remove. Still in use by iOS application.
   test "should get nearaddy" do
-    get :nearaddy, :address => "22314"
+    get :nearaddy, :address => "22314", :format => :json
     assert_not_nil assigns(:retailers)
     assert_equal assigns(:retailers).count, 2
   end
