@@ -1,4 +1,5 @@
 class RetailersController < ApplicationController
+  respond_to :html, :json, only: :index
 
   # GET /retailers
   # GET /retailers.json
@@ -6,12 +7,7 @@ class RetailersController < ApplicationController
     @retailer_presenter = RetailerPresenter.new(params[:address])
     # TODO Count is used in the internationalization content, learn why it is setup this way
     @count = 1
-    respond_to do |format|
-      format.html
-      format.json do
-        render json: { origin: @retailer_presenter.origin, retailers: @retailer_presenter.retailers }
-      end
-    end
+    respond_with @retailer_presenter
   end
 
   # Everything below this point is considered depreciated

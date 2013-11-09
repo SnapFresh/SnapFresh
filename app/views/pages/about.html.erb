@@ -1,20 +1,34 @@
-<div data-role="content">
-  <h1 class="logo">
-    <%= image_tag "snapfreshlogo.png", width: "40%", title: "snapfresh.org", alt: "snapfresh.org" %>
-  <h2><b>About SnapFresh:</b></h2>
+<h1 class="logo">
+  <%= image_tag "snapfreshlogo.png", width: "40%", title: "snapfresh.org", alt: "snapfresh.org" %>
+</h1>
 
-  <div class="general">
-    <div id="credits">
-      <%=t :credits1 %> <a href="http://en.wikipedia.org/wiki/Supplemental_Nutrition_Assistance_Program"><%=t :credits2%></a>.
-      <%=t :credits3%> <a href="http://www.yelp.com"><%= image_tag "yelp_logo.png" %></a>
-      <%=t :credits4%>.<p><%=t :credits5%> <a href="http://www.aardvarkium.com">Ysiad,</a> <a href="http://codeforamerica.org/author/michelle/">Michelle,</a> <a href="http://www.codemass.com">Aaron,</a> <%=t :credits6%> <a href="http://codeforamerica.org/author/jeremy/">Jeremy</a>.</p>
-      <br>
-      <b>Why Eat Healthy?</b> Great article on the benefits of eating healthy:
-      <a href="http://www.thebeehive.org/health/healthy-living/healthy-eating">http://www.thebeehive.org/health/healthy-living/healthy-eating</a>
-      <br><br>
-      <%= link_to "See Privacy and other Policies of SnapFresh", terms_path %>
-      <br><br>
-      <b>Join our <%= link_to "discuss group", "http://www.snapfresh.org/mailman/listinfo/discuss" %>!</b>
-    </div>
-  </div>
-</div>
+<h2>About SnapFresh:</h2>
+
+<p>
+  <%= t :credits1 %>
+  <%= link_to t(:credits2), "http://en.wikipedia.org/wiki/Supplemental_Nutrition_Assistance_Program" %>.
+  <%= t :credits3  %> <%= link_to image_tag("yelp_logo.png"), "http://www.yelp.com" %>
+  <%= t :credits4 %>.
+</p>
+
+<p>
+  <%= t(:credits5) %>
+  <%= link_to "Ysiad", "http://www.aardvarkium.com" %>,
+  <%= link_to "Michelle", "http://codeforamerica.org/author/michelle/" %>,
+  <%= link_to "Aaron", "http://www.codemass.com" %>,
+  <%= t(:credits6) %>
+  <%= link_to "Jeremy", "http://codeforamerica.org/author/jeremy/" %>.
+</p>
+
+<p>
+  <strong>Why Eat Healthy?</strong> Great article on the benefits of
+  <%= link_to "eating healthy","http://www.thebeehive.org/health/healthy-living/healthy-eating" %>.
+</p>
+
+<p>
+  <%= link_to "See Privacy and other Policies of SnapFresh", terms_path %>
+</p>
+
+<p>
+  <strong>Join our <%= link_to "discussion group", "http://www.snapfresh.org/mailman/listinfo/discuss" %>!</strong>
+</p>

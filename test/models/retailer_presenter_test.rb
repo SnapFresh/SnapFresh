@@ -14,8 +14,8 @@ describe RetailerPresenter do
     assert_equal @retailer_presenter.origin, [38.7999723, -77.0506896]
   end
 
-  test "should return array of distances from origin" do
-    assert_equal @retailer_presenter.distances, [{:dist=>452.98, :unit=>"mi"}, {:dist=>5627.86, :unit=>"mi"}]
+  test "retailer should have a distance" do
+    assert_equal @retailer_presenter.retailers.map(&:distance), [{:dist=>452.98, :unit=>"mi"}, {:dist=>5627.86, :unit=>"mi"}]
   end
 
 end

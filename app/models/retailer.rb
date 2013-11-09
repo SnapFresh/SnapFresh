@@ -2,6 +2,7 @@ require 'cgi'
 
 class Retailer < ActiveRecord::Base
   acts_as_mappable :lng_column_name => :lon
+  attr_accessor :distance
 
   def retailer_types
     Yelp.new(self).business_types
@@ -25,12 +26,10 @@ class Retailer < ActiveRecord::Base
     # list feet if under 1 mile. And miles to 2 decimal places if over 1 mile
     if dist < 1
       dist = dist * 5280
-      disthash = { :dist => dist.round.to_i, :unit => "ft" }
+      self.distance = { :dist => dist.round.to_i, :unit => "ft" }
     else
-      disthash = { :dist => dist.round(2), :unit => "mi" }
+      self.distance = { :dist => dist.round(2), :unit => "mi" }
     end
-
-    return disthash
   end
 
   def address
@@ -38,7 +37,7 @@ class Retailer < ActiveRecord::Base
   end
 
   def google_safe_address
-    CGI::escape(address)
+    "http://maps.google.com/maps?q=" + CGI::escape(address)
   end
 
   ## TODO Are these used? ##

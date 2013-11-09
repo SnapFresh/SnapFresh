@@ -1,23 +1,25 @@
 class RetailerPresenter
-  attr_accessor :origin, :distances
+  attr_reader :origin
 
   def initialize(address)
     @origin = retrieve_lat_long(address)
-    @distances = distance_from_origin(origin)
+    calculate_distances_from_origin(origin)
   end
 
   def retailers
     @retailers ||= Retailer.by_distance(origin: origin).limit(5)
   end
 
+  def as_json(options = {})
+    { origin: origin, retailers: retailers.as_json(methods: :distance, except: [:id, :created_at, :updated_at]) }
+  end
+
   private
 
-  def distance_from_origin(lat_long)
-    dists = []
+  def calculate_distances_from_origin(lat_long)
     retailers.each do |retailer|
-      dists << retailer.distance_from_origin(lat_long)
+      retailer.distance_from_origin(lat_long)
     end
-    return dists
   end
 
   def retrieve_lat_long(address)

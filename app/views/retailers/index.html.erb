@@ -1,20 +1,17 @@
 <h2 id="listhead"><%=t :nearaddy1 %></h2>
-
-<div class="general">
-  <ul data-role="listview ui-listview">
-    <% @retailer_presenter.retailers.each_with_index do |retailer, ind| %>
-      <li data-theme="c" class="ui-btn ui-btn-icon-right ui-li ui-btn-up-c">
-    <div class="ui-btn-inner ui-li">
-      <div class="ui-btn-text">
-        <a href= "<%= "http://maps.google.com/maps?q=" + retailer.google_safe_address %>"  class="ui-link-inherit">
-          <h3 class="ui-li-heading">(<%= @retailer_presenter.distances[ind][:dist] %> <%= @retailer_presenter.distances[ind][:unit] %>) <%= retailer.name.capitalize %></h3>
-          <p class="ui-li-desc"><%= retailer.address %></p>
-          <p class="ui-li-desc"><%= retailer.retailer_types.join ", " %></p>
-        </a>
-      </div>
-      <span class="ui-icon ui-icon-arrow-r"></span>
-    </div>
+<ul data-role="listview" data-divider-theme="c" data-inset="true">
+  <% @retailer_presenter.retailers.each do |retailer| %>
+    <li data-theme="c">
+    <!-- TODO make the html semantically correct. i.e. no H3's in li's -->
+    <%= link_to retailer.google_safe_address, html_options = {} do %>
+      <%= content_tag :h3, retailer.name.capitalize %>
+      <%= content_tag :p, retailer.address %>
+      <%= content_tag :p, retailer.retailer_types.join(", ") %>
+      <span class="ui-li-count">
+        <%= retailer.distance[:dist] %>
+        <%= retailer.distance[:unit] %>
+      </span>
+    <% end %>
     </li>
   <% end %>
-  </ul>
-</div>
+</ul>

@@ -13,20 +13,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.mobile
-//= require_tree .
 //= require_self
 
-// TODO learn why lazy-render, render-functions, and yqlgeo are used
+// TODO
+// What is the behavior for below function plus lazy-render, render-functions,
+// and yqlgeo are used - moved to backup/assets
 //
-// TODO learn what this is doing
-$(document).ready(function(){
-  var addressPrompt = $('#addressfield').val();
-  $('#addressfield').focus(function(){
-    if ($('#addressfield').val()==addressPrompt) {
-      $('#addressfield').empty()
-    }
-  });
-  $("#locateme").click(function() {
-    initiate_geolocation();
-  });
-};
+// $(document).ready(function(){
+//   var addressPrompt = $('#addressfield').val();
+//   $('#addressfield').focus(function(){
+//     if ($('#addressfield').val()==addressPrompt) {
+//       $('#addressfield').empty()
+//     }
+//   });
+//   $("#locateme").click(function() {
+//     initiate_geolocation();
+//   });
+// };

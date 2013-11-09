@@ -11,11 +11,12 @@ describe Retailer do
   end
 
   test "should return distance between a retailer location and a lat and long" do
-    assert_equal @retailer.distance_from_origin([38.7999723, -77.0506896]), {:dist=>452.98, :unit=>"mi"}
+    @retailer.distance_from_origin([38.7999723, -77.0506896])
+    assert_equal @retailer.distance, {:dist=>452.98, :unit=>"mi"}
   end
 
   test "should return a googe safe address" do
-    assert_equal @retailer.google_safe_address, "3603+Maybank+Hwy+Johns+Island+SC+29455"
+    assert_equal @retailer.google_safe_address,"http://maps.google.com/maps?q=3603+Maybank+Hwy+Johns+Island+SC+29455"
   end
 
   test "should return a retailers address" do

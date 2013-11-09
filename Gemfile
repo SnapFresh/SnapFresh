@@ -21,7 +21,8 @@ gem 'whenever', '~> 0.8.4', :require => false
 gem 'geokit', '~> 1.6.7'
 gem 'geokit-rails', '~> 2.0.0'
 
-# Assets
+# Performance measuring
+# gem 'rack-mini-profiler', '~> 0.1.31'
 
 group :test do
   gem "capybara", "~> 2.1.0"
