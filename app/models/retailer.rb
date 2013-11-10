@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: retailers
+#
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  lat           :decimal(, )
+#  lon           :decimal(, )
+#  street        :string(255)
+#  city          :string(255)
+#  state         :string(255)
+#  zip           :string(255)
+#  zip_plus_four :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 require 'cgi'
 
 class Retailer < ActiveRecord::Base

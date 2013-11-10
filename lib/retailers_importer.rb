@@ -26,14 +26,12 @@ class RetailersImporter
     puts "Data refresh completed"
   end
 
-  private
-
   def download_zipped_retailer_data
     system "wget http://snap-load-balancer-244858692.us-east-1.elb.amazonaws.com/snap/export/Nationwide.zip -P ./downloads/"
   end
 
   def unzip_folder
-    system("unzip -o ./downloads/Nationwide.zip -d ./downloads")
+    system("unzip -o ./tmp/downloads/Nationwide.zip -d ./tmp/downloads")
   end
 
   def delete_retailers
@@ -60,7 +58,7 @@ class RetailersImporter
 
   def delete_csv_files
     begin
-      Dir.glob("./downloads/*.csv").each do |file|
+      Dir.glob("./tmp/downloads/*.csv").each do |file|
         File.delete(file)
       end
     rescue
@@ -70,14 +68,14 @@ class RetailersImporter
 
   def delete_zip_folder
     begin
-      File.delete("downloads/Nationwide.zip")
+      File.delete("tmp/downloads/Nationwide.zip")
     rescue
       puts "No zip folder to delete"
     end
   end
 
   def filename
-    Dir.glob("./downloads/*.csv")[0]
+    Dir.glob("./tmp/downloads/*.csv")[0]
   end
 
 end
