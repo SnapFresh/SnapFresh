@@ -10,10 +10,6 @@ class RetailerPresenter
     @retailers ||= Retailer.by_distance(origin: origin).limit(5)
   end
 
-  def as_json(options = {})
-    { origin: origin, retailers: retailers.as_json(methods: :distance, except: [:id, :created_at, :updated_at]) }
-  end
-
   private
 
   def calculate_distances_from_origin(lat_long)
