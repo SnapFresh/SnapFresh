@@ -11,7 +11,7 @@ describe Retailer do
   end
 
   test "should return distance between a retailer location and a lat and long" do
-    @retailer.distance_from_origin([38.7999723, -77.0506896])
+    @retailer.calculate_distance_from_origin([38.7999723, -77.0506896])
     assert_equal @retailer.distance, {:dist=>452.98, :unit=>"mi"}
   end
 

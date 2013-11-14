@@ -25,10 +25,11 @@ class Retailer < ActiveRecord::Base
     Yelp.new(self).business_types
   end
 
-  def distance_from_origin(orig)
+  # If refactoring distance calculation, focus on this method
+  def calculate_distance_from_origin(origin)
     #passed the origin array from the retailers controller
-    lat1 = orig[0]
-    long1 = orig[1]
+    lat1 = origin[0]
+    long1 = origin[1]
     lat2 = self.lat
     long2 = self.lon
     radiansperdegree = 3.14159265359 / 180
@@ -47,6 +48,34 @@ class Retailer < ActiveRecord::Base
     else
       self.distance = { :dist => dist.round(2), :unit => "mi" }
     end
+  end
+
+  # Depreciated, duplicated for /retailers/nearaddy endpoint
+  # Can be removed if no longer is in use
+  def distance_from_origin(orig)
+    #passed the origin array from the retailers controller
+    lat1 = orig[0]
+    long1 = orig[1]
+    lat2 = self.lat
+    long2 = self.lon
+    radiansperdegree = 3.14159265359 / 180
+    lonsrad = (long2 - long1) * radiansperdegree
+    latsrad = (lat2 - lat1) * radiansperdegree
+    lat1rad = lat1 * radiansperdegree
+    lat2rad = lat2 * radiansperdegree
+    a = (Math.sin(latsrad/2))**2 + Math.cos(lat1rad) * Math.cos(lat2rad) * (Math.sin(lonsrad/2))**2
+    c = 2 * Math.atan2( Math.sqrt(a), Math.sqrt(1-a))
+    # assuming the great circle radius is 6371 km = abt 3958 miles
+    dist = 3958 * c
+    # list feet if under 1 mile. And miles to 2 decimal places if over 1 mile
+    if dist < 1
+      dist = dist * 5280
+      disthash = { :dist => dist.round.to_i, :unit => "ft" }
+    else
+      disthash = { :dist => dist.round(2), :unit => "mi" }
+     end
+
+    return disthash
   end
 
   def address

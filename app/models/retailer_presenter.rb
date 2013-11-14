@@ -14,7 +14,7 @@ class RetailerPresenter
 
   def calculate_distances_from_origin(lat_long)
     retailers.each do |retailer|
-      retailer.distance_from_origin(lat_long)
+      retailer.calculate_distance_from_origin(lat_long)
     end
   end
 
