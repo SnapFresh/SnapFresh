@@ -1,5 +1,5 @@
 class RetailersController < ApplicationController
-  respond_to :html, :json, only: :index
+  respond_to :html, :text, :json, only: :index
 
   # GET /retailers
   # GET /retailers.json

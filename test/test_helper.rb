@@ -16,6 +16,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  class << self
+    alias :context :describe
+  end
 end
 
 class ActionDispatch::IntegrationTest

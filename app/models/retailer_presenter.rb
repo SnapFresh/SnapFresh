@@ -10,6 +10,12 @@ class RetailerPresenter
     @retailers ||= Retailer.by_distance(origin: origin).limit(5)
   end
 
+  def to_text
+    retailers.each_with_index.map do |retailer, index|
+      "#{index + 1} (#{retailer.distance[:dist]} #{retailer.distance[:unit]}): #{retailer.name}\n#{retailer.text_address}"
+    end.join("\n\n")
+  end
+
   private
 
   def calculate_distances_from_origin(lat_long)
