@@ -16,6 +16,7 @@
 		5703C90317FB2E8600340FA5 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5703C8F817FB2E8600340FA5 /* AFURLRequestSerialization.m */; };
 		5703C90417FB2E8600340FA5 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5703C8FA17FB2E8600340FA5 /* AFURLResponseSerialization.m */; };
 		5703C90517FB2E8600340FA5 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5703C8FC17FB2E8600340FA5 /* AFURLSessionManager.m */; };
+		57141A76183B454700852773 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57141A75183B454700852773 /* Images.xcassets */; };
 		574CD88517EFCCE1003B23DE /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 574CD88417EFCCE1003B23DE /* Icon-120.png */; };
 		574CD88A17EFCE43003B23DE /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 574CD88817EFCE43003B23DE /* Icon-76.png */; };
 		574CD88B17EFCE43003B23DE /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 574CD88917EFCE43003B23DE /* Icon-76@2x.png */; };
@@ -165,6 +166,7 @@
 		5703C8FA17FB2E8600340FA5 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		5703C8FB17FB2E8600340FA5 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		5703C8FC17FB2E8600340FA5 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		57141A75183B454700852773 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		574CD88417EFCCE1003B23DE /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-120.png"; path = "Images/Icon-120.png"; sourceTree = "<group>"; };
 		574CD88817EFCE43003B23DE /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "Images/Icon-76.png"; sourceTree = "<group>"; };
 		574CD88917EFCE43003B23DE /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "Images/Icon-76@2x.png"; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 				84B78CFB158EE54E00033B7F /* Controllers */,
 				84B78D02158EE55800033B7F /* Model */,
 				84B78D06158EE55F00033B7F /* Utils */,
+				57141A75183B454700852773 /* Images.xcassets */,
 				8417059214C75EA100ACF050 /* Supporting Files */,
 			);
 			path = SnapFresh;
@@ -755,6 +758,7 @@
 				847E540A1564ED4B004E78CA /* Default-Portrait@2x~ipad.png in Resources */,
 				847E540B1564ED4B004E78CA /* Default-Portrait~ipad.png in Resources */,
 				847E540F1564F024004E78CA /* Default@2x.png in Resources */,
+				57141A76183B454700852773 /* Images.xcassets in Resources */,
 				843B6C02158ED09D0031A968 /* SVProgressHUD.bundle in Resources */,
 				BEFA907F161228C6006B345D /* Default-568h@2x.png in Resources */,
 				BE88703A1623650800610EBA /* 193-location-arrow.png in Resources */,
@@ -983,6 +987,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1003,6 +1009,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
