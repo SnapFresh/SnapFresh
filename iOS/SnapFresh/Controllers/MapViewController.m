@@ -80,16 +80,15 @@
     self.redoSearchView.hidden = YES;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (NSUInteger)supportedInterfaceOrientations
 {
-    // return YES for supported orientations
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+        return UIInterfaceOrientationMaskAllButUpsideDown;
     }
     else
     {
-        return YES;
+        return UIInterfaceOrientationMaskAll;
     }
 }
 
