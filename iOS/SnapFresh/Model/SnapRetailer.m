@@ -23,7 +23,7 @@
 
 #pragma mark - Designated initializer
 
-- (id)initWithDictionary:(NSDictionary *)dictionary
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     NSString *street = [dictionary valueForKey:@"street"];
     NSString *city = [dictionary valueForKey:@"city"];

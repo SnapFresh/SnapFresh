@@ -21,7 +21,7 @@
  */
 @interface MapUtils : NSObject
 
-- (id)init __attribute__((unavailable("init not available")));
+- (instancetype)init __attribute__((unavailable("init not available")));
 
 /**
  @param array of <MKAnnotation> objects
