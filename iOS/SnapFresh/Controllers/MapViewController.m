@@ -431,7 +431,7 @@
         [self updateVisibleMapRect];
         
         // Select nearest retailer
-        SnapRetailer *nearestRetailer = snapRetailers[0];
+        SnapRetailer *nearestRetailer = [snapRetailers firstObject];
         [self.mapView selectAnnotation:nearestRetailer animated:YES];
         
         // Notify our delegate that the map has new annotations.
@@ -630,7 +630,7 @@
 {
     if (buttonIndex == 1)
     {
-        id <MKAnnotation> annotation = [self.mapView selectedAnnotations][0];
+        id <MKAnnotation> annotation = [self.mapView.selectedAnnotations firstObject];
         
         SnapRetailer *retailer = (SnapRetailer *)annotation;
         
