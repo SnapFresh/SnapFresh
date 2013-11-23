@@ -16,6 +16,11 @@
 		5703C90317FB2E8600340FA5 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5703C8F817FB2E8600340FA5 /* AFURLRequestSerialization.m */; };
 		5703C90417FB2E8600340FA5 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5703C8FA17FB2E8600340FA5 /* AFURLResponseSerialization.m */; };
 		5703C90517FB2E8600340FA5 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5703C8FC17FB2E8600340FA5 /* AFURLSessionManager.m */; };
+		570D882218414A860044FCB8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570D882118414A860044FCB8 /* XCTest.framework */; };
+		570D882318414A860044FCB8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8417058D14C75EA100ACF050 /* Foundation.framework */; };
+		570D882418414A860044FCB8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8417058B14C75EA100ACF050 /* UIKit.framework */; };
+		570D882A18414A860044FCB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 570D882818414A860044FCB8 /* InfoPlist.strings */; };
+		570D882C18414A860044FCB8 /* SnapFreshTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D882B18414A860044FCB8 /* SnapFreshTests.m */; };
 		57141A76183B454700852773 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57141A75183B454700852773 /* Images.xcassets */; };
 		57D1F791180B39F700E89CDD /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D1F78B180B39F700E89CDD /* libTestFlight.a */; };
 		57D1F792180B39F700E89CDD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 57D1F78C180B39F700E89CDD /* README.md */; };
@@ -133,6 +138,16 @@
 		BEFF211016249AF9004AD960 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEFF210B16249AF9004AD960 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		570D882E18414A860044FCB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8417057E14C75EA100ACF050 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8417058614C75EA100ACF050;
+			remoteInfo = SnapFresh;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5703C8EA17FB2E8600340FA5 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		5703C8EB17FB2E8600340FA5 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
@@ -153,6 +168,12 @@
 		5703C8FA17FB2E8600340FA5 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		5703C8FB17FB2E8600340FA5 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		5703C8FC17FB2E8600340FA5 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		570D882018414A860044FCB8 /* SnapFreshTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapFreshTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		570D882118414A860044FCB8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		570D882718414A860044FCB8 /* SnapFreshTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnapFreshTests-Info.plist"; sourceTree = "<group>"; };
+		570D882918414A860044FCB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		570D882B18414A860044FCB8 /* SnapFreshTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnapFreshTests.m; sourceTree = "<group>"; };
+		570D882D18414A860044FCB8 /* SnapFreshTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SnapFreshTests-Prefix.pch"; sourceTree = "<group>"; };
 		57141A75183B454700852773 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57D1F78B180B39F700E89CDD /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		57D1F78C180B39F700E89CDD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -306,6 +327,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		570D881D18414A860044FCB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				570D882218414A860044FCB8 /* XCTest.framework in Frameworks */,
+				570D882418414A860044FCB8 /* UIKit.framework in Frameworks */,
+				570D882318414A860044FCB8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8417058414C75EA100ACF050 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -356,6 +387,25 @@
 			);
 			name = AFNetworking;
 			path = AFNetworking/AFNetworking;
+			sourceTree = "<group>";
+		};
+		570D882518414A860044FCB8 /* SnapFreshTests */ = {
+			isa = PBXGroup;
+			children = (
+				570D882B18414A860044FCB8 /* SnapFreshTests.m */,
+				570D882618414A860044FCB8 /* Supporting Files */,
+			);
+			path = SnapFreshTests;
+			sourceTree = "<group>";
+		};
+		570D882618414A860044FCB8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				570D882718414A860044FCB8 /* SnapFreshTests-Info.plist */,
+				570D882818414A860044FCB8 /* InfoPlist.strings */,
+				570D882D18414A860044FCB8 /* SnapFreshTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		57D1F78A180B39F700E89CDD /* TestFlightSDK2 */ = {
@@ -482,6 +532,7 @@
 			children = (
 				8417059114C75EA100ACF050 /* SnapFresh */,
 				843B6B47158ED09C0031A968 /* ThirdParty */,
+				570D882518414A860044FCB8 /* SnapFreshTests */,
 				8417058A14C75EA100ACF050 /* Frameworks */,
 				8417058814C75EA100ACF050 /* Products */,
 			);
@@ -491,6 +542,7 @@
 			isa = PBXGroup;
 			children = (
 				8417058714C75EA100ACF050 /* SnapFresh.app */,
+				570D882018414A860044FCB8 /* SnapFreshTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -513,6 +565,7 @@
 				8417058B14C75EA100ACF050 /* UIKit.framework */,
 				8417058D14C75EA100ACF050 /* Foundation.framework */,
 				8417058F14C75EA100ACF050 /* CoreGraphics.framework */,
+				570D882118414A860044FCB8 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -640,6 +693,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		570D881F18414A860044FCB8 /* SnapFreshTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 570D883218414A860044FCB8 /* Build configuration list for PBXNativeTarget "SnapFreshTests" */;
+			buildPhases = (
+				570D881C18414A860044FCB8 /* Sources */,
+				570D881D18414A860044FCB8 /* Frameworks */,
+				570D881E18414A860044FCB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				570D882F18414A860044FCB8 /* PBXTargetDependency */,
+			);
+			name = SnapFreshTests;
+			productName = SnapFreshTests;
+			productReference = 570D882018414A860044FCB8 /* SnapFreshTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8417058614C75EA100ACF050 /* SnapFresh */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 841705A814C75EA100ACF050 /* Build configuration list for PBXNativeTarget "SnapFresh" */;
@@ -666,6 +737,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = shrtlist.com;
 				TargetAttributes = {
+					570D881F18414A860044FCB8 = {
+						TestTargetID = 8417058614C75EA100ACF050;
+					};
 					8417058614C75EA100ACF050 = {
 						DevelopmentTeam = 6YCWDV2B6A;
 						SystemCapabilities = {
@@ -694,11 +768,20 @@
 			projectRoot = "";
 			targets = (
 				8417058614C75EA100ACF050 /* SnapFresh */,
+				570D881F18414A860044FCB8 /* SnapFreshTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		570D881E18414A860044FCB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				570D882A18414A860044FCB8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8417058514C75EA100ACF050 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -787,6 +870,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		570D881C18414A860044FCB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				570D882C18414A860044FCB8 /* SnapFreshTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8417058314C75EA100ACF050 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -827,7 +918,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		570D882F18414A860044FCB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8417058614C75EA100ACF050 /* SnapFresh */;
+			targetProxy = 570D882E18414A860044FCB8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		570D882818414A860044FCB8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				570D882918414A860044FCB8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		8406DF9F166503880039066D /* Credits.plist */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -861,6 +968,63 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		570D883018414A860044FCB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SnapFresh.app/SnapFresh";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SnapFreshTests/SnapFreshTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				INFOPLIST_FILE = "SnapFreshTests/SnapFreshTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		570D883118414A860044FCB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SnapFresh.app/SnapFresh";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SnapFreshTests/SnapFreshTests-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				INFOPLIST_FILE = "SnapFreshTests/SnapFreshTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		841705A614C75EA100ACF050 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -979,6 +1143,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		570D883218414A860044FCB8 /* Build configuration list for PBXNativeTarget "SnapFreshTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				570D883018414A860044FCB8 /* Debug */,
+				570D883118414A860044FCB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		8417058114C75EA100ACF050 /* Build configuration list for PBXProject "SnapFresh" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

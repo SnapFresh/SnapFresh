@@ -28,6 +28,26 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "570D88081841483E0044FCB8"
+               BuildableName = "SnapFresh Tests.xctest"
+               BlueprintName = "SnapFresh Tests"
+               ReferencedContainer = "container:SnapFresh.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "570D881F18414A860044FCB8"
+               BuildableName = "SnapFreshTests.xctest"
+               BlueprintName = "SnapFreshTests"
+               ReferencedContainer = "container:SnapFresh.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
