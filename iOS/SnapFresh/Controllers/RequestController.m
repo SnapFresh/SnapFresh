@@ -28,9 +28,13 @@
     NSString *coordinateString = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
     NSString *urlString = [NSString stringWithFormat:@"%@%@?address=%@", kSnapFreshBaseURL, kSnapFreshEndpoint, coordinateString];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPRequestOperationManager *requestManager = [AFHTTPRequestOperationManager manager];
 
-    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    AFJSONResponseSerializer *jsonResponseSerializer = [[AFJSONResponseSerializer alloc] init];
+    jsonResponseSerializer.readingOptions = NSJSONReadingAllowFragments;
+    requestManager.responseSerializer = jsonResponseSerializer;
+
+    [requestManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *snapRetailers = [self snapRetailersFromJSONDictionary:responseObject];
         [self.delegate snapRetailersDidLoad:snapRetailers];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
