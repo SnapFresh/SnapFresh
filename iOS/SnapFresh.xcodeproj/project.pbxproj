@@ -1150,6 +1150,7 @@
 				570D883118414A860044FCB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8417058114C75EA100ACF050 /* Build configuration list for PBXProject "SnapFresh" */ = {
 			isa = XCConfigurationList;
