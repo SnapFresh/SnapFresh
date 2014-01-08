@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 /**
  * A delegate implements this protocol to be notified when the request is finished loading.
