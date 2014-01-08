@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Marco Abundo, Ysiad Ferreiras, Aaron Bannert, Jeremy Canfield and Michelle Koeth
+ * Copyright 2014 Marco Abundo, Ysiad Ferreiras, Aaron Bannert, Jeremy Canfield and Michelle Koeth
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@
                                                  UIAlertViewDelegate,
                                                  RequestControllerDelegate>
 
-@property (nonatomic, weak) id <MapViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<MapViewControllerDelegate> delegate;
 
 - (void)didSelectRetailer:(SnapRetailer *)retailer;
 
