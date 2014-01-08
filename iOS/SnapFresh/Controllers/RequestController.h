@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Marco Abundo, Ysiad Ferreiras, Aaron Bannert, Jeremy Canfield and Michelle Koeth
+ * Copyright 2014 Marco Abundo, Ysiad Ferreiras, Aaron Bannert, Jeremy Canfield and Michelle Koeth
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,23 +16,29 @@
 
 #import <CoreLocation/CoreLocation.h>
 
-/**
- * A delegate implements this protocol to be notified when the request is finished loading.
- */
-@protocol RequestControllerDelegate <NSObject>
-- (void)snapRetailersDidLoad:(NSArray *)snapRetailers;
-- (void)snapRetailersDidNotLoadWithError:(NSError *)error;
-@end
+@protocol RequestControllerDelegate;
 
+/*!
+ @class RequestController
+ @abstract
+ A RequestController creates and sends the request
+ for SNAP retailers and parses the response.
+ */
 @interface RequestController : NSObject
 
-/**
+/*
  * Send a SNAP retailer request for a coordinate
  *
  @param coordinate around which SNAP retailers should be located
  */
 - (void)sendRequestForCoordinate:(CLLocationCoordinate2D)coordinate;
 
-@property (nonatomic, weak) id <RequestControllerDelegate> delegate;
+@property (nonatomic, weak) id<RequestControllerDelegate> delegate;
 
+@end
+
+// A delegate implements this protocol to be notified when the response is finished loading.
+@protocol RequestControllerDelegate <NSObject>
+- (void)snapRetailersDidLoad:(NSArray *)snapRetailers;
+- (void)snapRetailersDidNotLoadWithError:(NSError *)error;
 @end
