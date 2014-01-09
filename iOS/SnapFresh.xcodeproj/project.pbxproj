@@ -125,7 +125,6 @@
 		BE821E23161A879000AB8620 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841705BD14C7688500ACF050 /* SystemConfiguration.framework */; };
 		BE821E25161A87BB00AB8620 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE821E24161A87BB00AB8620 /* Security.framework */; };
 		BE821E27161A87CC00AB8620 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE821E26161A87CC00AB8620 /* QuartzCore.framework */; };
-		BE821E29161A87E800AB8620 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE821E28161A87E800AB8620 /* MobileCoreServices.framework */; };
 		BE88703A1623650800610EBA /* 193-location-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BE8870381623650800610EBA /* 193-location-arrow.png */; };
 		BE88703B1623650800610EBA /* 193-location-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE8870391623650800610EBA /* 193-location-arrow@2x.png */; };
 		BE8870411623704100610EBA /* 103-map.png in Resources */ = {isa = PBXBuildFile; fileRef = BE88703D1623704100610EBA /* 103-map.png */; };
@@ -309,7 +308,6 @@
 		BE821E21161A877600AB8620 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		BE821E24161A87BB00AB8620 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BE821E26161A87CC00AB8620 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		BE821E28161A87E800AB8620 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BE8870381623650800610EBA /* 193-location-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "193-location-arrow.png"; path = "Images/193-location-arrow.png"; sourceTree = "<group>"; };
 		BE8870391623650800610EBA /* 193-location-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "193-location-arrow@2x.png"; path = "Images/193-location-arrow@2x.png"; sourceTree = "<group>"; };
 		BE88703D1623704100610EBA /* 103-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "103-map.png"; path = "Images/103-map.png"; sourceTree = "<group>"; };
@@ -342,7 +340,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				57D1F795180B3AE200E89CDD /* libz.dylib in Frameworks */,
-				BE821E29161A87E800AB8620 /* MobileCoreServices.framework in Frameworks */,
 				57D1F791180B39F700E89CDD /* libTestFlight.a in Frameworks */,
 				BE821E27161A87CC00AB8620 /* QuartzCore.framework in Frameworks */,
 				BE821E25161A87BB00AB8620 /* Security.framework in Frameworks */,
@@ -551,7 +548,6 @@
 			isa = PBXGroup;
 			children = (
 				57D1F794180B3AE200E89CDD /* libz.dylib */,
-				BE821E28161A87E800AB8620 /* MobileCoreServices.framework */,
 				BE821E26161A87CC00AB8620 /* QuartzCore.framework */,
 				BE821E24161A87BB00AB8620 /* Security.framework */,
 				BE821E21161A877600AB8620 /* CoreData.framework */,
