@@ -33,13 +33,22 @@
     AFJSONResponseSerializer *jsonResponseSerializer = [[AFJSONResponseSerializer alloc] init];
     jsonResponseSerializer.readingOptions = NSJSONReadingAllowFragments;
     requestManager.responseSerializer = jsonResponseSerializer;
-
-    [requestManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    // Create success block
+    void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *snapRetailers = [self snapRetailersFromJSONDictionary:responseObject];
         [self.delegate snapRetailersDidLoad:snapRetailers];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    };
+    
+    // Create failure block
+    void (^failureBlock)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.delegate snapRetailersDidNotLoadWithError:error];
-    }];
+    };
+    
+    [requestManager GET:urlString
+             parameters:nil
+                success:successBlock
+                failure:failureBlock];
 }
 
 #pragma mark - Parse the JSON response
