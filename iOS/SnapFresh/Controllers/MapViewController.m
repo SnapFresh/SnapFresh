@@ -167,7 +167,7 @@
 
     CLLocationCoordinate2D coordinate = self.mapView.userLocation.coordinate;
     
-    if (CLLocationCoordinate2DIsValid(coordinate))
+    if (CLLocationCoordinate2DIsValid(coordinate) && (coordinate.latitude != 0.0) && (coordinate.longitude != 0.0))
     {
         NSString *address = self.mapView.userLocation.subtitle;
         self.searchDisplayController.searchBar.text = address;
