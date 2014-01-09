@@ -585,7 +585,7 @@
 
 - (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
 {
-    if (mode == MKUserTrackingModeNone)
+    if (mode == MKUserTrackingModeFollow)
     {
         [self centerAction:nil];
     }
