@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Lm-i5-FR9" userLabel="Toggle view">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Lm-i5-FR9" userLabel="Toggle view">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -28,7 +28,7 @@
                                             <segue destination="J3Z-xs-unQ" kind="embed" id="JdW-gn-JrP"/>
                                         </connections>
                                     </containerView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EoB-pm-Ajk" userLabel="Map container view">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoB-pm-Ajk" userLabel="Map container view">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
@@ -39,8 +39,8 @@
                                                     <outlet property="delegate" destination="3rx-kf-aqG" id="nh1-qm-eqe"/>
                                                 </connections>
                                             </mapView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bA-di-TNU" userLabel="Info button">
-                                                <rect key="frame" x="284" y="493" width="22" height="22"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bA-di-TNU" userLabel="Info button">
+                                                <rect key="frame" x="284" y="488" width="22" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,10 +103,26 @@
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="4bA-di-TNU" secondAttribute="bottom" constant="58" id="RHU-B4-EPv"/>
+                                            <constraint firstAttribute="trailing" secondItem="4bA-di-TNU" secondAttribute="trailing" constant="14" id="sbj-Yd-MjH"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="EoB-pm-Ajk" secondAttribute="trailing" id="8ZO-rP-E8p"/>
+                                    <constraint firstItem="EoB-pm-Ajk" firstAttribute="top" secondItem="3Lm-i5-FR9" secondAttribute="top" id="J2w-Z8-h2D"/>
+                                    <constraint firstAttribute="bottom" secondItem="EoB-pm-Ajk" secondAttribute="bottom" id="psh-Rh-AtJ"/>
+                                    <constraint firstItem="EoB-pm-Ajk" firstAttribute="leading" secondItem="3Lm-i5-FR9" secondAttribute="leading" id="t3H-fx-tQY"/>
+                                </constraints>
                             </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="3Lm-i5-FR9" firstAttribute="leading" secondItem="NS4-CS-cW5" secondAttribute="leading" id="8QE-bV-Etc"/>
+                            <constraint firstAttribute="trailing" secondItem="3Lm-i5-FR9" secondAttribute="trailing" id="9ab-a7-Ox1"/>
+                            <constraint firstAttribute="bottom" secondItem="3Lm-i5-FR9" secondAttribute="bottom" id="BcY-hz-6Z8"/>
+                            <constraint firstItem="3Lm-i5-FR9" firstAttribute="top" secondItem="NS4-CS-cW5" secondAttribute="top" id="wRT-cD-O6v"/>
+                        </constraints>
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="iPP-pi-kob"/>
