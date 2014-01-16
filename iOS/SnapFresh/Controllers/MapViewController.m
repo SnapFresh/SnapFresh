@@ -106,6 +106,10 @@
 
 - (void)configureViews
 {
+    // http://stackoverflow.com/questions/19239227/uisegmentedcontrol-tint-color-isnt-drawn-correctly-on-ios-7
+    [self.mapTypeSegmentedControl setTintColor:[UIColor clearColor]];
+    [self.mapTypeSegmentedControl setTintColor:self.view.tintColor];
+    
     [self.segmentWrapper setCustomView:self.mapTypeSegmentedControl];
     
     [self localizeView];
