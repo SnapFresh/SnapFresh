@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Marco Abundo, Ysiad Ferreiras, Aaron Bannert, Jeremy Canfield and Michelle Koeth
+ * Copyright 2014 Marco Abundo, Ysiad Ferreiras, Aaron Bannert, Jeremy Canfield and Michelle Koeth
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,12 +24,6 @@
 {
     // Override point for customization after application launch.
     [TestFlight takeOff:kTestFlightAppToken];
-
-    UIColor *color = [UIColor colorWithRed:0.39 green:0.60 blue:0.2 alpha:1.0];
-    UIColor *whiteColor = [UIColor whiteColor];
-    
-    [[UIToolbar appearance] setTintColor:whiteColor];
-    [[UIToolbar appearance] setBarTintColor:color];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
@@ -38,13 +32,6 @@
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
 
         splitViewController.delegate = (id)navigationController.topViewController;
-        
-         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    }
-    else
-    {
-        [[UINavigationBar appearance] setBarTintColor:color];
-        [[UIBarButtonItem appearance] setTintColor:whiteColor];
     }
 
     return YES;
