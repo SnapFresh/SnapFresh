@@ -75,7 +75,7 @@
                                     <outlet property="delegate" destination="4" id="gFh-6G-jYF"/>
                                 </connections>
                             </mapView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yelp_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="8fJ-kd-w0a">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yelp_logo" translatesAutoresizingMaskIntoConstraints="NO" id="8fJ-kd-w0a">
                                 <rect key="frame" x="639" y="734" width="51" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             </imageView>
@@ -150,7 +150,7 @@
                             <rect key="frame" x="211" y="6" width="281" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="snapfreshlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="ddt-5g-tKS">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="snapfreshlogo" translatesAutoresizingMaskIntoConstraints="NO" id="ddt-5g-tKS">
                                     <rect key="frame" x="88" y="-2" width="105" height="35"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
@@ -273,8 +273,8 @@
     </scenes>
     <resources>
         <image name="193-location-arrow.png" width="18" height="18"/>
-        <image name="snapfreshlogo.png" width="105" height="35"/>
-        <image name="yelp_logo.png" width="51" height="27"/>
+        <image name="snapfreshlogo" width="105" height="35"/>
+        <image name="yelp_logo" width="51" height="27"/>
     </resources>
     <color key="tintColor" red="0.3921568627" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
