@@ -154,7 +154,7 @@ DEPENDENCIES
   minitest-spec-rails (~> 4.7.5)
   pg (~> 0.17.0)
   pry (~> 0.9.12)
-  rails (~> 4.0.1)
+  rails (~> 4.0.4)
   rake
   sass-rails (~> 4.0.1)
   sdoc

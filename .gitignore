@@ -13,6 +13,7 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
+logfile
 /log/*.log
 /tmp
 .DS_Store
