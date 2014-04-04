@@ -106,6 +106,8 @@
 
 - (void)configureViews
 {
+    [SVProgressHUD setForegroundColor:[UIColor colorWithRed:(100.0/255.0) green:(153.0/255.0) blue:(51.0/255.0) alpha:1.0]];
+    
     // http://stackoverflow.com/questions/19239227/uisegmentedcontrol-tint-color-isnt-drawn-correctly-on-ios-7
     [self.mapTypeSegmentedControl setTintColor:[UIColor clearColor]];
     [self.mapTypeSegmentedControl setTintColor:self.view.tintColor];
