@@ -33,15 +33,15 @@
     NSNumber *lon = [dictionary valueForKey:@"lon"];
     
     // Create the address dictionary
-    NSDictionary *addressDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       street, (NSString *)kABPersonAddressStreetKey,
-                                       city, (NSString *)kABPersonAddressCityKey,
-                                       state, (NSString *)kABPersonAddressStateKey,
-                                       zip, (NSString *)kABPersonAddressZIPKey, nil];
+    NSDictionary *addressDictionary = @{(NSString *)kABPersonAddressStreetKey:street,
+                                        (NSString *)kABPersonAddressCityKey:city,
+                                        (NSString *)kABPersonAddressStateKey:state,
+                                        (NSString *)kABPersonAddressZIPKey:zip};
 
     // Create the coordinate
     CLLocationCoordinate2D coordinate = { [lat doubleValue], [lon doubleValue] };
     
+    // Call our parent's initializer
     self = [super initWithCoordinate:coordinate addressDictionary:addressDictionary];
     
     if (self)
