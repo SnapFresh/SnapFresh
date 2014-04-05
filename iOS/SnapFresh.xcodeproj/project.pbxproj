@@ -283,7 +283,6 @@
 		84F7F138161758D400196B65 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		BE655AAF160E72BC003C32B6 /* MapUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapUtils.h; sourceTree = "<group>"; };
 		BE655AB0160E72BC003C32B6 /* MapUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapUtils.m; sourceTree = "<group>"; };
-		BE821E21161A877600AB8620 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		BE821E24161A87BB00AB8620 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BE821E26161A87CC00AB8620 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BEFF210216249846004AD960 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
@@ -521,7 +520,6 @@
 				57D1F794180B3AE200E89CDD /* libz.dylib */,
 				BE821E26161A87CC00AB8620 /* QuartzCore.framework */,
 				BE821E24161A87BB00AB8620 /* Security.framework */,
-				BE821E21161A877600AB8620 /* CoreData.framework */,
 				8408F89D16031BF60008639E /* CFNetwork.framework */,
 				84F7F138161758D400196B65 /* AddressBook.framework */,
 				842298A114CA146600D84986 /* AddressBookUI.framework */,
