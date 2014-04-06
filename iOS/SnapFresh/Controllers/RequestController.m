@@ -17,7 +17,6 @@
 #import "RequestController.h"
 #import "Constants.h"
 #import "SnapRetailer.h"
-#import "AFNetworking.h"
 
 @implementation RequestController
 
@@ -27,34 +26,36 @@
 {
     NSString *coordinateString = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
     NSString *urlString = [NSString stringWithFormat:@"%@%@?address=%@", kSnapFreshBaseURL, kSnapFreshEndpoint, coordinateString];
-    
-    AFHTTPRequestOperationManager *requestManager = [AFHTTPRequestOperationManager manager];
+    NSURL *url = [NSURL URLWithString:urlString];
 
-    AFJSONResponseSerializer *jsonResponseSerializer = [[AFJSONResponseSerializer alloc] init];
-    jsonResponseSerializer.readingOptions = NSJSONReadingAllowFragments;
-    requestManager.responseSerializer = jsonResponseSerializer;
-    
-    // Create success block
-    void (^successBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSArray *snapRetailers = [self snapRetailersFromJSONDictionary:responseObject];
-        [self.delegate snapRetailersDidLoad:snapRetailers];
-    };
-    
-    // Create failure block
-    void (^failureBlock)(AFHTTPRequestOperation *operation, NSError *error) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate snapRetailersDidNotLoadWithError:error];
-    };
-    
-    [requestManager GET:urlString
-             parameters:nil
-                success:successBlock
-                failure:failureBlock];
+    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url]
+                                       queue:[[NSOperationQueue alloc] init]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error)
+        {
+            [self.delegate snapRetailersDidNotLoadWithError:error];
+        }
+        else
+        {
+            NSArray *snapRetailers = [self snapRetailersFromJSON:data error:&error];
+            [self.delegate snapRetailersDidLoad:snapRetailers];
+        }
+    }];
 }
 
 #pragma mark - Parse the JSON response
 
-- (NSArray *)snapRetailersFromJSONDictionary:(NSDictionary *)jsonDictionary
+- (NSArray *)snapRetailersFromJSON:(NSData *)objectNotation error:(NSError **)error
 {
+    NSError *localError = nil;
+    NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error:&localError];
+    
+    if (localError != nil)
+    {
+        *error = localError;
+        return nil;
+    }
+    
     // Get the JSON array of retailers
     NSArray *retailersJSON = [jsonDictionary valueForKey:@"retailers"];
     

@@ -4,6 +4,3 @@
 [submodule "iOS/ThirdParty/SVProgressHUD"]
 	path = iOS/ThirdParty/SVProgressHUD
 	url = https://github.com/samvermette/SVProgressHUD.git
-[submodule "iOS/ThirdParty/AFNetworking"]
-	path = iOS/ThirdParty/AFNetworking
-	url = https://github.com/AFNetworking/AFNetworking.git
