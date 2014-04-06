@@ -420,7 +420,7 @@
     [self.mapView setVisibleMapRect:zoomRect animated:YES];
 }
 
-#pragma mark - RequestControllerDelegate
+#pragma mark - RequestControllerDelegate protocol conformance
 
 - (void)snapRetailersDidLoad:(NSArray *)snapRetailers
 {
