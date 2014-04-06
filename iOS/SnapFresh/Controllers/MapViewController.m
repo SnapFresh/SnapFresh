@@ -427,21 +427,23 @@
     UIApplication *app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = NO;
     
-    [SVProgressHUD dismiss];
+    [[NSOperationQueue mainQueue] addOperation:[ NSBlockOperation blockOperationWithBlock:^{
+        [SVProgressHUD dismiss];
 
-    if (snapRetailers > 0)
-    {
-        [self.mapView addAnnotations:snapRetailers];
-        
-        [self updateVisibleMapRect];
-        
-        // Select nearest retailer
-        SnapRetailer *nearestRetailer = [snapRetailers firstObject];
-        [self.mapView selectAnnotation:nearestRetailer animated:YES];
-        
-        // Notify our delegate that the map has new annotations.
-        [self.delegate annotationsDidLoad:snapRetailers];
-    }
+        if (snapRetailers > 0)
+        {
+            [self.mapView addAnnotations:snapRetailers];
+            
+            [self updateVisibleMapRect];
+            
+            // Select nearest retailer
+            SnapRetailer *nearestRetailer = [snapRetailers firstObject];
+            [self.mapView selectAnnotation:nearestRetailer animated:YES];
+            
+            // Notify our delegate that the map has new annotations.
+            [self.delegate annotationsDidLoad:snapRetailers];
+        }
+    }]];
 }
 
 - (void)snapRetailersDidNotLoadWithError:(NSError *)error
@@ -449,7 +451,9 @@
     UIApplication *app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = NO;
     
-    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+    [[NSOperationQueue mainQueue] addOperation:[ NSBlockOperation blockOperationWithBlock:^{
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+    }]];
 }
 
 #pragma mark - UISplitViewControllerDelegate protocol conformance
