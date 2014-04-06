@@ -65,7 +65,7 @@
     }
     
     // Get the JSON array of retailers
-    NSArray *retailersJSON = [jsonDictionary valueForKey:@"retailers"];
+    NSArray *retailersJSON = [jsonDictionary objectForKey:@"retailers"];
     
     NSMutableArray *retailerArray = [NSMutableArray arrayWithCapacity:retailersJSON.count];
     

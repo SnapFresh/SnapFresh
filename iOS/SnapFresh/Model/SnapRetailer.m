@@ -25,12 +25,12 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
-    NSString *street = [dictionary valueForKey:@"street"];
-    NSString *city = [dictionary valueForKey:@"city"];
-    NSString *state = [dictionary valueForKey:@"state"];
-    NSString *zip = [dictionary valueForKey:@"zip"];
-    NSNumber *lat = [dictionary valueForKey:@"lat"];
-    NSNumber *lon = [dictionary valueForKey:@"lon"];
+    NSString *street = [dictionary objectForKey:@"street"];
+    NSString *city = [dictionary objectForKey:@"city"];
+    NSString *state = [dictionary objectForKey:@"state"];
+    NSString *zip = [dictionary objectForKey:@"zip"];
+    NSNumber *lat = [dictionary objectForKey:@"lat"];
+    NSNumber *lon = [dictionary objectForKey:@"lon"];
     
     // Create the address dictionary
     NSDictionary *addressDictionary = @{(NSString *)kABPersonAddressStreetKey:street,
@@ -46,9 +46,9 @@
     
     if (self)
     {
-        _name = [dictionary valueForKey:@"name"];
+        _name = [dictionary objectForKey:@"name"];
         _address = ABCreateStringWithAddressDictionary(self.addressDictionary, NO);
-        _distance = [dictionary valueForKey:@"distance"];
+        _distance = [dictionary objectForKey:@"distance"];
     }
     
     return self;
