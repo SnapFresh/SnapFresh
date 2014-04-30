@@ -15,7 +15,7 @@ gem 'sass', '~> 3.1.1'
 gem 'jquery-rails', '~> 1.0.2'
 
 # DB's
-gem 'pg', '~> 0.11.0'
+gem 'pg', '~> 0.13.2'
 
 group :test do
   gem "capybara", "~> 2.1.0"
