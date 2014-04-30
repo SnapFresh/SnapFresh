@@ -29,7 +29,7 @@ class RetailersImporter
   private
 
   def download_zipped_retailer_data
-    system "wget www.snapretailerlocator.com/export/Nationwide.zip -P ./downloads/"
+    system "wget http://snap-load-balancer-244858692.us-east-1.elb.amazonaws.com/snap/export/Nationwide.zip -P ./downloads/"
   end
 
   def unzip_folder
