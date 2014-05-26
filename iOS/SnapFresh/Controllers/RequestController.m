@@ -29,20 +29,23 @@
         NSString *coordinateString = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
         NSString *urlString = [NSString stringWithFormat:@"%@%@?address=%@", kSnapFreshBaseURL, kSnapFreshEndpoint, coordinateString];
         NSURL *url = [NSURL URLWithString:urlString];
-
-        [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url]
-                                           queue:[[NSOperationQueue alloc] init]
-                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-            if (error)
-            {
-                [self.delegate snapRetailersDidNotLoadWithError:error];
-            }
-            else
-            {
-                NSArray *snapRetailers = [self snapRetailersFromJSON:data error:&error];
-                [self.delegate snapRetailersDidLoad:snapRetailers];
-            }
-        }];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error)
+                                                    {
+                                                        [self.delegate snapRetailersDidNotLoadWithError:error];
+                                                    }
+                                                    else
+                                                    {
+                                                        NSArray *snapRetailers = [self snapRetailersFromJSON:data error:&error];
+                                                        [self.delegate snapRetailersDidLoad:snapRetailers];
+                                                    }
+                                                }];
+        
+        [task resume];
     }
     else
     {
