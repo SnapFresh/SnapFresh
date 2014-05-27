@@ -7,7 +7,6 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <AddressBookUI/AddressBookUI.h>
 #import "SnapRetailer.h"
 
 @interface SnapFreshTests : XCTestCase
