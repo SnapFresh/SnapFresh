@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#import <MapKit/MapKit.h>
+@import MapKit;
 #import "SnapRetailer.h"
 #import "RequestController.h"
 

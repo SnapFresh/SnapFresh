@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
+@import AddressBookUI;
 #import "MapUtils.h"
-#import <AddressBookUI/AddressBookUI.h>
 #import "Constants.h"
 
 @implementation MapUtils

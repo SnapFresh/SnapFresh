@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
+@import AddressBookUI;
 #import "SnapRetailer.h"
-#import <AddressBookUI/AddressBookUI.h>
 
 @implementation SnapRetailer
 

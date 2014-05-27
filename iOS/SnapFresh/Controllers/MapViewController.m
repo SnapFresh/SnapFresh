@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
+@import AddressBookUI;
 #import "MapViewController.h"
 #import "ListViewController.h"
-#import <AddressBookUI/AddressBookUI.h>
 #import "SVProgressHUD.h"
 #import "MDACClasses.h"
 #import "Constants.h"

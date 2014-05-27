@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#import <CoreLocation/CoreLocation.h>
+@import CoreLocation;
 
 @protocol RequestControllerDelegate;
 
