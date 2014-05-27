@@ -30,11 +30,12 @@
 
 - (void)testSnapRetailer
 {
-    NSDictionary *addressDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       @"111 West St", (NSString *)kABPersonAddressStreetKey,
-                                       @"San Francisco", (NSString *)kABPersonAddressCityKey,
-                                       @"CA", (NSString *)kABPersonAddressStateKey,
-                                       @"94111", (NSString *)kABPersonAddressZIPKey, nil];
+    NSDictionary *addressDictionary = @{@"street":@"111 West St",
+                                        @"city":@"San Francisco",
+                                        @"state":@"CA",
+                                        @"zip":@"94111",
+                                        @"lat":@"37.775",
+                                        @"lon":@"-122.418333333333"};
     
     SnapRetailer *retailer = [[SnapRetailer alloc] initWithDictionary:addressDictionary];
     XCTAssertNotNil(retailer, @"Expected non-nil retailer");
