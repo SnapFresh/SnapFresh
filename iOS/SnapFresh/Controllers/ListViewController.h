@@ -16,6 +16,11 @@
 
 #import "MapViewController.h"
 
+/*!
+ @class ListViewController
+ @abstract
+ Presents SNAP retailers in a table view
+ */
 @interface ListViewController : UITableViewController <MapViewControllerDelegate>
 
 @property (nonatomic, strong) MapViewController *mapViewController;

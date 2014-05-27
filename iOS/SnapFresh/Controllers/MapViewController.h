@@ -20,6 +20,11 @@
 
 @protocol MapViewControllerDelegate;
 
+/*!
+ @class MapViewController
+ @abstract
+ Presents SNAP retailers in a map view
+ */
 @interface MapViewController : UIViewController <UISplitViewControllerDelegate,
                                                  UISearchBarDelegate,
                                                  MKMapViewDelegate,
