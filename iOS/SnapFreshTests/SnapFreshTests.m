@@ -37,7 +37,11 @@
                                         @"lon":@"-122.418333333333"};
     
     SnapRetailer *retailer = [[SnapRetailer alloc] initWithDictionary:addressDictionary];
-    XCTAssertNotNil(retailer, @"Expected non-nil retailer");
+    XCTAssertEqualObjects(retailer.administrativeArea, @"CA", @"Expected equal administrativeArea");
+    XCTAssertEqualObjects(retailer.thoroughfare, @"111 West St", @"Expected equal thoroughfare");
+    XCTAssertEqualObjects(retailer.locality, @"San Francisco", @"Expected equal locality");
+    XCTAssertNotNil(retailer.location, @"Expected non-nil location");
+    XCTAssertEqualObjects(retailer.postalCode, @"94111", @"Expected equal postalCode");
 }
 
 @end
