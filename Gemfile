@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 ruby "1.9.3"
 
-gem 'rails', '~> 4.0.4'
+gem 'rails', '~> 4.1.4'
 
 # DB's
 gem 'pg', '~> 0.17.0'
@@ -33,7 +33,7 @@ gem "jbuilder", "~> 1.5.2"
 group :test do
   gem "capybara", "~> 2.1.0"
   gem "simplecov", "~> 0.8.1", :require => false
-  gem "minitest-spec-rails", "~> 4.7.5"
+  gem 'minitest-spec-rails', '~> 5.0.4'
   gem 'rake'
 end
 
