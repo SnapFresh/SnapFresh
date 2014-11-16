@@ -15,6 +15,7 @@
  */
 
 @import MapKit;
+@import CoreLocation;
 #import "SnapRetailer.h"
 #import "RequestController.h"
 
@@ -28,6 +29,7 @@
 @interface MapViewController : UIViewController <UISplitViewControllerDelegate,
                                                  UISearchBarDelegate,
                                                  MKMapViewDelegate,
+                                                 CLLocationManagerDelegate,
                                                  UIGestureRecognizerDelegate,
                                                  UIAlertViewDelegate,
                                                  RequestControllerDelegate>

@@ -34,6 +34,7 @@
 @property (nonatomic, weak) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (nonatomic, weak) IBOutlet UIView *redoSearchView;
 @property (nonatomic, weak) IBOutlet UIButton *redoSearchButton;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 @end
 
 #pragma mark -
@@ -70,6 +71,8 @@
         listViewController.mapViewController = self;
         self.delegate = listViewController;
     }
+    
+    [self requestLocationServicesAuthorization];
 
     [self configureViews];
 }
@@ -115,12 +118,6 @@
     [self.segmentWrapper setCustomView:self.mapTypeSegmentedControl];
     
     [self localizeView];
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-        [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
-        [self configureTrackingButton];
-    }
 }
 
 - (void)localizeView
@@ -475,6 +472,37 @@
 {
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+}
+
+#pragma mark - Core Location Access
+
+- (void)requestLocationServicesAuthorization
+{
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager setDelegate:self];
+    
+    /*
+     When the application requests to start receiving location updates that is when the user is presented with a consent dialog.
+     */
+    [self.locationManager requestWhenInUseAuthorization];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    CLAuthorizationStatus authorizationStatus= [CLLocationManager authorizationStatus];
+    
+    if (authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
+        authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse)
+    {
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+        {
+            [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+            [self configureTrackingButton];
+        }
+        
+        [self.locationManager startUpdatingLocation];
+        self.mapView.showsUserLocation = YES;
+    }
 }
 
 #pragma mark - MKMapViewDelegate protocol conformance
