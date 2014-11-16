@@ -51,7 +51,7 @@
                                                     <action selector="showInfoView:" destination="3rx-kf-aqG" eventType="touchUpInside" id="bzg-Lc-P20"/>
                                                 </connections>
                                             </button>
-                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKi-bR-1LL" userLabel="View - redo search">
+                                            <view hidden="YES" alpha="0.79999999999999982" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKi-bR-1LL" userLabel="View - redo search">
                                                 <rect key="frame" x="0.0" y="474" width="320" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qah-07-DS3">

@@ -76,7 +76,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yelp_logo" translatesAutoresizingMaskIntoConstraints="NO" id="8fJ-kd-w0a">
                                 <rect key="frame" x="639" y="734" width="51" height="27"/>
                             </imageView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzc-KD-pYh" userLabel="View - redo search">
+                            <view hidden="YES" alpha="0.79999999999999982" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzc-KD-pYh" userLabel="View - redo search">
                                 <rect key="frame" x="0.0" y="718" width="703" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ba3-vg-XmK">
