@@ -21,9 +21,6 @@ extern NSString * const kGANAccountId;
 // Google Analytics dispatch period
 extern NSInteger const kGANDispatchPeriodSec;
 
-// Google Maps URL
-extern NSString * const kGoogleMapsURL;
-
 // Animation duration
 extern CGFloat const kAnimationDuration;
 

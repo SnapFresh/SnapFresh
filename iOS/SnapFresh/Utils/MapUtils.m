@@ -47,22 +47,7 @@
 + (void)openMapWithDestination:(MKPlacemark *)placemark
 {
     MKMapItem *destination =  [[MKMapItem alloc] initWithPlacemark:placemark];
-    
-    if ([destination respondsToSelector:@selector(openInMapsWithLaunchOptions:)])
-    {
-        // Using iOS 6 native maps app
-        [destination openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving}];
-    }
-    else
-    {
-        // Using iOS 5 which has the Google Maps application
-        NSString *currentLocation = @"Current Location";
-        NSString *destination = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
-        NSString *googleMapsURL = [NSString stringWithFormat:@"%@saddr=%@&daddr=%@", kGoogleMapsURL, currentLocation, destination];
-        
-        NSString *urlString = [googleMapsURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
-    }
+    [destination openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving}];
 }
 
 @end

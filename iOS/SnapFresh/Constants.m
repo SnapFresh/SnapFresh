@@ -21,9 +21,6 @@ NSString * const kGANAccountId = @"UA-25396637-1";
 // Google Analytics dispatch period
 NSInteger const kGANDispatchPeriodSec = 10;
 
-// Google Maps URL
-NSString * const kGoogleMapsURL = @"http://maps.google.com/maps?";
-
 // Animation duration
 CGFloat const kAnimationDuration = 0.5;
 
