@@ -18,7 +18,6 @@
 #import "MapViewController.h"
 #import "ListViewController.h"
 #import "SVProgressHUD.h"
-#import "MDACClasses.h"
 #import "Constants.h"
 #import "MapUtils.h"
 
@@ -263,34 +262,6 @@
     else
     {
         [self showMapView];
-    }
-}
-
-- (IBAction)showInfoView:(id)sender
-{
-    [SVProgressHUD dismiss];
-
-    MDAboutController *aboutController = [[MDAboutController alloc] initWithStyle:[MDACMochiDevStyle style]];
-    aboutController.showsAttributions = NO;
-    aboutController.title = NSLocalizedString(@"About", @"About");
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-    {
-        aboutController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        aboutController.modalPresentationStyle = UIModalPresentationFormSheet;
-        
-        [self presentViewController:aboutController animated:YES completion:NULL];
-    }
-    else
-    {
-        aboutController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        aboutController.modalPresentationStyle = UIModalPresentationFullScreen;
-        
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aboutController];
-        UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped)];
-        aboutController.navigationItem.rightBarButtonItem = cancelBarButtonItem;
-        
-        [self presentViewController:navController animated:YES completion:nil];
     }
 }
 

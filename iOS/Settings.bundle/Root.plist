@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>About</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>FooterText</key>
+			<string>SnapFresh for iOS helps you find the closest places that accept SNAP (Food Stamp) EBT cards. We use Yelp™ to try and show the healthier places first.</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>2.4.1</string>
+			<key>Key</key>
+			<string>version_preference</string>
+			<key>Title</key>
+			<string>Version</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Title</key>
+			<string>Privacy policy</string>
+			<key>Key</key>
+			<string></string>
+			<key>File</key>
+			<string>Privacy</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Team</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>FooterText</key>
+			<string>Copyright © 2015 shrtlist
+All rights reserved.</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>iOS</string>
+			<key>DefaultValue</key>
+			<string>Marco Abundo</string>
+			<key>Key</key>
+			<string>creator</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Consultant</string>
+			<key>DefaultValue</key>
+			<string>Aaron Bannert</string>
+			<key>Key</key>
+			<string>consultant</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Web dev</string>
+			<key>DefaultValue</key>
+			<string>Jeremy Canfield</string>
+			<key>Key</key>
+			<string>web_dev</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Contributor</string>
+			<key>DefaultValue</key>
+			<string>Ysiad Ferreiras</string>
+			<key>Key</key>
+			<string>contributor</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Web dev</string>
+			<key>DefaultValue</key>
+			<string>Michelle Koeth</string>
+			<key>Key</key>
+			<string>web dev</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Web dev</string>
+			<key>DefaultValue</key>
+			<string>Jason Wieringa</string>
+			<key>Key</key>
+			<string>web dev</string>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>
