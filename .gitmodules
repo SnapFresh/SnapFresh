@@ -1,3 +1,0 @@
-[submodule "iOS/ThirdParty/SVProgressHUD"]
-	path = iOS/ThirdParty/SVProgressHUD
-	url = https://github.com/samvermette/SVProgressHUD.git
