@@ -54,8 +54,18 @@
 
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-        self.searchDisplayController.displaysSearchBarInNavigationBar = YES;
+        UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+        
+        // Set the height of the searchBar programatically.
+        searchController.searchBar.frame = CGRectMake(searchController.searchBar.frame.origin.x,
+                                                           searchController.searchBar.frame.origin.y,
+                                                           searchController.searchBar.frame.size.width, 44.0);
+        
+        self.searchBar = searchController.searchBar;
+        self.navigationItem.titleView = self.searchBar;
     }
+    
+    self.searchBar.delegate = self;
 
     requestController = [[RequestController alloc] init];
     requestController.delegate = self;
@@ -100,7 +110,7 @@
 {
     // Nil out delegates
 	self.mapView.delegate = nil;
-    self.searchDisplayController.searchBar.delegate = nil;
+    self.searchBar.delegate = nil;
     requestController.delegate = nil;
 }
 
@@ -131,7 +141,7 @@
 
     NSString *title = NSLocalizedString(@"Redo search in this area", @"Redo search in this area");
     [self.redoSearchButton setTitle:title forState: UIControlStateNormal];
-    self.searchDisplayController.searchBar.placeholder = NSLocalizedString(@"Enter US address or ZIP code", @"Enter US address or ZIP code");
+    self.searchBar.placeholder = NSLocalizedString(@"Enter US address or ZIP code", @"Enter US address or ZIP code");
 }
 
 - (void)configureTrackingButton
@@ -172,7 +182,7 @@
     if (CLLocationCoordinate2DIsValid(coordinate) && (coordinate.latitude != 0.0) && (coordinate.longitude != 0.0))
     {
         NSString *address = self.mapView.userLocation.subtitle;
-        self.searchDisplayController.searchBar.text = address;
+        self.searchBar.text = address;
         [self setAnnotationsForCoordinate:coordinate];
     }
 }
@@ -230,13 +240,13 @@
          {
              NSString *nonUSErrorStatus = NSLocalizedString(@"Non-US search address", @"Non-US search address");
              [SVProgressHUD showErrorWithStatus:nonUSErrorStatus];
-             self.searchDisplayController.searchBar.text = nil;
+             self.searchBar.text = nil;
              return;
          }
          
          NSString *searchAddress = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
 
-         self.searchDisplayController.searchBar.text = searchAddress;
+         self.searchBar.text = searchAddress;
          [self setAnnotationsForCoordinate:topResult.location.coordinate];
 
          // Create an annotation from the placemark
@@ -304,7 +314,7 @@
         {
             NSString *errorStatus = NSLocalizedString(@"Invalid search address", @"Invalid search address");
             [SVProgressHUD showErrorWithStatus:errorStatus];
-            self.searchDisplayController.searchBar.text = nil;
+            self.searchBar.text = nil;
             NSLog(@"Forward geocode failed with error: %@", error);
             return;
         }
@@ -317,14 +327,14 @@
         {
             NSString *nonUSErrorStatus = NSLocalizedString(@"Non-US search address", @"Non-US search address");
             [SVProgressHUD showErrorWithStatus:nonUSErrorStatus];
-            self.searchDisplayController.searchBar.text = nil;
+            self.searchBar.text = nil;
             return;
         }
         
         NSString *searchAddress = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
         
         // Update the searchBar text
-        self.searchDisplayController.searchBar.text = searchAddress;
+        self.searchBar.text = searchAddress;
         
         [self setAnnotationsForCoordinate:topResult.location.coordinate];
         
