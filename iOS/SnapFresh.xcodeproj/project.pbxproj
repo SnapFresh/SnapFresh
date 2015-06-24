@@ -125,7 +125,6 @@
 			children = (
 				578D633D1B12F134001FD76F /* Settings.bundle */,
 				8417059114C75EA100ACF050 /* SnapFresh */,
-				843B6B47158ED09C0031A968 /* ThirdParty */,
 				570D882518414A860044FCB8 /* SnapFreshTests */,
 				8417058A14C75EA100ACF050 /* Frameworks */,
 				8417058814C75EA100ACF050 /* Products */,
@@ -179,13 +178,6 @@
 				8417059914C75EA100ACF050 /* SnapFresh-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		843B6B47158ED09C0031A968 /* ThirdParty */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ThirdParty;
 			sourceTree = "<group>";
 		};
 		84B78CFB158EE54E00033B7F /* Controllers */ = {
