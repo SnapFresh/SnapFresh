@@ -15,12 +15,6 @@ NSString * const kSnapFreshEndpoint = @"/retailers/nearaddy.json/";
 // SnapFresh timeout interval
 NSTimeInterval const kSnapFreshTimeout = 10.0;
 
-// Google Analytics account ID
-NSString * const kGANAccountId = @"UA-25396637-1";
-
-// Google Analytics dispatch period
-NSInteger const kGANDispatchPeriodSec = 10;
-
 // Animation duration
 CGFloat const kAnimationDuration = 0.5;
 

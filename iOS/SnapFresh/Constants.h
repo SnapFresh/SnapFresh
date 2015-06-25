@@ -15,12 +15,6 @@ extern NSString * const kSnapFreshEndpoint;
 // SnapFresh timeout interval
 extern NSTimeInterval const kSnapFreshTimeout;
 
-// Google Analytics account ID
-extern NSString * const kGANAccountId;
-
-// Google Analytics dispatch period
-extern NSInteger const kGANDispatchPeriodSec;
-
 // Animation duration
 extern CGFloat const kAnimationDuration;
 
