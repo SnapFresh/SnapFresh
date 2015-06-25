@@ -12,7 +12,6 @@
 		57141A76183B454700852773 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57141A75183B454700852773 /* Images.xcassets */; };
 		578D633E1B12F134001FD76F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 578D633D1B12F134001FD76F /* Settings.bundle */; };
 		57D1F795180B3AE200E89CDD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D1F794180B3AE200E89CDD /* libz.dylib */; };
-		8406DF9D166503880039066D /* Credits.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8406DF9F166503880039066D /* Credits.plist */; };
 		8417059814C75EA100ACF050 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8417059714C75EA100ACF050 /* main.m */; };
 		8417059C14C75EA100ACF050 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8417059B14C75EA100ACF050 /* AppDelegate.m */; };
 		847E5DD6169953F90093228B /* RequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E5DD5169953F90093228B /* RequestController.m */; };
@@ -49,9 +48,6 @@
 		57141A75183B454700852773 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		578D633D1B12F134001FD76F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		57D1F794180B3AE200E89CDD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		8406DF9E166503880039066D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Credits.plist; sourceTree = "<group>"; };
-		8406DFA1166503990039066D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/Credits.plist; sourceTree = "<group>"; };
-		8406DFA21665039D0039066D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/Credits.plist"; sourceTree = "<group>"; };
 		8417058714C75EA100ACF050 /* SnapFresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapFresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8417059314C75EA100ACF050 /* SnapFresh-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnapFresh-Info.plist"; sourceTree = "<group>"; };
 		8417059714C75EA100ACF050 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -172,7 +168,6 @@
 				BEFF210816249AF9004AD960 /* i18n */,
 				BEFF210216249846004AD960 /* MainStoryboard_iPad.storyboard */,
 				BEFF210316249846004AD960 /* MainStoryboard_iPhone.storyboard */,
-				8406DF9F166503880039066D /* Credits.plist */,
 				8417059314C75EA100ACF050 /* SnapFresh-Info.plist */,
 				8417059714C75EA100ACF050 /* main.m */,
 				8417059914C75EA100ACF050 /* SnapFresh-Prefix.pch */,
@@ -330,7 +325,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8406DF9D166503880039066D /* Credits.plist in Resources */,
 				57141A76183B454700852773 /* Images.xcassets in Resources */,
 				BEFF210416249846004AD960 /* MainStoryboard_iPad.storyboard in Resources */,
 				BEFF210516249846004AD960 /* MainStoryboard_iPhone.storyboard in Resources */,
@@ -416,16 +410,6 @@
 				570D882918414A860044FCB8 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		8406DF9F166503880039066D /* Credits.plist */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8406DF9E166503880039066D /* en */,
-				8406DFA1166503990039066D /* es */,
-				8406DFA21665039D0039066D /* zh-Hans */,
-			);
-			name = Credits.plist;
 			sourceTree = "<group>";
 		};
 		BEFF210916249AF9004AD960 /* InfoPlist.strings */ = {
