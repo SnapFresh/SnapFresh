@@ -14,7 +14,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>2.4.1</string>
+			<string>2.4</string>
 			<key>Key</key>
 			<string>version_preference</string>
 			<key>Title</key>
@@ -38,8 +38,7 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>FooterText</key>
-			<string>Copyright © 2015 shrtlist
-All rights reserved.</string>
+			<string>Copyright © 2015 shrtlist</string>
 		</dict>
 		<dict>
 			<key>Type</key>
