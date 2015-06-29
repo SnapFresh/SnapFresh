@@ -54,14 +54,6 @@
 
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-        UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-        
-        // Set the height of the searchBar programatically.
-        searchController.searchBar.frame = CGRectMake(searchController.searchBar.frame.origin.x,
-                                                           searchController.searchBar.frame.origin.y,
-                                                           searchController.searchBar.frame.size.width, 44.0);
-        
-        self.searchBar = searchController.searchBar;
         self.navigationItem.titleView = self.searchBar;
     }
     
