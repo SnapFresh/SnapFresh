@@ -47,7 +47,10 @@
     if (self)
     {
         _name = [dictionary objectForKey:@"name"];
-        _address = ABCreateStringWithAddressDictionary(self.addressDictionary, NO);
+        NSString *addressString = ABCreateStringWithAddressDictionary(self.addressDictionary, NO);
+        
+        _address = [addressString stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
+        
         _distance = [dictionary objectForKey:@"distance"];
     }
     

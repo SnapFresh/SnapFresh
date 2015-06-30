@@ -559,8 +559,9 @@
          // Get the top result returned by the geocoder
          CLPlacemark *topResult = placemarks[0];
          
-         NSString *address = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
-         userLocation.subtitle = address;
+         NSString *addressString = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+
+         userLocation.subtitle = [addressString stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
          
          [self.centerButton setEnabled:YES];
          
