@@ -236,9 +236,13 @@
              return;
          }
          
-         NSString *searchAddress = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+         NSString *searchAddressString = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
 
+         NSString *searchAddress = [searchAddressString stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
+         
+         // Update the searchBar text
          self.searchBar.text = searchAddress;
+         
          [self setAnnotationsForCoordinate:topResult.location.coordinate];
 
          // Create an annotation from the placemark
@@ -323,7 +327,9 @@
             return;
         }
         
-        NSString *searchAddress = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+        NSString *searchAddressString = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+        
+        NSString *searchAddress = [searchAddressString stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
         
         // Update the searchBar text
         self.searchBar.text = searchAddress;
