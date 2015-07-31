@@ -53,7 +53,7 @@ class Yelp
   end
 
   def request
-    yelp_url + escaped_name + escaped_location + "&ywsid=VR0eNW8-767FtIrg21dKAA"
+    yelp_url + escaped_name + escaped_location + "&ywsid=" + ENV['YELP_TOKEN']
   end
 
   def yelp_uri_object

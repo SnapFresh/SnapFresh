@@ -32,5 +32,5 @@ end
 VCR.configure do |c|
   c.cassette_library_dir = 'vcr_cassettes'
   c.hook_into :webmock
-  c.filter_sensitive_data('<YWSID>') { 'VR0eNW8-767FtIrg21dKAA' }
+  c.filter_sensitive_data('<YELP_TOKEN>') { ENV['YELP_TOKEN'] }
 end
