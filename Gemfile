@@ -35,6 +35,8 @@ group :test do
   gem "simplecov", "~> 0.8.1", :require => false
   gem 'minitest-spec-rails', '~> 5.0.4'
   gem 'rake'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 # This group is loaded in test and dev enviroments
