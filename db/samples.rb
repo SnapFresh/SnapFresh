@@ -9,6 +9,7 @@ Dir.glob(File.join(Rails.root, "db", "fixtures", "*.csv")).each do |file|
   fixture_filename = File.join(*db_args)
 
   # Throws exception if 'db/fixtures/#{filename}.yml' doesn't yet exist
-  FileUtils.touch(fixture_filename)
+  fixtures = File.join('db/fixtures', "#{File.basename(file, '.*')}.yml")
+  FileUtils.touch(fixtures)
   ActiveRecord::Fixtures.create_fixtures(*db_args)
 end
