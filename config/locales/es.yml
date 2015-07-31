@@ -20,6 +20,8 @@ es:
   submit1: "También puedes mandar un mensaje de texto con la dirección a:"
   subbutton1: "Buscar"
   nearaddy1: "Abajo encontrará su lista de supermercados según la dirección que ha introducido."
+  about: "Sobre"
+  or_address: "o"
   number:
     percentage:
       format:

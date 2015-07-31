@@ -13,6 +13,8 @@ zh:
   submit1: "或者，短信您的地址为："
   subbutton1: "提出"
   nearaddy1: "鉴于上市的零售商从用户地址附近"
+  about: "关于"
+  or_address: "或者"
   date:
     formats:
       default: "%Y-%m-%d"
