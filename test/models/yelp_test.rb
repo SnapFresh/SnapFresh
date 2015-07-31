@@ -7,7 +7,9 @@ describe Yelp do
   end
 
   test "should return business types" do
-    assert_equal @yelp.business_types, ["grocery"]
+    VCR.use_cassette('yelp-business-types') do
+      assert_equal @yelp.business_types, ["grocery"]
+    end
   end
 
 end

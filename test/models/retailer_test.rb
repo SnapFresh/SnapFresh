@@ -7,7 +7,9 @@ describe Retailer do
   end
 
   test "should return retailer types" do
-    assert_equal @retailer.retailer_types, ["grocery"]
+    VCR.use_cassette('retailer-types') do
+      assert_equal @retailer.retailer_types, ["grocery"]
+    end
   end
 
   test "should return distance between a retailer location and a lat and long" do

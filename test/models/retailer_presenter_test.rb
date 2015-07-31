@@ -3,7 +3,9 @@ require 'test_helper'
 describe RetailerPresenter do
 
   before do
-    @retailer_presenter = RetailerPresenter.new("22314")
+    VCR.use_cassette('retailer-presenter-before') do
+      @retailer_presenter = RetailerPresenter.new("22314")
+    end
   end
 
   test "should return retailers" do
