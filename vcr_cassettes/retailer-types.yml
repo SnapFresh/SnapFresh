@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YWSID>
+    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YELP_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -17,17 +17,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 31 Jul 2015 19:07:18 GMT
+      - Fri, 31 Jul 2015 20:32:01 GMT
       Server:
       - Apache
       X-Node:
-      - web70-r4-iad1, api_com
+      - web7-r3-iad1, api_com
       Cache-Control:
       - private
       Set-Cookie:
-      - bse=c29a043d96abb61d2b9f8165625aa7f8; Domain=.yelp.com; Path=/; HttpOnly
-      - yuv=9zAlycomhbPwQHn8dou9JMUBVrNn5fcup8UaujSWDti1U6BfADZbywMxxpk3iZxGEK5TQliI64TB_UDb4tH3Um7BWu2nJk2d;
-        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 19:07:18
+      - bse=acbd8f6ccd0f3ead39d872ec3fa0282b; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=ITeLfG8uZo4YUp8xRhLQUgsohbhP6XrmodDTzUG8Yz0-6NNi_IgglWttPbZmi0X8D2VjZ1AW6xVnG7x_lcoStRXjC8M96jnb;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 20:32:01
         GMT
       Content-Length:
       - '35183'
@@ -409,10 +409,10 @@ http_interactions:
         "date": "2015-06-26", "user_name": "Jeffrey R.", "id": "zApdciThjYD5dCmGpOTB_w"}],
         "photo_url_small": "http://media2.fl.yelpcdn.com/bpthumb/hcPF2lEr2G3twpA2WcrGJQ/ss"}]}'
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:49 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:32 GMT
 - request:
     method: get
-    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YWSID>
+    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YELP_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -427,17 +427,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 31 Jul 2015 19:07:19 GMT
+      - Fri, 31 Jul 2015 20:32:02 GMT
       Server:
       - Apache
       X-Node:
-      - web10-r4-iad1, api_com
+      - web37-r5-iad1, api_com
       Cache-Control:
       - private
       Set-Cookie:
-      - bse=e2c9b3f03e68ea4092abe1e4ff291440; Domain=.yelp.com; Path=/; HttpOnly
-      - yuv=uIbfPzLQJwSPQ3GX6vM7evn9FUrxoP0umxESu__hDd4BjRuxwzF_rDeuUHnO36q72KjSWAuGA_6RANA3VDrZx5NJvpm_3qB2;
-        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 19:07:19
+      - bse=daf3f87220e82cc5dec5e1f7f11dcc6f; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=km7-APKEjLkNNRb3ki-7XbRyrayIUX8eRenOHrDz-So192UPZ4njeDJlDIDwHOYUgbStgynlgUqxSE5ZwmsFm8EOOboKmtlc;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 20:32:02
         GMT
       Content-Length:
       - '35183'
@@ -819,10 +819,10 @@ http_interactions:
         "date": "2015-06-26", "user_name": "Jeffrey R.", "id": "zApdciThjYD5dCmGpOTB_w"}],
         "photo_url_small": "http://media2.fl.yelpcdn.com/bpthumb/hcPF2lEr2G3twpA2WcrGJQ/ss"}]}'
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:50 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:33 GMT
 - request:
     method: get
-    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YWSID>
+    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YELP_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -837,17 +837,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 31 Jul 2015 19:07:20 GMT
+      - Fri, 31 Jul 2015 20:32:03 GMT
       Server:
       - Apache
       X-Node:
-      - web36-r6-iad1, api_com
+      - web13-r4-iad1, api_com
       Cache-Control:
       - private
       Set-Cookie:
-      - bse=b7dd83e2e5eef2cbffea39998f2d0402; Domain=.yelp.com; Path=/; HttpOnly
-      - yuv=uLqJQyp18rn_PGax_mVBhjxCIc1twu7IM6VaBJrkeJ_LlMjCkqlPpkNdj1Rnj6mzonruci_Uvr7JHUrof9ttGGDfb-r6s6Y4;
-        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 19:07:21
+      - bse=35919f798e71f45929289182a6207462; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=4Ip1LAO8PyzmWMjMbF0s1BgCdJgHkwTlqDTKeOucRai4eZpkLJYRNGN2Arys5XRetNlBNUWij_qcCPtzfHmFooUXTuKbX3ap;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 20:32:03
         GMT
       Content-Length:
       - '35183'
@@ -1229,5 +1229,5 @@ http_interactions:
         "date": "2015-06-26", "user_name": "Jeffrey R.", "id": "zApdciThjYD5dCmGpOTB_w"}],
         "photo_url_small": "http://media2.fl.yelpcdn.com/bpthumb/hcPF2lEr2G3twpA2WcrGJQ/ss"}]}'
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:51 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:34 GMT
 recorded_with: VCR 2.9.3

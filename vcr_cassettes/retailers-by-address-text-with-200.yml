@@ -21,9 +21,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Fri, 31 Jul 2015 19:06:37 GMT
+      - Fri, 31 Jul 2015 20:32:15 GMT
       Expires:
-      - Sat, 01 Aug 2015 19:06:37 GMT
+      - Sat, 01 Aug 2015 20:32:15 GMT
       Cache-Control:
       - public, max-age=86400
       Access-Control-Allow-Origin:
@@ -68,5 +68,5 @@ http_interactions:
         \        \"types\" : [ \"postal_code\" ]\n      }\n   ],\n   \"status\" :
         \"OK\"\n}\n"
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:07 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:45 GMT
 recorded_with: VCR 2.9.3

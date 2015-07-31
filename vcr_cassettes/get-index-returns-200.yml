@@ -21,9 +21,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Fri, 31 Jul 2015 19:06:29 GMT
+      - Fri, 31 Jul 2015 20:32:08 GMT
       Expires:
-      - Sat, 01 Aug 2015 19:06:29 GMT
+      - Sat, 01 Aug 2015 20:32:08 GMT
       Cache-Control:
       - public, max-age=86400
       Access-Control-Allow-Origin:
@@ -68,10 +68,10 @@ http_interactions:
         \        \"types\" : [ \"postal_code\" ]\n      }\n   ],\n   \"status\" :
         \"OK\"\n}\n"
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:06:59 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:38 GMT
 - request:
     method: get
-    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YWSID>
+    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YELP_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -86,17 +86,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 31 Jul 2015 19:06:29 GMT
+      - Fri, 31 Jul 2015 20:32:08 GMT
       Server:
       - Apache
       X-Node:
-      - web10-r4-iad1, api_com
+      - web46-r5-iad1, api_com
       Cache-Control:
       - private
       Set-Cookie:
-      - bse=934575b3324b4c1b959282e54deea05f; Domain=.yelp.com; Path=/; HttpOnly
-      - yuv=8LxmRm9kMfsQRWYBmCg7ouCncpid7_eQBzdpXfsS3pTiUBmBKjDGLd69_EuQqu9UfF3STh0l27CiTDOXGCCQYirf0rrkfseW;
-        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 19:06:29
+      - bse=dbd20e7e5cc83349a56bc4ed57f7a897; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=uCyrSOKS2RXG0pDrEkhDlnoFFNQpZA7qfqj3Fs6_l0ijbL3LsMUTtLJGYxbPDA6qjxvChFc3ZguqP-8YPHy4SR_W3Sbb6oKc;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 20:32:08
         GMT
       Content-Length:
       - '35183'
@@ -478,10 +478,10 @@ http_interactions:
         "date": "2015-06-26", "user_name": "Jeffrey R.", "id": "zApdciThjYD5dCmGpOTB_w"}],
         "photo_url_small": "http://media2.fl.yelpcdn.com/bpthumb/hcPF2lEr2G3twpA2WcrGJQ/ss"}]}'
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:00 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:39 GMT
 - request:
     method: get
-    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YWSID>
+    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YELP_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -496,17 +496,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 31 Jul 2015 19:06:30 GMT
+      - Fri, 31 Jul 2015 20:32:09 GMT
       Server:
       - Apache
       X-Node:
-      - web6-r2-iad1, api_com
+      - web33-r6-iad1, api_com
       Cache-Control:
       - private
       Set-Cookie:
-      - bse=ce4cde20e9a46348e7adba1284dc8ac0; Domain=.yelp.com; Path=/; HttpOnly
-      - yuv=h_ibeZ5a25Cyly8GM26RPbN9uwOOQEvXVDBqnNhl5aZmghaBOWjoojg5XeZ1InMkTYonbxub9TKjmpJ0NA0e0XoK1DQm7Ubx;
-        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 19:06:30
+      - bse=3784e542d5e297eda6dc39a0f339d88f; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=YKd35OgkPIGBarZvc_CF8fA0pDAXmfJGiCl7JfgDdTU_TpOQYx1D3JL7QE4Nm94XC9vxc66GeLTeMEcFoaDmWLzorpmTtfWV;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 20:32:09
         GMT
       Content-Length:
       - '35183'
@@ -888,10 +888,10 @@ http_interactions:
         "date": "2015-06-26", "user_name": "Jeffrey R.", "id": "zApdciThjYD5dCmGpOTB_w"}],
         "photo_url_small": "http://media2.fl.yelpcdn.com/bpthumb/hcPF2lEr2G3twpA2WcrGJQ/ss"}]}'
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:01 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:40 GMT
 - request:
     method: get
-    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YWSID>
+    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YELP_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -906,17 +906,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 31 Jul 2015 19:06:31 GMT
+      - Fri, 31 Jul 2015 20:32:10 GMT
       Server:
       - Apache
       X-Node:
-      - web37-r5-iad1, api_com
+      - web18-r3-iad1, api_com
       Cache-Control:
       - private
       Set-Cookie:
-      - bse=28a6f637de39ae738079581b55eed5e3; Domain=.yelp.com; Path=/; HttpOnly
-      - yuv=pRgGhYZ46DTxq7_OhITl0Kerrj7iSIc302Drk44AkLLfDNjMzyXUdu7nvgW62fFiKRY4dR56FybO_WaP5mz0m7VE_Mdn2UIN;
-        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 19:06:31
+      - bse=afcaecfc115339d2867d12ef250524d9; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=InJtmajAGxUU7FdzpHKoWwqGezoQtGfJInxmjHVAJGkMUKEjTB6SkOS9Rkh20CoZT0hewoDJWu5XDpG1V5zPOj7GboDPg_Kq;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 20:32:10
         GMT
       Content-Length:
       - '35183'
@@ -974,6 +974,30 @@ http_interactions:
         lots of specials...", "user_photo_url": "http://media1.fl.yelpcdn.com/upthumb/J03hz5wli5ngCF0r82E_Qw/ms",
         "date": "2013-07-20", "user_name": "Amy Lauren S.", "id": "RUPdT7UU9jpj82tGQfM1YQ"}],
         "photo_url_small": "http://media4.fl.yelpcdn.com/bpthumb/K1kYZKhnxAiLEgYpWC4ToA/ss"},
+        {"rating_img_url": "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/f64056afac01/ico/stars/v1/stars_1.png",
+        "country_code": "US", "id": "irt9wOL_46ipdeOe1RyGrA", "is_closed": false,
+        "city": "Johns Island", "mobile_url": "http://m.yelp.com/biz/circle-k-convenience-stores-johns-island",
+        "review_count": 1, "zip": "29455", "state": "SC", "latitude": 32.7202259,
+        "rating_img_url_small": "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/74cb12ae7253/ico/stars/v1/stars_small_1.png",
+        "address1": "3603 Maybank Hwy", "address2": "", "address3": "", "phone": "8435599918",
+        "state_code": "SC", "categories": [{"category_filter": "convenience", "search_url":
+        "http://www.yelp.com/search?cflt=convenience\u0026find_desc=\u0026find_loc=3603+Maybank+Hwy%2C+Johns+Island+29455",
+        "name": "Convenience Stores"}], "photo_url": "http://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_styleguide/5f69f303f17c/assets/img/default_avatars/business_medium_square.png",
+        "distance": 0.0, "name": "Circle-K Convenience Stores", "neighborhoods": [],
+        "url": "http://www.yelp.com/biz/circle-k-convenience-stores-johns-island",
+        "country": "USA", "avg_rating": 1.0, "longitude": -80.081787, "nearby_url":
+        "http://www.yelp.com/search?find_desc=\u0026find_loc=3603+Maybank+Hwy%2C+Johns+Island+29455",
+        "reviews": [{"rating_img_url_small": "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/74cb12ae7253/ico/stars/v1/stars_small_1.png",
+        "user_photo_url_small": "http://media1.fl.yelpcdn.com/upthumb/AGKoqykEV7P6mum_b17K3w/ss",
+        "rating_img_url": "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/f64056afac01/ico/stars/v1/stars_1.png",
+        "rating": 1, "user_url": "http://www.yelp.com/user_details?userid=xEJwxW01hvuG1CGqagq_rw",
+        "url": "http://www.yelp.com/biz/circle-k-convenience-stores-johns-island?hrid=rMlUb10nOuJSZJqOqWD02g",
+        "mobile_uri": "/biz/circle-k-convenience-stores-johns-island?full=True\u0026hrid=rMlUb10nOuJSZJqOqWD02g",
+        "text_excerpt": "Beware when buying a lottery ticket. I purchased a Powerball
+        and a Mega Millions. Both were auto picks. The computer chooses the number.
+        My Mega Millions...", "user_photo_url": "http://media1.fl.yelpcdn.com/upthumb/AGKoqykEV7P6mum_b17K3w/ms",
+        "date": "2013-11-30", "user_name": "Paul A.", "id": "rMlUb10nOuJSZJqOqWD02g"}],
+        "photo_url_small": "http://s3-media3.fl.yelpcdn.com/assets/srv0/yelp_styleguide/6671667140ef/assets/img/default_avatars/business_small_square.png"},
         {"rating_img_url": "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png",
         "country_code": "US", "id": "FzjBGG2wE34Qer2DNmgHxg", "is_closed": false,
         "city": "Charleston", "mobile_url": "http://m.yelp.com/biz/circle-k-charleston-3",
@@ -1052,30 +1076,6 @@ http_interactions:
         drinks (I don''t...", "user_photo_url": "http://media1.fl.yelpcdn.com/upthumb/NJGC1WjI8IHXO-4YbZkXOg/ms",
         "date": "2015-05-01", "user_name": "Liz L.", "id": "sF_IB2uS1_cCUmP0LKOhtw"}],
         "photo_url_small": "http://media2.fl.yelpcdn.com/bpthumb/XjpMosmQe1u-uXjpWWVXkQ/ss"},
-        {"rating_img_url": "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/f64056afac01/ico/stars/v1/stars_1.png",
-        "country_code": "US", "id": "irt9wOL_46ipdeOe1RyGrA", "is_closed": false,
-        "city": "Johns Island", "mobile_url": "http://m.yelp.com/biz/circle-k-convenience-stores-johns-island",
-        "review_count": 1, "zip": "29455", "state": "SC", "latitude": 32.7202259,
-        "rating_img_url_small": "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/74cb12ae7253/ico/stars/v1/stars_small_1.png",
-        "address1": "3603 Maybank Hwy", "address2": "", "address3": "", "phone": "8435599918",
-        "state_code": "SC", "categories": [{"category_filter": "convenience", "search_url":
-        "http://www.yelp.com/search?cflt=convenience\u0026find_desc=\u0026find_loc=3603+Maybank+Hwy%2C+Johns+Island+29455",
-        "name": "Convenience Stores"}], "photo_url": "http://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_styleguide/5f69f303f17c/assets/img/default_avatars/business_medium_square.png",
-        "distance": 0.0, "name": "Circle-K Convenience Stores", "neighborhoods": [],
-        "url": "http://www.yelp.com/biz/circle-k-convenience-stores-johns-island",
-        "country": "USA", "avg_rating": 1.0, "longitude": -80.081787, "nearby_url":
-        "http://www.yelp.com/search?find_desc=\u0026find_loc=3603+Maybank+Hwy%2C+Johns+Island+29455",
-        "reviews": [{"rating_img_url_small": "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/74cb12ae7253/ico/stars/v1/stars_small_1.png",
-        "user_photo_url_small": "http://media1.fl.yelpcdn.com/upthumb/AGKoqykEV7P6mum_b17K3w/ss",
-        "rating_img_url": "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/f64056afac01/ico/stars/v1/stars_1.png",
-        "rating": 1, "user_url": "http://www.yelp.com/user_details?userid=xEJwxW01hvuG1CGqagq_rw",
-        "url": "http://www.yelp.com/biz/circle-k-convenience-stores-johns-island?hrid=rMlUb10nOuJSZJqOqWD02g",
-        "mobile_uri": "/biz/circle-k-convenience-stores-johns-island?full=True\u0026hrid=rMlUb10nOuJSZJqOqWD02g",
-        "text_excerpt": "Beware when buying a lottery ticket. I purchased a Powerball
-        and a Mega Millions. Both were auto picks. The computer chooses the number.
-        My Mega Millions...", "user_photo_url": "http://media1.fl.yelpcdn.com/upthumb/AGKoqykEV7P6mum_b17K3w/ms",
-        "date": "2013-11-30", "user_name": "Paul A.", "id": "rMlUb10nOuJSZJqOqWD02g"}],
-        "photo_url_small": "http://s3-media3.fl.yelpcdn.com/assets/srv0/yelp_styleguide/6671667140ef/assets/img/default_avatars/business_small_square.png"},
         {"rating_img_url": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
         "country_code": "US", "id": "9x3blcvwd5xEV3fAMZDM9A", "is_closed": false,
         "city": "Johns Island", "mobile_url": "http://m.yelp.com/biz/angel-oak-johns-island-2",
@@ -1298,10 +1298,10 @@ http_interactions:
         "date": "2015-06-26", "user_name": "Jeffrey R.", "id": "zApdciThjYD5dCmGpOTB_w"}],
         "photo_url_small": "http://media2.fl.yelpcdn.com/bpthumb/hcPF2lEr2G3twpA2WcrGJQ/ss"}]}'
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:02 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:41 GMT
 - request:
     method: get
-    uri: http://api.yelp.com/business_review_search?location=Two%20Street,Two%20Town,VA&term=Two%20Local%20Mart&ywsid=<YWSID>
+    uri: http://api.yelp.com/business_review_search?location=Two%20Street,Two%20Town,VA&term=Two%20Local%20Mart&ywsid=<YELP_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -1316,17 +1316,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 31 Jul 2015 19:06:32 GMT
+      - Fri, 31 Jul 2015 20:32:11 GMT
       Server:
       - Apache
       X-Node:
-      - web74-r7-iad1, api_com
+      - web1-r2-iad1, api_com
       Cache-Control:
       - private
       Set-Cookie:
-      - bse=7989b2b3ab7e5880e56608221997365f; Domain=.yelp.com; Path=/; HttpOnly
-      - yuv=lTuCecNNNbWTlhIPUAGMMhP1Krq7LpqcHtxW0jAa2_04HCSLGUm70M8j91T53-Cg2l-X8vItg50PbUc5EFV4kza2XV_sallD;
-        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 19:06:32
+      - bse=dceaabddeb4a8d783149cd11c0165fb8; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=1YMRAtSHY2iGrqIjBMF4mrx2Yzn3rmZxcMRVgVpuEiFsXHZrTKERQFSWzaC_qXrrqmaq1nWV3wvGd751eSgFUQMsrxPr4WSA;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 20:32:11
         GMT
       Content-Length:
       - '106'
@@ -1343,10 +1343,10 @@ http_interactions:
       string: ! '{"message": {"text": "Multiple locations match query", "code": 209,
         "version": "1.1.1"}, "businesses": []}'
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:02 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:41 GMT
 - request:
     method: get
-    uri: http://api.yelp.com/business_review_search?location=Two%20Street,Two%20Town,VA&term=Two%20Local%20Mart&ywsid=<YWSID>
+    uri: http://api.yelp.com/business_review_search?location=Two%20Street,Two%20Town,VA&term=Two%20Local%20Mart&ywsid=<YELP_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -1361,17 +1361,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 31 Jul 2015 19:06:32 GMT
+      - Fri, 31 Jul 2015 20:32:11 GMT
       Server:
       - Apache
       X-Node:
-      - web86-r8-iad1, api_com
+      - web17-r3-iad1, api_com
       Cache-Control:
       - private
       Set-Cookie:
-      - bse=ce421d58b49e0a4189ea6fda92a25e95; Domain=.yelp.com; Path=/; HttpOnly
-      - yuv=N6jW4CSRRkh3e5hD7M76nUDDFP-qVhl8iLcZ7OvxDojiHng5yjdHVR0eyK0KWL71yOomZWmgNkiiu28dZ9eH6XpnNnqCETnM;
-        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 19:06:32
+      - bse=b4db4c91e5ca7948826e9ba4fd4dbb15; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=vN3zAFHWy5OmTMMbc2J-MSYXGDJWwMQxypw5lc5REZACr4B5ErVap990sp2658BEMcg5ZVtMwEAlQwSnZssk98kx-MvheWAK;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 20:32:11
         GMT
       Content-Length:
       - '106'
@@ -1388,5 +1388,5 @@ http_interactions:
       string: ! '{"message": {"text": "Multiple locations match query", "code": 209,
         "version": "1.1.1"}, "businesses": []}'
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:02 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:42 GMT
 recorded_with: VCR 2.9.3

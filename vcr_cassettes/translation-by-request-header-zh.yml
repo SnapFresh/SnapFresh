@@ -21,9 +21,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Fri, 31 Jul 2015 19:06:59 GMT
+      - Fri, 31 Jul 2015 20:31:53 GMT
       Expires:
-      - Sat, 01 Aug 2015 19:06:59 GMT
+      - Sat, 01 Aug 2015 20:31:53 GMT
       Cache-Control:
       - public, max-age=86400
       Access-Control-Allow-Origin:
@@ -68,10 +68,10 @@ http_interactions:
         \        \"types\" : [ \"postal_code\" ]\n      }\n   ],\n   \"status\" :
         \"OK\"\n}\n"
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:29 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:23 GMT
 - request:
     method: get
-    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YWSID>
+    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YELP_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -86,17 +86,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 31 Jul 2015 19:06:59 GMT
+      - Fri, 31 Jul 2015 20:31:53 GMT
       Server:
       - Apache
       X-Node:
-      - web5-r2-iad1, api_com
+      - web41-r5-iad1, api_com
       Cache-Control:
       - private
       Set-Cookie:
-      - bse=c873658c015d82575f797ccb9fbac42a; Domain=.yelp.com; Path=/; HttpOnly
-      - yuv=OUX6XpuMFD9bvoKnjAxbyeVJbV55BHPkf6VDMXc9P2bquy8Fdk9nkQg4nkh8XFPr2bgqfV-HCnP_yJODBHZO6Nxd33CRCyu8;
-        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 19:06:59
+      - bse=ae1de1021baaf7d959dce379d096dbbd; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=YjyEWsCb60bX1gxU4hiiDrrsUl6g1wfiP3sF6cGVxjWGG1eUx096RK3cXzufjAYqWdx_UDQIP9qUIWOKrzo5TGXc9ibl7SYG;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 20:31:53
         GMT
       Content-Length:
       - '35183'
@@ -478,10 +478,10 @@ http_interactions:
         "date": "2015-06-26", "user_name": "Jeffrey R.", "id": "zApdciThjYD5dCmGpOTB_w"}],
         "photo_url_small": "http://media2.fl.yelpcdn.com/bpthumb/hcPF2lEr2G3twpA2WcrGJQ/ss"}]}'
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:30 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:24 GMT
 - request:
     method: get
-    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YWSID>
+    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YELP_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -496,17 +496,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 31 Jul 2015 19:07:00 GMT
+      - Fri, 31 Jul 2015 20:31:54 GMT
       Server:
       - Apache
       X-Node:
-      - web44-r5-iad1, api_com
+      - web6-r1-iad1, api_com
       Cache-Control:
       - private
       Set-Cookie:
-      - bse=d2ea4091f7ff2265e69d41a22c67e06a; Domain=.yelp.com; Path=/; HttpOnly
-      - yuv=FlDAruSKRa4JBuNis_KPuy7Dtcg-Zd4ihC2Q76nX-7bGYRyOmjd-4V-IPJLSa7uvTu1X5l6eWMwa76MPupqzwbLX_SBgMNtf;
-        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 19:07:00
+      - bse=1c36dd0e81d206c9f7b1172401da3d7d; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=gY75SSYE1-rJ099t3NjAhYLvfI9WWAntEzlYedUCsa9lFCJMfRsXSA5-tBYC558KJbyoKbTEbBJtlwG73HoRvIP-xlwmJDXI;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 20:31:54
         GMT
       Content-Length:
       - '35183'
@@ -888,10 +888,10 @@ http_interactions:
         "date": "2015-06-26", "user_name": "Jeffrey R.", "id": "zApdciThjYD5dCmGpOTB_w"}],
         "photo_url_small": "http://media2.fl.yelpcdn.com/bpthumb/hcPF2lEr2G3twpA2WcrGJQ/ss"}]}'
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:31 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:25 GMT
 - request:
     method: get
-    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YWSID>
+    uri: http://api.yelp.com/business_review_search?location=3603%20Maybank%20Hwy,Johns%20Island,SC&term=CIRCLE%20K%20STORE&ywsid=<YELP_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -906,17 +906,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 31 Jul 2015 19:07:01 GMT
+      - Fri, 31 Jul 2015 20:31:55 GMT
       Server:
       - Apache
       X-Node:
-      - web20-r4-iad1, api_com
+      - web26-r2-iad1, api_com
       Cache-Control:
       - private
       Set-Cookie:
-      - bse=09573784a16ba45a2bccf75a314ffbed; Domain=.yelp.com; Path=/; HttpOnly
-      - yuv=PWmFfGFeUQt4hPs2OTHO2iGM8DWIHHJEEb4XyLBXe0LcVzsV3XyYXKOCggK40QGcauwV6tJseboipF5LD3DJAbDRfW5hcSK5;
-        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 19:07:01
+      - bse=4fd8f9a16a1c5da9218df24fccd6243a; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=fNaI1BSPpARSOkGSqdXbx4Y8XYvlREQp0rviOPEjVZBnRlXDtO--Pau6wilqdSz7VidkF5U-5ie1gkXANOwk1k35sUZ8NbDx;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 20:31:55
         GMT
       Content-Length:
       - '35183'
@@ -1298,10 +1298,10 @@ http_interactions:
         "date": "2015-06-26", "user_name": "Jeffrey R.", "id": "zApdciThjYD5dCmGpOTB_w"}],
         "photo_url_small": "http://media2.fl.yelpcdn.com/bpthumb/hcPF2lEr2G3twpA2WcrGJQ/ss"}]}'
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:32 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:27 GMT
 - request:
     method: get
-    uri: http://api.yelp.com/business_review_search?location=Two%20Street,Two%20Town,VA&term=Two%20Local%20Mart&ywsid=<YWSID>
+    uri: http://api.yelp.com/business_review_search?location=Two%20Street,Two%20Town,VA&term=Two%20Local%20Mart&ywsid=<YELP_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -1316,17 +1316,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 31 Jul 2015 19:07:02 GMT
+      - Fri, 31 Jul 2015 20:31:57 GMT
       Server:
       - Apache
       X-Node:
-      - web8-r3-iad1, api_com
+      - web81-r8-iad1, api_com
       Cache-Control:
       - private
       Set-Cookie:
-      - bse=edba854941b8d411defe6722356aad99; Domain=.yelp.com; Path=/; HttpOnly
-      - yuv=yHtDVkzSSYFUOPoJi5YQnewXq6jdyIr2mrjnn7fJ8yfS2It7kloG-7--19nl60fJWL60qM8W4PAPoLfIxtE08r0gpYx2SD8B;
-        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 19:07:02
+      - bse=df0b6df3b2fe01200a924fdb34d9f55b; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=XT9qVO_LnHHG282L0YH0Em-ARfewAw4Z9JcSRctBQQe5RtvSvaH5BmOA0ku5lHDAcbliP90BnwIrWOTqdKnq2eUS18rx4QJ1;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 20:31:57
         GMT
       Content-Length:
       - '106'
@@ -1343,10 +1343,10 @@ http_interactions:
       string: ! '{"message": {"text": "Multiple locations match query", "code": 209,
         "version": "1.1.1"}, "businesses": []}'
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:32 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:27 GMT
 - request:
     method: get
-    uri: http://api.yelp.com/business_review_search?location=Two%20Street,Two%20Town,VA&term=Two%20Local%20Mart&ywsid=<YWSID>
+    uri: http://api.yelp.com/business_review_search?location=Two%20Street,Two%20Town,VA&term=Two%20Local%20Mart&ywsid=<YELP_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -1361,17 +1361,17 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 31 Jul 2015 19:07:02 GMT
+      - Fri, 31 Jul 2015 20:31:57 GMT
       Server:
       - Apache
       X-Node:
-      - web77-r7-iad1, api_com
+      - web21-r4-iad1, api_com
       Cache-Control:
       - private
       Set-Cookie:
-      - bse=9622e55999e67179e8e9031b316f1078; Domain=.yelp.com; Path=/; HttpOnly
-      - yuv=7eEgy6-xjTQmvjbAnQWzbLJqXjtld7K7bYVX5NwmHzLxnsHMMcWesXnsqblUAPmkCY-LmHa8NeX8MEpwbc47KAcdd17vAVzH;
-        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 19:07:02
+      - bse=7808d4b33c6022650ba44fcef4434e8f; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=Tqi3K2NEbx5Fx_Z84ZOEZMTu9pcKEmRWrBPjdGlHVcL6bMWh-P3LCzgDxZwCZBdXePES4WCu8YF8vMb7HaWVV2kWi0UAzHlS;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Thu, 26-Jul-2035 20:31:57
         GMT
       Content-Length:
       - '106'
@@ -1388,5 +1388,5 @@ http_interactions:
       string: ! '{"message": {"text": "Multiple locations match query", "code": 209,
         "version": "1.1.1"}, "businesses": []}'
     http_version: 
-  recorded_at: Fri, 31 Jul 2015 19:07:32 GMT
+  recorded_at: Fri, 31 Jul 2015 20:32:27 GMT
 recorded_with: VCR 2.9.3
