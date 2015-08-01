@@ -33,7 +33,7 @@ gem 'figaro'
 group :test do
   gem "capybara", "~> 2.1.0"
   gem "simplecov", "~> 0.8.1", :require => false
-  gem 'minitest-spec-rails', '~> 5.0.4'
+  gem 'minitest-spec-rails', '~> 5.2.2'
   gem 'rake'
   gem 'vcr'
   gem 'webmock'
