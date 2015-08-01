@@ -15,8 +15,6 @@
 #  updated_at    :datetime
 #
 
-require 'cgi'
-
 class Retailer < ActiveRecord::Base
   acts_as_mappable :lng_column_name => :lon
   attr_accessor :distance
@@ -43,8 +41,8 @@ class Retailer < ActiveRecord::Base
     dist = 3958 * c
     # list feet if under 1 mile. And miles to 2 decimal places if over 1 mile
     if dist < 1
-      dist = dist * 5280
-      self.distance = { :dist => dist.round.to_i, :unit => "ft" }
+      dist_in_feet = dist * 5280
+      self.distance = { :dist => dist_in_feet.round.to_i, :unit => "ft" }
     else
       self.distance = { :dist => dist.round(2), :unit => "mi" }
     end
@@ -79,16 +77,16 @@ class Retailer < ActiveRecord::Base
   end
 
   def address
-    [self.street, self.city, self.state, self.zip].join(" ")
+    [street, city, state, zip].join(" ")
   end
 
   def google_safe_address
-    "http://maps.google.com/maps?q=" + CGI::escape(address)
+    "http://maps.google.com/maps?" + {"q" => address}.to_query
   end
 
   ## TODO Are these used? ##
   def text_address
-    [self.street, self.city, self.state].join(" ")
+    [street, city, state].join(" ")
   end
 
   # MMK added this 1/27/2012 due to null "type" errors from XML rendering
