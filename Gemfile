@@ -3,13 +3,14 @@ ruby "1.9.3"
 
 gem 'rails', '~> 4.2.0'
 
+
 # DB's
 gem 'pg', '~> 0.17.0'
 
 # Assets
 gem 'sass-rails', '~> 4.0.1'
 gem 'jquery-rails', '~> 3.0.4'
-gem 'jquery_mobile_rails', '~> 1.3.2'
+gem 'jquery_mobile_rails', '~> 1.4.5'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 2.3.1'
