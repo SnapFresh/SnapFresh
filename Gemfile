@@ -5,7 +5,7 @@ gem 'rails', '~> 4.2.3'
 
 
 # DB's
-gem 'pg', '~> 0.17.0'
+gem 'pg', '~> 0.18.2'
 
 # Assets
 gem 'sass-rails', '~> 4.0.1'

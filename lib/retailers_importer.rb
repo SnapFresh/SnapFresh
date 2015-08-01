@@ -1,81 +1,51 @@
 require 'csv'
+require 'tmpdir'
 
 class RetailersImporter
+  SLICE_SIZE = 1_000
+  DATA_URL = 'http://snap-load-balancer-244858692.us-east-1.elb.amazonaws.com/snap/export/Nationwide.zip'
 
-  def run
-    puts "Ensuring old data is removed..."
-    delete_zip_folder
-    delete_csv_files
-
-    puts "Downloading retailer data..."
-    download_zipped_retailer_data
-
-    puts "Unziping folder"
-    unzip_folder
-
-    puts "Deleting all retailers"
-    delete_retailers
-
-    puts "Loading retailers..."
-    load_retailers
-
-    puts "Cleaning up"
-    delete_zip_folder
-    delete_csv_files
-
-    puts "Data refresh completed"
-  end
-
-  def download_zipped_retailer_data
-    system "wget http://snap-load-balancer-244858692.us-east-1.elb.amazonaws.com/snap/export/Nationwide.zip -P ./downloads/"
-  end
-
-  def unzip_folder
-    system("unzip -o ./tmp/downloads/Nationwide.zip -d ./tmp/downloads")
-  end
-
-  def delete_retailers
-    Retailer.delete_all
-  end
-
-  def load_retailers
-    CSV.foreach(filename, {headers: true}) do |row|
-      puts "10K row insertion milestone: #{$.}" if ($. % 10000) == 0
-
-      retailer = Retailer.new
-      retailer.name = row[0]
-      retailer.lat = row[2]
-      retailer.lon = row[1]
-      retailer.street = row[3]
-      retailer.street << " " + row[4] if row[4].present?
-      retailer.city = row[5]
-      retailer.state = row[6]
-      retailer.zip = row[7]
-      retailer.zip_plus_four = row[8]
-      retailer.save
-    end
-  end
-
-  def delete_csv_files
-    begin
-      Dir.glob("./tmp/downloads/*.csv").each do |file|
-        File.delete(file)
+  def self.call
+    Dir.mktmpdir('retailers_importer') do |dir|
+      system "wget #{DATA_URL} -P #{dir}"
+      system("unzip -o #{dir}/Nationwide.zip -d #{dir}")
+      ActiveRecord::Base.connection.transaction do
+        Retailer.delete_all
+        load_csv(dir)
       end
-    rescue
-      puts "No csv files to remove"
     end
   end
 
-  def delete_zip_folder
-    begin
-      File.delete("tmp/downloads/Nationwide.zip")
-    rescue
-      puts "No zip folder to delete"
+  private
+
+  def self.load_csv(dir)
+    csv = CSV.open(filename(dir))
+    csv.readline
+    csv.each_slice(SLICE_SIZE).each do |rows|
+      db_insert(rows)
     end
   end
 
-  def filename
-    Dir.glob("./tmp/downloads/*.csv")[0]
+  def self.db_insert(rows)
+    ActiveRecord::Base.connection.execute(
+      "INSERT INTO retailers (name, lat, lon, street, city, state, zip, zip_plus_four, created_at, updated_at)
+       VALUES #{map_to_values(rows)}"
+    )
   end
 
+  def self.map_to_values(rows)
+    rows.map{ |row| insert_value(row) }.join(',')
+  end
+
+  def self.insert_value(row)
+    "($q$#{row[0]}$q$, #{row[2]}, #{row[1]}, $q$#{street(row[3], row[4])}$q$, $q$#{row[5]}$q$, $q$#{row[6]}$q$, #{row[7]}, $q$#{row[8]}$q$, NOW(), NOW())"
+  end
+
+  def self.filename(dir)
+    Dir.glob("#{dir}/*.csv")[0]
+  end
+
+  def self.street(row3, row4)
+    row4.present? ? row3 + " "  + row4 : row3
+  end
 end

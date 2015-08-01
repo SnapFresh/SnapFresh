@@ -25,7 +25,7 @@ namespace :db do
   desc "Deletes retailers, downloads, and reloads all retailers from USDA"
   task :datarefresh => :environment do
     require File.join(Rails.root, "lib", "retailers_importer.rb")
-    RetailersImporter.new.run
+    RetailersImporter.call
   end
 
 end
