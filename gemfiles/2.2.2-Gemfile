@@ -37,6 +37,7 @@ group :test do
   gem 'rake'
   gem 'vcr'
   gem 'webmock'
+  gem 'json_expressions', '~> 0.8.3'
 end
 
 # This group is loaded in test and dev enviroments
