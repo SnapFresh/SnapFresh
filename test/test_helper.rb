@@ -1,6 +1,7 @@
 require 'simplecov'
 require 'vcr'
 require 'webmock'
+require 'json_expressions/minitest'
 
 SimpleCov.start 'rails' do
   add_filter "/vendor/"

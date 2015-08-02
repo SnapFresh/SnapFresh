@@ -3,6 +3,26 @@ require 'test_helper'
 describe RetailersController do
   let(:retailer_presenter) { RetailerPresenter.new(address) }
   let(:address) { '22314' }
+  let(:json_pattern) do
+    {
+      origin: Array,
+      retailers: [
+        retailer: {
+          id: Fixnum,
+          name: String,
+          lat: String,
+          lon: String,
+          street: String,
+          city: String,
+          state: String,
+          zip: String,
+          zip_plus_four: String,
+          created_at: String,
+          updated_at: String
+        }
+      ].ignore_extra_values!
+    }
+  end
 
   describe 'GET #index' do
     context 'when asked for html' do
@@ -74,13 +94,18 @@ describe RetailersController do
         end
       end
 
-      it 'should render json template' do
+      it 'should respond with 2 retailers' do
         VCR.use_cassette('retailers-json-template') do
           get :index, format: format, address: address
           JSON.parse(response.body).count.must_equal retailer_presenter.retailers.count
         end
-        # TODO test that body has correct fields
-        # JSON.parse(response.body).must_equal retailer_presenter_to_json
+      end
+
+      it 'complies with the api spec' do
+        VCR.use_cassette('retailers-json-template') do
+          server_response = get :index, format: format, address: address
+          server_response.body.must_match_json_expression(json_pattern)
+        end
       end
 
     end
@@ -130,9 +155,4 @@ describe RetailersController do
     end
   end
 
-  # private
-
-  # def retailer_presenter_to_json
-  #   retailer_presenter.retailers.as_json(methods: :distance, except: [:id, :created_at, :updated_at])
-  # end
 end
