@@ -10,7 +10,7 @@ gem 'pg', '~> 0.18.2'
 # Assets
 gem 'sass-rails', '~> 4.0.1'
 gem 'jquery-rails', '~> 3.0.4'
-gem 'jquery_mobile_rails', '~> 1.4.5'
+# gem 'jquery_mobile_rails', '~> 1.4.5'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 2.3.1'
