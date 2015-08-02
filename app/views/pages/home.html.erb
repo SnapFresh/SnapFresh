@@ -9,7 +9,7 @@
     <%= form_tag retailers_path, method: 'get' do %>
       <div class="form-group">
         <div data-role="fieldcontain">
-          <%= text_field_tag :address, params[:address], id:'addressfield', type: "search", placeholder: "94106 OR 85 2nd St, San Francisco", class: "form-control" %>
+          <%= text_field_tag :address, params[:address], id:'addressfield', type: "search", placeholder: "94106 #{t(:or_address)} 85 2nd St, San Francisco", class: "form-control" %>
         </div>
           <%= submit_tag t(:subbutton1), id:'submitbutton', type: "submit", "data-inline" => "true", class: "btn btn-default" %>
       </div>
