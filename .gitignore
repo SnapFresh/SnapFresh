@@ -24,3 +24,6 @@ config/database.yml
 
 # Ignore test coverage files
 coverage/
+
+db/fixtures/retailers.yml
+downloads/
