@@ -12,4 +12,6 @@ Dir.glob(File.join(Rails.root, "db", "fixtures", "*.csv")).each do |file|
   fixtures = File.join('db/fixtures', "#{File.basename(file, '.*')}.yml")
   FileUtils.touch(fixtures)
   ActiveRecord::Fixtures.create_fixtures(*db_args)
+  # Now that ActiveRecord::Fixtures is happy, let's remove the file
+  FileUtils.rm(fixtures, force: true)
 end
