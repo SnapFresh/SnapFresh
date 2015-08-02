@@ -4,12 +4,18 @@
 
 <h2><%= t(:indexenter1) %></h2>
 
-<%= form_tag retailers_path, method: 'get' do %>
-  <div data-role="fieldcontain">
-    <%= text_field_tag :address, params[:address], id:'addressfield', type: "search", placeholder: "94106 OR 85 2nd St, San Francisco"%>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_tag retailers_path, method: 'get' do %>
+      <div class="form-group">
+        <div data-role="fieldcontain">
+          <%= text_field_tag :address, params[:address], id:'addressfield', type: "search", placeholder: "94106 OR 85 2nd St, San Francisco", class: "form-control" %>
+        </div>
+          <%= submit_tag t(:subbutton1), id:'submitbutton', type: "submit", "data-inline" => "true", class: "btn btn-default" %>
+      </div>
+    <% end %>
   </div>
-  <%= submit_tag t(:subbutton1), id:'submitbutton', type: "submit", "data-inline" => "true" %>
-<% end %>
+</div>
 
 <div class="sms">
   <p><%= t(:submit1) %></p>

@@ -15,13 +15,14 @@
     </div>
 
     <div data-role="content">
-      <%= yield %>
-
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
 
       <div data-role="controlgroup" data-type="horizontal" >
-        <%= link_to 'Español', url_for(params.merge(locale: "es")),"data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
-        <%= link_to '中文', url_for(params.merge(locale: "zh")),"data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
-        <%= link_to 'English', url_for(params.merge(locale: "en")),"data-role" => "button", "data-inline" => "true", "data-theme" => "c"%>
+        <%= link_to 'Español', url_for(params.merge(locale: "es")),"data-role" => "button", "data-inline" => "true", "data-theme" => "c", class: "btn btn-success"%>
+        <%= link_to '中文', url_for(params.merge(locale: "zh")),"data-role" => "button", "data-inline" => "true", "data-theme" => "c", class: "btn btn-success"%>
+        <%= link_to 'English', url_for(params.merge(locale: "en")),"data-role" => "button", "data-inline" => "true", "data-theme" => "c", class: "btn btn-success"%>
       </div>
     </div>
   </div>
