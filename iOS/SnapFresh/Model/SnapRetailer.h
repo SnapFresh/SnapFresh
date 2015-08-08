@@ -21,7 +21,7 @@
 @property (nonatomic, readonly) NSString *address;
 @property (nonatomic, readonly) NSNumber *distance;
 
-- (instancetype)init __attribute__((unavailable("init not available")));
+- (instancetype)init __attribute__((unavailable("Must use initWithDictionary: instead.")));
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
