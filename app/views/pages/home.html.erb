@@ -1,23 +1,23 @@
-<h1 class="logo">
-  <%= image_tag "snapfreshlogo.png", width: "40%", title: "snapfresh.org", alt: "snapfresh.org" %>
-</h1>
-
 <h2><%= t(:indexenter1) %></h2>
 
-<div class="row">
+<section>
   <div class="col-md-6 col-md-offset-3">
     <%= form_tag retailers_path, method: 'get' do %>
       <div class="form-group">
-        <div data-role="fieldcontain">
-          <%= text_field_tag :address, params[:address], id:'addressfield', type: "search", placeholder: "94106 #{t(:or_address)} 85 2nd St, San Francisco", class: "form-control" %>
-        </div>
-          <%= submit_tag t(:subbutton1), id:'submitbutton', type: "submit", "data-inline" => "true", class: "btn btn-default" %>
+        <%= text_field_tag :address, params[:address],
+                           type: "search",
+                           placeholder: "94106 #{t(:or_address)} 85 2nd St, San Francisco",
+                           class: "form-control" %>
       </div>
+      <%= submit_tag t(:subbutton1), type: "submit", class: "btn btn-default"  %>
     <% end %>
   </div>
-</div>
 
-<div class="sms">
-  <p><%= t(:submit1) %></p>
+  <!-- Clear columns styles so that elements lower on the page align properly -->
+  <div class="clearfix"></div>
+</section>
+
+<section>
+  <h2><%= t(:submit1) %></h2>
   <p class="phone">(415) 889-8650</p>
-</div>
+</section>

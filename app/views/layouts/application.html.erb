@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>SnapFresh.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,35 +8,51 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
 </head>
+
 <body>
-  <div class="general" data-role="page" data-theme="d">
-    <div data-role="header" data-theme="c" class="header ui-header" role="banner">
-      <%= link_to "Home", root_path, class: "ui-btn-left", "data-role" => "button", "data-icon" => "home", "data-iconpos" => "notext" %>
-      <%= link_to "About", about_path, class: "ui-btn-right", "data-role" => "button", "data-theme" => "c" %>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="pager">
+        <li class="previous">
+          <% link_to "Home", root_path, class: "glyphicon glyphicon-home btn btn-default" %>
+          <%= link_to "Home", root_path, class: "btn btn-default" %>
+        </li>
+        <li class="next">
+          <%= link_to "About", about_path, class: "btn btn-default" %>
+        </li>
+      </ul>
     </div>
+  </nav>
 
-    <div data-role="content">
-      <div class="container-fluid">
-        <%= yield %>
-      </div>
+  <header>
+    <h1><%= image_tag "snapfreshlogo.png", title: "snapfresh.org", alt: "snapfresh.org" %></h1>
+  </header>
 
-      <div data-role="controlgroup" data-type="horizontal" >
-        <%= link_to 'Español', url_for(params.merge(locale: "es")),"data-role" => "button", "data-inline" => "true", "data-theme" => "c", class: "btn btn-success"%>
-        <%= link_to '中文', url_for(params.merge(locale: "zh")),"data-role" => "button", "data-inline" => "true", "data-theme" => "c", class: "btn btn-success"%>
-        <%= link_to 'English', url_for(params.merge(locale: "en")),"data-role" => "button", "data-inline" => "true", "data-theme" => "c", class: "btn btn-success"%>
+  <div class="container-fluid">
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <div class="btn-group">
+        <%= link_to 'Español', url_for(params.merge(locale: "es")), class: "btn btn-default" %>
+        <%= link_to '中文', url_for(params.merge(locale: "zh")), class: "btn btn-default" %>
+        <%= link_to 'English', url_for(params.merge(locale: "en")), class: "btn btn-default" %>
       </div>
-    </div>
+    </footer>
   </div>
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-25396637-1']);
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-   })();
-  </script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-25396637-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+    </script>
+
 </body>
 </html>

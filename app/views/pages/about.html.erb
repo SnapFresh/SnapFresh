@@ -1,34 +1,36 @@
-<h1 class="logo">
-  <%= image_tag "snapfreshlogo.png", width: "40%", title: "snapfresh.org", alt: "snapfresh.org" %>
-</h1>
+<h2>About SnapFresh:</h2>
 
-<h2><%=t :credits1 %> SnapFresh:</h2>
+<section>
+  <p>
+    <%= t :credits1 %>
+    <%= link_to t(:credits2), "http://en.wikipedia.org/wiki/Supplemental_Nutrition_Assistance_Program" %>.
+    <%= t :credits3  %> <%= link_to image_tag("yelp_logo.png"), "http://www.yelp.com" %>
+    <%= t :credits4 %>.
+  </p>
 
-<p>
-  <%= t :credits1 %>
-  <%= link_to t(:credits2), "http://en.wikipedia.org/wiki/Supplemental_Nutrition_Assistance_Program" %>.
-  <%= t :credits3  %> <%= link_to image_tag("yelp_logo.png"), "http://www.yelp.com" %>
-  <%= t :credits4 %>.
-</p>
+  <p>
+    <%= t(:credits5) %>
+    <%= link_to "Ysiad", "http://www.aardvarkium.com" %>,
+    <%= link_to "Michelle", "http://codeforamerica.org/author/michelle/" %>,
+    <%= link_to "Aaron", "http://www.codemass.com" %>,
+    <%= t(:credits6) %>
+    <%= link_to "Jeremy", "http://codeforamerica.org/author/jeremy/" %>.
+  </p>
+</section>
 
-<p>
-  <%= t(:credits5) %>
-  <%= link_to "Ysiad", "http://www.aardvarkium.com" %>,
-  <%= link_to "Michelle", "http://codeforamerica.org/author/michelle/" %>,
-  <%= link_to "Aaron", "http://www.codemass.com" %>,
-  <%= t(:credits6) %>
-  <%= link_to "Jeremy", "http://codeforamerica.org/author/jeremy/" %>.
-</p>
+<section>
+  <p>
+    <strong>Why Eat Healthy?</strong> Great article on the benefits of
+    <%= link_to "eating healthy","http://www.thebeehive.org/health/healthy-living/healthy-eating" %>.
+  </p>
+</section>
 
-<p>
-  <strong>Why Eat Healthy?</strong> Great article on the benefits of
-  <%= link_to "eating healthy","http://www.thebeehive.org/health/healthy-living/healthy-eating" %>.
-</p>
+<section>
+  <p>
+    <%= link_to "See Privacy and other Policies of SnapFresh", terms_path %>
+  </p>
 
-<p>
-  <%= link_to "See Privacy and other Policies of SnapFresh", terms_path %>
-</p>
-
-<p>
-  <strong>Join our <%= link_to "discussion group", "http://www.snapfresh.org/mailman/listinfo/discuss" %>!</strong>
-</p>
+  <p>
+    <strong>Join our <%= link_to "discussion group", "http://www.snapfresh.org/mailman/listinfo/discuss" %>!</strong>
+  </p>
+</section>

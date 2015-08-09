@@ -8,32 +8,51 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require normalize
  *= require bootstrap.min
  *= require_self
  */
 
+.navbar {
+  background: #74b042;
+  border-radius: 0;
+  border: 1px solid #56A00E;
+}
+
+.terms {
+  text-align: left;
+}
+
+.terms li {
+  margin-bottom: 1em;
+}
+
+.list-group li {
+  list-style-type: none;
+}
+
+.logo img {
+  width: 40%;
+}
+
 body {
   text-align: center;
 }
+
 h2 {
-  margin-top: 20px;
-  width:100%;
-  font-size:1em;
-  text-align:center;
-  font-weight:bold;
+  font-size: 1.5em;
 }
-.header {
-  border: 1px solid #56A00E;
-  background: #74b042;
-  height: 2.5em;
-}
-.phone{
+
+.phone {
   color: #56A00E;
   font-size: 2em;
   font-weight: 600;
 }
 
+section, main, footer {
+  margin: 1.5em 0;
+}
+
+// For bootstrap
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url('../assets/glyphicons-halflings-regular.eot');

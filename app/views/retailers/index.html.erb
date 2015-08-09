@@ -1,18 +1,16 @@
+<h2><%=t :nearaddy1 %></h2>
 
-<h2 id="listhead"><%=t :nearaddy1 %></h2>
-<ul data-role="listview" data-divider-theme="c" data-inset="true">
+<ul class="list-group">
   <% @retailer_presenter.retailers.each do |retailer| %>
-    <li data-theme="c">
-    <!-- TODO make the html semantically correct. i.e. no H3's in li's -->
-    <%= link_to retailer.google_safe_address, html_options = {} do %>
-      <%= content_tag :h3, retailer.name.capitalize %>
-      <%= content_tag :p, retailer.address %>
-      <%= content_tag :p, retailer.retailer_types.join(", ") %>
-      <span class="ui-li-count">
-        <%= retailer.distance[:dist] %>
-        <%= retailer.distance[:unit] %>
-      </span>
-    <% end %>
+    <li>
+      <%= link_to retailer.google_safe_address, class: "list-group-item" do %>
+        <h3 class="list-group-item-heading">
+          <%= retailer.name.capitalize %>
+        </h3>
+        <p class="list-group-item-text"><%= retailer.distance[:dist] %><%= retailer.distance[:unit] %></p>
+        <p class="list-group-item-text"><%= retailer.address %></p>
+        <p class="list-group-item-text"><%= retailer.retailer_types.join(", ") %></p>
+      <% end %>
     </li>
   <% end %>
 </ul>
