@@ -17,12 +17,18 @@
 #import "RequestController.h"
 #import "Constants.h"
 #import "SnapRetailer.h"
+#import "FarmersMarket.h"
+
+NSString * const kSNAPRetailersDidLoadNotification = @"SNAPRetailersDidLoadNotification";
+NSString * const kSNAPRetailersDidNotLoadNotification = @"SNAPRetailersDidNotLoadNotification";
+NSString * const kFarmersMarketsDidLoadNotification = @"FarmersMarketsDidLoadNotification";
+NSString * const kFarmersMarketsDidNotLoadNotification = @"FarmersMarketsDidNotLoadNotification";
 
 @implementation RequestController
 
 #pragma mark - Send SnapFresh request
 
-- (void)sendRequestForCoordinate:(CLLocationCoordinate2D)coordinate
+- (void)sendSNAPRequestForCoordinate:(CLLocationCoordinate2D)coordinate
 {
     if (CLLocationCoordinate2DIsValid(coordinate))
     {
@@ -36,12 +42,12 @@
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                     if (error)
                                                     {
-                                                        [self.delegate snapRetailersDidNotLoadWithError:error];
+                                                        [[NSNotificationCenter defaultCenter] postNotificationName:kSNAPRetailersDidNotLoadNotification object:error];
                                                     }
                                                     else
                                                     {
                                                         NSArray *snapRetailers = [self snapRetailersFromJSON:data error:&error];
-                                                        [self.delegate snapRetailersDidLoad:snapRetailers];
+                                                        [[NSNotificationCenter defaultCenter] postNotificationName:kSNAPRetailersDidLoadNotification object:snapRetailers];
                                                     }
                                                 }];
         
@@ -50,8 +56,98 @@
     else
     {
         NSError *error = [NSError errorWithDomain:@"com.shrtlist.snapfresh" code:99 userInfo:@{NSLocalizedFailureReasonErrorKey:@"Invalid coordinate"}];
-        [self.delegate snapRetailersDidNotLoadWithError:error];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kSNAPRetailersDidNotLoadNotification object:error];
     }
+}
+
+#pragma mark - Send USDA farmers market request
+
+- (void)sendFarmersMarketRequestForCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    if (CLLocationCoordinate2DIsValid(coordinate))
+    {
+        NSString *urlString = [NSString stringWithFormat:@"%@%@lat=%f&lng=%f", kUSDABaseURL, kUSDAFarmersMarketSearchEndpoint, coordinate.latitude, coordinate.longitude];
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error)
+                                                    {
+                                                        [[NSNotificationCenter defaultCenter] postNotificationName:kFarmersMarketsDidNotLoadNotification object:error];
+                                                    }
+                                                    else
+                                                    {
+                                                        NSError *localError = nil;
+                                                        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&localError];
+
+                                                        [self sendFarmersMarketDetailRequest:jsonDictionary[@"results"] completionHandler:^(NSArray *farmersMarkets, NSError *error) {
+                                                            if (error)
+                                                            {
+                                                                [[NSNotificationCenter defaultCenter] postNotificationName:kFarmersMarketsDidNotLoadNotification object:error];
+                                                            }
+                                                            else
+                                                            {
+                                                                [[NSNotificationCenter defaultCenter] postNotificationName:kFarmersMarketsDidLoadNotification object:farmersMarkets];
+                                                            }
+                                                        }];
+                                                    }
+                                                }];
+        
+        [task resume];
+    }
+    else
+    {
+        NSError *error = [NSError errorWithDomain:@"com.shrtlist.snapfresh" code:99 userInfo:@{NSLocalizedFailureReasonErrorKey:@"Invalid coordinate"}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kFarmersMarketsDidNotLoadNotification object:error];
+    }
+}
+
+- (void)sendFarmersMarketDetailRequest:(NSArray *)marketIDs completionHandler:(void (^)(NSArray *farmersMarkets, NSError *error))block
+{
+    NSMutableArray *tmpArray = [NSMutableArray arrayWithCapacity:marketIDs.count];
+    
+    [marketIDs enumerateObjectsUsingBlock:^(id x, NSUInteger index, BOOL *stop) {
+
+        NSDictionary *farmersMarketDictionary = (NSDictionary *)x;
+        NSString *farmersMarketID = farmersMarketDictionary[@"id"];
+        NSString *farmersMarketName = farmersMarketDictionary[@"marketname"];
+        
+        NSString *urlString = [NSString stringWithFormat:@"%@%@id=%@", kUSDABaseURL, kUSDAFarmersMarketDetailEndpoint, farmersMarketID];
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error)
+                                                    {
+                                                        NSLog(@"error=%@", error);
+                                                    }
+                                                    else
+                                                    {
+                                                        NSError *localError = nil;
+                                                        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&localError];
+
+                                                        FarmersMarket *farmersMarket = [[FarmersMarket alloc] initWithDictionary:jsonDictionary];
+
+                                                        if (CLLocationCoordinate2DIsValid(farmersMarket.coordinate))
+                                                        {
+                                                            farmersMarket.marketName = farmersMarketName;
+                                                            
+                                                            [tmpArray addObject:farmersMarket];
+                                                            
+                                                            if (index+1 == marketIDs.count)
+                                                            {
+                                                                block(tmpArray, nil);
+                                                            }
+                                                        }
+                                                    }
+                                                }];
+        
+        [task resume];
+    }];
 }
 
 #pragma mark - Parse the JSON response

@@ -17,6 +17,9 @@
 @import AddressBookUI;
 #import "MapViewController.h"
 #import "ListViewController.h"
+#import "RequestController.h"
+#import "FarmersMarket.h"
+#import "SnapRetailer.h"
 #import "SVProgressHUD.h"
 #import "Constants.h"
 #import "MapUtils.h"
@@ -60,7 +63,11 @@
     self.searchBar.delegate = self;
 
     requestController = [[RequestController alloc] init];
-    requestController.delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(snapRetailersDidLoad:) name:kSNAPRetailersDidLoadNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(snapRetailersDidNotLoadWithError:) name:kSNAPRetailersDidNotLoadNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(farmersMarketsDidLoad:) name:kFarmersMarketsDidLoadNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(farmersMarketsDidNotLoadWithError:) name:kFarmersMarketsDidNotLoadNotification object:nil];
     
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
     [panRecognizer setDelegate:self];
@@ -70,7 +77,6 @@
     {
         listViewController = [self.childViewControllers firstObject];
         listViewController.mapViewController = self;
-        self.delegate = listViewController;
     }
     
     [self requestLocationServicesAuthorization];
@@ -84,7 +90,7 @@
     self.redoSearchView.hidden = YES;
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+- (NSUInteger)supportedInterfaceOrientations
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
@@ -100,6 +106,8 @@
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     // Nil out delegates
 	self.mapView.delegate = nil;
     self.searchBar.delegate = nil;
@@ -353,10 +361,12 @@
 
     [self clearMapAnnotations];
 
-    [requestController sendRequestForCoordinate:coordinate];
+    [requestController sendSNAPRequestForCoordinate:coordinate];
+
+    [requestController sendFarmersMarketRequestForCoordinate:coordinate];
 }
 
-- (void)didSelectRetailer:(SnapRetailer *)retailer
+- (void)didSelectRetailer:(MKPlacemark *)retailer
 {
     [self.mapView setCenterCoordinate:retailer.coordinate animated:NO];
     [self.mapView selectAnnotation:retailer animated:NO];
@@ -396,9 +406,9 @@
     [self.mapView setVisibleMapRect:zoomRect animated:YES];
 }
 
-#pragma mark - RequestControllerDelegate protocol conformance
+#pragma mark - NSNotification methods
 
-- (void)snapRetailersDidLoad:(NSArray *)snapRetailers
+- (void)snapRetailersDidLoad:(NSNotification *)notification
 {
     UIApplication *app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = NO;
@@ -406,6 +416,8 @@
     [[NSOperationQueue mainQueue] addOperation:[ NSBlockOperation blockOperationWithBlock:^{
         [SVProgressHUD dismiss];
 
+        NSArray *snapRetailers = notification.object;
+        
         if (snapRetailers > 0)
         {
             [self.mapView addAnnotations:snapRetailers];
@@ -415,19 +427,47 @@
             // Select nearest retailer
             SnapRetailer *nearestRetailer = [snapRetailers firstObject];
             [self.mapView selectAnnotation:nearestRetailer animated:YES];
-            
-            // Notify our delegate that the map has new annotations.
-            [self.delegate annotationsDidLoad:snapRetailers];
         }
     }]];
 }
 
-- (void)snapRetailersDidNotLoadWithError:(NSError *)error
+- (void)snapRetailersDidNotLoadWithError:(NSNotification *)notification
 {
     UIApplication *app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = NO;
     
     [[NSOperationQueue mainQueue] addOperation:[ NSBlockOperation blockOperationWithBlock:^{
+        NSError *error = notification.object;
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+    }]];
+}
+
+- (void)farmersMarketsDidLoad:(NSNotification *)notification
+{
+    UIApplication *app = [UIApplication sharedApplication];
+    app.networkActivityIndicatorVisible = NO;
+    
+    [[NSOperationQueue mainQueue] addOperation:[ NSBlockOperation blockOperationWithBlock:^{
+        [SVProgressHUD dismiss];
+
+        NSArray *farmersMarkets = notification.object;
+
+        if (farmersMarkets > 0)
+        {
+            [self.mapView addAnnotations:farmersMarkets];
+            
+            [self updateVisibleMapRect];
+        }
+    }]];
+}
+
+- (void)farmersMarketsDidNotLoadWithError:(NSNotification *)notification
+{
+    UIApplication *app = [UIApplication sharedApplication];
+    app.networkActivityIndicatorVisible = NO;
+    
+    [[NSOperationQueue mainQueue] addOperation:[ NSBlockOperation blockOperationWithBlock:^{
+        NSError *error = notification.object;
         [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }]];
 }
@@ -489,6 +529,7 @@
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
     static NSString *retailerPinID = @"com.shrtlist.retailerPin";
+    static NSString *farmersMarketPinID = @"com.shrtlist.farmersMarketPin";
     static NSString *searchPinID = @"com.shrtlist.searchPin";
 	
 	MKPinAnnotationView *annotationView = nil;
@@ -515,6 +556,32 @@
                 annotationView.rightCalloutAccessoryView = button;
                 
                 UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"snap"]];
+                annotationView.leftCalloutAccessoryView = sfIconView;
+            }
+            else
+            {
+                annotationView.annotation = annotation;
+            }
+        }
+        else if ([annotation isKindOfClass:[FarmersMarket class]])
+        {
+            // Try to dequeue an existing annotation view first
+            annotationView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:farmersMarketPinID];
+            
+            if (!annotationView)
+            {
+                // If an existing annotation view was not available, create one
+                annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:farmersMarketPinID];
+                annotationView.canShowCallout = YES;
+                annotationView.pinColor = MKPinAnnotationColorPurple;
+                annotationView.animatesDrop = YES;
+                
+                // Add Detail Disclosure button
+                UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+                button.showsTouchWhenHighlighted = YES;
+                annotationView.rightCalloutAccessoryView = button;
+                
+                UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"farmersmarket"]];                
                 annotationView.leftCalloutAccessoryView = sfIconView;
             }
             else

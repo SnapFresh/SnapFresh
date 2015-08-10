@@ -12,6 +12,15 @@ extern NSString * const kSnapFreshBaseURL;
 // SnapFresh API endpoint
 extern NSString * const kSnapFreshEndpoint;
 
+// USDA farmers market search API base URL
+extern NSString * const kUSDABaseURL;
+
+// USDA farmers market search API endpoint
+extern NSString * const kUSDAFarmersMarketSearchEndpoint;
+
+// USDA farmers market detail API endpoint
+extern NSString * const kUSDAFarmersMarketDetailEndpoint;
+
 // SnapFresh timeout interval
 extern NSTimeInterval const kSnapFreshTimeout;
 
