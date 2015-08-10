@@ -104,7 +104,7 @@ NSString * const kFarmersMarketsDidNotLoadNotification = @"FarmersMarketsDidNotL
     }
 }
 
-- (void)sendFarmersMarketDetailRequest:(NSArray *)marketIDs completionHandler:(void (^)(NSArray *farmersMarkets, NSError *error))block
+- (void)sendFarmersMarketDetailRequest:(NSArray *)marketIDs completionHandler:(void (^)(NSArray *farmersMarkets, NSError *error))completionHandler
 {
     NSMutableArray *tmpArray = [NSMutableArray arrayWithCapacity:marketIDs.count];
     
@@ -140,7 +140,7 @@ NSString * const kFarmersMarketsDidNotLoadNotification = @"FarmersMarketsDidNotL
                                                             
                                                             if (index+1 == marketIDs.count)
                                                             {
-                                                                block(tmpArray, nil);
+                                                                completionHandler(tmpArray, nil);
                                                             }
                                                         }
                                                     }
