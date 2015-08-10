@@ -123,7 +123,7 @@ NSString * const kFarmersMarketsDidNotLoadNotification = @"FarmersMarketsDidNotL
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                     if (error)
                                                     {
-                                                        NSLog(@"error=%@", error);
+                                                        completionHandler(nil, error);
                                                     }
                                                     else
                                                     {
