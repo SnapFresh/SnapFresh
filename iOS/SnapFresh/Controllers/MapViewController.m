@@ -111,7 +111,6 @@
     // Nil out delegates
 	self.mapView.delegate = nil;
     self.searchBar.delegate = nil;
-    requestController.delegate = nil;
 }
 
 #pragma mark - UI methods

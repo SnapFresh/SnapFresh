@@ -16,8 +16,6 @@
 
 @import CoreLocation;
 
-@protocol RequestControllerDelegate;
-
 // The following notifications will be posted when responses have finished loading.
 extern NSString * const kSNAPRetailersDidLoadNotification;
 extern NSString * const kSNAPRetailersDidNotLoadNotification;
@@ -39,8 +37,11 @@ extern NSString * const kFarmersMarketsDidNotLoadNotification;
  */
 - (void)sendSNAPRequestForCoordinate:(CLLocationCoordinate2D)coordinate;
 
+/*
+ * Send a USDA farmers market request for a coordinate
+ *
+ @param coordinate around which farmers markets should be located
+ */
 - (void)sendFarmersMarketRequestForCoordinate:(CLLocationCoordinate2D)coordinate;
-
-@property (nonatomic, weak) id<RequestControllerDelegate> delegate;
 
 @end
