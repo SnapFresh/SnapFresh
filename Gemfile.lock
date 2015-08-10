@@ -74,6 +74,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     json_expressions (0.8.3)
+    libv8 (3.16.14.11)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -122,6 +123,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    ref (2.0.0)
     safe_yaml (1.0.4)
     sass (3.2.19)
     sass-rails (4.0.5)
@@ -147,6 +149,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
@@ -187,6 +192,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.1)
   sdoc
   simplecov (~> 0.8.1)
+  therubyracer (~> 0.12.2)
   uglifier (~> 2.3.1)
   vcr
   webmock

@@ -1,0 +1,13 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+production:
+  <<: *common
+  database: allincomefoods
+  host: postgres
+  port: 5432
+  username: postgres
+  password:

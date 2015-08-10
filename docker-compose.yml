@@ -1,0 +1,14 @@
+postgres:
+  image: kpettijohn/postgis
+  ports:
+    - "5432:5432"
+
+snapfresh:
+  image: snapfresh
+  command: snapfresh
+  links:
+    - postgres
+  ports:
+    - "3000:3000"
+  environment:
+    - RAILS_ENV=production

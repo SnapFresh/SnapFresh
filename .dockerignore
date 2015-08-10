@@ -1,0 +1,10 @@
+.bundle
+doc
+iOS
+vendor/bundle
+vcr_cassettes
+test
+tmp
+log
+gemfiles
+coverage

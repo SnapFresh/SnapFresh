@@ -3,13 +3,13 @@ ruby "1.9.3"
 
 gem 'rails', '~> 4.2.3'
 
-
 # DB's
 gem 'pg', '~> 0.18.2'
 
 # Assets
 gem 'sass-rails', '~> 4.0.1'
 gem 'jquery-rails', '~> 3.0.4'
+gem 'therubyracer', '~> 0.12.2'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 2.3.1'
