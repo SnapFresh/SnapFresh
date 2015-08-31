@@ -600,17 +600,11 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    NSString *title = NSLocalizedString(@"Show driving directions?", @"Show driving directions?");
-    NSString *message = NSLocalizedString(@"You will be taken to the Map app", @"You will be taken to the Map app");
-    NSString *cancelButtonTitle = NSLocalizedString(@"Cancel", @"Cancel");
-    NSString *okButtonTitle = NSLocalizedString(@"OK", @"OK");
+    id <MKAnnotation> annotation = [self.mapView.selectedAnnotations firstObject];
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
-                                                        message:message
-                                                       delegate:self
-                                              cancelButtonTitle:cancelButtonTitle
-                                              otherButtonTitles:okButtonTitle, nil];
-    [alertView show];
+    SnapRetailer *retailer = (SnapRetailer *)annotation;
+    
+    [MapUtils openMapWithDestination:retailer];
 }
 
 - (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
@@ -651,20 +645,6 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     return YES;
-}
-
-#pragma mark - UIAlertViewDelegate protocol conformance
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 1)
-    {
-        id <MKAnnotation> annotation = [self.mapView.selectedAnnotations firstObject];
-        
-        SnapRetailer *retailer = (SnapRetailer *)annotation;
-        
-        [MapUtils openMapWithDestination:retailer];
-    }
 }
 
 @end

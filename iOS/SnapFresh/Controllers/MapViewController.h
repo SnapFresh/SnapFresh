@@ -31,7 +31,6 @@
                                                  MKMapViewDelegate,
                                                  CLLocationManagerDelegate,
                                                  UIGestureRecognizerDelegate,
-                                                 UIAlertViewDelegate,
                                                  RequestControllerDelegate>
 
 @property (nonatomic, weak) id<MapViewControllerDelegate> delegate;
