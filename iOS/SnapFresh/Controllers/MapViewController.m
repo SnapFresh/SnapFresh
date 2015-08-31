@@ -509,7 +509,7 @@
                 // If an existing annotation view was not available, create one
                 annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:retailerPinID];
                 annotationView.canShowCallout = YES;
-                annotationView.pinColor = MKPinAnnotationColorRed;
+                annotationView.pinTintColor = [MKPinAnnotationView redPinColor];
                 annotationView.animatesDrop = YES;
                     
                 // Add Detail Disclosure button
@@ -535,7 +535,7 @@
                 // If an existing annotation view was not available, create one
                 annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:searchPinID];
                 annotationView.canShowCallout = YES;
-                annotationView.pinColor = MKPinAnnotationColorGreen;
+                annotationView.pinTintColor = [MKPinAnnotationView greenPinColor];
                 annotationView.animatesDrop = YES;
             }
             else
