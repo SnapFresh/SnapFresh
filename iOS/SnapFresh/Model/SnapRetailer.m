@@ -54,10 +54,10 @@
         postalAddress.state = [addressDictionary objectForKey:CNPostalAddressStateKey];
         postalAddress.postalCode = [addressDictionary objectForKey:CNPostalAddressPostalCodeKey];
         
-        NSString *addressString = [CNPostalAddressFormatter stringFromPostalAddress:postalAddress style:CNPostalAddressFormatterStyleMailingAddress];
+        NSString *postalAddressString = [CNPostalAddressFormatter stringFromPostalAddress:postalAddress style:CNPostalAddressFormatterStyleMailingAddress];
         
-        _address = [addressString stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
-        
+        _address = [postalAddressString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+
         _distance = [dictionary objectForKey:@"distance"];
     }
     
