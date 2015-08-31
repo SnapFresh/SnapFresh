@@ -519,10 +519,13 @@
                 
                 UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"snap"]];
                 annotationView.leftCalloutAccessoryView = sfIconView;
-            }
-            else
-            {
-                annotationView.annotation = annotation;
+                
+                // Create a multi-line UILabel to use as the detailCalloutAccessoryView
+                UILabel *addressLabel = [[UILabel alloc] init];
+                addressLabel.numberOfLines = 0;
+                addressLabel.text = annotation.subtitle;
+                
+                annotationView.detailCalloutAccessoryView = addressLabel;
             }
         }
         else
@@ -537,12 +540,20 @@
                 annotationView.canShowCallout = YES;
                 annotationView.pinTintColor = [MKPinAnnotationView greenPinColor];
                 annotationView.animatesDrop = YES;
-            }
-            else
-            {
-                annotationView.annotation = annotation;
+                
+                // Create a multi-line UILabel to use as the detailCalloutAccessoryView
+                UILabel *addressLabel = [[UILabel alloc] init];
+                addressLabel.numberOfLines = 0;
+                addressLabel.text = annotation.subtitle;
+                
+                annotationView.detailCalloutAccessoryView = addressLabel;
             }
         }
+        
+        annotationView.annotation = annotation;
+        
+        UILabel *addressLabel = (UILabel *)annotationView.detailCalloutAccessoryView;
+        addressLabel.text = annotation.subtitle;
 	}
 	
     return annotationView;
