@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-@import AddressBookUI;
 #import "MapViewController.h"
 #import "ListViewController.h"
 #import "SVProgressHUD.h"
@@ -236,10 +235,12 @@
              return;
          }
          
-         NSString *searchAddressString = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
-
-         NSString *searchAddress = [searchAddressString stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
+         NSDictionary *addressDictionary = topResult.addressDictionary;
          
+         NSArray *formattedAddressLines = [addressDictionary objectForKey:@"FormattedAddressLines"];
+         
+         NSString *searchAddress = [formattedAddressLines componentsJoinedByString:@", "];
+
          // Update the searchBar text
          self.searchBar.text = searchAddress;
          
@@ -327,10 +328,12 @@
             return;
         }
         
-        NSString *searchAddressString = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+        NSDictionary *addressDictionary = topResult.addressDictionary;
         
-        NSString *searchAddress = [searchAddressString stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
+        NSArray *formattedAddressLines = [addressDictionary objectForKey:@"FormattedAddressLines"];
         
+        NSString *searchAddress = [formattedAddressLines componentsJoinedByString:@", "];
+ 
         // Update the searchBar text
         self.searchBar.text = searchAddress;
         
@@ -565,9 +568,13 @@
          // Get the top result returned by the geocoder
          CLPlacemark *topResult = placemarks[0];
          
-         NSString *addressString = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+         NSDictionary *addressDictionary = topResult.addressDictionary;
+         
+         NSArray *formattedAddressLines = [addressDictionary objectForKey:@"FormattedAddressLines"];
+         
+         NSString *addressString = [formattedAddressLines componentsJoinedByString:@", "];
 
-         userLocation.subtitle = [addressString stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
+         userLocation.subtitle = addressString;
          
          [self.centerButton setEnabled:YES];
          
