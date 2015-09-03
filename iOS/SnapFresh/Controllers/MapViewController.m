@@ -40,7 +40,6 @@
 @implementation MapViewController
 {
     MKUserTrackingBarButtonItem *trackingButton;
-    UIPopoverController *masterPopoverController;
     ListViewController *listViewController;
     RequestController *requestController;
 }
@@ -446,8 +445,6 @@
 {
     barButtonItem.title = NSLocalizedString(@"Retailers", @"Retailers");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
-
-    masterPopoverController = popoverController;
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
