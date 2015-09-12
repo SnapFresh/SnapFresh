@@ -15,10 +15,12 @@
  */
 
 #import "ListViewController.h"
+#import "RequestController.h"
 
 @implementation ListViewController
 {
     NSArray *_retailers;
+    NSArray *_farmersMarkets;
 }
 
 #pragma mark - View lifecycle
@@ -27,11 +29,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(snapRetailersDidLoad:) name:kSNAPRetailersDidLoadNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(farmersMarketsDidLoad:) name:kFarmersMarketsDidLoadNotification object:nil];
 
     self.mapViewController = (MapViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    
-    // Set ourselves as the mapViewController's delegate
-    self.mapViewController.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -45,7 +47,7 @@
     }
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+- (NSUInteger)supportedInterfaceOrientations
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
@@ -61,19 +63,45 @@
 
 - (void)dealloc
 {
-    self.mapViewController.delegate = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITableViewDataSource protocol conformance
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return NSLocalizedString(@"Retailers", @"Retailers");
+    NSString *titleForSectionHeader = nil;
+    if (section == 0)
+    {
+        titleForSectionHeader = NSLocalizedString(@"Retailers", @"Retailers");
+    }
+    else if (section == 1)
+    {
+        titleForSectionHeader = NSLocalizedString(@"Farmers Markets", @"Farmers Markets");
+    }
+    
+    return titleForSectionHeader;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _retailers.count;
+    NSInteger numberOfRows = 0;
+    
+    if (section == 0)
+    {
+        numberOfRows = _retailers.count;
+    }
+    else if (section == 1)
+    {
+        numberOfRows = _farmersMarkets.count;
+    }
+
+    return numberOfRows;
 }
 
 // Customize the appearance of table view cells
@@ -83,11 +111,21 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    SnapRetailer *retailer = [_retailers objectAtIndex:indexPath.row];
+    NSInteger section = indexPath.section;
     
-    // Set the cell labels with SNAP retailer info
-    cell.textLabel.text = retailer.name;
-    cell.detailTextLabel.text = retailer.address;
+    MKPlacemark *placemark = nil;
+    
+    if (section == 0)
+    {
+        placemark = [_retailers objectAtIndex:indexPath.row];
+    }
+    else if (section == 1)
+    {
+        placemark = [_farmersMarkets objectAtIndex:indexPath.row];
+    }
+
+    cell.textLabel.text = placemark.title;
+    cell.detailTextLabel.text = placemark.subtitle;
 	
 	return cell;
 }
@@ -97,20 +135,43 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    SnapRetailer *retailer = [_retailers objectAtIndex:indexPath.row];
     
-    [self.mapViewController didSelectRetailer:retailer];
+    NSInteger section = indexPath.section;
+    
+    MKPlacemark *placemark = nil;
+    
+    if (section == 0)
+    {
+        placemark = [_retailers objectAtIndex:indexPath.row];
+    }
+    else if (section == 1)
+    {
+        placemark = [_farmersMarkets objectAtIndex:indexPath.row];
+    }
+    
+    [self.mapViewController didSelectRetailer:placemark];
 }
 
-#pragma mark - MapViewControllerDelegate protocol conformance
+#pragma mark - NSNotification methods
 
-- (void)annotationsDidLoad:(NSArray *)retailers
+- (void)snapRetailersDidLoad:(NSNotification *)notification
 {
-    _retailers = retailers;
+    _retailers = notification.object;
+    
+    [[NSOperationQueue mainQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
+        // Reload the data when there are new annotations on the map.
+        [self.tableView reloadData];
+    }]];
+}
 
-    // Reload the data when there are new annotations on the map.
-    [self.tableView reloadData];
+- (void)farmersMarketsDidLoad:(NSNotification *)notification
+{
+    _farmersMarkets = notification.object;
+
+    [[NSOperationQueue mainQueue] addOperation:[ NSBlockOperation blockOperationWithBlock:^{
+        // Reload the data when there are new annotations on the map.
+        [self.tableView reloadData];
+    }]];
 }
 
 @end
