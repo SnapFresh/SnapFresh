@@ -12,6 +12,7 @@
 		57141A76183B454700852773 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57141A75183B454700852773 /* Images.xcassets */; };
 		578D633E1B12F134001FD76F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 578D633D1B12F134001FD76F /* Settings.bundle */; };
 		57D1F795180B3AE200E89CDD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D1F794180B3AE200E89CDD /* libz.dylib */; };
+		57EF32961B766FC200F89628 /* FarmersMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF32951B766FC200F89628 /* FarmersMarket.m */; };
 		679D2D5B1B94C248006FFDE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 679D2D5A1B94C248006FFDE8 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		8417059814C75EA100ACF050 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8417059714C75EA100ACF050 /* main.m */; };
 		8417059C14C75EA100ACF050 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8417059B14C75EA100ACF050 /* AppDelegate.m */; };
@@ -49,6 +50,8 @@
 		57141A75183B454700852773 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		578D633D1B12F134001FD76F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		57D1F794180B3AE200E89CDD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		57EF32941B766FC200F89628 /* FarmersMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FarmersMarket.h; sourceTree = "<group>"; };
+		57EF32951B766FC200F89628 /* FarmersMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FarmersMarket.m; sourceTree = "<group>"; };
 		679D2D5A1B94C248006FFDE8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8417058714C75EA100ACF050 /* SnapFresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapFresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8417059314C75EA100ACF050 /* SnapFresh-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnapFresh-Info.plist"; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 			children = (
 				84B78D03158EE55800033B7F /* SnapRetailer.h */,
 				84B78D04158EE55800033B7F /* SnapRetailer.m */,
+				57EF32941B766FC200F89628 /* FarmersMarket.h */,
+				57EF32951B766FC200F89628 /* FarmersMarket.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -386,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57EF32961B766FC200F89628 /* FarmersMarket.m in Sources */,
 				8417059814C75EA100ACF050 /* main.m in Sources */,
 				8417059C14C75EA100ACF050 /* AppDelegate.m in Sources */,
 				84B78D00158EE54E00033B7F /* ListViewController.m in Sources */,

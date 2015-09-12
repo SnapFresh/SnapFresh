@@ -19,9 +19,9 @@
 /*!
  @class ListViewController
  @abstract
- Presents SNAP retailers in a table view
+ Presents retailers and farmers markets in a table view
  */
-@interface ListViewController : UITableViewController <MapViewControllerDelegate>
+@interface ListViewController : UITableViewController
 
 @property (nonatomic, strong) MapViewController *mapViewController;
 
