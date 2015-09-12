@@ -18,11 +18,13 @@
 #import "Constants.h"
 #import "SnapRetailer.h"
 #import "FarmersMarket.h"
+#import "TFHpple.h"
 
 NSString * const kSNAPRetailersDidLoadNotification = @"SNAPRetailersDidLoadNotification";
 NSString * const kSNAPRetailersDidNotLoadNotification = @"SNAPRetailersDidNotLoadNotification";
 NSString * const kFarmersMarketsDidLoadNotification = @"FarmersMarketsDidLoadNotification";
 NSString * const kFarmersMarketsDidNotLoadNotification = @"FarmersMarketsDidNotLoadNotification";
+static NSUInteger const kMaxFarmersMarkets = 5;
 
 @implementation RequestController
 
@@ -66,7 +68,7 @@ NSString * const kFarmersMarketsDidNotLoadNotification = @"FarmersMarketsDidNotL
 {
     if (CLLocationCoordinate2DIsValid(coordinate))
     {
-        NSString *urlString = [NSString stringWithFormat:@"%@%@lat=%f&lng=%f", kUSDABaseURL, kUSDAFarmersMarketSearchEndpoint, coordinate.latitude, coordinate.longitude];
+        NSString *urlString = [NSString stringWithFormat:@"%@%@y=%f&x=%f", kUSDABaseURL, kUSDAFarmersMarketSearchEndpoint, coordinate.latitude, coordinate.longitude];
         NSURL *url = [NSURL URLWithString:urlString];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         
@@ -79,10 +81,41 @@ NSString * const kFarmersMarketsDidNotLoadNotification = @"FarmersMarketsDidNotL
                                                     }
                                                     else
                                                     {
-                                                        NSError *localError = nil;
-                                                        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&localError];
+                                                        // Create our HTML parser
+                                                        TFHpple *htmlParser = [TFHpple hppleWithHTMLData:data];
 
-                                                        [self sendFarmersMarketDetailRequest:jsonDictionary[@"results"] completionHandler:^(NSArray *farmersMarkets, NSError *error) {
+                                                        // Get all the <a> tags
+                                                        NSString *xpathQueryString = @"//a";
+                                                        NSArray *marketNodes = [htmlParser searchWithXPathQuery:xpathQueryString];
+                                                        
+                                                        NSMutableArray *markets = [[NSMutableArray alloc] initWithCapacity:kMaxFarmersMarkets];
+                                                        
+                                                        // Enumerate over the found nodes, stopping at kMaxFarmersMarkets.
+                                                        [marketNodes enumerateObjectsUsingBlock:^(id x, NSUInteger i, BOOL *stop) {
+                                                            if (i == kMaxFarmersMarkets - 1)
+                                                            {
+                                                                *stop = YES;
+                                                            }
+                                                            
+                                                            TFHppleElement *element = x;
+                                                            
+                                                            // Get the farmers market ID
+                                                            NSString *marketID = [element objectForKey:@"id"];
+                                                            
+                                                            // Get the farmers market name
+                                                            NSString *marketName = [[element firstTextChild] content];
+                                                            
+                                                            // Strip off the distance numbers prepended to the market name
+                                                            NSRange range = [marketName rangeOfString:@" "];
+                                                            marketName = [marketName substringFromIndex:range.location+1];
+                                                            
+                                                            NSDictionary *marketDict = @{@"id":marketID,
+                                                                                         @"marketName":marketName};
+                                                            
+                                                            [markets addObject:marketDict];
+                                                        }];
+
+                                                        [self sendFarmersMarketDetailRequest:markets completionHandler:^(NSArray *farmersMarkets, NSError *error) {
                                                             if (error)
                                                             {
                                                                 [[NSNotificationCenter defaultCenter] postNotificationName:kFarmersMarketsDidNotLoadNotification object:error];
@@ -104,15 +137,22 @@ NSString * const kFarmersMarketsDidNotLoadNotification = @"FarmersMarketsDidNotL
     }
 }
 
-- (void)sendFarmersMarketDetailRequest:(NSArray *)marketIDs completionHandler:(void (^)(NSArray *farmersMarkets, NSError *error))completionHandler
+- (void)sendFarmersMarketDetailRequest:(NSArray *)markets completionHandler:(void (^)(NSArray *farmersMarkets, NSError *error))completionHandler
 {
-    NSMutableArray *tmpArray = [NSMutableArray arrayWithCapacity:marketIDs.count];
+    if (markets.count == 0)
+    {
+        NSError *error = [NSError errorWithDomain:@"com.shrtlist.snapfresh" code:100 userInfo:@{NSLocalizedFailureReasonErrorKey:@"Empty array"}];
+        
+        completionHandler(nil, error);
+    }
     
-    [marketIDs enumerateObjectsUsingBlock:^(id x, NSUInteger index, BOOL *stop) {
+    NSMutableArray *tmpArray = [NSMutableArray arrayWithCapacity:markets.count];
+    
+    [markets enumerateObjectsUsingBlock:^(id x, NSUInteger index, BOOL *stop) {
 
         NSDictionary *farmersMarketDictionary = (NSDictionary *)x;
         NSString *farmersMarketID = farmersMarketDictionary[@"id"];
-        NSString *farmersMarketName = farmersMarketDictionary[@"marketname"];
+        NSString *farmersMarketName = farmersMarketDictionary[@"marketName"];
         
         NSString *urlString = [NSString stringWithFormat:@"%@%@id=%@", kUSDABaseURL, kUSDAFarmersMarketDetailEndpoint, farmersMarketID];
         NSURL *url = [NSURL URLWithString:urlString];
@@ -138,7 +178,7 @@ NSString * const kFarmersMarketsDidNotLoadNotification = @"FarmersMarketsDidNotL
                                                             
                                                             [tmpArray addObject:farmersMarket];
                                                             
-                                                            if (index+1 == marketIDs.count)
+                                                            if (index+1 == markets.count)
                                                             {
                                                                 completionHandler(tmpArray, nil);
                                                             }

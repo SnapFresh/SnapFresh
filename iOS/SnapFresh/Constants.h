@@ -12,10 +12,10 @@ extern NSString * const kSnapFreshBaseURL;
 // SnapFresh API endpoint
 extern NSString * const kSnapFreshEndpoint;
 
-// USDA farmers market search API base URL
+// USDA farmers market API base URL
 extern NSString * const kUSDABaseURL;
 
-// USDA farmers market search API endpoint
+// USDA farmers market location search API endpoint
 extern NSString * const kUSDAFarmersMarketSearchEndpoint;
 
 // USDA farmers market detail API endpoint

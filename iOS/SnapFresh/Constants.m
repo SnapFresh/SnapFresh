@@ -12,11 +12,11 @@ NSString * const kSnapFreshBaseURL = @"http://snapfresh.org";
 // SnapFresh API endpoint
 NSString * const kSnapFreshEndpoint = @"/retailers/nearaddy.json/";
 
-// USDA farmers market search API base URL
+// USDA farmers market API base URL
 NSString * const kUSDABaseURL = @"http://search.ams.usda.gov";
 
-// USDA farmers market search API endpoint
-NSString * const kUSDAFarmersMarketSearchEndpoint = @"/farmersmarkets/v1/data.svc/locSearch?";
+// USDA farmers market location search API endpoint
+NSString * const kUSDAFarmersMarketSearchEndpoint = @"/farmersmarkets/mobile/mobile.svc/locSearch?";
 
 // USDA farmers market detail API endpoint
 NSString * const kUSDAFarmersMarketDetailEndpoint = @"/farmersmarkets/v1/data.svc/mktDetail?";
