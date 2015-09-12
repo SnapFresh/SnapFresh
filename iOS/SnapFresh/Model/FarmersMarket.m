@@ -6,7 +6,7 @@
 //  Copyright © 2015 shrtlist.com. All rights reserved.
 //
 
-@import AddressBookUI;
+@import Contacts;
 #import "FarmersMarket.h"
 
 @interface FarmersMarket () // Class extension
@@ -59,10 +59,10 @@
     }
     
     // Create the address dictionary
-    NSDictionary *addressDictionary = @{(NSString *)kABPersonAddressStreetKey:street,
-                                        (NSString *)kABPersonAddressCityKey:city,
-                                        (NSString *)kABPersonAddressStateKey:state,
-                                        (NSString *)kABPersonAddressZIPKey:zip};
+    NSDictionary *addressDictionary = @{(NSString *)CNPostalAddressStreetKey:street,
+                                        (NSString *)CNPostalAddressCityKey:city,
+                                        (NSString *)CNPostalAddressStateKey:state,
+                                        (NSString *)CNPostalAddressPostalCodeKey:zip};
     
     NSString *googleLink = marketDetails[@"GoogleLink"];
     NSURLComponents *urlComponents = [NSURLComponents componentsWithString:googleLink];
@@ -85,8 +85,18 @@
     
     if (self)
     {
-        _address = marketDetails[@"Address"];
+        CNMutablePostalAddress *postalAddress = [[CNMutablePostalAddress alloc] init];
+        postalAddress.street = [addressDictionary objectForKey:CNPostalAddressStreetKey];
+        postalAddress.city = [addressDictionary objectForKey:CNPostalAddressCityKey];
+        postalAddress.state = [addressDictionary objectForKey:CNPostalAddressStateKey];
+        postalAddress.postalCode = [addressDictionary objectForKey:CNPostalAddressPostalCodeKey];
+        
+        NSString *postalAddressString = [CNPostalAddressFormatter stringFromPostalAddress:postalAddress style:CNPostalAddressFormatterStyleMailingAddress];
+        
+        _address = [postalAddressString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+
         _products = marketDetails[@"Products"];
+
         _schedule = marketDetails[@"Schedule"];
     }
     

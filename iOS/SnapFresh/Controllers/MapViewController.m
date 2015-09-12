@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-@import AddressBookUI;
 #import "MapViewController.h"
 #import "ListViewController.h"
 #import "RequestController.h"
@@ -44,7 +43,6 @@
 @implementation MapViewController
 {
     MKUserTrackingBarButtonItem *trackingButton;
-    UIPopoverController *masterPopoverController;
     ListViewController *listViewController;
     RequestController *requestController;
 }
@@ -90,7 +88,7 @@
     self.redoSearchView.hidden = YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
@@ -243,10 +241,12 @@
              return;
          }
          
-         NSString *searchAddressString = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
-
-         NSString *searchAddress = [searchAddressString stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
+         NSDictionary *addressDictionary = topResult.addressDictionary;
          
+         NSArray *formattedAddressLines = [addressDictionary objectForKey:@"FormattedAddressLines"];
+         
+         NSString *searchAddress = [formattedAddressLines componentsJoinedByString:@", "];
+
          // Update the searchBar text
          self.searchBar.text = searchAddress;
          
@@ -334,10 +334,12 @@
             return;
         }
         
-        NSString *searchAddressString = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+        NSDictionary *addressDictionary = topResult.addressDictionary;
         
-        NSString *searchAddress = [searchAddressString stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
+        NSArray *formattedAddressLines = [addressDictionary objectForKey:@"FormattedAddressLines"];
         
+        NSString *searchAddress = [formattedAddressLines componentsJoinedByString:@", "];
+ 
         // Update the searchBar text
         self.searchBar.text = searchAddress;
         
@@ -482,8 +484,6 @@
 {
     barButtonItem.title = NSLocalizedString(@"Retailers", @"Retailers");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
-
-    masterPopoverController = popoverController;
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
@@ -546,7 +546,7 @@
                 // If an existing annotation view was not available, create one
                 annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:retailerPinID];
                 annotationView.canShowCallout = YES;
-                annotationView.pinColor = MKPinAnnotationColorRed;
+                annotationView.pinTintColor = [MKPinAnnotationView redPinColor];
                 annotationView.animatesDrop = YES;
                     
                 // Add Detail Disclosure button
@@ -556,10 +556,13 @@
                 
                 UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"snap"]];
                 annotationView.leftCalloutAccessoryView = sfIconView;
-            }
-            else
-            {
-                annotationView.annotation = annotation;
+                
+                // Create a multi-line UILabel to use as the detailCalloutAccessoryView
+                UILabel *addressLabel = [[UILabel alloc] init];
+                addressLabel.numberOfLines = 0;
+                addressLabel.text = annotation.subtitle;
+                
+                annotationView.detailCalloutAccessoryView = addressLabel;
             }
         }
         else if ([annotation isKindOfClass:[FarmersMarket class]])
@@ -572,7 +575,7 @@
                 // If an existing annotation view was not available, create one
                 annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:farmersMarketPinID];
                 annotationView.canShowCallout = YES;
-                annotationView.pinColor = MKPinAnnotationColorPurple;
+                annotationView.pinTintColor = [MKPinAnnotationView purplePinColor];
                 annotationView.animatesDrop = YES;
                 
                 // Add Detail Disclosure button
@@ -582,6 +585,13 @@
                 
                 UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"farmersmarket"]];                
                 annotationView.leftCalloutAccessoryView = sfIconView;
+                
+                // Create a multi-line UILabel to use as the detailCalloutAccessoryView
+                UILabel *addressLabel = [[UILabel alloc] init];
+                addressLabel.numberOfLines = 0;
+                addressLabel.text = annotation.subtitle;
+                
+                annotationView.detailCalloutAccessoryView = addressLabel;
             }
             else
             {
@@ -598,14 +608,22 @@
                 // If an existing annotation view was not available, create one
                 annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:searchPinID];
                 annotationView.canShowCallout = YES;
-                annotationView.pinColor = MKPinAnnotationColorGreen;
+                annotationView.pinTintColor = [MKPinAnnotationView greenPinColor];
                 annotationView.animatesDrop = YES;
-            }
-            else
-            {
-                annotationView.annotation = annotation;
+                
+                // Create a multi-line UILabel to use as the detailCalloutAccessoryView
+                UILabel *addressLabel = [[UILabel alloc] init];
+                addressLabel.numberOfLines = 0;
+                addressLabel.text = annotation.subtitle;
+                
+                annotationView.detailCalloutAccessoryView = addressLabel;
             }
         }
+        
+        annotationView.annotation = annotation;
+        
+        UILabel *addressLabel = (UILabel *)annotationView.detailCalloutAccessoryView;
+        addressLabel.text = annotation.subtitle;
 	}
 	
     return annotationView;
@@ -631,9 +649,13 @@
          // Get the top result returned by the geocoder
          CLPlacemark *topResult = placemarks[0];
          
-         NSString *addressString = ABCreateStringWithAddressDictionary(topResult.addressDictionary, NO);
+         NSDictionary *addressDictionary = topResult.addressDictionary;
+         
+         NSArray *formattedAddressLines = [addressDictionary objectForKey:@"FormattedAddressLines"];
+         
+         NSString *addressString = [formattedAddressLines componentsJoinedByString:@", "];
 
-         userLocation.subtitle = [addressString stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
+         userLocation.subtitle = addressString;
          
          [self.centerButton setEnabled:YES];
          
@@ -659,17 +681,11 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    NSString *title = NSLocalizedString(@"Show driving directions?", @"Show driving directions?");
-    NSString *message = NSLocalizedString(@"You will be taken to the Map app", @"You will be taken to the Map app");
-    NSString *cancelButtonTitle = NSLocalizedString(@"Cancel", @"Cancel");
-    NSString *okButtonTitle = NSLocalizedString(@"OK", @"OK");
+    id <MKAnnotation> annotation = [self.mapView.selectedAnnotations firstObject];
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
-                                                        message:message
-                                                       delegate:self
-                                              cancelButtonTitle:cancelButtonTitle
-                                              otherButtonTitles:okButtonTitle, nil];
-    [alertView show];
+    SnapRetailer *retailer = (SnapRetailer *)annotation;
+    
+    [MapUtils openMapWithDestination:retailer];
 }
 
 - (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
@@ -710,20 +726,6 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     return YES;
-}
-
-#pragma mark - UIAlertViewDelegate protocol conformance
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 1)
-    {
-        id <MKAnnotation> annotation = [self.mapView.selectedAnnotations firstObject];
-        
-        SnapRetailer *retailer = (SnapRetailer *)annotation;
-        
-        [MapUtils openMapWithDestination:retailer];
-    }
 }
 
 @end

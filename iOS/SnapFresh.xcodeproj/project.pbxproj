@@ -13,6 +13,7 @@
 		578D633E1B12F134001FD76F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 578D633D1B12F134001FD76F /* Settings.bundle */; };
 		57D1F795180B3AE200E89CDD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D1F794180B3AE200E89CDD /* libz.dylib */; };
 		57EF32961B766FC200F89628 /* FarmersMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF32951B766FC200F89628 /* FarmersMarket.m */; };
+		679D2D5B1B94C248006FFDE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 679D2D5A1B94C248006FFDE8 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		8417059814C75EA100ACF050 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8417059714C75EA100ACF050 /* main.m */; };
 		8417059C14C75EA100ACF050 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8417059B14C75EA100ACF050 /* AppDelegate.m */; };
 		847E5DD6169953F90093228B /* RequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E5DD5169953F90093228B /* RequestController.m */; };
@@ -51,6 +52,7 @@
 		57D1F794180B3AE200E89CDD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		57EF32941B766FC200F89628 /* FarmersMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FarmersMarket.h; sourceTree = "<group>"; };
 		57EF32951B766FC200F89628 /* FarmersMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FarmersMarket.m; sourceTree = "<group>"; };
+		679D2D5A1B94C248006FFDE8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8417058714C75EA100ACF050 /* SnapFresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapFresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8417059314C75EA100ACF050 /* SnapFresh-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnapFresh-Info.plist"; sourceTree = "<group>"; };
 		8417059714C75EA100ACF050 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				BEFF210816249AF9004AD960 /* i18n */,
+				679D2D5A1B94C248006FFDE8 /* LaunchScreen.storyboard */,
 				BEFF210216249846004AD960 /* MainStoryboard_iPad.storyboard */,
 				BEFF210316249846004AD960 /* MainStoryboard_iPhone.storyboard */,
 				8417059314C75EA100ACF050 /* SnapFresh-Info.plist */,
@@ -334,6 +337,7 @@
 				BEFF210416249846004AD960 /* MainStoryboard_iPad.storyboard in Resources */,
 				BEFF210516249846004AD960 /* MainStoryboard_iPhone.storyboard in Resources */,
 				BEFF210F16249AF9004AD960 /* InfoPlist.strings in Resources */,
+				679D2D5B1B94C248006FFDE8 /* LaunchScreen.storyboard in Resources */,
 				BEFF211016249AF9004AD960 /* Localizable.strings in Resources */,
 				578D633E1B12F134001FD76F /* Settings.bundle in Resources */,
 			);
@@ -531,7 +535,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -565,7 +569,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -588,7 +592,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SnapFresh/SnapFresh-Prefix.pch";
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shrtlist.snapfresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -611,7 +615,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SnapFresh/SnapFresh-Prefix.pch";
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shrtlist.snapfresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
