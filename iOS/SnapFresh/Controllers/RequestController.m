@@ -68,7 +68,7 @@ static NSUInteger const kMaxFarmersMarkets = 5;
 {
     if (CLLocationCoordinate2DIsValid(coordinate))
     {
-        NSString *urlString = [NSString stringWithFormat:@"%@%@y=%f&x=%f", kUSDABaseURL, kUSDAFarmersMarketSearchEndpoint, coordinate.latitude, coordinate.longitude];
+        NSString *urlString = [NSString stringWithFormat:@"%@%@y=%f&x=%f&SNAP=1", kUSDABaseURL, kUSDAFarmersMarketSearchEndpoint, coordinate.latitude, coordinate.longitude];
         NSURL *url = [NSURL URLWithString:urlString];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         
