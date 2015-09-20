@@ -17,12 +17,20 @@
 #import "RequestController.h"
 #import "Constants.h"
 #import "SnapRetailer.h"
+#import "FarmersMarket.h"
+#import "TFHpple.h"
+
+NSString * const kSNAPRetailersDidLoadNotification = @"SNAPRetailersDidLoadNotification";
+NSString * const kSNAPRetailersDidNotLoadNotification = @"SNAPRetailersDidNotLoadNotification";
+NSString * const kFarmersMarketsDidLoadNotification = @"FarmersMarketsDidLoadNotification";
+NSString * const kFarmersMarketsDidNotLoadNotification = @"FarmersMarketsDidNotLoadNotification";
+static NSUInteger const kMaxFarmersMarkets = 5;
 
 @implementation RequestController
 
 #pragma mark - Send SnapFresh request
 
-- (void)sendRequestForCoordinate:(CLLocationCoordinate2D)coordinate
+- (void)sendSNAPRequestForCoordinate:(CLLocationCoordinate2D)coordinate
 {
     if (CLLocationCoordinate2DIsValid(coordinate))
     {
@@ -36,12 +44,12 @@
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                     if (error)
                                                     {
-                                                        [self.delegate snapRetailersDidNotLoadWithError:error];
+                                                        [[NSNotificationCenter defaultCenter] postNotificationName:kSNAPRetailersDidNotLoadNotification object:error];
                                                     }
                                                     else
                                                     {
                                                         NSArray *snapRetailers = [self snapRetailersFromJSON:data error:&error];
-                                                        [self.delegate snapRetailersDidLoad:snapRetailers];
+                                                        [[NSNotificationCenter defaultCenter] postNotificationName:kSNAPRetailersDidLoadNotification object:snapRetailers];
                                                     }
                                                 }];
         
@@ -50,8 +58,136 @@
     else
     {
         NSError *error = [NSError errorWithDomain:@"com.shrtlist.snapfresh" code:99 userInfo:@{NSLocalizedFailureReasonErrorKey:@"Invalid coordinate"}];
-        [self.delegate snapRetailersDidNotLoadWithError:error];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kSNAPRetailersDidNotLoadNotification object:error];
     }
+}
+
+#pragma mark - Send USDA farmers market request
+
+- (void)sendFarmersMarketRequestForCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    if (CLLocationCoordinate2DIsValid(coordinate))
+    {
+        NSString *urlString = [NSString stringWithFormat:@"%@%@y=%f&x=%f&SNAP=1", kUSDABaseURL, kUSDAFarmersMarketSearchEndpoint, coordinate.latitude, coordinate.longitude];
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error)
+                                                    {
+                                                        [[NSNotificationCenter defaultCenter] postNotificationName:kFarmersMarketsDidNotLoadNotification object:error];
+                                                    }
+                                                    else
+                                                    {
+                                                        // Create our HTML parser
+                                                        TFHpple *htmlParser = [TFHpple hppleWithHTMLData:data];
+
+                                                        // Get all the <a> tags
+                                                        NSString *xpathQueryString = @"//a";
+                                                        NSArray *marketNodes = [htmlParser searchWithXPathQuery:xpathQueryString];
+                                                        
+                                                        NSMutableArray *markets = [[NSMutableArray alloc] initWithCapacity:kMaxFarmersMarkets];
+                                                        
+                                                        // Enumerate over the found nodes, stopping at kMaxFarmersMarkets.
+                                                        [marketNodes enumerateObjectsUsingBlock:^(id x, NSUInteger i, BOOL *stop) {
+                                                            if (i == kMaxFarmersMarkets - 1)
+                                                            {
+                                                                *stop = YES;
+                                                            }
+                                                            
+                                                            TFHppleElement *element = x;
+                                                            
+                                                            // Get the farmers market ID
+                                                            NSString *marketID = [element objectForKey:@"id"];
+                                                            
+                                                            // Get the farmers market name
+                                                            NSString *marketName = [[element firstTextChild] content];
+                                                            
+                                                            // Strip off the distance numbers prepended to the market name
+                                                            NSRange range = [marketName rangeOfString:@" "];
+                                                            marketName = [marketName substringFromIndex:range.location+1];
+                                                            
+                                                            NSDictionary *marketDict = @{@"id":marketID,
+                                                                                         @"marketName":marketName};
+                                                            
+                                                            [markets addObject:marketDict];
+                                                        }];
+
+                                                        [self sendFarmersMarketDetailRequest:markets completionHandler:^(NSArray *farmersMarkets, NSError *error) {
+                                                            if (error)
+                                                            {
+                                                                [[NSNotificationCenter defaultCenter] postNotificationName:kFarmersMarketsDidNotLoadNotification object:error];
+                                                            }
+                                                            else
+                                                            {
+                                                                [[NSNotificationCenter defaultCenter] postNotificationName:kFarmersMarketsDidLoadNotification object:farmersMarkets];
+                                                            }
+                                                        }];
+                                                    }
+                                                }];
+        
+        [task resume];
+    }
+    else
+    {
+        NSError *error = [NSError errorWithDomain:@"com.shrtlist.snapfresh" code:99 userInfo:@{NSLocalizedFailureReasonErrorKey:@"Invalid coordinate"}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kFarmersMarketsDidNotLoadNotification object:error];
+    }
+}
+
+- (void)sendFarmersMarketDetailRequest:(NSArray *)markets completionHandler:(void (^)(NSArray *farmersMarkets, NSError *error))completionHandler
+{
+    if (markets.count == 0)
+    {
+        NSError *error = [NSError errorWithDomain:@"com.shrtlist.snapfresh" code:100 userInfo:@{NSLocalizedFailureReasonErrorKey:@"Empty array"}];
+        
+        completionHandler(nil, error);
+    }
+    
+    NSMutableArray *tmpArray = [NSMutableArray arrayWithCapacity:markets.count];
+    
+    [markets enumerateObjectsUsingBlock:^(id x, NSUInteger index, BOOL *stop) {
+
+        NSDictionary *farmersMarketDictionary = (NSDictionary *)x;
+        NSString *farmersMarketID = farmersMarketDictionary[@"id"];
+        NSString *farmersMarketName = farmersMarketDictionary[@"marketName"];
+        
+        NSString *urlString = [NSString stringWithFormat:@"%@%@id=%@", kUSDABaseURL, kUSDAFarmersMarketDetailEndpoint, farmersMarketID];
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error)
+                                                    {
+                                                        completionHandler(nil, error);
+                                                    }
+                                                    else
+                                                    {
+                                                        NSError *localError = nil;
+                                                        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&localError];
+
+                                                        FarmersMarket *farmersMarket = [[FarmersMarket alloc] initWithDictionary:jsonDictionary];
+
+                                                        if (CLLocationCoordinate2DIsValid(farmersMarket.coordinate))
+                                                        {
+                                                            farmersMarket.marketName = farmersMarketName;
+                                                            
+                                                            [tmpArray addObject:farmersMarket];
+                                                            
+                                                            if (index+1 == markets.count)
+                                                            {
+                                                                completionHandler(tmpArray, nil);
+                                                            }
+                                                        }
+                                                    }
+                                                }];
+        
+        [task resume];
+    }];
 }
 
 #pragma mark - Parse the JSON response

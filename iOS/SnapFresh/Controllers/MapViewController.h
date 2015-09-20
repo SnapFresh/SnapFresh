@@ -16,10 +16,6 @@
 
 @import MapKit;
 @import CoreLocation;
-#import "SnapRetailer.h"
-#import "RequestController.h"
-
-@protocol MapViewControllerDelegate;
 
 /*!
  @class MapViewController
@@ -30,16 +26,8 @@
                                                  UISearchBarDelegate,
                                                  MKMapViewDelegate,
                                                  CLLocationManagerDelegate,
-                                                 UIGestureRecognizerDelegate,
-                                                 RequestControllerDelegate>
+                                                 UIGestureRecognizerDelegate>
 
-@property (nonatomic, weak) id<MapViewControllerDelegate> delegate;
+- (void)didSelectRetailer:(MKPlacemark *)retailer;
 
-- (void)didSelectRetailer:(SnapRetailer *)retailer;
-
-@end
-
-// A delegate implements this protocol to be notified when the map is finished loading.
-@protocol MapViewControllerDelegate <NSObject>
-- (void)annotationsDidLoad:(NSArray *)retailers;
 @end
