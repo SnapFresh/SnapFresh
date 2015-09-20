@@ -26,8 +26,7 @@
                                                  UISearchBarDelegate,
                                                  MKMapViewDelegate,
                                                  CLLocationManagerDelegate,
-                                                 UIGestureRecognizerDelegate,
-                                                 UIAlertViewDelegate>
+                                                 UIGestureRecognizerDelegate>
 
 - (void)didSelectRetailer:(MKPlacemark *)retailer;
 
