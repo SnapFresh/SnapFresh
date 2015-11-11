@@ -622,6 +622,10 @@
                 
                 annotationView.detailCalloutAccessoryView = addressLabel;
             }
+            else
+            {
+                annotationView.annotation = annotation;
+            }
         }
         
         annotationView.annotation = annotation;
