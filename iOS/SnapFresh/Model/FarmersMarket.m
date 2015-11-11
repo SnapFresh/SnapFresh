@@ -6,7 +6,7 @@
 //  Copyright © 2015 shrtlist.com. All rights reserved.
 //
 
-@import Contacts;
+@import AddressBookUI;
 #import "FarmersMarket.h"
 
 @interface FarmersMarket () // Class extension
@@ -24,10 +24,10 @@
     NSDictionary *marketDetails = dictionary[@"marketdetails"];
     NSArray *addressItems = [marketDetails[@"Address"] componentsSeparatedByString:@", "];
     
-    id street = [NSNull null];
-    id city = [NSNull null];
-    id state = [NSNull null];
-    id zip = [NSNull null];
+    NSString *street = @"";
+    NSString *city = @"";
+    NSString *state = @"";
+    NSString *zip = @"";
     
     if (addressItems.count == 2) {
         city = addressItems[0];
@@ -59,10 +59,10 @@
     }
     
     // Create the address dictionary
-    NSDictionary *addressDictionary = @{(NSString *)CNPostalAddressStreetKey:street,
-                                        (NSString *)CNPostalAddressCityKey:city,
-                                        (NSString *)CNPostalAddressStateKey:state,
-                                        (NSString *)CNPostalAddressPostalCodeKey:zip};
+    NSDictionary *addressDictionary = @{(NSString *)kABPersonAddressStreetKey:street,
+                                        (NSString *)kABPersonAddressCityKey:city,
+                                        (NSString *)kABPersonAddressStateKey:state,
+                                        (NSString *)kABPersonAddressZIPKey:zip};
     
     NSString *googleLink = marketDetails[@"GoogleLink"];
     NSURLComponents *urlComponents = [NSURLComponents componentsWithString:googleLink];
@@ -85,13 +85,7 @@
     
     if (self)
     {
-        CNMutablePostalAddress *postalAddress = [[CNMutablePostalAddress alloc] init];
-        postalAddress.street = [addressDictionary objectForKey:CNPostalAddressStreetKey];
-        postalAddress.city = [addressDictionary objectForKey:CNPostalAddressCityKey];
-        postalAddress.state = [addressDictionary objectForKey:CNPostalAddressStateKey];
-        postalAddress.postalCode = [addressDictionary objectForKey:CNPostalAddressPostalCodeKey];
-        
-        NSString *postalAddressString = [CNPostalAddressFormatter stringFromPostalAddress:postalAddress style:CNPostalAddressFormatterStyleMailingAddress];
+        NSString *postalAddressString = ABCreateStringWithAddressDictionary(self.addressDictionary, NO);
         
         _address = [postalAddressString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 

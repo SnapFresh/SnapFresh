@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-@import Contacts;
+@import AddressBookUI;
 #import "SnapRetailer.h"
 
 @implementation SnapRetailer
@@ -33,10 +33,10 @@
     NSNumber *lon = [dictionary objectForKey:@"lon"];
     
     // Create the address dictionary
-    NSDictionary *addressDictionary = @{(NSString *)CNPostalAddressStreetKey:street,
-                                        (NSString *)CNPostalAddressCityKey:city,
-                                        (NSString *)CNPostalAddressStateKey:state,
-                                        (NSString *)CNPostalAddressPostalCodeKey:zip};
+    NSDictionary *addressDictionary = @{(NSString *)kABPersonAddressStreetKey:street,
+                                        (NSString *)kABPersonAddressCityKey:city,
+                                        (NSString *)kABPersonAddressStateKey:state,
+                                        (NSString *)kABPersonAddressZIPKey:zip};
 
     // Create the coordinate
     CLLocationCoordinate2D coordinate = { [lat doubleValue], [lon doubleValue] };
@@ -47,15 +47,8 @@
     if (self)
     {
         _name = [dictionary objectForKey:@"name"];
-        
-        CNMutablePostalAddress *postalAddress = [[CNMutablePostalAddress alloc] init];
-        postalAddress.street = [addressDictionary objectForKey:CNPostalAddressStreetKey];
-        postalAddress.city = [addressDictionary objectForKey:CNPostalAddressCityKey];
-        postalAddress.state = [addressDictionary objectForKey:CNPostalAddressStateKey];
-        postalAddress.postalCode = [addressDictionary objectForKey:CNPostalAddressPostalCodeKey];
-        
-        NSString *postalAddressString = [CNPostalAddressFormatter stringFromPostalAddress:postalAddress style:CNPostalAddressFormatterStyleMailingAddress];
-        
+        NSString *postalAddressString = ABCreateStringWithAddressDictionary(self.addressDictionary, NO);
+
         _address = [postalAddressString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 
         _distance = [dictionary objectForKey:@"distance"];
