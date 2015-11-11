@@ -631,6 +631,7 @@
         annotationView.annotation = annotation;
         
         UILabel *addressLabel = (UILabel *)annotationView.detailCalloutAccessoryView;
+        addressLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
         addressLabel.text = annotation.subtitle;
 	}
 	
