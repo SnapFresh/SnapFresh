@@ -27,14 +27,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		63AE9B2FABE21C88EBED480B6C45A37D /* PBXContainerItemProxy */ = {
+		208F12A99ACBCEE7C5EB70BF8D05C06C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BA250BDE05647A8E5AE0B5FB0421E3CC;
 			remoteInfo = hpple;
 		};
-		C19425885535366E8DCA22279BD11867 /* PBXContainerItemProxy */ = {
+		7CE8BEB4EB488E7DFF7A33F94EC36B8D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -269,8 +269,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				74BE7E41433F5F6C778A991C6AD204C9 /* PBXTargetDependency */,
-				222C15F00BA147E62363FD478CAFE591 /* PBXTargetDependency */,
+				72889D87D94C3178F8DBCA474ADF1853 /* PBXTargetDependency */,
+				B2BACAEEE78A4BBCBEFA2F7EF99EA8CC /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
@@ -372,17 +372,17 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		222C15F00BA147E62363FD478CAFE591 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = hpple;
-			target = BA250BDE05647A8E5AE0B5FB0421E3CC /* hpple */;
-			targetProxy = 63AE9B2FABE21C88EBED480B6C45A37D /* PBXContainerItemProxy */;
-		};
-		74BE7E41433F5F6C778A991C6AD204C9 /* PBXTargetDependency */ = {
+		72889D87D94C3178F8DBCA474ADF1853 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SVProgressHUD;
 			target = B281DA29A9C3EDFB45BA53651F6BA611 /* SVProgressHUD */;
-			targetProxy = C19425885535366E8DCA22279BD11867 /* PBXContainerItemProxy */;
+			targetProxy = 7CE8BEB4EB488E7DFF7A33F94EC36B8D /* PBXContainerItemProxy */;
+		};
+		B2BACAEEE78A4BBCBEFA2F7EF99EA8CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = hpple;
+			target = BA250BDE05647A8E5AE0B5FB0421E3CC /* hpple */;
+			targetProxy = 208F12A99ACBCEE7C5EB70BF8D05C06C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
