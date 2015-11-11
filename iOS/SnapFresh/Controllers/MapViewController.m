@@ -564,6 +564,10 @@
                 
                 annotationView.detailCalloutAccessoryView = addressLabel;
             }
+            else
+            {
+                annotationView.annotation = annotation;
+            }
         }
         else if ([annotation isKindOfClass:[FarmersMarket class]])
         {
