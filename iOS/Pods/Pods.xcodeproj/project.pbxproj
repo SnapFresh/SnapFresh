@@ -27,14 +27,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		208F12A99ACBCEE7C5EB70BF8D05C06C /* PBXContainerItemProxy */ = {
+		2E4904251D5E67A6DAE60C16E09AE318 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BA250BDE05647A8E5AE0B5FB0421E3CC;
 			remoteInfo = hpple;
 		};
-		7CE8BEB4EB488E7DFF7A33F94EC36B8D /* PBXContainerItemProxy */ = {
+		8D25FDE271F5AEFDF5BF00B5F8FD3EEF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -269,8 +269,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				72889D87D94C3178F8DBCA474ADF1853 /* PBXTargetDependency */,
-				B2BACAEEE78A4BBCBEFA2F7EF99EA8CC /* PBXTargetDependency */,
+				1776E021C2D13A09D201F6DF09309E74 /* PBXTargetDependency */,
+				7178042981563D495C8692649C6B9E84 /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
@@ -372,17 +372,17 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		72889D87D94C3178F8DBCA474ADF1853 /* PBXTargetDependency */ = {
+		1776E021C2D13A09D201F6DF09309E74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SVProgressHUD;
 			target = B281DA29A9C3EDFB45BA53651F6BA611 /* SVProgressHUD */;
-			targetProxy = 7CE8BEB4EB488E7DFF7A33F94EC36B8D /* PBXContainerItemProxy */;
+			targetProxy = 8D25FDE271F5AEFDF5BF00B5F8FD3EEF /* PBXContainerItemProxy */;
 		};
-		B2BACAEEE78A4BBCBEFA2F7EF99EA8CC /* PBXTargetDependency */ = {
+		7178042981563D495C8692649C6B9E84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = hpple;
 			target = BA250BDE05647A8E5AE0B5FB0421E3CC /* hpple */;
-			targetProxy = 208F12A99ACBCEE7C5EB70BF8D05C06C /* PBXContainerItemProxy */;
+			targetProxy = 2E4904251D5E67A6DAE60C16E09AE318 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
