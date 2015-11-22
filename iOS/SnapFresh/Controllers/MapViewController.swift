@@ -460,6 +460,8 @@ class MapViewController : UIViewController,
         locationManager.requestWhenInUseAuthorization()
     }
     
+    // MARK: CLLocationManagerDelegate protocol conformance
+    
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         let authorizationStatus = CLLocationManager.authorizationStatus()
         
@@ -470,6 +472,44 @@ class MapViewController : UIViewController,
             
             locationManager.startUpdatingLocation()
             mapView!.showsUserLocation = true
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        var didSetRegion = false
+        
+        if newLocation.coordinate.isValid {
+            manager.stopUpdatingLocation()
+        
+            // Reverse geocode the user's location
+            // Completion handler block will be executed on the main thread.
+            CLGeocoder().reverseGeocodeLocation(newLocation, completionHandler: { (placemarks, error) in
+                if (error != nil) {
+                    NSLog("Reverse geocode failed with error: %@", error!)
+                    self.trackingButton!.enabled = false
+                    return
+                }
+                
+                // Get the top result returned by the geocoder
+                let topResult = placemarks!.first
+                
+                let addressDictionary = topResult!.addressDictionary
+                
+                let formattedAddressLines = addressDictionary!["FormattedAddressLines"] as! NSArray
+                
+                let addressString = formattedAddressLines.componentsJoinedByString(", ")
+
+                self.mapView?.userLocation.subtitle = addressString
+                
+                self.trackingButton?.enabled = true
+                
+                // Set the map's region if it's not set
+                if didSetRegion == false {
+                    self.setAnnotationsForCoordinate(topResult!.location!.coordinate)
+                    
+                    didSetRegion = true
+                }
+            })
         }
     }
     
@@ -581,40 +621,6 @@ class MapViewController : UIViewController,
         addressLabel.text = annotation.subtitle!
         
         return pinAnnotationView
-    }
-    
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-        var didSetRegion = false
-
-        // Reverse geocode the user's location
-        // Completion handler block will be executed on the main thread.
-        CLGeocoder().reverseGeocodeLocation(userLocation.location!, completionHandler: { (placemarks, error) in
-             if (error != nil) {
-                 NSLog("Reverse geocode failed with error: %@", error!)
-                 self.trackingButton!.enabled = false
-                 return
-             }
-             
-             // Get the top result returned by the geocoder
-             let topResult = placemarks!.first
-             
-             let addressDictionary = topResult!.addressDictionary
-            
-             let formattedAddressLines = addressDictionary!["FormattedAddressLines"] as! NSArray
-             
-             let addressString = formattedAddressLines.componentsJoinedByString(", ")
-
-             userLocation.subtitle = addressString
-             
-             self.trackingButton?.enabled = true
-             
-             // Set the map's region if it's not set
-             if didSetRegion == false {
-                 self.setAnnotationsForCoordinate(topResult!.location!.coordinate)
-                 
-                 didSetRegion = true
-             }
-         })
     }
 
     func mapView(mapView: MKMapView, didFailToLocateUserWithError error: NSError) {

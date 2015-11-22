@@ -18,6 +18,7 @@
 		5770F19B1BF464C400DA5D6F /* NSString+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770F19A1BF464C400DA5D6F /* NSString+Utils.swift */; };
 		578D633E1B12F134001FD76F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 578D633D1B12F134001FD76F /* Settings.bundle */; };
 		57D1F795180B3AE200E89CDD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D1F794180B3AE200E89CDD /* libz.dylib */; };
+		57DF25C91C0279E40061BC43 /* CLLocationCoordinate2D+isValid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF25C81C0279E40061BC43 /* CLLocationCoordinate2D+isValid.swift */; };
 		57E9E0211BF476EA002799B0 /* SnapFreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9E0201BF476EA002799B0 /* SnapFreshTests.swift */; };
 		57E9E0241BF4EA3C002799B0 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9E0231BF4EA3C002799B0 /* ListViewController.swift */; };
 		67EFEE5A1BF6CF9600D78F4B /* RequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EFEE591BF6CF9600D78F4B /* RequestController.swift */; };
@@ -55,6 +56,7 @@
 		5770F19A1BF464C400DA5D6F /* NSString+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Utils.swift"; sourceTree = "<group>"; };
 		578D633D1B12F134001FD76F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		57D1F794180B3AE200E89CDD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		57DF25C81C0279E40061BC43 /* CLLocationCoordinate2D+isValid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+isValid.swift"; sourceTree = "<group>"; };
 		57E9E0201BF476EA002799B0 /* SnapFreshTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapFreshTests.swift; sourceTree = "<group>"; };
 		57E9E0221BF47D88002799B0 /* SnapFreshTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SnapFreshTests-Bridging-Header.h"; path = "SnapFreshTests/SnapFreshTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		57E9E0231BF4EA3C002799B0 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		5770F1991BF464C400DA5D6F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				57DF25C81C0279E40061BC43 /* CLLocationCoordinate2D+isValid.swift */,
 				5770F19A1BF464C400DA5D6F /* NSString+Utils.swift */,
 			);
 			path = Extensions;
@@ -416,6 +419,7 @@
 			files = (
 				67EFEE5A1BF6CF9600D78F4B /* RequestController.swift in Sources */,
 				5770F1921BF4342200DA5D6F /* AppDelegate.swift in Sources */,
+				57DF25C91C0279E40061BC43 /* CLLocationCoordinate2D+isValid.swift in Sources */,
 				5770F19B1BF464C400DA5D6F /* NSString+Utils.swift in Sources */,
 				5770F1961BF44AD900DA5D6F /* FarmersMarket.swift in Sources */,
 				67EFEE5C1BF8228500D78F4B /* MapViewController.swift in Sources */,
