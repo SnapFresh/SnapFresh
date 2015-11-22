@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BFw-3D-97f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BFw-3D-97f">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Map View Controller-->
         <scene sceneID="eX1-Wa-Paa">
             <objects>
-                <viewController id="3rx-kf-aqG" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController id="3rx-kf-aqG" customClass="MapViewController" customModule="SnapFresh" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fKQ-zG-fdB"/>
                         <viewControllerLayoutGuide type="bottom" id="Gid-pV-74B"/>
@@ -21,6 +21,7 @@
                                 <subviews>
                                     <containerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3P9-Kw-coZ">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                        <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="J3Z-xs-unQ" kind="embed" id="JdW-gn-JrP"/>
@@ -31,6 +32,7 @@
                                         <subviews>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MnQ-xl-LwZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                                <animations/>
                                                 <connections>
                                                     <outlet property="delegate" destination="3rx-kf-aqG" id="nh1-qm-eqe"/>
                                                 </connections>
@@ -40,17 +42,19 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qah-07-DS3">
                                                         <rect key="frame" x="49" y="9" width="223" height="26"/>
+                                                        <animations/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                         <state key="normal" title="Redo search in this area">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="redoSearchTapped" destination="3rx-kf-aqG" eventType="touchUpInside" id="PoI-yp-SwP"/>
+                                                            <action selector="redoSearchTapped:" destination="3rx-kf-aqG" eventType="touchUpInside" id="al1-4f-swU"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKO-Uc-gf5" userLabel="Dismiss button - ❌">
                                                         <rect key="frame" x="280" y="6" width="30" height="32"/>
+                                                        <animations/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <state key="normal" title="❌">
                                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -60,10 +64,11 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="dismissButtonTapped" destination="3rx-kf-aqG" eventType="touchUpInside" id="slh-jh-MqI"/>
+                                                            <action selector="dismissButtonTapped:" destination="3rx-kf-aqG" eventType="touchUpInside" id="2di-yM-ATz"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <animations/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="wKO-Uc-gf5" firstAttribute="centerY" secondItem="aKi-bR-1LL" secondAttribute="centerY" id="0Uz-BA-IIG"/>
@@ -76,6 +81,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="aKi-bR-1LL" firstAttribute="leading" secondItem="MnQ-xl-LwZ" secondAttribute="leading" id="5vU-1W-nnH"/>
@@ -88,6 +94,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="3P9-Kw-coZ" secondAttribute="bottom" constant="44" id="5uM-xL-yXQ"/>
                                     <constraint firstItem="3P9-Kw-coZ" firstAttribute="trailing" secondItem="EoB-pm-Ajk" secondAttribute="trailing" id="9G1-Dw-hJW"/>
@@ -100,6 +107,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <animations/>
                         <constraints>
                             <constraint firstItem="3Lm-i5-FR9" firstAttribute="leading" secondItem="NS4-CS-cW5" secondAttribute="leading" id="LUp-lZ-VVH"/>
                             <constraint firstAttribute="trailing" secondItem="3Lm-i5-FR9" secondAttribute="trailing" id="c1m-fz-RHg"/>
@@ -113,7 +121,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="bAh-pL-67v"/>
                         <barButtonItem image="259-list.png" id="Iey-7b-n5f">
                             <connections>
-                                <action selector="toggleListView" destination="3rx-kf-aqG" id="3Kg-Oj-zUQ"/>
+                                <action selector="toggleListView:" destination="3rx-kf-aqG" id="7Tq-KC-vq4"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -137,11 +145,13 @@
                 <searchBar contentMode="redraw" id="Aex-kc-84q">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <animations/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="c9W-U2-ILw">
                     <rect key="frame" x="0.0" y="7" width="210" height="30"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <animations/>
                     <segments>
                         <segment title="Standard"/>
                         <segment title="Satellite"/>
@@ -157,10 +167,11 @@
         <!--List View Controller-->
         <scene sceneID="znV-9x-klK">
             <objects>
-                <tableViewController id="J3Z-xs-unQ" customClass="ListViewController" sceneMemberID="viewController">
+                <tableViewController id="J3Z-xs-unQ" customClass="ListViewController" customModule="SnapFresh" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="66" sectionHeaderHeight="10" sectionFooterHeight="10" id="YDy-rW-Cwt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Qq9-FP-JJB" detailTextLabel="BxX-ac-Mk3" style="IBUITableViewCellStyleSubtitle" id="7a8-Ud-Tc8">
@@ -173,6 +184,7 @@
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qq9-FP-JJB">
                                             <rect key="frame" x="15" y="14" width="36" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -180,12 +192,15 @@
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BxX-ac-Mk3">
                                             <rect key="frame" x="15" y="36" width="44" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <animations/>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -197,7 +212,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wTJ-OV-pd7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1346" y="206"/>
+            <point key="canvasLocation" x="1382" y="184"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aSm-At-1ur">
@@ -207,11 +222,13 @@
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="LIl-3J-tzN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="8QD-xc-Dgf">
                         <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                         <color key="tintColor" red="0.39215686274509803" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </toolbar>
                     <connections>

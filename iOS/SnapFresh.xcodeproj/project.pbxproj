@@ -7,20 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1822179A34BC54E5D4BFBBED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 302C8B2CC9B203783EC34860 /* libPods.a */; };
 		570D882A18414A860044FCB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 570D882818414A860044FCB8 /* InfoPlist.strings */; };
-		570D882C18414A860044FCB8 /* SnapFreshTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 570D882B18414A860044FCB8 /* SnapFreshTests.m */; };
 		57141A76183B454700852773 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57141A75183B454700852773 /* Images.xcassets */; };
+		575AAC401C024FD700437D6F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575AAC3F1C024FD700437D6F /* Constants.swift */; };
+		575AAC421C02540B00437D6F /* MapUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575AAC411C02540B00437D6F /* MapUtils.swift */; };
+		5770F1921BF4342200DA5D6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770F1911BF4342200DA5D6F /* AppDelegate.swift */; };
+		5770F1941BF441DD00DA5D6F /* SnapRetailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770F1931BF441DD00DA5D6F /* SnapRetailer.swift */; };
+		5770F1961BF44AD900DA5D6F /* FarmersMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770F1951BF44AD900DA5D6F /* FarmersMarket.swift */; };
+		5770F19B1BF464C400DA5D6F /* NSString+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770F19A1BF464C400DA5D6F /* NSString+Utils.swift */; };
 		578D633E1B12F134001FD76F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 578D633D1B12F134001FD76F /* Settings.bundle */; };
 		57D1F795180B3AE200E89CDD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D1F794180B3AE200E89CDD /* libz.dylib */; };
-		57EF32961B766FC200F89628 /* FarmersMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EF32951B766FC200F89628 /* FarmersMarket.m */; };
-		8417059814C75EA100ACF050 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8417059714C75EA100ACF050 /* main.m */; };
-		8417059C14C75EA100ACF050 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8417059B14C75EA100ACF050 /* AppDelegate.m */; };
-		847E5DD6169953F90093228B /* RequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E5DD5169953F90093228B /* RequestController.m */; };
-		84B78D00158EE54E00033B7F /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78CFD158EE54E00033B7F /* ListViewController.m */; };
-		84B78D01158EE54E00033B7F /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78CFF158EE54E00033B7F /* MapViewController.m */; };
-		84B78D05158EE55800033B7F /* SnapRetailer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78D04158EE55800033B7F /* SnapRetailer.m */; };
-		84B78D0C158EF0A100033B7F /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B78D0B158EF0A100033B7F /* Constants.m */; };
-		BE655AB1160E72BC003C32B6 /* MapUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BE655AB0160E72BC003C32B6 /* MapUtils.m */; };
+		57E9E0211BF476EA002799B0 /* SnapFreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9E0201BF476EA002799B0 /* SnapFreshTests.swift */; };
+		57E9E0241BF4EA3C002799B0 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9E0231BF4EA3C002799B0 /* ListViewController.swift */; };
+		67EFEE5A1BF6CF9600D78F4B /* RequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EFEE591BF6CF9600D78F4B /* RequestController.swift */; };
+		67EFEE5C1BF8228500D78F4B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EFEE5B1BF8228500D78F4B /* MapViewController.swift */; };
 		BEFF210416249846004AD960 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEFF210216249846004AD960 /* MainStoryboard_iPad.storyboard */; };
 		BEFF210516249846004AD960 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEFF210316249846004AD960 /* MainStoryboard_iPhone.storyboard */; };
 		BEFF210F16249AF9004AD960 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEFF210916249AF9004AD960 /* InfoPlist.strings */; };
@@ -44,31 +45,23 @@
 		570D882018414A860044FCB8 /* SnapFreshTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapFreshTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		570D882718414A860044FCB8 /* SnapFreshTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnapFreshTests-Info.plist"; sourceTree = "<group>"; };
 		570D882918414A860044FCB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		570D882B18414A860044FCB8 /* SnapFreshTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnapFreshTests.m; sourceTree = "<group>"; };
-		570D882D18414A860044FCB8 /* SnapFreshTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SnapFreshTests-Prefix.pch"; sourceTree = "<group>"; };
 		57141A75183B454700852773 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		575AAC3F1C024FD700437D6F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		575AAC411C02540B00437D6F /* MapUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapUtils.swift; sourceTree = "<group>"; };
+		5770F1901BF4342200DA5D6F /* SnapFresh-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SnapFresh-Bridging-Header.h"; sourceTree = "<group>"; };
+		5770F1911BF4342200DA5D6F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5770F1931BF441DD00DA5D6F /* SnapRetailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapRetailer.swift; sourceTree = "<group>"; };
+		5770F1951BF44AD900DA5D6F /* FarmersMarket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmersMarket.swift; sourceTree = "<group>"; };
+		5770F19A1BF464C400DA5D6F /* NSString+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Utils.swift"; sourceTree = "<group>"; };
 		578D633D1B12F134001FD76F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		57D1F794180B3AE200E89CDD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		57EF32941B766FC200F89628 /* FarmersMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FarmersMarket.h; sourceTree = "<group>"; };
-		57EF32951B766FC200F89628 /* FarmersMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FarmersMarket.m; sourceTree = "<group>"; };
+		57E9E0201BF476EA002799B0 /* SnapFreshTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapFreshTests.swift; sourceTree = "<group>"; };
+		57E9E0221BF47D88002799B0 /* SnapFreshTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SnapFreshTests-Bridging-Header.h"; path = "SnapFreshTests/SnapFreshTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		57E9E0231BF4EA3C002799B0 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		67EFEE591BF6CF9600D78F4B /* RequestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestController.swift; sourceTree = "<group>"; };
+		67EFEE5B1BF8228500D78F4B /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8417058714C75EA100ACF050 /* SnapFresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapFresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8417059314C75EA100ACF050 /* SnapFresh-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnapFresh-Info.plist"; sourceTree = "<group>"; };
-		8417059714C75EA100ACF050 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8417059914C75EA100ACF050 /* SnapFresh-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SnapFresh-Prefix.pch"; sourceTree = "<group>"; };
-		8417059A14C75EA100ACF050 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		8417059B14C75EA100ACF050 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		847E5DD4169953F90093228B /* RequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestController.h; sourceTree = "<group>"; };
-		847E5DD5169953F90093228B /* RequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestController.m; sourceTree = "<group>"; };
-		84B78CFC158EE54E00033B7F /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
-		84B78CFD158EE54E00033B7F /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
-		84B78CFE158EE54E00033B7F /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		84B78CFF158EE54E00033B7F /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		84B78D03158EE55800033B7F /* SnapRetailer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapRetailer.h; sourceTree = "<group>"; };
-		84B78D04158EE55800033B7F /* SnapRetailer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapRetailer.m; sourceTree = "<group>"; };
-		84B78D0A158EF0A100033B7F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		84B78D0B158EF0A100033B7F /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		BE655AAF160E72BC003C32B6 /* MapUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapUtils.h; sourceTree = "<group>"; };
-		BE655AB0160E72BC003C32B6 /* MapUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapUtils.m; sourceTree = "<group>"; };
 		BEFF210216249846004AD960 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		BEFF210316249846004AD960 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		BEFF210A16249AF9004AD960 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -85,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1822179A34BC54E5D4BFBBED /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +97,7 @@
 		570D882518414A860044FCB8 /* SnapFreshTests */ = {
 			isa = PBXGroup;
 			children = (
-				570D882B18414A860044FCB8 /* SnapFreshTests.m */,
+				57E9E0201BF476EA002799B0 /* SnapFreshTests.swift */,
 				570D882618414A860044FCB8 /* Supporting Files */,
 			);
 			path = SnapFreshTests;
@@ -114,9 +108,16 @@
 			children = (
 				570D882718414A860044FCB8 /* SnapFreshTests-Info.plist */,
 				570D882818414A860044FCB8 /* InfoPlist.strings */,
-				570D882D18414A860044FCB8 /* SnapFreshTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5770F1991BF464C400DA5D6F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5770F19A1BF464C400DA5D6F /* NSString+Utils.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8417057C14C75EA100ACF050 = {
@@ -125,6 +126,7 @@
 				578D633D1B12F134001FD76F /* Settings.bundle */,
 				8417059114C75EA100ACF050 /* SnapFresh */,
 				570D882518414A860044FCB8 /* SnapFreshTests */,
+				57E9E0221BF47D88002799B0 /* SnapFreshTests-Bridging-Header.h */,
 				8417058A14C75EA100ACF050 /* Frameworks */,
 				8417058814C75EA100ACF050 /* Products */,
 				9704B770723DC27879D2824B /* Pods */,
@@ -152,15 +154,15 @@
 		8417059114C75EA100ACF050 /* SnapFresh */ = {
 			isa = PBXGroup;
 			children = (
-				8417059A14C75EA100ACF050 /* AppDelegate.h */,
-				8417059B14C75EA100ACF050 /* AppDelegate.m */,
-				84B78D0A158EF0A100033B7F /* Constants.h */,
-				84B78D0B158EF0A100033B7F /* Constants.m */,
+				5770F1911BF4342200DA5D6F /* AppDelegate.swift */,
+				575AAC3F1C024FD700437D6F /* Constants.swift */,
 				84B78CFB158EE54E00033B7F /* Controllers */,
+				5770F1991BF464C400DA5D6F /* Extensions */,
 				84B78D02158EE55800033B7F /* Model */,
 				84B78D06158EE55F00033B7F /* Utils */,
 				57141A75183B454700852773 /* Images.xcassets */,
 				8417059214C75EA100ACF050 /* Supporting Files */,
+				5770F1901BF4342200DA5D6F /* SnapFresh-Bridging-Header.h */,
 			);
 			path = SnapFresh;
 			sourceTree = "<group>";
@@ -172,8 +174,6 @@
 				BEFF210216249846004AD960 /* MainStoryboard_iPad.storyboard */,
 				BEFF210316249846004AD960 /* MainStoryboard_iPhone.storyboard */,
 				8417059314C75EA100ACF050 /* SnapFresh-Info.plist */,
-				8417059714C75EA100ACF050 /* main.m */,
-				8417059914C75EA100ACF050 /* SnapFresh-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -181,12 +181,9 @@
 		84B78CFB158EE54E00033B7F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				84B78CFC158EE54E00033B7F /* ListViewController.h */,
-				84B78CFD158EE54E00033B7F /* ListViewController.m */,
-				84B78CFE158EE54E00033B7F /* MapViewController.h */,
-				84B78CFF158EE54E00033B7F /* MapViewController.m */,
-				847E5DD4169953F90093228B /* RequestController.h */,
-				847E5DD5169953F90093228B /* RequestController.m */,
+				57E9E0231BF4EA3C002799B0 /* ListViewController.swift */,
+				67EFEE5B1BF8228500D78F4B /* MapViewController.swift */,
+				67EFEE591BF6CF9600D78F4B /* RequestController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -194,10 +191,8 @@
 		84B78D02158EE55800033B7F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				84B78D03158EE55800033B7F /* SnapRetailer.h */,
-				84B78D04158EE55800033B7F /* SnapRetailer.m */,
-				57EF32941B766FC200F89628 /* FarmersMarket.h */,
-				57EF32951B766FC200F89628 /* FarmersMarket.m */,
+				5770F1951BF44AD900DA5D6F /* FarmersMarket.swift */,
+				5770F1931BF441DD00DA5D6F /* SnapRetailer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,8 +200,7 @@
 		84B78D06158EE55F00033B7F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BE655AAF160E72BC003C32B6 /* MapUtils.h */,
-				BE655AB0160E72BC003C32B6 /* MapUtils.m */,
+				575AAC411C02540B00437D6F /* MapUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -236,9 +230,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 570D883218414A860044FCB8 /* Build configuration list for PBXNativeTarget "SnapFreshTests" */;
 			buildPhases = (
+				69CE6A469861ED9339BA5E87 /* Check Pods Manifest.lock */,
 				570D881C18414A860044FCB8 /* Sources */,
 				570D881D18414A860044FCB8 /* Frameworks */,
 				570D881E18414A860044FCB8 /* Resources */,
+				CEB40CBD5EF8579D2A56D0D4 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -275,6 +271,7 @@
 		8417057E14C75EA100ACF050 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = shrtlist.com;
 				TargetAttributes = {
@@ -342,7 +339,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		69CE6A469861ED9339BA5E87 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		C05195FCF13A3A072C407A46 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEB40CBD5EF8579D2A56D0D4 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -379,7 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				570D882C18414A860044FCB8 /* SnapFreshTests.m in Sources */,
+				57E9E0211BF476EA002799B0 /* SnapFreshTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,15 +414,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57EF32961B766FC200F89628 /* FarmersMarket.m in Sources */,
-				8417059814C75EA100ACF050 /* main.m in Sources */,
-				8417059C14C75EA100ACF050 /* AppDelegate.m in Sources */,
-				84B78D00158EE54E00033B7F /* ListViewController.m in Sources */,
-				84B78D01158EE54E00033B7F /* MapViewController.m in Sources */,
-				84B78D05158EE55800033B7F /* SnapRetailer.m in Sources */,
-				84B78D0C158EF0A100033B7F /* Constants.m in Sources */,
-				BE655AB1160E72BC003C32B6 /* MapUtils.m in Sources */,
-				847E5DD6169953F90093228B /* RequestController.m in Sources */,
+				67EFEE5A1BF6CF9600D78F4B /* RequestController.swift in Sources */,
+				5770F1921BF4342200DA5D6F /* AppDelegate.swift in Sources */,
+				5770F19B1BF464C400DA5D6F /* NSString+Utils.swift in Sources */,
+				5770F1961BF44AD900DA5D6F /* FarmersMarket.swift in Sources */,
+				67EFEE5C1BF8228500D78F4B /* MapViewController.swift in Sources */,
+				57E9E0241BF4EA3C002799B0 /* ListViewController.swift in Sources */,
+				575AAC421C02540B00437D6F /* MapUtils.swift in Sources */,
+				5770F1941BF441DD00DA5D6F /* SnapRetailer.swift in Sources */,
+				575AAC401C024FD700437D6F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +470,7 @@
 /* Begin XCBuildConfiguration section */
 		570D883018414A860044FCB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4624BEF4AA73BE4D757A71D5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SnapFresh.app/SnapFresh";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -455,8 +483,8 @@
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SnapFreshTests/SnapFreshTests-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -464,8 +492,11 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				INFOPLIST_FILE = "SnapFreshTests/SnapFreshTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shrtlist.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SnapFreshTests/SnapFreshTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -473,6 +504,7 @@
 		};
 		570D883118414A860044FCB8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E29BFA21DA8F0098EB006912 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SnapFresh.app/SnapFresh";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -486,13 +518,15 @@
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SnapFreshTests/SnapFreshTests-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				INFOPLIST_FILE = "SnapFreshTests/SnapFreshTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shrtlist.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SnapFreshTests/SnapFreshTests-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -585,14 +619,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SnapFresh/SnapFresh-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shrtlist.snapfresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SnapFresh/SnapFresh-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -608,14 +645,16 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SnapFresh/SnapFresh-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "SnapFresh/SnapFresh-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shrtlist.snapfresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "fc3107b9-aa22-4bbd-ae72-cda8ba9180f1";
+				SWIFT_OBJC_BRIDGING_HEADER = "SnapFresh/SnapFresh-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

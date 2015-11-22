@@ -2,3 +2,5 @@ platform :ios, '9.0'
 
 pod 'SVProgressHUD'
 pod 'hpple'
+
+link_with 'SnapFresh', 'SnapFreshTests'
