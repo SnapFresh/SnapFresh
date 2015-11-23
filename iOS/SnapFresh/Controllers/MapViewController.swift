@@ -434,6 +434,8 @@ class MapViewController : UIViewController,
     func requestLocationServicesAuthorization() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 100.0
         
         /*
          When the application requests to start receiving location updates that is when the user is presented with a consent dialog.
