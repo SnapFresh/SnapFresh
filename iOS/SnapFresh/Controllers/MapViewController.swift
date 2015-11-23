@@ -456,15 +456,15 @@ class MapViewController : UIViewController,
         }
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-        var didSetRegion = false
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let newLocation = locations.first
         
-        if newLocation.coordinate.isValid {
+        if newLocation!.coordinate.isValid {
             manager.stopUpdatingLocation()
         
             // Reverse geocode the user's location
             // Completion handler block will be executed on the main thread.
-            CLGeocoder().reverseGeocodeLocation(newLocation, completionHandler: { (placemarks, error) in
+            CLGeocoder().reverseGeocodeLocation(newLocation!, completionHandler: { (placemarks, error) in
                 if (error != nil) {
                     NSLog("Reverse geocode failed with error: %@", error!)
                     self.trackingButton!.enabled = false
@@ -484,11 +484,15 @@ class MapViewController : UIViewController,
                 
                 self.trackingButton?.enabled = true
                 
+                struct Holder {
+                    static var didSetRegion = false
+                }
+                
                 // Set the map's region if it's not set
-                if didSetRegion == false {
+                if Holder.didSetRegion == false {
                     self.setAnnotationsForCoordinate(topResult!.location!.coordinate)
                     
-                    didSetRegion = true
+                    Holder.didSetRegion = true
                 }
             })
         }
