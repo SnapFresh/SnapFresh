@@ -37,6 +37,8 @@ class ListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = NSLocalizedString("Retailers", comment: "Retailers")
+        
         // Do any additional setup after loading the view, typically from a nib.
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "snapRetailersDidLoad:", name: Constants.kSNAPRetailersDidLoadNotification, object: nil)

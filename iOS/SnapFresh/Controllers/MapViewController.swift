@@ -24,7 +24,6 @@ import UIKit
 Presents SNAP retailers and farmers markets in a map view
 */
 class MapViewController : UIViewController,
-    UISplitViewControllerDelegate,
     UISearchBarDelegate,
     MKMapViewDelegate,
     CLLocationManagerDelegate,
@@ -430,22 +429,6 @@ class MapViewController : UIViewController,
             let error = notification.object as! NSError
             SVProgressHUD.showErrorWithStatus(error.localizedDescription)
         }))
-    }
-
-    // MARK: UISplitViewControllerDelegate protocol conformance
-
-    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
-        return UIInterfaceOrientationIsPortrait(orientation);
-    }
-
-    func splitViewController(svc: UISplitViewController, willHideViewController aViewController: UIViewController, withBarButtonItem barButtonItem: UIBarButtonItem, forPopoverController pc: UIPopoverController) {
-        barButtonItem.title = NSLocalizedString("Retailers", comment: "Retailers")
-        navigationItem.setLeftBarButtonItem(barButtonItem, animated: true)
-    }
-
-    func splitViewController(svc: UISplitViewController, willShowViewController aViewController: UIViewController, invalidatingBarButtonItem barButtonItem: UIBarButtonItem) {
-        // Called when the view is shown again in the split view, invalidating the button and popover controller.
-        navigationItem.setLeftBarButtonItem(nil, animated: true)
     }
 
     // MARK: Core Location Access

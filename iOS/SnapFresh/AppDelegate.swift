@@ -25,11 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad) {
-            let splitViewController = window!.rootViewController as! UISplitViewController
-            
-            let navigationController = splitViewController.viewControllers.last
-            
-            splitViewController.delegate = navigationController?.childViewControllers.first as! MapViewController
+            let splitViewController = self.window!.rootViewController as! UISplitViewController
+            let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
+            navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
         }
         
         return true
