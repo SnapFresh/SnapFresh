@@ -53,8 +53,6 @@ class MapViewController : UIViewController,
         if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone {
             navigationItem.titleView = self.searchBar
         }
-        
-        searchBar!.delegate = self
 
         requestController = RequestController()
         
