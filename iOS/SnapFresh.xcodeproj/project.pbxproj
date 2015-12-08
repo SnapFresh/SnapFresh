@@ -58,7 +58,6 @@
 		57D1F794180B3AE200E89CDD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		57DF25C81C0279E40061BC43 /* CLLocationCoordinate2D+isValid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+isValid.swift"; sourceTree = "<group>"; };
 		57E9E0201BF476EA002799B0 /* SnapFreshTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapFreshTests.swift; sourceTree = "<group>"; };
-		57E9E0221BF47D88002799B0 /* SnapFreshTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SnapFreshTests-Bridging-Header.h"; path = "SnapFreshTests/SnapFreshTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		57E9E0231BF4EA3C002799B0 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		67EFEE591BF6CF9600D78F4B /* RequestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestController.swift; sourceTree = "<group>"; };
 		67EFEE5B1BF8228500D78F4B /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +128,6 @@
 				578D633D1B12F134001FD76F /* Settings.bundle */,
 				8417059114C75EA100ACF050 /* SnapFresh */,
 				570D882518414A860044FCB8 /* SnapFreshTests */,
-				57E9E0221BF47D88002799B0 /* SnapFreshTests-Bridging-Header.h */,
 				8417058A14C75EA100ACF050 /* Frameworks */,
 				8417058814C75EA100ACF050 /* Products */,
 				9704B770723DC27879D2824B /* Pods */,
@@ -499,7 +497,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shrtlist.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SnapFreshTests/SnapFreshTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -530,7 +528,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shrtlist.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SnapFreshTests/SnapFreshTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
