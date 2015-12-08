@@ -27,9 +27,17 @@ class ListViewController: UITableViewController {
 
     var retailers: [SnapRetailer] = []
     var farmersMarkets: [FarmersMarket] = []
+    
+    // MARK: Initialization
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    // MARK: Deinitialization
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     // MARK: View lifecycle
@@ -57,12 +65,6 @@ class ListViewController: UITableViewController {
         else {
             return UIInterfaceOrientationMask.All
         }
-    }
-
-    // MARK: Memory management
-
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     // MARK: UITableViewDataSource protocol conformance

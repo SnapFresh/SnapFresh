@@ -95,7 +95,8 @@ class MapViewController : UIViewController,
         }
     }
 
-    // MARK: Memory management
+    // MARK: Deinitialization
+    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
 
