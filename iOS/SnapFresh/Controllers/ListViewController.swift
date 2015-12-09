@@ -28,12 +28,6 @@ class ListViewController: UITableViewController {
     var retailers: [SnapRetailer] = []
     var farmersMarkets: [FarmersMarket] = []
     
-    // MARK: Initialization
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
     // MARK: Deinitialization
     
     deinit {
