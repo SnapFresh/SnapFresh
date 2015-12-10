@@ -624,7 +624,7 @@ class MapViewController : UIViewController,
         
         let retailer = annotation as! SnapRetailer
         
-        MapUtils.openMapWithDestination(retailer)
+        MKMapItem.openMapWithDestination(retailer)
     }
     
     func mapView(mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {

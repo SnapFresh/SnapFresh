@@ -46,14 +46,4 @@ class MapUtils {
         return zoomRect
     }
 
-    /*!
-     * @abstract opens the Map app with the destination placemark
-     *
-     * @param destination placemark
-     */
-    class func openMapWithDestination(placemark: MKPlacemark) {
-        let destination =  MKMapItem(placemark: placemark)
-        destination.openInMapsWithLaunchOptions([MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving])
-    }
-
 }
