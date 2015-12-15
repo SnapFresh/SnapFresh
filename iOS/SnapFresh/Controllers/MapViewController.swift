@@ -34,7 +34,7 @@ class MapViewController : UIViewController,
     @IBOutlet var listContainerView: UIView!
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet var segmentWrapper: UIBarButtonItem!
+    @IBOutlet var segmentWrapper: UIBarButtonItem?
     @IBOutlet var listBarButtonItem: UIBarButtonItem!
     @IBOutlet var mapTypeSegmentedControl: UISegmentedControl!
     @IBOutlet var redoSearchView: UIView!
@@ -124,7 +124,7 @@ class MapViewController : UIViewController,
         mapTypeSegmentedControl.tintColor = UIColor.clearColor()
         mapTypeSegmentedControl.tintColor = view.tintColor
         
-        segmentWrapper.customView = mapTypeSegmentedControl
+        segmentWrapper?.customView = mapTypeSegmentedControl
         
         localizeView()
     }
