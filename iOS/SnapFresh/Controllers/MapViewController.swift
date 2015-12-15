@@ -29,23 +29,34 @@ class MapViewController : UIViewController,
     CLLocationManagerDelegate,
     UIGestureRecognizerDelegate {
 
-    @IBOutlet var toggleView: UIView? // Contains map and list views
-    @IBOutlet var mapContainerView: UIView? // For iPhone version, contains map view
-    @IBOutlet var listContainerView: UIView?
-    @IBOutlet var mapView: MKMapView?
-    @IBOutlet var searchBar: UISearchBar?
-    @IBOutlet var segmentWrapper: UIBarButtonItem?
-    @IBOutlet var listBarButtonItem: UIBarButtonItem?
-    @IBOutlet var mapTypeSegmentedControl: UISegmentedControl?
-    @IBOutlet var redoSearchView: UIView?
-    @IBOutlet var redoSearchButton: UIButton?
-    @IBOutlet var padToolbar: UIToolbar?
-    var locationManager: CLLocationManager!
+    @IBOutlet var toggleView: UIView! // Contains map and list views
+    @IBOutlet var mapContainerView: UIView! // For iPhone version, contains map view
+    @IBOutlet var listContainerView: UIView!
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var segmentWrapper: UIBarButtonItem!
+    @IBOutlet var listBarButtonItem: UIBarButtonItem!
+    @IBOutlet var mapTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet var redoSearchView: UIView!
+    @IBOutlet var redoSearchButton: UIButton!
+    @IBOutlet var padToolbar: UIToolbar!
+    
+    lazy var locationManager: CLLocationManager = {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 100.0
+        return locationManager
+    }()
+    
+    lazy var trackingButton: MKUserTrackingBarButtonItem = {
+        let trackingButton = MKUserTrackingBarButtonItem(mapView: self.mapView)
+        return trackingButton
+    }()
+    
+    private let requestController = RequestController()
 
-    var trackingButton: MKUserTrackingBarButtonItem?
-    var requestController: RequestController?
-
-    // MARK: View lifecycle
+    // MARK: View controller overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +64,6 @@ class MapViewController : UIViewController,
         if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone {
             navigationItem.titleView = self.searchBar
         }
-
-        requestController = RequestController()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "snapRetailersDidLoad:", name: Constants.kSNAPRetailersDidLoadNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "snapRetailersDidNotLoadWithError:", name: Constants.kSNAPRetailersDidNotLoadNotification, object: nil)
@@ -64,30 +73,31 @@ class MapViewController : UIViewController,
         let panRecognizer = UIPanGestureRecognizer(target: self, action: "didDragMap:")
         panRecognizer.delegate = self
         
-        mapView!.addGestureRecognizer(panRecognizer)
+        mapView.addGestureRecognizer(panRecognizer)
         
-        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+        if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
             let listViewController = childViewControllers.first as! ListViewController
             listViewController.mapViewController = self
         }
         else {
-            let navController = splitViewController!.childViewControllers.first
-            let listViewController = navController!.childViewControllers.first as! ListViewController
-            listViewController.mapViewController = self
+            if let navController = splitViewController!.childViewControllers.first {
+                let listViewController = navController.childViewControllers.first as! ListViewController
+                listViewController.mapViewController = self
+            }
         }
         
-        requestLocationServicesAuthorization()
+        locationManager.requestWhenInUseAuthorization()
 
         configureViews()
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        redoSearchView!.hidden = true
+        redoSearchView.hidden = true
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
             return UIInterfaceOrientationMask.AllButUpsideDown
         }
         else {
@@ -101,8 +111,8 @@ class MapViewController : UIViewController,
         NSNotificationCenter.defaultCenter().removeObserver(self)
 
         // Nil out delegates
-        mapView!.delegate = nil;
-        searchBar!.delegate = nil;
+        mapView.delegate = nil;
+        searchBar.delegate = nil;
     }
     
     // MARK: UI methods
@@ -111,10 +121,10 @@ class MapViewController : UIViewController,
         SVProgressHUD.setForegroundColor(UIColor(red: (100.0/255.0), green:(153.0/255.0), blue:(51.0/255.0), alpha:1.0))
         
         // http://stackoverflow.com/questions/19239227/uisegmentedcontrol-tint-color-isnt-drawn-correctly-on-ios-7
-        mapTypeSegmentedControl?.tintColor = UIColor.clearColor()
-        mapTypeSegmentedControl?.tintColor = view.tintColor
+        mapTypeSegmentedControl.tintColor = UIColor.clearColor()
+        mapTypeSegmentedControl.tintColor = view.tintColor
         
-        segmentWrapper?.customView = mapTypeSegmentedControl
+        segmentWrapper.customView = mapTypeSegmentedControl
         
         localizeView()
     }
@@ -124,65 +134,63 @@ class MapViewController : UIViewController,
         let satellite = NSLocalizedString("Satellite", comment: "Satellite")
         let hybrid = NSLocalizedString("Hybrid", comment: "Hybrid")
         
-        mapTypeSegmentedControl!.setTitle(standard, forSegmentAtIndex: 0)
-        mapTypeSegmentedControl!.setTitle(satellite, forSegmentAtIndex: 1)
-        mapTypeSegmentedControl!.setTitle(hybrid, forSegmentAtIndex: 2)
+        mapTypeSegmentedControl.setTitle(standard, forSegmentAtIndex: 0)
+        mapTypeSegmentedControl.setTitle(satellite, forSegmentAtIndex: 1)
+        mapTypeSegmentedControl.setTitle(hybrid, forSegmentAtIndex: 2)
 
         let title = NSLocalizedString("Redo search in this area", comment: "Redo search in this area")
-        redoSearchButton!.setTitle(title, forState: UIControlState.Normal)
-        searchBar!.placeholder = NSLocalizedString("Enter US address or ZIP code", comment: "Enter US address or ZIP code")
+        redoSearchButton.setTitle(title, forState: UIControlState.Normal)
+        searchBar.placeholder = NSLocalizedString("Enter US address or ZIP code", comment: "Enter US address or ZIP code")
     }
 
     func configureTrackingButton() {
-        trackingButton = MKUserTrackingBarButtonItem(mapView: mapView)
-        
         if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone {
             var items: Array<UIBarButtonItem> = toolbarItems!
-            items.insert(trackingButton!, atIndex: 0)
+            items.insert(trackingButton, atIndex: 0)
             setToolbarItems(items, animated: true)
         }
         else {
-            var items: Array<UIBarButtonItem> = (padToolbar?.items)!
-            items.insert(trackingButton!, atIndex: 0)
-            padToolbar?.setItems(items, animated: true)
+            var items: Array<UIBarButtonItem> = (padToolbar.items)!
+            items.insert(trackingButton, atIndex: 0)
+            padToolbar.setItems(items, animated: true)
         }
     }
 
     func showListView() {
-        UIView.transitionWithView(toggleView!,
+        UIView.transitionWithView(toggleView,
                           duration: Constants.kAnimationDuration,
                            options: UIViewAnimationOptions.TransitionFlipFromLeft,
                         animations: {
-                            self.listContainerView!.hidden = false
-                            self.mapContainerView!.hidden = true
-                            self.redoSearchView!.hidden = true
+                            self.listContainerView.hidden = false
+                            self.mapContainerView.hidden = true
+                            self.redoSearchView.hidden = true
             },
             completion: { (BOOL finished) in
-                self.listBarButtonItem!.image = UIImage(named: Constants.kMapImageName)
+                self.listBarButtonItem.image = UIImage(named: Constants.kMapImageName)
         })
     }
 
     func showMapView() {
-        UIView.transitionWithView(toggleView!,
+        UIView.transitionWithView(toggleView,
                           duration: Constants.kAnimationDuration,
                            options: UIViewAnimationOptions.TransitionFlipFromRight,
                         animations: {
-                            self.listContainerView!.hidden = true
-                            self.mapContainerView!.hidden = false
+                            self.listContainerView.hidden = true
+                            self.mapContainerView.hidden = false
             },
             completion: { (BOOL finished) in
-                self.listBarButtonItem!.image = UIImage(named: Constants.kListImageName)
+                self.listBarButtonItem.image = UIImage(named: Constants.kListImageName)
         })
     }
 
     func centerAction() {
-        redoSearchView!.hidden = true
+        redoSearchView.hidden = true
 
-        let coordinate = mapView!.userLocation.coordinate
+        let coordinate = mapView.userLocation.coordinate
         
         if CLLocationCoordinate2DIsValid(coordinate) && (coordinate.latitude != 0.0) && (coordinate.longitude != 0.0) {
-            let address = mapView!.userLocation.subtitle
-            searchBar!.text = address
+            let address = mapView.userLocation.subtitle
+            searchBar.text = address
             setAnnotationsForCoordinate(coordinate)
         }
     }
@@ -197,23 +205,24 @@ class MapViewController : UIViewController,
         
         switch selectedSegmentIndex {
         case 0:
-            mapView!.mapType = MKMapType.Standard
+            mapView.mapType = .Standard
         case 1:
-            mapView!.mapType = MKMapType.Satellite
+            mapView.mapType = .Satellite
         case 2:
-            mapView!.mapType = MKMapType.Hybrid
+            mapView.mapType = .Hybrid
             default:
                 break
         }
     }
 
     @IBAction func redoSearchTapped(sender: UIButton) {
-        redoSearchView!.hidden = true
+        redoSearchView.hidden = true
     
         let status = NSLocalizedString("Finding search address", comment: "Finding search address")
         SVProgressHUD.showWithStatus(status)
 
-        let center = mapView!.centerCoordinate
+        let center = mapView.centerCoordinate
+        
         let location = CLLocation(latitude: center.latitude, longitude:center.longitude)
 
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
@@ -230,36 +239,36 @@ class MapViewController : UIViewController,
             if topResult?.ISOcountryCode != "US" {
                 let nonUSErrorStatus = NSLocalizedString("Non-US search address", comment: "Non-US search address")
                 SVProgressHUD.showErrorWithStatus(nonUSErrorStatus)
-                self.searchBar!.text = nil
+                self.searchBar.text = nil
                 return
             }
             
             let addressDictionary = topResult!.addressDictionary
              
-             let formattedAddressLines = addressDictionary!["FormattedAddressLines"] as! NSArray
+            let formattedAddressLines = addressDictionary!["FormattedAddressLines"] as! NSArray
              
-             let searchAddress = formattedAddressLines.componentsJoinedByString(", ")
+            let searchAddress = formattedAddressLines.componentsJoinedByString(", ")
 
-             // Update the searchBar text
-             self.searchBar!.text = searchAddress
+            // Update the searchBar text
+            self.searchBar.text = searchAddress
              
-             self.setAnnotationsForCoordinate(topResult!.location!.coordinate)
+            self.setAnnotationsForCoordinate(topResult!.location!.coordinate)
 
             // Create an annotation from the placemark
             let searchAnnotation = MKPointAnnotation()
             searchAnnotation.title = NSLocalizedString("Search address", comment: "Search address")
             searchAnnotation.subtitle = searchAddress
             searchAnnotation.coordinate = topResult!.location!.coordinate
-            self.mapView!.addAnnotation(searchAnnotation)
-         })
+            self.mapView.addAnnotation(searchAnnotation)
+        })
     }
-    
+
     @IBAction func dismissButtonTapped(sender: UIButton) {
-        redoSearchView!.hidden = true
+        redoSearchView.hidden = true
     }
 
     @IBAction func toggleListView(sender: UIBarButtonItem) {
-        if listContainerView!.hidden {
+        if listContainerView.hidden {
             showListView()
         }
         else {
@@ -282,11 +291,11 @@ class MapViewController : UIViewController,
     // MARK: Map utility methods
 
     func clearMapAnnotations() {
-        let annotations = mapView!.annotations as NSArray
+        let annotations = mapView.annotations as NSArray
         let predicate = NSPredicate(format: "!(self isKindOfClass:%@)", argumentArray: [MKUserLocation.self])
         let filteredAnnotations = annotations.filteredArrayUsingPredicate(predicate) as! [MKAnnotation]
     
-        mapView!.removeAnnotations(filteredAnnotations)
+        mapView.removeAnnotations(filteredAnnotations)
     }
 
     func setSearchBarAnnotation(text: NSString) {
@@ -297,7 +306,7 @@ class MapViewController : UIViewController,
             if (error != nil) {
                 let errorStatus = NSLocalizedString("Invalid search address", comment: "Invalid search address")
                 SVProgressHUD.showErrorWithStatus(errorStatus)
-                self.searchBar!.text = nil
+                self.searchBar.text = nil
                 NSLog("Forward geocode failed with error: %@", error!)
                 return
             }
@@ -309,7 +318,7 @@ class MapViewController : UIViewController,
             if topResult!.ISOcountryCode != "US" {
                 let nonUSErrorStatus = NSLocalizedString("Non-US search address", comment: "Non-US search address")
                 SVProgressHUD.showErrorWithStatus(nonUSErrorStatus)
-                self.searchBar!.text = nil
+                self.searchBar.text = nil
                 return
             }
             
@@ -320,7 +329,7 @@ class MapViewController : UIViewController,
             let searchAddress = formattedAddressLines.componentsJoinedByString(", ")
      
             // Update the searchBar text
-            self.searchBar!.text = searchAddress
+            self.searchBar.text = searchAddress
             
             self.setAnnotationsForCoordinate(topResult!.location!.coordinate)
             
@@ -330,7 +339,7 @@ class MapViewController : UIViewController,
             annotation.subtitle = searchAddress
             annotation.coordinate = topResult!.location!.coordinate
             
-            self.mapView!.addAnnotation(annotation)
+            self.mapView.addAnnotation(annotation)
         })
     }
     
@@ -340,9 +349,9 @@ class MapViewController : UIViewController,
 
         clearMapAnnotations()
 
-        requestController!.sendSNAPRequestForCoordinate(coordinate)
+        requestController.sendSNAPRequestForCoordinate(coordinate)
 
-        requestController!.sendFarmersMarketRequestForCoordinate(coordinate)
+        requestController.sendFarmersMarketRequestForCoordinate(coordinate)
     }
     
     func didSelectRetailer(retailer: MKPlacemark) {
@@ -350,13 +359,13 @@ class MapViewController : UIViewController,
             let barButtonItem = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "barButtonItemClicked:")
             toggleListView(barButtonItem)
         }
-        mapView!.setCenterCoordinate(retailer.coordinate, animated: true)
-        mapView!.selectAnnotation(retailer, animated: true)
+        mapView.setCenterCoordinate(retailer.coordinate, animated: true)
+        mapView.selectAnnotation(retailer, animated: true)
     }
     
     // MARK: Update the visible map rectangle
     func updateVisibleMapRect() {
-        var annotations = mapView!.annotations as NSArray
+        var annotations = mapView.annotations as NSArray
         
         // Get non-SnapRetailer annotations
         var predicate = NSPredicate(format: "!(self isKindOfClass:%@)", argumentArray: [SnapRetailer.self])
@@ -373,13 +382,13 @@ class MapViewController : UIViewController,
         
         // Add some edge padding
         if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
-            zoomRect = mapView!.mapRectThatFits(zoomRect, edgePadding: UIEdgeInsetsMake(Constants.kEdgeInsetPad, Constants.kEdgeInsetPad, Constants.kEdgeInsetPad, Constants.kEdgeInsetPad))
+            zoomRect = mapView.mapRectThatFits(zoomRect, edgePadding: UIEdgeInsetsMake(Constants.kEdgeInsetPad, Constants.kEdgeInsetPad, Constants.kEdgeInsetPad, Constants.kEdgeInsetPad))
         }
         else {
-            zoomRect = mapView!.mapRectThatFits(zoomRect, edgePadding: UIEdgeInsetsMake(Constants.kEdgeInsetPhone, Constants.kEdgeInsetPhone, Constants.kEdgeInsetPhone, Constants.kEdgeInsetPhone))
+            zoomRect = mapView.mapRectThatFits(zoomRect, edgePadding: UIEdgeInsetsMake(Constants.kEdgeInsetPhone, Constants.kEdgeInsetPhone, Constants.kEdgeInsetPhone, Constants.kEdgeInsetPhone))
         }
         
-        mapView!.setVisibleMapRect(zoomRect, animated: true)
+        mapView.setVisibleMapRect(zoomRect, animated: true)
     }
     
     // MARK: NSNotification methods
@@ -391,13 +400,13 @@ class MapViewController : UIViewController,
             let snapRetailers = notification.object as! [MKAnnotation]
             
             if snapRetailers.count > 0 {
-                self.mapView!.addAnnotations(snapRetailers)
+                self.mapView.addAnnotations(snapRetailers)
                 
                 self.updateVisibleMapRect()
                 
                 // Select nearest retailer
                 let nearestRetailer = snapRetailers.first
-                self.mapView!.selectAnnotation(nearestRetailer!, animated: true)
+                self.mapView.selectAnnotation(nearestRetailer!, animated: true)
             }
         }))
     }
@@ -416,7 +425,7 @@ class MapViewController : UIViewController,
             let farmersMarkets = notification.object as! NSArray
 
             if farmersMarkets.count > 0 {
-                self.mapView!.addAnnotations(farmersMarkets as! [MKAnnotation])
+                self.mapView.addAnnotations(farmersMarkets as! [MKAnnotation])
                 
                 self.updateVisibleMapRect()
             }
@@ -433,11 +442,6 @@ class MapViewController : UIViewController,
     // MARK: Core Location Access
 
     func requestLocationServicesAuthorization() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.distanceFilter = 100.0
-        
         /*
          When the application requests to start receiving location updates that is when the user is presented with a consent dialog.
          */
@@ -451,11 +455,11 @@ class MapViewController : UIViewController,
         
         if (authorizationStatus == CLAuthorizationStatus.AuthorizedAlways ||
             authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse) {
-            mapView!.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
+            mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
             configureTrackingButton()
             
             locationManager.startUpdatingLocation()
-            mapView!.showsUserLocation = true
+            mapView.showsUserLocation = true
         }
     }
     
@@ -470,7 +474,7 @@ class MapViewController : UIViewController,
             CLGeocoder().reverseGeocodeLocation(newLocation!, completionHandler: { (placemarks, error) in
                 if (error != nil) {
                     NSLog("Reverse geocode failed with error: %@", error!)
-                    self.trackingButton!.enabled = false
+                    self.trackingButton.enabled = false
                     return
                 }
                 
@@ -483,9 +487,9 @@ class MapViewController : UIViewController,
                 
                 let addressString = formattedAddressLines.componentsJoinedByString(", ")
 
-                self.mapView?.userLocation.subtitle = addressString
+                self.mapView.userLocation.subtitle = addressString
                 
-                self.trackingButton?.enabled = true
+                self.trackingButton.enabled = true
                 
                 struct Holder {
                     static var didSetRegion = false
@@ -523,28 +527,28 @@ class MapViewController : UIViewController,
             if (pinAnnotationView == nil) {
                 // If an existing annotation view was not available, create one
                 pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: retailerPinID)
-                pinAnnotationView!.canShowCallout = true
-                pinAnnotationView!.pinTintColor = MKPinAnnotationView.redPinColor()
-                pinAnnotationView!.animatesDrop = true
+                pinAnnotationView?.canShowCallout = true
+                pinAnnotationView?.pinTintColor = MKPinAnnotationView.redPinColor()
+                pinAnnotationView?.animatesDrop = true
                     
                 // Add Detail Disclosure button
                 let button = UIButton(type: UIButtonType.DetailDisclosure)
                 button.showsTouchWhenHighlighted = true
-                pinAnnotationView!.rightCalloutAccessoryView = button
+                pinAnnotationView?.rightCalloutAccessoryView = button
                 
                 let sfIconView = UIImageView(image: UIImage(named: "snap"))
-                pinAnnotationView!.leftCalloutAccessoryView = sfIconView
+                pinAnnotationView?.leftCalloutAccessoryView = sfIconView
                 
                 // Create a multi-line UILabel to use as the detailCalloutAccessoryView
                 let addressLabel = UILabel()
                 addressLabel.numberOfLines = 0
                 addressLabel.text = annotation.subtitle!
                 
-                pinAnnotationView!.detailCalloutAccessoryView = addressLabel
+                pinAnnotationView?.detailCalloutAccessoryView = addressLabel
             }
             else
             {
-                pinAnnotationView!.annotation = annotation;
+                pinAnnotationView?.annotation = annotation;
             }
         }
         else if annotation.isKindOfClass(FarmersMarket) {
@@ -554,28 +558,28 @@ class MapViewController : UIViewController,
             if (pinAnnotationView == nil) {
                 // If an existing annotation view was not available, create one
                 pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier:farmersMarketPinID)
-                pinAnnotationView!.canShowCallout = true
-                pinAnnotationView!.pinTintColor = MKPinAnnotationView.purplePinColor()
-                pinAnnotationView!.animatesDrop = true
+                pinAnnotationView?.canShowCallout = true
+                pinAnnotationView?.pinTintColor = MKPinAnnotationView.purplePinColor()
+                pinAnnotationView?.animatesDrop = true
                 
                 // Add Detail Disclosure button
                 let button = UIButton(type: UIButtonType.DetailDisclosure)
                 button.showsTouchWhenHighlighted = true
-                pinAnnotationView!.rightCalloutAccessoryView = button
+                pinAnnotationView?.rightCalloutAccessoryView = button
                 
                 let sfIconView = UIImageView(image: UIImage(named: "farmersmarket"))
-                pinAnnotationView!.leftCalloutAccessoryView = sfIconView
+                pinAnnotationView?.leftCalloutAccessoryView = sfIconView
                 
                 // Create a multi-line UILabel to use as the detailCalloutAccessoryView
                 let addressLabel = UILabel()
                 addressLabel.numberOfLines = 0
                 addressLabel.text = annotation.subtitle!
                 
-                pinAnnotationView!.detailCalloutAccessoryView = addressLabel
+                pinAnnotationView?.detailCalloutAccessoryView = addressLabel
             }
             else
             {
-                pinAnnotationView!.annotation = annotation
+                pinAnnotationView?.annotation = annotation
             }
         }
         else {
@@ -585,26 +589,26 @@ class MapViewController : UIViewController,
             if (pinAnnotationView == nil) {
                 // If an existing annotation view was not available, create one
                 pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier:searchPinID)
-                pinAnnotationView!.canShowCallout = true
-                pinAnnotationView!.pinTintColor = MKPinAnnotationView.greenPinColor()
-                pinAnnotationView!.animatesDrop = true
+                pinAnnotationView?.canShowCallout = true
+                pinAnnotationView?.pinTintColor = MKPinAnnotationView.greenPinColor()
+                pinAnnotationView?.animatesDrop = true
                 
                 // Create a multi-line UILabel to use as the detailCalloutAccessoryView
                 let addressLabel = UILabel()
                 addressLabel.numberOfLines = 0
                 addressLabel.text = annotation.subtitle!
                 
-                pinAnnotationView!.detailCalloutAccessoryView = addressLabel
+                pinAnnotationView?.detailCalloutAccessoryView = addressLabel
             }
             else
             {
-                pinAnnotationView!.annotation = annotation
+                pinAnnotationView?.annotation = annotation
             }
         }
         
-        pinAnnotationView!.annotation = annotation
+        pinAnnotationView?.annotation = annotation
         
-        let addressLabel = pinAnnotationView!.detailCalloutAccessoryView as! UILabel
+        let addressLabel = pinAnnotationView?.detailCalloutAccessoryView as! UILabel
         addressLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
         addressLabel.text = annotation.subtitle!
         
@@ -612,11 +616,11 @@ class MapViewController : UIViewController,
     }
 
     func mapView(mapView: MKMapView, didFailToLocateUserWithError error: NSError) {
-        trackingButton?.enabled = false
+        trackingButton.enabled = false
     }
 
     func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
-        redoSearchView!.hidden = true
+        redoSearchView.hidden = true
     }
 
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {

@@ -23,10 +23,14 @@ Presents SNAP retailers and farmers markets in a table view
 */
 class ListViewController: UITableViewController {
 
+    // MARK: Public property
+    
     var mapViewController: MapViewController?
 
-    var retailers: [SnapRetailer] = []
-    var farmersMarkets: [FarmersMarket] = []
+    // MARK: Private properties
+    
+    private var retailers: [SnapRetailer] = []
+    private var farmersMarkets: [FarmersMarket] = []
     
     // MARK: Deinitialization
     
@@ -34,7 +38,7 @@ class ListViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
-    // MARK: View lifecycle
+    // MARK: View controller overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,12 +57,49 @@ class ListViewController: UITableViewController {
     }
 
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
-            return UIInterfaceOrientationMask.AllButUpsideDown
+        if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
+            return .AllButUpsideDown
         }
         else {
-            return UIInterfaceOrientationMask.All
+            return .All
         }
+    }
+    
+    // MARK: Public methods
+    
+    func snapRetailersDidLoad(notification: NSNotification) {
+        retailers = notification.object as! [SnapRetailer]
+        
+        NSOperationQueue.mainQueue().addOperation(NSBlockOperation(block: {
+            // Reload the data when there are new annotations on the map.
+            self.tableView.reloadData()
+        }))
+    }
+    
+    func farmersMarketsDidLoad(notification: NSNotification) {
+        farmersMarkets = notification.object as! [FarmersMarket]
+        
+        NSOperationQueue.mainQueue().addOperation(NSBlockOperation(block: {
+            // Reload the data when there are new annotations on the map.
+            self.tableView.reloadData()
+        }))
+    }
+    
+    // MARK: Private method
+    
+    private func placemarkForIndexPath(indexPath: NSIndexPath) -> MKPlacemark? {
+        let section = indexPath.section
+        
+        var placemark: MKPlacemark?
+        
+        if (section == 0) {
+            placemark = retailers[indexPath.row]
+        }
+        else if (section == 1) {
+            placemark = farmersMarkets[indexPath.row]
+        }
+        
+        return placemark
     }
 
     // MARK: UITableViewDataSource protocol conformance
@@ -94,25 +135,13 @@ class ListViewController: UITableViewController {
 
     // Customize the appearance of table view cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier = "Cell"
+        let placemark = placemarkForIndexPath(indexPath)
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        cell.textLabel?.text = placemark?.title
+        cell.detailTextLabel?.text = placemark?.subtitle
         
-        let section = indexPath.section
-        
-        var placemark: MKPlacemark?
-        
-        if (section == 0) {
-            placemark = retailers[indexPath.row]
-        }
-        else if (section == 1) {
-            placemark = farmersMarkets[indexPath.row]
-        }
-
-        cell!.textLabel!.text = placemark!.title
-        cell!.detailTextLabel!.text = placemark!.subtitle
-        
-        return cell!
+        return cell
     }
 
     // MARK: UITableViewDelegate protocol conformance
@@ -120,38 +149,8 @@ class ListViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let section = indexPath.section
+        let placemark = placemarkForIndexPath(indexPath)
         
-        var placemark: MKPlacemark?
-        
-        if (section == 0) {
-            placemark = retailers[indexPath.row]
-        }
-        else if (section == 1) {
-            placemark = farmersMarkets[indexPath.row]
-        }
-        
-        mapViewController!.didSelectRetailer(placemark!)
+        mapViewController?.didSelectRetailer(placemark!)
     }
-
-    // MARK: NSNotification methods
-
-    func snapRetailersDidLoad(notification: NSNotification) {
-        retailers = notification.object as! [SnapRetailer]
-        
-        NSOperationQueue.mainQueue().addOperation(NSBlockOperation(block: {
-            // Reload the data when there are new annotations on the map.
-            self.tableView.reloadData()
-        }))
-    }
-
-    func farmersMarketsDidLoad(notification: NSNotification) {
-        farmersMarkets = notification.object as! [FarmersMarket]
-
-        NSOperationQueue.mainQueue().addOperation(NSBlockOperation(block: {
-            // Reload the data when there are new annotations on the map.
-            self.tableView.reloadData()
-        }))
-    }
-
 }
