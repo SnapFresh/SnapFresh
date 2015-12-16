@@ -95,15 +95,6 @@ class MapViewController : UIViewController,
         super.viewWillDisappear(animated)
         redoSearchView.hidden = true
     }
-    
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return UIInterfaceOrientationMask.AllButUpsideDown
-        }
-        else {
-            return UIInterfaceOrientationMask.All
-        }
-    }
 
     // MARK: Deinitialization
     
@@ -283,7 +274,7 @@ class MapViewController : UIViewController,
     func didDragMap(gestureRecognizer: UIGestureRecognizer) {
         if (gestureRecognizer.state == UIGestureRecognizerState.Ended) {
             if !SVProgressHUD.isVisible() {
-                redoSearchView!.hidden = false
+                redoSearchView.hidden = false
             }
         }
     }
@@ -413,8 +404,8 @@ class MapViewController : UIViewController,
     
     func snapRetailersDidNotLoadWithError(notification: NSNotification) {
         NSOperationQueue.mainQueue().addOperation(NSBlockOperation(block: {
-            let error = notification.object
-            SVProgressHUD.showErrorWithStatus(error!.localizedDescription)
+            let error = notification.object as! NSError
+            SVProgressHUD.showErrorWithStatus(error.localizedDescription)
         }))
     }
     

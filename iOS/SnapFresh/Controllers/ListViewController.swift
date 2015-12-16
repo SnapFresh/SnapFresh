@@ -55,15 +55,6 @@ class ListViewController: UITableViewController {
             navigationItem.titleView = UIImageView(image: snapLogo)
         }
     }
-
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
-            return .AllButUpsideDown
-        }
-        else {
-            return .All
-        }
-    }
     
     // MARK: Public methods
     

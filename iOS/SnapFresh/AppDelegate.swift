@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad) {
             let splitViewController = window?.rootViewController as! UISplitViewController
-            let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
+            let navigationController = splitViewController.viewControllers.last as! UINavigationController
             navigationController.topViewController?.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
         }
         
