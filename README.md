@@ -17,8 +17,8 @@ For Postgres, see install options depending on your operating system below and f
 ## Setup
 
 ```
-$ git clone git@github.com:ysiadf/AllIncomeFoods.git
-$ cd AllIncomeFoods
+$ git clone https://github.com/SnapFresh/SnapFresh.git
+$ cd SnapFresh
 $ bundle install
 $ cp config/database.yml.example config/database.yml
 $ bundle exec rake db:nuke_pave
@@ -113,7 +113,7 @@ Requirements:
 License/Copyright
 -----------------
 
-License INFO: - Note, this license applies to all files within the ysiadf/AllIncomeFoods repo.
+License INFO: - Note, this license applies to all files within the SnapFresh/SnapFresh repo.
 It is an OSI approved license.
 
 Copyright [2011] [Ysiad Ferreiras, Aaron Bannert, Jeremy Canfield and Michelle Koeth]
@@ -124,4 +124,4 @@ You may obtain a copy of the [License](http://www.apache.org/licenses/LICENSE-2.
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
-See [LICENSE](http://www.github.com/ysiadf/AllIncomeFoods/LICENSE.txt) for details.
+See [LICENSE](http://www.github.com/SnapFresh/SnapFresh/LICENSE.txt) for details.
