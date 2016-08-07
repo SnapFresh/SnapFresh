@@ -19,7 +19,7 @@ class RetailersImporter
   private
 
   def self.load_csv(dir)
-    csv = CSV.open(filename(dir))
+    csv = CSV.open(filename(dir), encoding: "ISO8859-1")
     csv.readline
     csv.each_slice(SLICE_SIZE).each do |rows|
       db_insert(rows)
