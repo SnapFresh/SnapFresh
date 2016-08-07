@@ -93,6 +93,17 @@ $ grep -v '"NULL"' all.csv | psql allincomefoods_dev -c "copy retailers (name, l
 \/\/00T! You should be all installed and stuff now.
 ---------------------------------------------------
 
+# Testing in Docker
+
+Requirements:
+
++ Docker
++ Docker Compose
+
+1. `$ docker build -t snapfresh .`
+2. `$ docker-compose up -d`
+3. Open in browser on Docker host IP on port 3000
+
 # Contribution Guidelines
 
 1. Create a feature branch from develop: `git checkout -b feature/myfeature develop` or `git flow feature start myfeature`

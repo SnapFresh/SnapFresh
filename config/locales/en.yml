@@ -1,8 +1,14 @@
 # Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+#
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
   credits1: "SnapFresh helps you find the closest places that accept"
   credits2: "EBT cards (Food Stamps/SNAP)"
   credits3: "We use"
@@ -14,3 +20,5 @@ en:
   submit1: "or, text message your address to:"
   subbutton1: "Submit"
   nearaddy1: "Listing nearby retailers by given address from user"
+  about: "About"
+  or_address: "OR"

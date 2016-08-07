@@ -2,6 +2,10 @@ language: ruby
 args: --without development debug
 rvm:
   - 1.9.3
+matrix:
+  include:
+    - rvm: 2.2.2
+      gemfile: gemfiles/2.2.2-Gemfile
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database allincome_test;' -U postgres

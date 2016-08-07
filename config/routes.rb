@@ -1,21 +1,10 @@
-Allincomefoods::Application.routes.draw do
-  #scope "(:locale)", :locale => /en|es/ do
-  #  resources :retailers
-  #end
-  root :to => 'retailers#index'
+Rails.application.routes.draw do
+  root :to => 'pages#home'
 
-  match 'browse' => 'retailers#browse'
-  match 'retailers/terms', :to=>'retailers#terms'
-  #resources :requests
-  match 'requests/:address' => 'requests#retailers'
-  match 'aboutus' => 'retailers#aboutus'
-  get "lookup/new"
-  #match 'retailers/near/:lat/:lon' => 'retailers#near',
-  #                      :constraints => { :lat => /[-]?[0-9]+\.?[0-9]*/,
-  #                                        :lon => /[-]?[0-9]+\.?[0-9]*/ }
-  #match 'retailers/list/:address' => 'retailers#list'
+  get 'about' => 'pages#about'
+  get 'terms' => 'pages#terms'
 
-  #match 'retailers/nearaddy(.:format)' => 'retailers#nearaddy'
+  # To be depreciated
   resources :retailers do
     collection do
       get "nearaddy"
