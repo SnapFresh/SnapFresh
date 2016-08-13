@@ -11,7 +11,7 @@ class RetailersController < ApplicationController
       format.html { render :index }
       format.text { render text: @retailer_presenter }
       format.xml  { render xml:  @retailer_presenter }
-      format.json { render json: @retailer_presenter }
+      format.json { render json: @retailer_presenter, methods: [:distance] }
     end
   end
 
