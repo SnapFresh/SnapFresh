@@ -4,15 +4,14 @@ ruby "1.9.3"
 gem 'rails', '~> 4.2.3'
 
 gem "jbuilder", "~> 1.5.2"
-# Keep around until RetailersController#get_geo_from_google is removed
 gem 'crack', '~> 0.4.1'
-# Temporary measure for handling ENV due to not having control over deploy process.
 gem 'figaro'
 gem 'geokit', '~> 1.6.7'
 gem 'geokit-rails', '~> 2.0.0'
 gem 'jquery-rails', '~> 3.0.4'
 gem 'pg', '~> 0.18.2'
 gem 'sass-rails', '~> 4.0.1'
+gem 'therubyracer', '~> 0.12.2'
 gem 'uglifier', '~> 2.3.1'
 gem 'whenever', '~> 0.8.4', :require => false
 
