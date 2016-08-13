@@ -31,7 +31,7 @@ class RetailersController < ApplicationController
     end
     respond_to do |format|
       format.xml  { render :xml => @retailers }
-      format.json { render :json => { :origin => origin, :retailers => @retailers } }
+      format.json { render :json => { :origin => origin, :retailers => @retailers }, :methods => [:distance] }
       format.text { render :text => @retailers.to_enum(:each_with_index).map{|r, i| r.name = "#{i+1} (#{@rt[i][:dist]} #{@rt[i][:unit]}): #{r.name}\n#{r.text_address}"}.join("\n\n")}
     end
   end
