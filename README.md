@@ -107,7 +107,9 @@ Requirements:
 
 ## Testing in Docker
 
-1. `$ docker-compose -f docker-compose.test.yml up`
+1. `$ docker-compose -f docker-compose.test.yml build`
+2. `docker-compose -f docker-compose.test.yml up --no-deps -d postgres`
+3. `docker-compose -f docker-compose.test.yml up --no-deps snapfresh`
 
 # Contribution Guidelines
 
