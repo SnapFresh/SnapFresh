@@ -5,9 +5,11 @@ postgres:
 
 snapfresh:
   build: .
-  dockerfile: Dockerfile
-  command: snapfresh
+  dockerfile: "Dockerfile.test"
+  command: test
   links:
     - postgres
   ports:
     - "3000:3000"
+  environment:
+    - RAILS_ENV=test

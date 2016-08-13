@@ -11,3 +11,11 @@ production:
   port: 5432
   username: postgres
   password:
+
+test:
+  <<: *common
+  database: allincomefoods_test
+  host: postgres
+  port: 5432
+  username: postgres
+  password:

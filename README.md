@@ -93,16 +93,21 @@ $ grep -v '"NULL"' all.csv | psql allincomefoods_dev -c "copy retailers (name, l
 \/\/00T! You should be all installed and stuff now.
 ---------------------------------------------------
 
-# Testing in Docker
+# Docker
 
 Requirements:
 
 + Docker
 + Docker Compose
 
-1. `$ docker build -t snapfresh .`
-2. `$ docker-compose up -d`
-3. Open in browser on Docker host IP on port 3000
+## Runnning in Docker
+
+1. `$ docker-compose up -d`
+2. Open in browser on Docker host IP on port 3000
+
+## Testing in Docker
+
+1. `$ docker-compose -f docker-compose.test.yml up`
 
 # Contribution Guidelines
 
