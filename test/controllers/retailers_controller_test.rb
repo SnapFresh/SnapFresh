@@ -17,6 +17,7 @@ describe RetailersController do
           state: String,
           zip: String,
           zip_plus_four: String,
+          distance: Hash,
           created_at: String,
           updated_at: String
         }
