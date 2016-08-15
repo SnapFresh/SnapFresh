@@ -17,7 +17,10 @@ describe RetailersController do
           state: String,
           zip: String,
           zip_plus_four: String,
-          distance: Hash,
+          distance: {
+            dist: Float,
+            unit: String
+          },
           created_at: String,
           updated_at: String
         }

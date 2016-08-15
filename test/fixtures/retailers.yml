@@ -24,8 +24,8 @@ one:
   street: "3603 Maybank Hwy"
   city: "Johns Island"
   state: "SC"
-  zip: "29455"
-  zip_plus_four: "4825"
+  zip: 29455
+  zip_plus_four: 4825
 
 two:
   name: Two Local Mart
@@ -35,4 +35,4 @@ two:
   city: Two Town
   state: VA
   zip: 22314
-  zip_plus_four:
+  zip_plus_four: 4106
